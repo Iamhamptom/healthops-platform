@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Stethoscope, Scan, Sparkles, Building2, Check } from "lucide-react";
 
 const verticals = [
@@ -10,7 +10,6 @@ const verticals = [
     icon: Stethoscope,
     title: "Dentists",
     subtitle: "Private Practice Suite",
-    color: "#0071E3",
     features: [
       "WhatsApp AI receptionist with dental FAQ",
       "6-month recall automation",
@@ -27,7 +26,6 @@ const verticals = [
     icon: Scan,
     title: "Radiology",
     subtitle: "Imaging Ops Suite",
-    color: "#AF52DE",
     features: [
       "Referral intake router (email/WhatsApp/web)",
       "Structured job card creation",
@@ -44,7 +42,6 @@ const verticals = [
     icon: Sparkles,
     title: "Spas & Wellness",
     subtitle: "Wellness Edition",
-    color: "#34C759",
     features: [
       "Treatment rebooking reminders",
       "Package expiry nudges",
@@ -61,7 +58,6 @@ const verticals = [
     icon: Building2,
     title: "Hospitals",
     subtitle: "Enterprise Suite",
-    color: "#FF9500",
     features: [
       "Multi-department triage bots",
       "Patient queue & flow updates",
@@ -77,52 +73,62 @@ const verticals = [
 
 export default function Verticals() {
   const [active, setActive] = useState("dentist");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const current = verticals.find((v) => v.id === active)!;
 
   return (
-    <section className="py-24 relative bg-white">
-      <div className="divider-shine mb-24" />
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-14"
-        >
-          <p className="text-[13px] text-[var(--primary)] font-semibold mb-3 uppercase tracking-wider">
+    <section className="py-28 relative" ref={containerRef}>
+      <div className="divider-shine mb-28" />
+      <motion.div style={{ opacity }} className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[11px] text-[var(--gold)] font-semibold mb-4 uppercase tracking-[0.3em]"
+          >
             Built for Healthcare
-          </p>
-          <h2 className="text-3xl md:text-[44px] font-bold mb-4 tracking-tight text-[var(--text-primary)]">
-            Tailored for your vertical
-          </h2>
-          <p className="text-[var(--text-secondary)] max-w-xl mx-auto text-[15px]">
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-3xl md:text-5xl font-bold mb-5 tracking-tight text-[var(--ivory)]"
+          >
+            Tailored for Your Vertical
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[var(--text-secondary)] max-w-xl mx-auto text-[15px]"
+          >
             Purpose-built workflows for each healthcare specialty — not generic SaaS bolted onto your practice.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
-        >
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {verticals.map((v) => (
             <button
               key={v.id}
               onClick={() => setActive(v.id)}
-              className={`flex items-center gap-2 px-5 py-2 rounded-full text-[13px] font-medium transition-all duration-200 ${
+              className={`flex items-center gap-2 px-5 py-2.5 text-[12px] uppercase tracking-[0.1em] font-medium transition-all duration-300 ${
                 active === v.id
-                  ? "bg-[var(--primary)] text-white shadow-sm"
-                  : "text-[var(--text-secondary)] bg-[var(--bg-secondary)] border border-[var(--border-light)] hover:border-[var(--border)]"
+                  ? "bg-[var(--gold)] text-[var(--obsidian)]"
+                  : "text-[var(--text-secondary)] glass-panel hover:text-[var(--gold)] hover:border-[var(--gold)]/20"
               }`}
             >
               <v.icon className="w-4 h-4" />
               {v.title}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Content */}
         <motion.div
@@ -132,10 +138,10 @@ export default function Verticals() {
           transition={{ duration: 0.35 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-6"
         >
-          <div className="p-8 rounded-2xl bg-white border border-[var(--border-light)] shadow-sm">
+          <div className="p-8 rounded-xl glass-panel roman-border">
             <div className="flex items-center gap-3 mb-2">
-              <current.icon className="w-6 h-6" style={{ color: current.color }} />
-              <h3 className="text-xl font-bold text-[var(--text-primary)]">{current.title}</h3>
+              <current.icon className="w-6 h-6 text-[var(--gold)]" />
+              <h3 className="font-serif text-xl font-bold text-[var(--ivory)]">{current.title}</h3>
             </div>
             <p className="text-[13px] text-[var(--text-secondary)] mb-6">{current.subtitle}</p>
 
@@ -148,11 +154,8 @@ export default function Verticals() {
                   transition={{ delay: i * 0.06 }}
                   className="flex items-start gap-3"
                 >
-                  <div
-                    className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: `${current.color}12` }}
-                  >
-                    <Check className="w-3 h-3" style={{ color: current.color }} />
+                  <div className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-[var(--gold)]/10">
+                    <Check className="w-3 h-3 text-[var(--gold)]" />
                   </div>
                   <span className="text-[13px] text-[var(--text-secondary)]">{feature}</span>
                 </motion.div>
@@ -160,10 +163,10 @@ export default function Verticals() {
             </div>
           </div>
 
-          <div className="p-8 rounded-2xl border border-[var(--border-light)] relative overflow-hidden bg-[var(--bg-secondary)]">
+          <div className="p-8 rounded-xl glass-panel relative overflow-hidden">
             <div className="relative">
               <div className="mb-8">
-                <div className="text-6xl md:text-8xl font-bold mb-2" style={{ color: current.color }}>
+                <div className="text-6xl md:text-8xl font-serif font-bold mb-2 text-gradient text-shadow-gold">
                   {current.stat}
                 </div>
                 <p className="text-lg text-[var(--text-secondary)]">{current.statLabel}</p>
@@ -171,22 +174,22 @@ export default function Verticals() {
 
               <div className="space-y-3">
                 <div className="flex justify-end">
-                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] text-white" style={{ backgroundColor: current.color }}>
+                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] bg-[var(--gold)] text-[var(--obsidian)]">
                     Hi, I&apos;d like to book an appointment
                   </div>
                 </div>
                 <div className="flex">
-                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tl-sm bg-white border border-[var(--border-light)] text-[13px] text-[var(--text-primary)]">
+                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tl-sm glass-panel text-[13px] text-[var(--ivory)]">
                     Welcome! I&apos;d be happy to help you book. What type of appointment are you looking for?
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] text-white" style={{ backgroundColor: current.color }}>
+                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] bg-[var(--gold)] text-[var(--obsidian)]">
                     Teeth cleaning please
                   </div>
                 </div>
                 <div className="flex">
-                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tl-sm bg-white border border-[var(--border-light)] text-[13px] text-[var(--text-primary)]">
+                  <div className="max-w-[70%] px-4 py-2.5 rounded-2xl rounded-tl-sm glass-panel text-[13px] text-[var(--ivory)]">
                     I have availability on Tuesday at 10am or Thursday at 2pm. Which works best?
                   </div>
                 </div>
@@ -194,7 +197,7 @@ export default function Verticals() {
             </div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

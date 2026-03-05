@@ -16,11 +16,11 @@ export default function DashboardHeader() {
   }, []);
 
   return (
-    <header className="h-14 flex items-center justify-between px-6 border-b border-[var(--border-light)] shrink-0 bg-white">
+    <header className="h-14 flex items-center justify-between px-6 border-b border-[var(--border)] shrink-0 bg-[var(--obsidian)]/80 backdrop-blur-xl">
       <div className="flex items-center gap-3">
-        <h1 className="text-[15px] font-semibold text-[var(--text-primary)]">Dashboard</h1>
+        <h1 className="text-[15px] font-semibold text-[var(--ivory)]">Dashboard</h1>
         {practiceName && (
-          <span className="text-[11px] text-[var(--text-secondary)] bg-[var(--bg-secondary)] px-2.5 py-1 rounded-full border border-[var(--border-light)]">
+          <span className="text-[11px] text-[var(--gold)]/60 glass-panel px-2.5 py-1 rounded-full">
             {practiceName}
           </span>
         )}
@@ -31,12 +31,12 @@ export default function DashboardHeader() {
           <input
             type="text"
             placeholder="Search..."
-            className="pl-9 pr-4 py-1.5 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-[13px] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] w-48 transition-all focus:w-64"
+            className="pl-9 pr-4 py-1.5 bg-[var(--charcoal)]/50 border border-[var(--border)] rounded-lg text-[13px] text-[var(--ivory)] placeholder:text-[var(--text-tertiary)] w-48 transition-all focus:w-64"
           />
         </div>
-        <button className="relative p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <button className="relative p-2 text-[var(--text-secondary)] hover:text-[var(--gold)] transition-colors">
           <Bell className="w-[18px] h-[18px]" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[var(--primary)]" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[var(--gold)]" />
         </button>
       </div>
     </header>

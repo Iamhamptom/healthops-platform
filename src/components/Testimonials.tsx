@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -26,50 +26,61 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section className="py-24 relative bg-[var(--bg-secondary)]">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
-        >
-          <p className="text-[13px] text-[var(--primary)] font-semibold mb-3 uppercase tracking-wider">
+    <section className="py-28 relative bg-[var(--charcoal)]/30" ref={containerRef}>
+      <motion.div style={{ opacity }} className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[11px] text-[var(--gold)] font-semibold mb-4 uppercase tracking-[0.3em]"
+          >
             Trusted by Practices
-          </p>
-          <h2 className="text-3xl md:text-[44px] font-bold mb-4 tracking-tight text-[var(--text-primary)]">
-            What our clients say
-          </h2>
-        </motion.div>
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-3xl md:text-5xl font-bold tracking-tight text-[var(--ivory)]"
+          >
+            What Our Clients Say
+          </motion.h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.12 }}
-              className="p-6 rounded-2xl bg-white border border-[var(--border-light)] hover:shadow-lg hover:shadow-black/[0.04] transition-all duration-300"
+              className="p-6 rounded-xl glass-panel hover:border-[var(--gold)]/20 transition-all duration-500 roman-border"
             >
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-[#FF9500] text-[#FF9500]" />
+                  <Star key={j} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
                 ))}
               </div>
-              <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed mb-6">
+              <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed mb-6 italic">
                 &ldquo;{t.text}&rdquo;
               </p>
               <div>
-                <div className="font-semibold text-[14px] text-[var(--text-primary)]">{t.name}</div>
+                <div className="font-semibold text-[14px] text-[var(--ivory)]">{t.name}</div>
                 <div className="text-[12px] text-[var(--text-tertiary)]">{t.role}</div>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

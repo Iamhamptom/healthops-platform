@@ -19,20 +19,20 @@ export default function StatCard({ label, value, change, trend, icon: Icon, colo
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="p-5 rounded-2xl bg-white border border-[var(--border-light)] hover:shadow-md hover:shadow-black/[0.03] transition-all"
+      className="p-5 rounded-xl glass-panel hover:border-[var(--gold)]/20 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-3">
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${color}12` }}>
+        <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${color}15` }}>
           <Icon className="w-4 h-4" style={{ color }} />
         </div>
         {change && trend && (
-          <div className={`flex items-center gap-1 text-[11px] font-semibold ${trend === "up" ? "text-[var(--accent)]" : "text-red-500"}`}>
+          <div className={`flex items-center gap-1 text-[11px] font-semibold ${trend === "up" ? "text-[var(--teal)]" : "text-[var(--crimson)]"}`}>
             {trend === "up" ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
             {change}
           </div>
         )}
       </div>
-      <div className="text-2xl font-bold text-[var(--text-primary)] mb-1">{value}</div>
+      <div className="text-2xl font-bold text-[var(--ivory)] mb-1">{value}</div>
       <div className="text-[12px] text-[var(--text-secondary)]">{label}</div>
     </motion.div>
   );

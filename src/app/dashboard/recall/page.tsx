@@ -73,7 +73,7 @@ export default function RecallPage() {
         </div>
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          className="flex items-center gap-2 px-4 py-2 bg-[var(--gold)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" /> Add Recall
         </button>
@@ -86,7 +86,7 @@ export default function RecallPage() {
             key={tab}
             onClick={() => setFilter(tab)}
             className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              filter === tab ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]"
+              filter === tab ? "bg-[var(--gold)]/10 text-[var(--gold)]" : "text-[var(--text-secondary)] hover:text-[var(--ivory)] hover:bg-[var(--charcoal)]/20"
             }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -107,8 +107,8 @@ export default function RecallPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className={`p-4 rounded-xl bg-white border ${
-                  overdue ? "border-red-500/30" : "border-[var(--border-light)]"
+                className={`p-4 rounded-xl bg-[var(--charcoal)]/30 border ${
+                  overdue ? "border-red-500/30" : "border-[var(--border)]"
                 } flex items-center justify-between`}
               >
                 <div className="flex items-center gap-4">
@@ -116,7 +116,7 @@ export default function RecallPage() {
                     item.contacted ? "bg-[var(--accent)]/10" : overdue ? "bg-red-500/10" : "bg-purple-500/10"
                   }`}>
                     {item.contacted ? (
-                      <CheckCircle className="w-4 h-4 text-[var(--accent)]" />
+                      <CheckCircle className="w-4 h-4 text-[var(--teal)]" />
                     ) : overdue ? (
                       <AlertTriangle className="w-4 h-4 text-red-400" />
                     ) : (
@@ -136,7 +136,7 @@ export default function RecallPage() {
                   {!item.contacted && (
                     <button
                       onClick={() => markContacted(item.id)}
-                      className="text-xs px-3 py-1 bg-[var(--accent)]/10 text-[var(--accent)] rounded-lg hover:bg-[var(--accent)]/20"
+                      className="text-xs px-3 py-1 bg-[var(--accent)]/10 text-[var(--teal)] rounded-lg hover:bg-[var(--accent)]/20"
                     >
                       Mark Contacted
                     </button>
@@ -161,7 +161,7 @@ export default function RecallPage() {
               required
               value={form.patientName}
               onChange={(e) => setForm({ ...form, patientName: e.target.value })}
-              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-sm text-[var(--ivory)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -172,7 +172,7 @@ export default function RecallPage() {
               value={form.reason}
               onChange={(e) => setForm({ ...form, reason: e.target.value })}
               placeholder="e.g. 6-month check-up"
-              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-sm text-[var(--ivory)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -182,7 +182,7 @@ export default function RecallPage() {
               required
               value={form.dueDate}
               onChange={(e) => setForm({ ...form, dueDate: e.target.value })}
-              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-sm text-[var(--ivory)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -192,13 +192,13 @@ export default function RecallPage() {
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
               placeholder="+27 82 000 0000"
-              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-sm text-[var(--ivory)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-lg text-sm font-medium hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-[var(--gold)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] rounded-lg text-sm font-medium hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Add Recall Item

@@ -39,19 +39,19 @@ export default function DashboardSidebar() {
     <motion.aside
       animate={{ width: collapsed ? 64 : 240 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="shrink-0 border-r border-[var(--border-light)] flex flex-col bg-white overflow-hidden"
+      className="shrink-0 border-r border-[var(--border)] flex flex-col bg-[var(--charcoal)]/50 overflow-hidden"
     >
-      <div className="h-14 flex items-center gap-2 px-4 border-b border-[var(--border-light)]">
-        <HeartPulse className="w-5 h-5 text-[var(--primary)] shrink-0" />
+      <div className="h-14 flex items-center gap-2 px-4 border-b border-[var(--border)]">
+        <HeartPulse className="w-5 h-5 text-[var(--gold)] shrink-0" />
         <AnimatePresence>
           {!collapsed && (
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="font-semibold text-[13px] whitespace-nowrap tracking-tight text-[var(--text-primary)]"
+              className="font-serif font-semibold text-[13px] whitespace-nowrap tracking-wide text-[var(--ivory)]"
             >
-              VisioHealth <span className="font-normal text-[var(--text-secondary)]">Ops</span>
+              VISIOHEALTH
             </motion.span>
           )}
         </AnimatePresence>
@@ -64,10 +64,10 @@ export default function DashboardSidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-150 ${
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-[var(--primary)]/[0.08] text-[var(--primary)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.03]"
+                  ? "bg-[var(--gold)]/10 text-[var(--gold)]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--gold)] hover:bg-[var(--obsidian)]/50"
               }`}
             >
               <item.icon className="w-[18px] h-[18px] shrink-0" />
@@ -90,7 +90,7 @@ export default function DashboardSidebar() {
 
       <button
         onClick={handleSignOut}
-        className="flex items-center gap-3 px-5 py-3 text-[13px] text-[var(--text-secondary)] hover:text-red-500 transition-colors border-t border-[var(--border-light)]"
+        className="flex items-center gap-3 px-5 py-3 text-[13px] text-[var(--text-secondary)] hover:text-[var(--crimson)] transition-colors border-t border-[var(--border)]"
       >
         <LogOut className="w-4 h-4 shrink-0" />
         <AnimatePresence>
@@ -104,7 +104,7 @@ export default function DashboardSidebar() {
 
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="p-3 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors border-t border-[var(--border-light)]"
+        className="p-3 text-[var(--text-tertiary)] hover:text-[var(--gold)] transition-colors border-t border-[var(--border)]"
       >
         <ChevronDown className={`w-4 h-4 mx-auto transition-transform ${collapsed ? "-rotate-90" : "rotate-90"}`} />
       </button>
