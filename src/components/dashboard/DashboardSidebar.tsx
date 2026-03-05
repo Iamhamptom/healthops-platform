@@ -39,38 +39,38 @@ export default function DashboardSidebar() {
     <motion.aside
       animate={{ width: collapsed ? 64 : 240 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="shrink-0 border-r border-[var(--border)] flex flex-col bg-[var(--bg-card)] overflow-hidden"
+      className="shrink-0 border-r border-[var(--border-light)] flex flex-col bg-white overflow-hidden"
     >
-      <div className="h-16 flex items-center gap-2 px-4 border-b border-[var(--border)]">
-        <HeartPulse className="w-6 h-6 text-[var(--primary-light)] shrink-0" />
+      <div className="h-14 flex items-center gap-2 px-4 border-b border-[var(--border-light)]">
+        <HeartPulse className="w-5 h-5 text-[var(--primary)] shrink-0" />
         <AnimatePresence>
           {!collapsed && (
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="font-semibold text-sm whitespace-nowrap tracking-tight"
+              className="font-semibold text-[13px] whitespace-nowrap tracking-tight text-[var(--text-primary)]"
             >
-              <span className="text-[var(--primary-light)]">Visio</span><span className="text-[var(--accent)]">Health</span>
+              VisioHealth <span className="font-normal text-[var(--text-secondary)]">Ops</span>
             </motion.span>
           )}
         </AnimatePresence>
       </div>
 
-      <nav className="flex-1 py-4 space-y-1 px-2">
+      <nav className="flex-1 py-3 space-y-0.5 px-2">
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-200 ${
+              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-150 ${
                 isActive
-                  ? "bg-[var(--primary)]/10 text-[var(--primary)]"
-                  : "text-[var(--text-secondary)] hover:text-white hover:bg-white/5"
+                  ? "bg-[var(--primary)]/[0.08] text-[var(--primary)]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.03]"
               }`}
             >
-              <item.icon className="w-5 h-5 shrink-0" />
+              <item.icon className="w-[18px] h-[18px] shrink-0" />
               <AnimatePresence>
                 {!collapsed && (
                   <motion.span
@@ -90,7 +90,7 @@ export default function DashboardSidebar() {
 
       <button
         onClick={handleSignOut}
-        className="flex items-center gap-3 px-5 py-3 text-sm text-[var(--text-secondary)] hover:text-red-400 transition-colors border-t border-[var(--border)]"
+        className="flex items-center gap-3 px-5 py-3 text-[13px] text-[var(--text-secondary)] hover:text-red-500 transition-colors border-t border-[var(--border-light)]"
       >
         <LogOut className="w-4 h-4 shrink-0" />
         <AnimatePresence>
@@ -104,7 +104,7 @@ export default function DashboardSidebar() {
 
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="p-4 text-[var(--text-secondary)] hover:text-white transition-colors border-t border-[var(--border)]"
+        className="p-3 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors border-t border-[var(--border-light)]"
       >
         <ChevronDown className={`w-4 h-4 mx-auto transition-transform ${collapsed ? "-rotate-90" : "rotate-90"}`} />
       </button>

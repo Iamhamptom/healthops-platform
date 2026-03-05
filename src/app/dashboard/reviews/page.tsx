@@ -61,21 +61,21 @@ export default function ReviewsPage() {
         </div>
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          className="flex items-center gap-2 px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" /> Add Review
         </button>
       </div>
 
       {/* Average rating card */}
-      <div className="p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-center gap-6">
+      <div className="p-6 rounded-xl bg-white border border-[var(--border-light)] flex items-center gap-6">
         <div className="text-4xl font-bold">{avgRating}</div>
         <div>
           <div className="flex gap-1 mb-1">
             {[1, 2, 3, 4, 5].map((s) => (
               <Star
                 key={s}
-                className={`w-5 h-5 ${s <= Math.round(Number(avgRating) || 0) ? "text-yellow-400 fill-yellow-400" : "text-white/10"}`}
+                className={`w-5 h-5 ${s <= Math.round(Number(avgRating) || 0) ? "text-yellow-400 fill-yellow-400" : "text-[var(--text-primary)]/10"}`}
               />
             ))}
           </div>
@@ -94,7 +94,7 @@ export default function ReviewsPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border)]"
+              className="p-4 rounded-xl bg-white border border-[var(--border-light)]"
             >
               <div className="flex items-start justify-between mb-2">
                 <div>
@@ -103,11 +103,11 @@ export default function ReviewsPage() {
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}
-                          className={`w-3.5 h-3.5 ${s <= review.rating ? "text-yellow-400 fill-yellow-400" : "text-white/10"}`}
+                          className={`w-3.5 h-3.5 ${s <= review.rating ? "text-yellow-400 fill-yellow-400" : "text-[var(--text-primary)]/10"}`}
                         />
                       ))}
                     </div>
-                    <span className="text-xs text-[var(--text-secondary)] bg-white/5 px-2 py-0.5 rounded-full">{review.source}</span>
+                    <span className="text-xs text-[var(--text-secondary)] bg-[var(--bg-secondary)] px-2 py-0.5 rounded-full">{review.source}</span>
                   </div>
                   <p className="text-sm font-medium">{review.authorName || "Anonymous"}</p>
                 </div>
@@ -135,7 +135,7 @@ export default function ReviewsPage() {
                   onClick={() => setForm({ ...form, rating: s })}
                   className="p-1"
                 >
-                  <Star className={`w-6 h-6 ${s <= form.rating ? "text-yellow-400 fill-yellow-400" : "text-white/10"}`} />
+                  <Star className={`w-6 h-6 ${s <= form.rating ? "text-yellow-400 fill-yellow-400" : "text-[var(--text-primary)]/10"}`} />
                 </button>
               ))}
             </div>
@@ -146,7 +146,7 @@ export default function ReviewsPage() {
               type="text"
               value={form.authorName}
               onChange={(e) => setForm({ ...form, authorName: e.target.value })}
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -154,7 +154,7 @@ export default function ReviewsPage() {
             <select
               value={form.source}
               onChange={(e) => setForm({ ...form, source: e.target.value })}
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
             >
               <option value="google">Google</option>
               <option value="whatsapp">WhatsApp</option>
@@ -168,13 +168,13 @@ export default function ReviewsPage() {
               value={form.comment}
               onChange={(e) => setForm({ ...form, comment: e.target.value })}
               rows={3}
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white resize-none focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] resize-none focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg text-sm font-medium hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-lg text-sm font-medium hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Add Review

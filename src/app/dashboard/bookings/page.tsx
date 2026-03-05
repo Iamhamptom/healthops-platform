@@ -78,7 +78,7 @@ export default function BookingsPage() {
         </div>
         <button
           onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          className="flex items-center gap-2 px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
         >
           <Plus className="w-4 h-4" /> New Booking
         </button>
@@ -91,7 +91,7 @@ export default function BookingsPage() {
             key={tab}
             onClick={() => setFilter(tab)}
             className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              filter === tab ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-[var(--text-secondary)] hover:text-white hover:bg-white/5"
+              filter === tab ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]"
             }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -112,7 +112,7 @@ export default function BookingsPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="p-4 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-center justify-between"
+                className="p-4 rounded-xl bg-white border border-[var(--border-light)] flex items-center justify-between"
               >
                 <div className="flex items-center gap-4">
                   <div
@@ -171,7 +171,7 @@ export default function BookingsPage() {
               required
               value={form.patientName}
               onChange={(e) => setForm({ ...form, patientName: e.target.value })}
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -182,7 +182,7 @@ export default function BookingsPage() {
               value={form.service}
               onChange={(e) => setForm({ ...form, service: e.target.value })}
               placeholder="e.g. Cleaning, Consultation"
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -192,7 +192,7 @@ export default function BookingsPage() {
               required
               value={form.scheduledAt}
               onChange={(e) => setForm({ ...form, scheduledAt: e.target.value })}
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <div>
@@ -201,13 +201,13 @@ export default function BookingsPage() {
               value={form.notes}
               onChange={(e) => setForm({ ...form, notes: e.target.value })}
               rows={2}
-              className="w-full px-3 py-2 bg-white/5 border border-[var(--border)] rounded-lg text-sm text-white resize-none focus:outline-none focus:border-[var(--primary)]/40"
+              className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg text-sm text-[var(--text-primary)] resize-none focus:outline-none focus:border-[var(--primary)]/40"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg text-sm font-medium hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-lg text-sm font-medium hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Create Booking

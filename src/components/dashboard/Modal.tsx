@@ -20,18 +20,18 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 z-40"
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
           />
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            exit={{ opacity: 0, scale: 0.97 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl shadow-2xl">
-              <div className="flex items-center justify-between p-5 border-b border-[var(--border)]">
-                <h2 className="text-lg font-semibold">{title}</h2>
-                <button onClick={onClose} className="p-1 text-[var(--text-secondary)] hover:text-white transition-colors">
+            <div className="w-full max-w-lg bg-white border border-[var(--border-light)] rounded-2xl shadow-xl">
+              <div className="flex items-center justify-between p-5 border-b border-[var(--border-light)]">
+                <h2 className="text-[15px] font-semibold text-[var(--text-primary)]">{title}</h2>
+                <button onClick={onClose} className="p-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">
                   <X className="w-5 h-5" />
                 </button>
               </div>

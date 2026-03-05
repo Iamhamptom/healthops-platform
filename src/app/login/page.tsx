@@ -36,68 +36,68 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 gradient-bg grid-pattern">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[var(--bg-secondary)]">
+      <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
-            <HeartPulse className="w-8 h-8 text-[var(--primary-light)]" />
-            <span className="text-xl font-semibold tracking-tight">
-              <span className="text-[var(--primary-light)]">Visio</span><span className="text-[var(--accent)]">Health</span> <span className="font-normal text-[var(--text-secondary)]">Ops</span>
+          <Link href="/" className="inline-flex items-center gap-2 mb-6">
+            <HeartPulse className="w-7 h-7 text-[var(--primary)]" />
+            <span className="text-lg font-semibold tracking-tight text-[var(--text-primary)]">
+              VisioHealth <span className="font-normal text-[var(--text-secondary)]">Ops</span>
             </span>
           </Link>
-          <h1 className="text-2xl font-bold mb-2">Welcome back</h1>
-          <p className="text-sm text-[var(--text-secondary)]">Sign in to your practice dashboard</p>
+          <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-1">Welcome back</h1>
+          <p className="text-[13px] text-[var(--text-secondary)]">Sign in to your practice dashboard</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 space-y-5">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[var(--border-light)] p-7 shadow-sm space-y-4">
           {error && (
-            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+            <div className="p-3 rounded-xl bg-red-50 border border-red-100 text-red-600 text-[13px]">
               {error}
             </div>
           )}
 
           <div>
-            <label className="block text-sm text-[var(--text-secondary)] mb-2">Email</label>
+            <label className="block text-[13px] font-medium text-[var(--text-primary)] mb-1.5">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-3 bg-white/5 border border-[var(--border)] rounded-xl text-white placeholder:text-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--primary)]/50 transition-colors"
+              className="w-full px-4 py-2.5 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl text-[14px] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-all"
               placeholder="you@practice.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-[var(--text-secondary)] mb-2">Password</label>
+            <label className="block text-[13px] font-medium text-[var(--text-primary)] mb-1.5">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 bg-white/5 border border-[var(--border)] rounded-xl text-white placeholder:text-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--primary)]/50 transition-colors"
-              placeholder="••••••••"
+              className="w-full px-4 py-2.5 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-xl text-[14px] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] transition-all"
+              placeholder="Enter password"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-xl font-medium text-white shadow-lg shadow-[var(--primary)]/20 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-xl text-[14px] font-medium text-white transition-all disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Sign In
           </button>
 
-          <p className="text-center text-sm text-[var(--text-secondary)]">
+          <p className="text-center text-[13px] text-[var(--text-secondary)]">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-[var(--primary)] hover:underline">
-              Start free trial
+            <Link href="/register" className="text-[var(--primary)] font-medium hover:underline">
+              Get started
             </Link>
           </p>
         </form>
 
-        <p className="text-center text-xs text-[var(--text-secondary)]/50 mt-6">
+        <p className="text-center text-[11px] text-[var(--text-tertiary)] mt-5">
           Demo: demo@smiledental.co.za / demo1234
         </p>
       </div>

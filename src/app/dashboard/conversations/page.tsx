@@ -97,8 +97,8 @@ export default function ConversationsPage() {
   return (
     <div className="flex h-full">
       {/* Conversation list */}
-      <div className="w-80 border-r border-[var(--border)] flex flex-col shrink-0">
-        <div className="p-4 border-b border-[var(--border)] space-y-3">
+      <div className="w-80 border-r border-[var(--border-light)] flex flex-col shrink-0">
+        <div className="p-4 border-b border-[var(--border-light)] space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <MessageSquare className="w-4 h-4 text-[var(--primary)]" />
@@ -125,7 +125,7 @@ export default function ConversationsPage() {
                 key={convo.id}
                 onClick={() => setSelectedId(convo.id)}
                 className={`w-full flex items-center gap-3 p-4 text-left transition-colors ${
-                  selectedId === convo.id ? "bg-white/[0.03]" : "hover:bg-white/[0.02]"
+                  selectedId === convo.id ? "bg-[var(--bg-secondary)]" : "hover:bg-[var(--bg-secondary)]"
                 }`}
               >
                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 flex items-center justify-center text-xs font-medium shrink-0">
@@ -154,7 +154,7 @@ export default function ConversationsPage() {
         {selected ? (
           <>
             {/* Thread header */}
-            <div className="p-4 border-b border-[var(--border)] flex items-center gap-3">
+            <div className="p-4 border-b border-[var(--border-light)] flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 flex items-center justify-center text-xs font-medium">
                 {selected.patient.name.split(" ").map((n) => n[0]).join("")}
               </div>
@@ -176,9 +176,9 @@ export default function ConversationsPage() {
                   <div
                     className={`max-w-[70%] rounded-2xl px-4 py-2.5 text-sm ${
                       msg.role === "patient"
-                        ? "bg-white/5 border border-[var(--border)]"
+                        ? "bg-[var(--bg-secondary)] border border-[var(--border-light)]"
                         : msg.role === "ai_suggestion"
-                        ? "bg-[var(--primary)]/10 border border-[var(--primary)]/30 border-dashed"
+                        ? "bg-[var(--primary)]/10 border border-[var(--primary)]/20 border-dashed"
                         : "bg-[var(--accent)]/10 border border-[var(--accent)]/20"
                     }`}
                   >
@@ -197,7 +197,7 @@ export default function ConversationsPage() {
                         <textarea
                           value={editContent}
                           onChange={(e) => setEditContent(e.target.value)}
-                          className="w-full bg-white/5 border border-[var(--border)] rounded-lg p-2 text-sm text-white resize-none focus:outline-none focus:border-[var(--primary)]/40"
+                          className="w-full bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg p-2 text-sm text-[var(--text-primary)] resize-none focus:outline-none focus:border-[var(--primary)]/40"
                           rows={3}
                         />
                         <div className="flex gap-2">
@@ -209,7 +209,7 @@ export default function ConversationsPage() {
                           </button>
                           <button
                             onClick={() => setEditingMsg(null)}
-                            className="px-3 py-1 bg-white/5 rounded-lg text-xs"
+                            className="px-3 py-1 bg-[var(--bg-secondary)] rounded-lg text-xs"
                           >
                             Cancel
                           </button>
@@ -221,7 +221,7 @@ export default function ConversationsPage() {
 
                     {/* AI suggestion actions */}
                     {msg.role === "ai_suggestion" && !msg.approved && editingMsg !== msg.id && (
-                      <div className="flex items-center gap-2 mt-2 pt-2 border-t border-[var(--primary)]/20">
+                      <div className="flex items-center gap-2 mt-2 pt-2 border-t border-[var(--primary)]/15">
                         <button
                           onClick={() => approveMessage(msg.id)}
                           className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] rounded-lg text-xs font-medium hover:opacity-90 transition-opacity"
@@ -233,7 +233,7 @@ export default function ConversationsPage() {
                             setEditingMsg(msg.id);
                             setEditContent(msg.content);
                           }}
-                          className="flex items-center gap-1 px-3 py-1 bg-white/5 rounded-lg text-xs hover:bg-white/10 transition-colors"
+                          className="flex items-center gap-1 px-3 py-1 bg-[var(--bg-secondary)] rounded-lg text-xs hover:bg-white/10 transition-colors"
                         >
                           <Pencil className="w-3 h-3" /> Edit
                         </button>
@@ -246,14 +246,14 @@ export default function ConversationsPage() {
             </div>
 
             {/* Reply bar */}
-            <div className="p-3 border-t border-[var(--border)] flex items-center gap-2">
+            <div className="p-3 border-t border-[var(--border-light)] flex items-center gap-2">
               <input
                 type="text"
                 value={reply}
                 onChange={(e) => setReply(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && sendReply()}
                 placeholder="Type a reply..."
-                className="flex-1 bg-white/5 border border-[var(--border)] rounded-lg px-3 py-2 text-sm text-white placeholder:text-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--primary)]/40"
+                className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/50 focus:outline-none focus:border-[var(--primary)]/40"
               />
               <button
                 onClick={sendReply}

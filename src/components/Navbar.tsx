@@ -28,18 +28,15 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass shadow-lg shadow-black/30" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "glass shadow-sm" : "bg-white/0"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative">
-              <HeartPulse className="w-7 h-7 text-[var(--primary-light)] transition-transform group-hover:scale-110" />
-              <div className="absolute inset-0 bg-[var(--primary)] rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
-            </div>
-            <span className="text-lg font-semibold tracking-tight">
-              <span className="text-[var(--primary-light)]">Visio</span><span className="text-[var(--accent)]">Health</span> <span className="font-normal text-[var(--text-secondary)]">Ops</span>
+        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 group">
+            <HeartPulse className="w-6 h-6 text-[var(--primary)] transition-transform group-hover:scale-110" />
+            <span className="text-[15px] font-semibold tracking-tight text-[var(--text-primary)]">
+              VisioHealth <span className="font-normal text-[var(--text-secondary)]">Ops</span>
             </span>
           </Link>
 
@@ -48,7 +45,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
+                className="px-4 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-full hover:bg-black/[0.03] transition-all duration-200"
               >
                 {link.label}
               </Link>
@@ -58,21 +55,21 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/login"
-              className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-white transition-colors"
+              className="px-4 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
               Sign In
             </Link>
             <Link
               href="/register"
-              className="px-5 py-2.5 text-sm font-medium bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-xl transition-all duration-200 shadow-lg shadow-[var(--primary)]/20"
+              className="px-5 py-2 text-[13px] font-medium bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-full transition-all duration-200"
             >
-              Start Free Trial
+              Get Started
             </Link>
           </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-white"
+            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -82,23 +79,23 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 glass pt-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-16"
           >
-            <div className="flex flex-col items-center gap-4 p-8">
+            <div className="flex flex-col items-center gap-2 p-8">
               {links.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.08 }}
                 >
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg text-[var(--text-secondary)] hover:text-white transition-colors"
+                    className="text-lg font-medium text-[var(--text-primary)] hover:text-[var(--primary)] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -107,14 +104,14 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.35 }}
               >
                 <Link
                   href="/register"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-4 px-8 py-3 bg-[var(--primary)] rounded-xl font-medium"
+                  className="mt-4 px-8 py-3 bg-[var(--primary)] text-white rounded-full font-medium"
                 >
-                  Start Free Trial
+                  Get Started
                 </Link>
               </motion.div>
             </div>

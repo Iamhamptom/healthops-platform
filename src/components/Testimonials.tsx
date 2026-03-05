@@ -30,43 +30,41 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 gradient-bg opacity-20" />
-
-      <div className="relative max-w-7xl mx-auto px-6" ref={ref}>
+    <section className="py-24 relative bg-[var(--bg-secondary)]">
+      <div className="max-w-6xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <p className="text-sm text-[var(--primary)] font-medium mb-3 uppercase tracking-wider">
+          <p className="text-[13px] text-[var(--primary)] font-semibold mb-3 uppercase tracking-wider">
             Trusted by Practices
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-[44px] font-bold mb-4 tracking-tight text-[var(--text-primary)]">
             What our clients say
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.15 }}
-              className="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] hover:border-white/10 transition-all duration-300"
+              transition={{ delay: i * 0.12 }}
+              className="p-6 rounded-2xl bg-white border border-[var(--border-light)] hover:shadow-lg hover:shadow-black/[0.04] transition-all duration-300"
             >
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                  <Star key={j} className="w-4 h-4 fill-[#FF9500] text-[#FF9500]" />
                 ))}
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
+              <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed mb-6">
                 &ldquo;{t.text}&rdquo;
               </p>
               <div>
-                <div className="font-medium text-sm">{t.name}</div>
-                <div className="text-xs text-[var(--text-secondary)]">{t.role}</div>
+                <div className="font-semibold text-[14px] text-[var(--text-primary)]">{t.name}</div>
+                <div className="text-[12px] text-[var(--text-tertiary)]">{t.role}</div>
               </div>
             </motion.div>
           ))}
