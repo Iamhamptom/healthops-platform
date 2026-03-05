@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  practiceId   String?
+  practice     Practice? @relation(fields: [practiceId], references: [id])
+  createdAt    DateTime  @default(now())
+}
+
+model Practice {
+  id            String         @id @default(cuid())
+  name          String
+  type          String         @default("dental")
+  address       String         @default("")
+  phone         String         @default("")
+  hours         String         @default("")
+  aiPersonality String         @default("professional")
+  users         User[]
+  patients      Patient[]
+  conversations Conversation[]
+  bookings      Booking[]
+  reviews       Review[]
+  recallItems   RecallItem[]
+  createdAt     DateTime       @default(now())
+}
+
+model Patient {
+  id            String         @id @default(cuid())
+  name          String
+  phone         String
+  email         String         @default("")
+  lastVisit     DateTime?
+  nextRecallDue DateTime?
+  practiceId    String
+  practice      Practice       @relation(fields: [practiceId], references: [id])
+  conversations Conversation[]
+  createdAt     DateTime       @default(now())
+}
+
+model Conversation {
+  id         String    @id @default(cuid())
+  patientId  String
+  patient    Patient   @relation(fields: [patientId], references: [id])
+  practiceId String
+  practice   Practice  @relation(fields: [practiceId], references: [id])
+  status     String    @default("active")
+  messages   Message[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  role           String       // "patient", "practice", "ai_suggestion"
+  content        String
+  approved       Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+}
+
+model Booking {
+  id          String   @id @default(cuid())
+  patientName String
+  service     String
+  scheduledAt DateTime
+  status      String   @default("pending")
+  notes       String   @default("")
+  practiceId  String
+  practice    Practice @relation(fields: [practiceId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  rating     Int
+  comment    String   @default("")
+  source     String   @default("google")
+  authorName String   @default("")
+  practiceId String
+  practice   Practice @relation(fields: [practiceId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model RecallItem {
+  id         String   @id @default(cuid())
+  patientName String
+  reason     String
+  dueDate    DateTime
+  contacted  Boolean  @default(false)
+  phone      String   @default("")
+  practiceId String
+  practice   Practice @relation(fields: [practiceId], references: [id])
+  createdAt  DateTime @default(now())
+}
