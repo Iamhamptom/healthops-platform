@@ -11,74 +11,51 @@ export default function Intro({ onEnter }: IntroProps) {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[1000] flex items-center justify-center bg-[#050505]"
+      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[1000] bg-[#050505] flex items-center justify-center overflow-hidden"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(212,175,55,0.3) 1px, transparent 0)`,
-        backgroundSize: '40px 40px'
-      }} />
+      {/* Background subtle pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]/80" />
+      </div>
 
-      {/* Roman corner brackets */}
-      <div className="absolute top-8 left-8 w-16 h-16 border-t border-l border-[#D4AF37]/30" />
-      <div className="absolute top-8 right-8 w-16 h-16 border-t border-r border-[#D4AF37]/30" />
-      <div className="absolute bottom-8 left-8 w-16 h-16 border-b border-l border-[#D4AF37]/30" />
-      <div className="absolute bottom-8 right-8 w-16 h-16 border-b border-r border-[#D4AF37]/30" />
-
-      <div className="relative text-center px-6">
+      <div className="relative z-10 text-center px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ duration: 1.2, delay: 0.5 }}
+          className="mb-10 md:mb-12"
         >
-          <p className="text-[11px] uppercase tracking-[0.4em] text-[#D4AF37]/60 mb-6">
+          <span className="text-[#D4AF37]/40 text-[10px] md:text-xs tracking-[0.5em] md:tracking-[1em] uppercase mb-4 block">
             Visio Research Labs
+          </span>
+          <h1 className="font-serif text-4xl md:text-7xl tracking-[0.15em] md:tracking-[0.3em] uppercase text-[#FDFCF0] text-shadow-gold">
+            VISIOHEALTH
+          </h1>
+          <p className="text-[#D4AF37]/30 text-[10px] tracking-[0.3em] uppercase mt-4">
+            AI-Powered Patient Operations
           </p>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[#FDFCF0] mb-4 text-shadow-gold"
-        >
-          VisioHealth
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="text-[13px] uppercase tracking-[0.3em] text-[#D4AF37]/50 mb-12"
-        >
-          AI-Powered Patient Operations
-        </motion.p>
-
-        <motion.div
+        <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          whileHover={{ scale: 1.05, letterSpacing: "0.5em" }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onEnter}
+          className="px-8 md:px-12 py-4 md:py-5 border border-[#D4AF37]/30 text-[#D4AF37] uppercase tracking-[0.3em] text-xs md:text-sm font-bold hover:bg-[#D4AF37] hover:text-[#050505] transition-all duration-700 group relative overflow-hidden"
         >
-          <motion.button
-            onClick={onEnter}
-            whileHover={{ scale: 1.02, letterSpacing: "0.35em" }}
-            whileTap={{ scale: 0.98 }}
-            className="px-10 py-4 bg-[#D4AF37] text-[#050505] font-serif font-semibold text-sm uppercase tracking-[0.25em] transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.3)]"
-          >
-            Enter
-          </motion.button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-          className="mt-8"
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-[#D4AF37]/40 to-transparent mx-auto" />
-        </motion.div>
+          <span className="relative z-10">Enter</span>
+          <motion.div
+            className="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+          />
+        </motion.button>
       </div>
+
+      {/* Decorative Roman Elements — exactly like Ciza */}
+      <div className="absolute top-6 left-6 md:top-10 md:left-10 border-t border-l border-[#D4AF37]/20 w-12 h-12 md:w-20 md:h-20" />
+      <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 border-b border-r border-[#D4AF37]/20 w-12 h-12 md:w-20 md:h-20" />
     </motion.div>
   );
 }

@@ -8,18 +8,15 @@ const footerLinks = {
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
     { label: "Dashboard", href: "/dashboard" },
-    { label: "API", href: "#" },
   ],
   Verticals: [
     { label: "Dentists", href: "/features" },
     { label: "Radiology", href: "/features" },
     { label: "Wellness & Spas", href: "/features" },
-    { label: "Hospitals", href: "/features" },
   ],
   Company: [
     { label: "About", href: "/about" },
     { label: "Blog", href: "#" },
-    { label: "Careers", href: "#" },
     { label: "Contact", href: "/about" },
   ],
   Legal: [
@@ -31,30 +28,30 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] py-16">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="border-t border-white/5 py-16 bg-[#050505]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <HeartPulse className="w-5 h-5 text-[var(--gold)]" />
-              <span className="font-serif text-[14px] font-semibold tracking-wide text-[var(--ivory)]">
-                VISIOHEALTH
+              <HeartPulse className="w-5 h-5 text-[#D4AF37]" />
+              <span className="font-serif text-sm tracking-[0.2em] text-[#FDFCF0] uppercase">
+                VisioHealth
               </span>
             </Link>
-            <p className="text-[12px] text-[var(--text-secondary)] leading-relaxed">
+            <p className="text-[#FDFCF0]/30 text-xs tracking-wide leading-relaxed">
               AI-powered patient operations for healthcare practices in South Africa.
             </p>
           </div>
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-[11px] font-semibold text-[var(--gold)]/60 mb-3 uppercase tracking-[0.2em]">{category}</h4>
+              <h4 className="text-[#D4AF37]/40 text-[10px] font-bold mb-4 uppercase tracking-[0.3em]">{category}</h4>
               <div className="space-y-2">
                 {links.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block text-[13px] text-[var(--text-secondary)] hover:text-[var(--gold)] transition-colors duration-300"
+                    className="block text-xs text-[#FDFCF0]/40 hover:text-[#D4AF37] transition-colors duration-300 tracking-wide"
                   >
                     {link.label}
                   </Link>
@@ -64,13 +61,13 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="divider-shine mb-8" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent mb-8" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-[var(--text-tertiary)]">
-            &copy; {new Date().getFullYear()} VisioHealth Ops by Visio Research Labs. All rights reserved.
+          <p className="text-[10px] text-[#FDFCF0]/20 uppercase tracking-widest">
+            &copy; {new Date().getFullYear()} VisioHealth Ops by Visio Research Labs
           </p>
-          <p className="text-[11px] text-[var(--text-tertiary)]">
+          <p className="text-[10px] text-[#FDFCF0]/20 uppercase tracking-widest">
             Powered by Afrika World &times; Visio Research Labs
           </p>
         </div>

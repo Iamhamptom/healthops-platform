@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Intro from "@/components/Intro";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -14,27 +14,32 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [entered, setEntered] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
 
   return (
-    <>
+    <main className="bg-[#050505] text-[#FDFCF0] min-h-screen selection:bg-[#D4AF37] selection:text-[#050505]">
       <AnimatePresence mode="wait">
-        {!entered && <Intro onEnter={() => setEntered(true)} />}
+        {!hasEntered ? (
+          <Intro key="intro" onEnter={() => setHasEntered(true)} />
+        ) : (
+          <motion.div
+            key="site"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            <Navbar />
+            <Hero />
+            <Features />
+            <Verticals />
+            <HowItWorks />
+            <Testimonials />
+            <Pricing />
+            <CTA />
+            <Footer />
+          </motion.div>
+        )}
       </AnimatePresence>
-
-      {entered && (
-        <>
-          <Navbar />
-          <Hero />
-          <Features />
-          <Verticals />
-          <HowItWorks />
-          <Testimonials />
-          <Pricing />
-          <CTA />
-          <Footer />
-        </>
-      )}
-    </>
+    </main>
   );
 }
