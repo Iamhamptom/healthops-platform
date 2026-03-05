@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Activity } from "lucide-react";
+import { Menu, X, HeartPulse } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -29,17 +29,17 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass shadow-lg shadow-black/20" : "bg-transparent"
+          scrolled ? "glass shadow-lg shadow-black/30" : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <div className="relative">
-              <Activity className="w-7 h-7 text-[var(--primary)] transition-transform group-hover:scale-110" />
+              <HeartPulse className="w-7 h-7 text-[var(--primary-light)] transition-transform group-hover:scale-110" />
               <div className="absolute inset-0 bg-[var(--primary)] rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
             </div>
-            <span className="text-lg font-bold tracking-tight">
-              Health<span className="text-[var(--primary)]">Ops</span>
+            <span className="text-lg font-semibold tracking-tight">
+              <span className="text-[var(--primary-light)]">Visio</span><span className="text-[var(--accent)]">Health</span> <span className="font-normal text-[var(--text-secondary)]">Ops</span>
             </span>
           </Link>
 
@@ -64,7 +64,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/register"
-              className="px-5 py-2 text-sm font-medium bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg hover:opacity-90 transition-opacity"
+              className="px-5 py-2.5 text-sm font-medium bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-xl transition-all duration-200 shadow-lg shadow-[var(--primary)]/20"
             >
               Start Free Trial
             </Link>
@@ -112,7 +112,7 @@ export default function Navbar() {
                 <Link
                   href="/register"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-4 px-8 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-lg font-medium"
+                  className="mt-4 px-8 py-3 bg-[var(--primary)] rounded-xl font-medium"
                 >
                   Start Free Trial
                 </Link>

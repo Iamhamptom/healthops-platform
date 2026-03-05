@@ -18,21 +18,21 @@ const features = [
     icon: MessageSquare,
     title: "WhatsApp AI Front Desk",
     description: "24/7 intelligent receptionist that answers questions, captures patient details, and routes to your team — all on WhatsApp.",
-    color: "#0ea5e9",
+    color: "var(--primary)",
     tag: "Core",
   },
   {
     icon: CalendarCheck,
     title: "Booking & No-Show Killer",
     description: "Smart confirmation flows, cancellation recovery, and waitlist auto-fill that keeps your schedule at maximum capacity.",
-    color: "#10b981",
+    color: "var(--accent)",
     tag: "Revenue",
   },
   {
     icon: CreditCard,
     title: "Deposits & Pay-by-Link",
     description: "Enforce deposits for high-value bookings with automated receipts, cancellation rules, and instant payment collection.",
-    color: "#8b5cf6",
+    color: "#a78bfa",
     tag: "Revenue",
   },
   {
@@ -53,7 +53,7 @@ const features = [
     icon: Shield,
     title: "Referral Intake Router",
     description: "Capture referrals from any channel, create structured job cards, and route with urgency — built for radiology.",
-    color: "#06b6d4",
+    color: "var(--primary-light)",
     tag: "Radiology",
   },
   {
@@ -67,7 +67,7 @@ const features = [
     icon: BarChart3,
     title: "Analytics Dashboard",
     description: "Real-time KPIs: bookings, no-show rates, review scores, revenue recovered, and patient reactivation metrics.",
-    color: "#14b8a6",
+    color: "var(--accent-dark)",
     tag: "Insights",
   },
 ];

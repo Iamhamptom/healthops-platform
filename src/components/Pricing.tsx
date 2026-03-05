@@ -13,7 +13,7 @@ const plans = [
     setup: "R10,000",
     period: "/month",
     description: "Get your front desk automated fast.",
-    color: "#0ea5e9",
+    color: "var(--primary)",
     features: [
       "WhatsApp AI front desk",
       "Booking capture & confirmations",
@@ -31,7 +31,7 @@ const plans = [
     setup: "R20,000",
     period: "/month",
     description: "The full ops suite for growing practices.",
-    color: "#10b981",
+    color: "var(--accent)",
     features: [
       "Everything in Starter",
       "Waitlist auto-fill",
@@ -51,7 +51,7 @@ const plans = [
     setup: "R45,000",
     period: "/month",
     description: "Multi-location practices & clinics.",
-    color: "#8b5cf6",
+    color: "#a78bfa",
     features: [
       "Everything in Pro",
       "Multi-location support",
@@ -132,10 +132,10 @@ export default function Pricing() {
               </div>
 
               <Link
-                href="/dashboard"
+                href="/register"
                 className={`block text-center py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   plan.popular
-                    ? "bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white hover:opacity-90"
+                    ? "bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white shadow-lg shadow-[var(--primary)]/20"
                     : "bg-white/[0.05] text-white hover:bg-white/[0.1] border border-[var(--border)]"
                 }`}
               >
@@ -159,7 +159,7 @@ export default function Pricing() {
             </p>
           </div>
           <Link
-            href="/dashboard"
+            href="/register"
             className="shrink-0 px-6 py-2.5 rounded-xl text-sm font-medium border border-[var(--border)] hover:border-white/20 transition-colors"
           >
             Learn More

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Activity,
+  HeartPulse,
   LayoutDashboard,
   MessageSquare,
   CalendarCheck,
@@ -42,16 +42,16 @@ export default function DashboardSidebar() {
       className="shrink-0 border-r border-[var(--border)] flex flex-col bg-[var(--bg-card)] overflow-hidden"
     >
       <div className="h-16 flex items-center gap-2 px-4 border-b border-[var(--border)]">
-        <Activity className="w-6 h-6 text-[var(--primary)] shrink-0" />
+        <HeartPulse className="w-6 h-6 text-[var(--primary-light)] shrink-0" />
         <AnimatePresence>
           {!collapsed && (
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="font-bold text-sm whitespace-nowrap"
+              className="font-semibold text-sm whitespace-nowrap tracking-tight"
             >
-              Health<span className="text-[var(--primary)]">Ops</span>
+              <span className="text-[var(--primary-light)]">Visio</span><span className="text-[var(--accent)]">Health</span>
             </motion.span>
           )}
         </AnimatePresence>

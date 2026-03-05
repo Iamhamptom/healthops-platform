@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Activity, Loader2 } from "lucide-react";
+import { HeartPulse, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -39,10 +39,10 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center p-4 gradient-bg grid-pattern">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 mb-4">
-            <Activity className="w-8 h-8 text-[var(--primary)]" />
-            <span className="text-xl font-bold">
-              Health<span className="text-[var(--primary)]">Ops</span>
+          <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
+            <HeartPulse className="w-8 h-8 text-[var(--primary-light)]" />
+            <span className="text-xl font-semibold tracking-tight">
+              <span className="text-[var(--primary-light)]">Visio</span><span className="text-[var(--accent)]">Health</span> <span className="font-normal text-[var(--text-secondary)]">Ops</span>
             </span>
           </Link>
           <h1 className="text-2xl font-bold mb-2">Welcome back</h1>
@@ -83,7 +83,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-xl font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-3 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-xl font-medium text-white shadow-lg shadow-[var(--primary)]/20 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
             Sign In

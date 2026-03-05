@@ -10,7 +10,7 @@ const verticals = [
     icon: Stethoscope,
     title: "Dentists",
     subtitle: "Private Practice Money Stack",
-    color: "#0ea5e9",
+    color: "var(--primary)",
     features: [
       "WhatsApp AI receptionist with dental FAQ",
       "6-month recall automation",
@@ -27,7 +27,7 @@ const verticals = [
     icon: Scan,
     title: "Radiology",
     subtitle: "Imaging Ops Suite",
-    color: "#8b5cf6",
+    color: "#a78bfa",
     features: [
       "Referral intake router (email/WhatsApp/web)",
       "Structured job card creation",
@@ -44,7 +44,7 @@ const verticals = [
     icon: Sparkles,
     title: "Spas & Wellness",
     subtitle: "Wellness Edition",
-    color: "#10b981",
+    color: "var(--accent)",
     features: [
       "Treatment rebooking reminders",
       "Package expiry nudges",

@@ -29,13 +29,13 @@ export default function CTA() {
               on autopilot?
             </h2>
             <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">
-              Join 200+ healthcare practices in South Africa already using HealthOps
+              Join 200+ healthcare practices in South Africa already using VisioHealth Ops
               to reduce no-shows, automate bookings, and grow revenue.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/dashboard"
-                className="group flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-xl font-medium shadow-lg shadow-[var(--primary)]/20 hover:shadow-[var(--primary)]/40 transition-all duration-300 hover:scale-[1.02]"
+                href="/register"
+                className="group flex items-center gap-2 px-8 py-3.5 bg-[var(--primary)] hover:bg-[var(--primary-dark)] rounded-xl font-medium text-white shadow-xl shadow-[var(--primary)]/25 hover:shadow-[var(--primary)]/40 transition-all duration-300 hover:scale-[1.02]"
               >
                 Start 14-Day Free Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "HealthOps — AI-Powered Healthcare Operations",
+  title: "VisioHealth Ops — AI-Powered Healthcare Operations",
   description: "WhatsApp AI front desk, booking automation, and patient ops for dentists, radiology, and wellness practices.",
 };
 

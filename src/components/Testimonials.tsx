@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: "Dr. Sarah M.",
     role: "Dental Practice Owner, Sandton",
-    text: "HealthOps cut our no-show rate by 40% in the first month. The WhatsApp bot handles 80% of enquiries before my team even sees them.",
+    text: "VisioHealth Ops cut our no-show rate by 40% in the first month. The WhatsApp bot handles 80% of enquiries before my team even sees them.",
     rating: 5,
   },
   {

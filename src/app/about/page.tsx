@@ -55,7 +55,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-sm text-[var(--primary)] font-medium mb-4 uppercase tracking-wider"
           >
-            About HealthOps
+            About VisioHealth Ops
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export default function AboutPage() {
           >
             We&apos;re plugging the
             <br />
-            <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
+            <span className="text-gradient">
               revenue leaks
             </span>{" "}
             in healthcare
@@ -76,7 +76,7 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed"
           >
-            HealthOps is the patient operations platform built by Visio Research Labs,
+            VisioHealth Ops is the patient operations platform built by Visio Research Labs,
             powered by the Afrika World media ecosystem. We combine AI automation with
             deep healthcare expertise to transform how practices operate.
           </motion.p>
