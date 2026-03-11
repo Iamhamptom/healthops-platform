@@ -43,10 +43,7 @@ const statVariants = {
 export default function Mission() {
   return (
     <section
-      className="relative w-full py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden"
-      style={{
-        background: "linear-gradient(to bottom, #030710 0%, #030710 20%, #FFFFFF 75%, #FFFFFF 100%)",
-      }}
+      className="relative w-full bg-white py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       <motion.div
         variants={stagger}
@@ -55,25 +52,25 @@ export default function Mission() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-4xl mx-auto text-center"
       >
-        {/* Section label — dark region */}
+        {/* Section label */}
         <motion.div variants={fadeUp}>
-          <span className="uppercase tracking-[0.3em] text-xs text-white/25 font-mono">
+          <span className="uppercase tracking-[0.3em] text-xs text-green-600 font-mono">
             Our Mission
           </span>
         </motion.div>
 
-        {/* Heading — dark region, "Africa healthy" in rich green */}
+        {/* Heading — dark gray with green accent */}
         <motion.h2
           variants={fadeUp}
-          className="text-3xl md:text-5xl font-light tracking-[-0.03em] text-white mt-8 leading-[1.2]"
+          className="text-3xl md:text-5xl font-light tracking-[-0.03em] text-gray-900 mt-8 leading-[1.2]"
         >
           Getting{" "}
-          <span className="text-[#059669]">Africa healthy</span>,
+          <span className="text-green-600">Africa healthy</span>,
           <br />
           one person at a time.
         </motion.h2>
 
-        {/* Body text — transition zone, moves from light on dark to dark on light */}
+        {/* Body text — readable on white */}
         <motion.p
           variants={fadeUp}
           className="text-gray-600 text-base md:text-lg font-light leading-relaxed mt-10 max-w-2xl mx-auto"
@@ -111,7 +108,7 @@ export default function Mission() {
               viewport={{ once: true, amount: 0.2 }}
               className="text-center"
             >
-              <div className="text-[#059669] text-5xl md:text-6xl font-extralight tracking-tight leading-none mb-3">
+              <div className="text-green-600 text-5xl md:text-6xl font-extralight tracking-tight leading-none mb-3">
                 {stat.number}
               </div>
               <div className="text-gray-500 text-xs font-mono tracking-wide">

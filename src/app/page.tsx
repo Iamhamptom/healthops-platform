@@ -19,7 +19,7 @@ export default function Home() {
   const [entered, setEntered] = useState(false);
 
   return (
-    <main className="bg-[#030710] text-white min-h-screen selection:bg-[#6EE7B7]/15 selection:text-white">
+    <main className="bg-[#052E16] text-white min-h-screen selection:bg-[#86EFAC]/15 selection:text-white">
       {/* Welcome portal — click to enter */}
       <AnimatePresence mode="wait">
         {!entered && <Intro onEnter={() => setEntered(true)} />}

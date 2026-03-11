@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
@@ -83,12 +84,12 @@ export default function AboutPage() {
 
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 relative">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#34D399] rounded-full blur-[300px] opacity-[0.04] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#4ADE80] rounded-full blur-[300px] opacity-[0.04] pointer-events-none" />
         <motion.div style={{ opacity: heroOpacity }} className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[13px] text-[#34D399] mb-4 font-mono tracking-wider uppercase"
+            className="text-[13px] text-[#4ADE80] mb-4 font-mono tracking-wider uppercase"
           >
             About VisioHealth Ops
           </motion.p>
@@ -127,6 +128,30 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
+      {/* Team Image Banner */}
+      <section className="relative bg-[#030F07] pb-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden border border-[#4ADE80]/10"
+          >
+            <Image
+              src="/images/about-team.png"
+              alt="Our diverse healthcare team"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#030F07] via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-8">
+              <p className="text-white/60 text-sm font-mono">Our team — built across cultures, united by care.</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* AI Capabilities */}
       <section className="py-20 bg-[#FAFAF8]">
         <div className="max-w-6xl mx-auto px-6">
@@ -136,7 +161,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Capabilities</span>
+            <span className="text-[13px] text-[#4ADE80] mb-4 block font-mono tracking-wider uppercase">Capabilities</span>
             <h2 className="text-3xl md:text-5xl tracking-[-0.03em] text-[#1A1A1A] font-bold mb-3">AI Agent Suite</h2>
             <p className="text-[15px] text-[#6B6B6B] max-w-xl mx-auto">
               Five specialized AI agents work around the clock — triaging emergencies, booking appointments,
@@ -152,12 +177,12 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="group glow-card p-6 rounded-2xl bg-white border border-[#F0F0EC] hover:border-[#34D399]/20 transition-all duration-300"
+                className="group glow-card p-6 rounded-2xl bg-white border border-[#F0F0EC] hover:border-[#4ADE80]/20 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-xl bg-[#34D399]/8 flex items-center justify-center mb-4 group-hover:bg-[#34D399]/15 transition-colors">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]/50 group-hover:bg-[#34D399] transition-colors" />
+                <div className="w-9 h-9 rounded-xl bg-[#4ADE80]/8 flex items-center justify-center mb-4 group-hover:bg-[#4ADE80]/15 transition-colors">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#4ADE80]/50 group-hover:bg-[#4ADE80] transition-colors" />
                 </div>
-                <h3 className="font-semibold text-[#1A1A1A] mb-2 text-[15px] group-hover:text-[#059669] transition-colors">{cap.title}</h3>
+                <h3 className="font-semibold text-[#1A1A1A] mb-2 text-[15px] group-hover:text-[#16A34A] transition-colors">{cap.title}</h3>
                 <p className="text-[13px] text-[#9B9B9B] leading-relaxed">{cap.description}</p>
               </motion.div>
             ))}
@@ -174,12 +199,29 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Clinical</span>
+            <span className="text-[13px] text-[#4ADE80] mb-4 block font-mono tracking-wider uppercase">Clinical</span>
             <h2 className="text-3xl md:text-5xl tracking-[-0.03em] text-white font-bold mb-3">Clinical Intelligence</h2>
             <p className="text-[15px] text-white/40 max-w-xl mx-auto">
               Complete patient management with medical records, vitals tracking, allergy alerts,
               and medication management.
             </p>
+          </motion.div>
+
+          {/* Clinic image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative w-full aspect-[16/7] rounded-2xl overflow-hidden mb-12 border border-[#4ADE80]/10"
+          >
+            <Image
+              src="/images/about-clinic.png"
+              alt="Modern African dental clinic"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#030F07]/40 via-transparent to-[#030F07]/40" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -190,7 +232,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="p-5 rounded-2xl bg-[#071A0E] border border-[#34D399]/[0.06] hover:border-[#34D399]/15 transition-all duration-300"
+                className="p-5 rounded-2xl bg-[#071A0E] border border-[#4ADE80]/[0.06] hover:border-[#4ADE80]/15 transition-all duration-300"
               >
                 <h3 className="font-semibold text-white text-[14px] mb-1">{feat.title}</h3>
                 <p className="text-[13px] text-white/30 leading-relaxed">{feat.description}</p>
@@ -215,8 +257,8 @@ export default function AboutPage() {
                 We feature healthcare leaders on the Afrika World x Visio Research Labs show,
                 build genuine relationships, then offer practice audits. Prestige + value, not cold outreach.
               </p>
-              <span className="inline-flex items-center gap-2 text-[13px] text-[#34D399] font-mono font-medium">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+              <span className="inline-flex items-center gap-2 text-[13px] text-[#4ADE80] font-mono font-medium">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
                 Relationship-first sales
               </span>
             </motion.div>
@@ -268,10 +310,10 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl bg-[#071A0E] border border-[#34D399]/[0.06] hover:border-[#34D399]/15 transition-all duration-300"
+                className="p-6 rounded-2xl bg-[#071A0E] border border-[#4ADE80]/[0.06] hover:border-[#4ADE80]/15 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-xl bg-[#34D399]/10 flex items-center justify-center mb-4">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
+                <div className="w-9 h-9 rounded-xl bg-[#4ADE80]/10 flex items-center justify-center mb-4">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#4ADE80]" />
                 </div>
                 <h3 className="font-semibold text-white mb-2 text-[15px]">{value.title}</h3>
                 <p className="text-[13px] text-white/30 leading-relaxed">{value.description}</p>
@@ -304,10 +346,10 @@ export default function AboutPage() {
                 className="flex gap-6 py-5 border-b border-[#F0F0EC] last:border-0"
               >
                 <div className="shrink-0 w-20 text-right">
-                  <span className="text-[13px] font-semibold text-[#34D399] font-mono">{item.phase}</span>
+                  <span className="text-[13px] font-semibold text-[#4ADE80] font-mono">{item.phase}</span>
                 </div>
                 <div className="relative">
-                  <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#34D399]/30" />
+                  <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#4ADE80]/30" />
                   <p className="text-[14px] text-[#6B6B6B] pl-6">{item.title}</p>
                 </div>
               </motion.div>

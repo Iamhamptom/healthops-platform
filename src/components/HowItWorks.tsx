@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const steps = [
   {
@@ -8,24 +9,28 @@ const steps = [
     title: "Patient Reaches Out",
     description:
       "Via WhatsApp, website, or any channel — VisioHealth captures every enquiry instantly.",
+    image: "/images/step-whatsapp.png",
   },
   {
     number: "02",
     title: "AI Handles the Conversation",
     description:
       "Answers FAQs, collects details, qualifies urgency, and routes complex queries to your team.",
+    image: "/images/step-ai-chat.png",
   },
   {
     number: "03",
     title: "Booking Confirmed & Paid",
     description:
       "Slot reserved, deposit collected, prep instructions sent, reminders scheduled automatically.",
+    image: "/images/step-booking.png",
   },
   {
     number: "04",
     title: "Retain & Grow",
     description:
       "Post-visit reviews, recall reminders, and reactivation campaigns keep patients coming back.",
+    image: "/images/step-followup.png",
   },
 ];
 
@@ -60,7 +65,7 @@ export default function HowItWorks() {
   return (
     <section className="relative w-full bg-white py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-emerald-100 rounded-full blur-[350px] opacity-30 pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-green-100 rounded-full blur-[350px] opacity-30 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
@@ -71,7 +76,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="mb-20 md:mb-24"
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-emerald-600 font-mono mb-5 block">
+          <span className="text-xs tracking-[0.3em] uppercase text-green-600 font-mono mb-5 block">
             How It Works
           </span>
           <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900 max-w-lg mb-6">
@@ -97,37 +102,46 @@ export default function HowItWorks() {
           {steps.map((step, i) => (
             <motion.div key={step.number} variants={stepVariants(i)}>
               {/* Step row */}
-              <div className="group relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-12 md:py-16">
+              <div className="group relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-12 md:py-16 items-center">
                 {/* Large number */}
                 <motion.div
-                  className="md:col-span-2 relative"
+                  className="md:col-span-1 relative"
                   variants={numberVariants}
                 >
-                  <span className="text-emerald-100 text-7xl md:text-8xl font-extralight leading-none select-none">
+                  <span className="text-green-100 text-7xl md:text-8xl font-extralight leading-none select-none">
                     {step.number}
                   </span>
                 </motion.div>
 
                 {/* Content */}
                 <div className="md:col-span-4">
-                  <h3 className="text-gray-900 font-medium text-xl mb-2 group-hover:text-emerald-700 transition-colors duration-500">
+                  <h3 className="text-gray-900 font-medium text-xl mb-2 group-hover:text-green-700 transition-colors duration-500">
                     {step.title}
                   </h3>
-                </div>
-
-                <div className="md:col-span-6">
                   <p className="text-gray-500 text-sm font-light leading-relaxed max-w-md">
                     {step.description}
                   </p>
+                </div>
+
+                {/* Step image */}
+                <div className="md:col-span-7 relative">
+                  <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-gray-100 group-hover:border-green-200 group-hover:shadow-lg group-hover:shadow-green-50 transition-all duration-500">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
+                  </div>
                 </div>
               </div>
 
               {/* Connecting line between steps */}
               {i < steps.length - 1 && (
                 <div className="relative h-px">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-200 to-transparent" />
-                  {/* Dot accent */}
-                  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-emerald-200" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-200 to-transparent" />
+                  <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-green-200" />
                 </div>
               )}
             </motion.div>
@@ -144,11 +158,11 @@ export default function HowItWorks() {
         >
           <a
             href="/register"
-            className="group px-7 py-3.5 border border-gray-200 text-gray-700 text-sm font-mono tracking-wide rounded-full hover:border-emerald-200 hover:text-emerald-700 hover:shadow-md hover:shadow-emerald-100/50 transition-all duration-500 inline-flex items-center gap-3"
+            className="group px-7 py-3.5 border border-gray-200 text-gray-700 text-sm font-mono tracking-wide rounded-full hover:border-green-200 hover:text-green-700 hover:shadow-md hover:shadow-green-100/50 transition-all duration-500 inline-flex items-center gap-3"
           >
             Start Free Trial
             <svg
-              className="w-4 h-4 text-gray-400 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all duration-300"
+              className="w-4 h-4 text-gray-400 group-hover:text-green-500 group-hover:translate-x-0.5 transition-all duration-300"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -163,7 +177,7 @@ export default function HowItWorks() {
           </a>
           <a
             href="/how-it-works"
-            className="px-7 py-3.5 text-gray-400 text-sm font-mono tracking-wide hover:text-emerald-600 transition-colors duration-300"
+            className="px-7 py-3.5 text-gray-400 text-sm font-mono tracking-wide hover:text-green-600 transition-colors duration-300"
           >
             Learn more
           </a>

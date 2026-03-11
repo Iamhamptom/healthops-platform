@@ -38,7 +38,7 @@ function StatCard({ label, value, change, icon: Icon, color }: {
           <Icon className="w-4 h-4" style={{ color }} />
         </div>
         {change !== undefined && (
-          <span className={`text-[10px] font-medium flex items-center gap-0.5 ${change >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+          <span className={`text-[10px] font-medium flex items-center gap-0.5 ${change >= 0 ? "text-green-400" : "text-red-400"}`}>
             {change >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
             {Math.abs(change)}%
           </span>

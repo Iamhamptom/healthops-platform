@@ -46,7 +46,7 @@ export default function Pricing() {
     <section id="pricing" ref={containerRef} className="relative w-full bg-white py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div style={{ opacity: opacityTitle }} className="mb-20 md:mb-24 text-center">
-          <span className="text-xs text-emerald-600 font-mono uppercase tracking-[0.3em] mb-6 block">
+          <span className="text-xs text-green-600 font-mono uppercase tracking-[0.3em] mb-6 block">
             Pricing
           </span>
           <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900 mb-5">
@@ -65,9 +65,9 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className={`group relative bg-white rounded-2xl p-8 transition-all duration-400 hover:shadow-lg hover:shadow-emerald-500/[0.04] ${
+              className={`group relative bg-white rounded-2xl p-8 transition-all duration-400 hover:shadow-lg hover:shadow-green-500/[0.04] ${
                 plan.popular
-                  ? "border border-emerald-200 shadow-lg shadow-emerald-500/5 animate-[pulseGlow_3s_ease-in-out_infinite]"
+                  ? "border border-green-200 shadow-lg shadow-green-500/5 animate-[pulseGlow_3s_ease-in-out_infinite]"
                   : "border border-gray-100 shadow-sm"
               }`}
               style={plan.popular ? {
@@ -76,7 +76,7 @@ export default function Pricing() {
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-8">
-                  <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-mono text-emerald-700 bg-emerald-50 rounded-full">
+                  <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-mono text-green-700 bg-green-50 rounded-full">
                     Recommended
                   </span>
                 </div>
@@ -96,7 +96,7 @@ export default function Pricing() {
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-2.5">
                     <div className="flex items-center gap-1.5 mt-1 shrink-0">
-                      <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -109,7 +109,7 @@ export default function Pricing() {
                 href="/register"
                 className={`block text-center py-3 text-sm font-mono rounded-full transition-all duration-300 ${
                   plan.popular
-                    ? "bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/10"
+                    ? "bg-green-600 text-white hover:bg-green-700 hover:shadow-lg hover:shadow-green-500/10"
                     : "border border-gray-200 text-gray-700 hover:border-gray-300 hover:shadow-sm"
                 }`}
               >

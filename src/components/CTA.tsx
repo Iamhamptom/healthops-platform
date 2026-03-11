@@ -7,13 +7,13 @@ const ctaWords = ["Ready", "to", "put", "your", "practice", "on"];
 
 export default function CTA() {
   return (
-    <section className="relative w-full bg-[#030710] py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section className="relative w-full bg-[#052E16] py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Radial gradient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full blur-[350px] opacity-[0.06] pointer-events-none" style={{ background: "radial-gradient(circle, #10B981 0%, transparent 70%)" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full blur-[350px] opacity-[0.06] pointer-events-none" style={{ background: "radial-gradient(circle, #22C55E 0%, transparent 70%)" }} />
 
       {/* Floating orbs — darker version */}
       <motion.div
-        className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-emerald-500/[0.03] rounded-full blur-[180px] pointer-events-none"
+        className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-green-500/[0.03] rounded-full blur-[180px] pointer-events-none"
         animate={{
           x: [0, 40, -20, 30, 0],
           y: [0, -30, 15, -10, 0],
@@ -22,7 +22,7 @@ export default function CTA() {
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/3 w-[350px] h-[350px] bg-emerald-400/[0.025] rounded-full blur-[160px] pointer-events-none"
+        className="absolute bottom-1/4 right-1/3 w-[350px] h-[350px] bg-green-400/[0.025] rounded-full blur-[160px] pointer-events-none"
         animate={{
           x: [0, -35, 25, -15, 0],
           y: [0, 25, -20, 35, 0],
@@ -53,12 +53,12 @@ export default function CTA() {
           ))}
           <br />
           <motion.span
-            className="text-emerald-400 inline-block"
+            className="text-green-400 inline-block"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: ctaWords.length * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            style={{ textShadow: "0 0 40px rgba(52,211,153,0.3), 0 0 80px rgba(52,211,153,0.15)" }}
+            style={{ textShadow: "0 0 40px rgba(74,222,128,0.3), 0 0 80px rgba(74,222,128,0.15)" }}
           >
             autopilot?
           </motion.span>
@@ -70,7 +70,7 @@ export default function CTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
           <Link
             href="/register"
-            className="px-10 py-4 text-base font-mono bg-emerald-500 text-white rounded-full hover:bg-emerald-400 transition-all duration-300 inline-flex items-center gap-2"
+            className="px-10 py-4 text-base font-mono bg-green-500 text-white rounded-full hover:bg-green-400 transition-all duration-300 inline-flex items-center gap-2"
             style={{ animation: "breathingGlow 3s ease-in-out infinite" }}
           >
             Start 14-Day Free Trial

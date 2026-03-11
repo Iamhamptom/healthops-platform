@@ -17,7 +17,7 @@ function Particle({ delay, x, y, size }: { delay: number; x: number; y: number; 
         height: size,
         left: `${x}%`,
         top: `${y}%`,
-        background: `radial-gradient(circle, rgba(110,231,183,${0.15 + Math.random() * 0.25}) 0%, transparent 70%)`,
+        background: `radial-gradient(circle, rgba(74,222,128,${0.15 + Math.random() * 0.25}) 0%, transparent 70%)`,
       }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{
@@ -46,7 +46,7 @@ function GlowRing({ radius, delay, duration }: { radius: number; delay: number; 
         height: radius,
         marginLeft: -radius / 2,
         marginTop: -radius / 2,
-        borderColor: "rgba(110,231,183,0.04)",
+        borderColor: "rgba(74,222,128,0.04)",
       }}
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{
@@ -90,20 +90,20 @@ export default function Intro({ onEnter }: IntroProps) {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[1000] bg-[#030710] flex items-center justify-center cursor-default overflow-hidden"
+      className="fixed inset-0 z-[1000] bg-[#052E16] flex items-center justify-center cursor-default overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Dynamic gradient that follows mouse */}
       <div
         className="absolute inset-0 transition-all duration-[2000ms] ease-out"
         style={{
-          background: `radial-gradient(800px ellipse at ${mousePos.x}% ${mousePos.y}%, rgba(110,231,183,0.05) 0%, transparent 60%)`,
+          background: `radial-gradient(800px ellipse at ${mousePos.x}% ${mousePos.y}%, rgba(74,222,128,0.05) 0%, transparent 60%)`,
         }}
       />
 
       {/* Ambient glow orbs — very subtle */}
       <motion.div
-        className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#6EE7B7] rounded-full blur-[280px]"
+        className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-[#86EFAC] rounded-full blur-[280px]"
         animate={{
           opacity: [0.02, 0.05, 0.03, 0.04],
           scale: [1, 1.1, 0.95, 1.05],
@@ -113,7 +113,7 @@ export default function Intro({ onEnter }: IntroProps) {
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#5EEAD4] rounded-full blur-[240px]"
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#4ADE80] rounded-full blur-[240px]"
         animate={{
           opacity: [0.02, 0.04, 0.02, 0.03],
           scale: [1, 0.9, 1.1, 1],
@@ -138,7 +138,7 @@ export default function Intro({ onEnter }: IntroProps) {
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: "linear-gradient(rgba(110,231,183,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.3) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(74,222,128,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.3) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
       />
@@ -165,8 +165,8 @@ export default function Intro({ onEnter }: IntroProps) {
                 }}
                 className="inline-block"
                 style={letter === "H" && i === 5 ? {
-                  textShadow: "0 0 30px rgba(110,231,183,0.6), 0 0 80px rgba(110,231,183,0.25), 0 0 120px rgba(110,231,183,0.1)",
-                  color: "#6EE7B7",
+                  textShadow: "0 0 30px rgba(74,222,128,0.6), 0 0 80px rgba(74,222,128,0.25), 0 0 120px rgba(74,222,128,0.1)",
+                  color: "#86EFAC",
                 } : undefined}
               >
                 {letter}
@@ -194,7 +194,7 @@ export default function Intro({ onEnter }: IntroProps) {
           transition={{ duration: 1.2, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
           className="w-24 h-px mx-auto mb-12 origin-center"
           style={{
-            background: "linear-gradient(90deg, transparent, rgba(110,231,183,0.4), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(74,222,128,0.4), transparent)",
           }}
         />
 
@@ -246,7 +246,7 @@ export default function Intro({ onEnter }: IntroProps) {
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#030710] to-transparent z-[3]" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#052E16] to-transparent z-[3]" />
 
       {/* Corner decorative elements */}
       <motion.div

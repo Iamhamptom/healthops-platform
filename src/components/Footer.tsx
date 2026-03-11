@@ -27,13 +27,13 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#030710] border-t border-white/[0.04] py-16">
+    <footer className="bg-[#052E16] border-t border-white/[0.04] py-16">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-block mb-5">
               <span className="text-base font-light text-white tracking-tight">
-                Visio<span className="text-emerald-400">.</span>Health
+                Visio<span className="text-green-400">.</span>Health
               </span>
             </Link>
             <p className="text-xs text-white/30 leading-relaxed font-light">

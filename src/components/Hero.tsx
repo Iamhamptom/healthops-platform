@@ -69,7 +69,7 @@ export default function Hero() {
       id="hero"
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-[100svh] w-full overflow-hidden flex items-center justify-center bg-[#030710]"
+      className="relative min-h-[100svh] w-full overflow-hidden flex items-center justify-center bg-[#052E16]"
     >
       {/* Hero background image — very low opacity */}
       <div className="absolute inset-0 z-0">
@@ -84,7 +84,7 @@ export default function Hero() {
 
       {/* Floating gradient orbs — lava lamp effect */}
       <motion.div
-        className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-emerald-500/[0.04] rounded-full blur-[200px] pointer-events-none"
+        className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-green-500/[0.06] rounded-full blur-[200px] pointer-events-none"
         animate={{
           x: [0, 50, -30, 20, 0],
           y: [0, -40, 20, -20, 0],
@@ -93,7 +93,7 @@ export default function Hero() {
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-emerald-400/[0.03] rounded-full blur-[180px] pointer-events-none"
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-green-400/[0.05] rounded-full blur-[180px] pointer-events-none"
         animate={{
           x: [0, -40, 30, -10, 0],
           y: [0, 30, -20, 40, 0],
@@ -102,7 +102,7 @@ export default function Hero() {
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 w-[350px] h-[350px] bg-cyan-500/[0.025] rounded-full blur-[160px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 w-[350px] h-[350px] bg-green-500/[0.025] rounded-full blur-[160px] pointer-events-none"
         animate={{
           x: [0, 60, -20, 40, 0],
           y: [0, -30, 50, -10, 0],
@@ -118,7 +118,7 @@ export default function Hero() {
           background: useTransform(
             [smoothX, smoothY],
             ([x, y]: number[]) =>
-              `radial-gradient(600px circle at ${(x as number) * 100}% ${(y as number) * 100}%, rgba(110,231,183,0.06), transparent 60%)`
+              `radial-gradient(600px circle at ${(x as number) * 100}% ${(y as number) * 100}%, rgba(74,222,128,0.06), transparent 60%)`
           ),
         }}
       />
@@ -136,7 +136,7 @@ export default function Hero() {
       <motion.div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: "linear-gradient(105deg, transparent 40%, rgba(110,231,183,0.03) 45%, rgba(110,231,183,0.05) 50%, rgba(110,231,183,0.03) 55%, transparent 60%)",
+          background: "linear-gradient(105deg, transparent 40%, rgba(74,222,128,0.03) 45%, rgba(74,222,128,0.05) 50%, rgba(74,222,128,0.03) 55%, transparent 60%)",
           backgroundSize: "200% 100%",
         }}
         animate={{ backgroundPosition: ["200% 0%", "-200% 0%"] }}
@@ -148,12 +148,15 @@ export default function Hero() {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(110,231,183,0.08) 0%, transparent 70%)",
+            "radial-gradient(ellipse at 50% 40%, rgba(22,163,74,0.08) 0%, transparent 70%)",
         }}
       />
 
       {/* Edge fades */}
-      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#030710] via-transparent to-[#030710] pointer-events-none" />
+      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#052E16] via-transparent to-transparent pointer-events-none" />
+
+      {/* Bottom gradient transition to white */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-white z-[3]" />
 
       <motion.div
         style={{ y: yText, opacity: opacityText }}
@@ -194,14 +197,14 @@ export default function Hero() {
                   isAnimating ? "word-exit" : "word-enter"
                 }`}
                 style={{
-                  textShadow: "0 0 40px rgba(110,231,183,0.3), 0 0 80px rgba(110,231,183,0.15)",
+                  textShadow: "0 0 40px rgba(74,222,128,0.3), 0 0 80px rgba(74,222,128,0.15)",
                   color: "white",
                 }}
               >
                 {swapWords[wordIndex]}
               </span>
             </span>
-            <span style={{ textShadow: "0 0 30px rgba(110,231,183,0.3)" }}>.</span>
+            <span style={{ textShadow: "0 0 30px rgba(74,222,128,0.3)" }}>.</span>
           </span>
         </motion.h1>
 
@@ -221,7 +224,7 @@ export default function Hero() {
         >
           <Link
             href="/register"
-            className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/15 text-white text-sm font-mono hover:border-white/25 hover:shadow-[0_0_40px_rgba(110,231,183,0.08)] transition-all duration-300"
+            className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/15 text-white text-sm font-mono hover:border-white/25 hover:shadow-[0_0_40px_rgba(74,222,128,0.08)] transition-all duration-300"
           >
             Start building
             <svg

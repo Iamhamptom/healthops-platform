@@ -193,17 +193,17 @@ export default function Features() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 md:mb-20 text-center"
         >
-          <span className="inline-block uppercase tracking-[0.3em] text-xs text-emerald-600 font-mono mb-6">
+          <span className="inline-block uppercase tracking-[0.3em] text-xs text-green-600 font-mono mb-6">
             Platform Features
           </span>
           <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900">
             Everything your practice{" "}
-            <span className="text-emerald-700">needs.</span>
+            <span className="text-green-700">needs.</span>
           </h2>
         </motion.div>
 
         {/* Green gradient divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-200 to-transparent mb-16 md:mb-20" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-green-200 to-transparent mb-16 md:mb-20" />
 
         {/* Feature cards — 3 columns on large, wrapping naturally for 8 items */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
@@ -215,9 +215,9 @@ export default function Features() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="group bg-gradient-to-br from-white to-gray-50/50 border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-emerald-500/5 hover:bg-gradient-to-br hover:from-emerald-50/30 hover:to-white hover:-translate-y-0.5 transition-all duration-300"
+              className="group bg-gradient-to-br from-white to-gray-50/50 border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-green-500/5 hover:bg-gradient-to-br hover:from-green-50/30 hover:to-white hover:-translate-y-0.5 transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 mb-4">
                 {feature.icon}
               </div>
               <h3 className="text-gray-900 font-medium text-base mb-3">

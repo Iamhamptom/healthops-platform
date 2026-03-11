@@ -226,7 +226,7 @@ export default function ApprovalsPage() {
                       <button
                         onClick={() => handleApprove(booking.id)}
                         disabled={actionLoading === booking.id}
-                        className="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 text-xs font-medium transition-colors flex items-center gap-1"
+                        className="px-3 py-1.5 rounded-lg bg-green-500/10 text-green-400 hover:bg-green-500/20 text-xs font-medium transition-colors flex items-center gap-1"
                       >
                         {actionLoading === booking.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
                         Approve

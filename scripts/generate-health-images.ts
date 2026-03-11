@@ -67,7 +67,7 @@ async function generateImage(key: string, prompt: string): Promise<string | null
 
   try {
     const response = await client.models.generateContent({
-      model: "gemini-2.0-flash-exp",
+      model: "gemini-2.5-flash-image",
       contents: prompt,
       config: {
         responseModalities: [Modality.TEXT, Modality.IMAGE],

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -10,6 +11,7 @@ const testimonials = [
     stat: "40%",
     statLabel: "fewer no-shows",
     stars: 5,
+    image: "/images/portrait-sarah.png",
   },
   {
     name: "Dr. Thabo K.",
@@ -18,6 +20,7 @@ const testimonials = [
     stat: "3hrs",
     statLabel: "saved daily",
     stars: 5,
+    image: "/images/portrait-thabo.png",
   },
   {
     name: "Lisa V.",
@@ -26,6 +29,7 @@ const testimonials = [
     stat: "25%",
     statLabel: "revenue increase",
     stars: 5,
+    image: "/images/portrait-lisa.png",
   },
 ];
 
@@ -62,7 +66,7 @@ function StarRating({ count }: { count: number }) {
       {Array.from({ length: count }).map((_, i) => (
         <svg
           key={i}
-          className="w-4 h-4 text-emerald-500"
+          className="w-4 h-4 text-green-500"
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -77,7 +81,7 @@ export default function Testimonials() {
   return (
     <section className="relative w-full bg-gray-50/50 py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-emerald-100 rounded-full blur-[350px] opacity-30 pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-green-100 rounded-full blur-[350px] opacity-30 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
@@ -88,7 +92,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="mb-20 md:mb-24"
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-emerald-600 font-mono mb-5 block">
+          <span className="text-xs tracking-[0.3em] uppercase text-green-600 font-mono mb-5 block">
             Testimonials
           </span>
           <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900 max-w-lg">
@@ -111,24 +115,24 @@ export default function Testimonials() {
             <motion.div
               key={t.name}
               variants={cardVariants}
-              className="group relative bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-emerald-100/40 hover:-translate-y-0.5 transition-all duration-500"
+              className="group relative bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-green-100/40 hover:-translate-y-0.5 transition-all duration-500"
             >
               {/* Decorative quote mark */}
               <motion.span
                 variants={quoteVariants}
-                className="absolute top-6 right-8 text-emerald-100 text-8xl font-serif leading-none pointer-events-none select-none"
+                className="absolute top-6 right-8 text-green-100 text-8xl font-serif leading-none pointer-events-none select-none"
               >
                 &ldquo;
               </motion.span>
 
-              {/* Stat */}
-              <div className="mb-8">
-                <span className="text-emerald-100 text-6xl font-extralight tracking-tight select-none">
-                  {t.stat}
-                </span>
-                <span className="block text-gray-400 text-xs font-mono tracking-wide mt-1">
-                  {t.statLabel}
-                </span>
+              {/* Portrait */}
+              <div className="relative w-16 h-16 rounded-full overflow-hidden mb-6 ring-2 ring-green-100 ring-offset-2">
+                <Image
+                  src={t.image}
+                  alt={t.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               {/* Star rating */}
