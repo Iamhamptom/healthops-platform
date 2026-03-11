@@ -289,6 +289,37 @@ export default function Hero() {
           <span className="w-1 h-1 rounded-full bg-white/10" />
           <span>No credit card required</span>
         </motion.div>
+
+        {/* Social proof */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8 }}
+          className="flex items-center justify-center gap-8 md:gap-12 mt-16 pt-16 border-t border-white/[0.06]"
+        >
+          {[
+            { value: "500+", label: "Practices Evaluated" },
+            { value: "10,000+", label: "Leads Generated" },
+            { value: "60%", label: "No-Show Reduction" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl md:text-3xl font-extralight text-white mb-1">{stat.value}</div>
+              <div className="text-[11px] text-white/25 font-mono uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Demo link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2 }}
+          className="mt-8 text-center"
+        >
+          <a href="/login" className="text-[12px] text-white/20 font-mono hover:text-white/40 transition-colors underline underline-offset-4 decoration-white/10">
+            Try the demo dashboard →
+          </a>
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

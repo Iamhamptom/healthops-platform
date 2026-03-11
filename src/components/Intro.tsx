@@ -65,8 +65,13 @@ export default function Intro({ onEnter }: IntroProps) {
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 300);
-    return () => clearTimeout(t);
-  }, []);
+    // Auto-enter after 3s — don't make visitors wait
+    const autoEnter = setTimeout(() => onEnter(), 3000);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(autoEnter);
+    };
+  }, [onEnter]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -231,15 +236,20 @@ export default function Intro({ onEnter }: IntroProps) {
                 </span>
               </motion.button>
 
-              {/* Hint text */}
-              <motion.p
+              {/* Auto-enter progress bar */}
+              <motion.div
+                className="mt-8 w-32 h-px mx-auto bg-white/10 rounded-full overflow-hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2.3 }}
-                className="mt-8 text-[11px] text-white/15 tracking-[0.4em] uppercase"
+                transition={{ delay: 1.8 }}
               >
-                Click to access dashboard
-              </motion.p>
+                <motion.div
+                  className="h-full bg-green-400/50"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 3, delay: 0, ease: "linear" }}
+                />
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

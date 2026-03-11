@@ -82,7 +82,7 @@ export default function GetInTouch() {
 
   return (
     <section
-      id="contact"
+      id="get-in-touch"
       className="relative w-full bg-[#052E16] py-24 md:py-32 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       <motion.div

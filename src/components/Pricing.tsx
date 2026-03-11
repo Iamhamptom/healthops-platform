@@ -106,7 +106,7 @@ export default function Pricing() {
               </div>
 
               <Link
-                href="/register"
+                href="#get-in-touch"
                 className={`block text-center py-3 text-sm font-mono rounded-full transition-all duration-300 ${
                   plan.popular
                     ? "bg-green-600 text-white hover:bg-green-700 hover:shadow-lg hover:shadow-green-500/10"
@@ -134,7 +134,7 @@ export default function Pricing() {
             </p>
           </div>
           <Link
-            href="/register"
+            href="#get-in-touch"
             className="shrink-0 group px-8 py-3 text-sm font-mono text-gray-700 rounded-full border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-300 inline-flex items-center gap-2"
           >
             Learn More
