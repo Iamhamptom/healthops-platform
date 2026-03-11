@@ -43,16 +43,16 @@ export default function Pricing() {
   const opacityTitle = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
 
   return (
-    <section id="pricing" ref={containerRef} className="relative w-full bg-[#030710] py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section id="pricing" ref={containerRef} className="relative w-full bg-white py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div style={{ opacity: opacityTitle }} className="mb-20 md:mb-24 text-center">
-          <span className="text-xs text-white/25 font-mono uppercase tracking-[0.3em] mb-6 block">
+          <span className="text-xs text-emerald-600 font-mono uppercase tracking-[0.3em] mb-6 block">
             Pricing
           </span>
-          <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-white mb-5">
+          <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900 mb-5">
             Simple, transparent pricing
           </h2>
-          <p className="text-white/40 text-sm font-light max-w-md mx-auto">
+          <p className="text-gray-500 text-sm font-light max-w-md mx-auto">
             14-day free trial on all plans. No credit card required.
           </p>
         </motion.div>
@@ -61,41 +61,46 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`relative rounded-2xl p-8 transition-all duration-400 ${
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className={`group relative bg-white rounded-2xl p-8 transition-all duration-400 hover:shadow-lg hover:shadow-emerald-500/[0.04] ${
                 plan.popular
-                  ? "bg-white/[0.02] border border-white/[0.12] shadow-[0_0_60px_rgba(110,231,183,0.04)]"
-                  : "bg-white/[0.02] border border-white/[0.06]"
+                  ? "border border-emerald-200 shadow-lg shadow-emerald-500/5 animate-[pulseGlow_3s_ease-in-out_infinite]"
+                  : "border border-gray-100 shadow-sm"
               }`}
+              style={plan.popular ? {
+                animation: "pulseGlow 3s ease-in-out infinite",
+              } : undefined}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-8">
-                  <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-mono text-white/60 border border-white/[0.12] rounded-full bg-white/[0.04]">
+                  <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-mono text-emerald-700 bg-emerald-50 rounded-full">
                     Recommended
                   </span>
                 </div>
               )}
 
               <div className="mb-8">
-                <h3 className="text-sm font-mono text-white/50 mb-1 tracking-wide">{plan.name}</h3>
-                <p className="text-xs text-white/30 mb-6 font-light">{plan.description}</p>
+                <h3 className="text-sm font-mono text-gray-500 mb-1 tracking-wide">{plan.name}</h3>
+                <p className="text-xs text-gray-400 mb-6 font-light">{plan.description}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-extralight text-white tracking-tight">{plan.price}</span>
-                  <span className="text-sm text-white/30 font-mono">{plan.period}</span>
+                  <span className="text-5xl font-extralight text-gray-900 tracking-tight">{plan.price}</span>
+                  <span className="text-sm text-gray-400 font-mono">{plan.period}</span>
                 </div>
-                <p className="text-[11px] text-white/20 mt-2 font-mono">Setup from {plan.setup}</p>
+                <p className="text-[11px] text-gray-400 mt-2 font-mono">Setup from {plan.setup}</p>
               </div>
 
               <div className="space-y-3 mb-10">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-2.5">
-                    <div className="flex items-center gap-1.5 mt-1.5 shrink-0">
-                      <div className="w-1 h-1 rounded-full bg-[#6EE7B7]/40" />
+                    <div className="flex items-center gap-1.5 mt-1 shrink-0">
+                      <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <span className="text-sm text-white/40">{feature}</span>
+                    <span className="text-sm text-gray-500">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -104,8 +109,8 @@ export default function Pricing() {
                 href="/register"
                 className={`block text-center py-3 text-sm font-mono rounded-full transition-all duration-300 ${
                   plan.popular
-                    ? "border border-white/15 text-white hover:border-white/25 hover:shadow-[0_0_40px_rgba(110,231,183,0.08)]"
-                    : "border border-white/10 text-white/60 hover:border-white/20 hover:text-white/80"
+                    ? "bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/10"
+                    : "border border-gray-200 text-gray-700 hover:border-gray-300 hover:shadow-sm"
                 }`}
               >
                 {plan.cta}
@@ -120,17 +125,17 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-8 max-w-5xl mx-auto bg-white/[0.02] rounded-2xl border border-white/[0.06] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-8 max-w-5xl mx-auto bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div>
-            <h3 className="text-sm font-mono text-white/60 mb-1">Radiology Ops Add-on</h3>
-            <p className="text-sm text-white/30 font-light">
+            <h3 className="text-sm font-mono text-gray-900 mb-1">Radiology Ops Add-on</h3>
+            <p className="text-sm text-gray-500 font-light">
               Referral intake, prep automation, report delivery — from R10,000/month
             </p>
           </div>
           <Link
             href="/register"
-            className="shrink-0 group px-8 py-3 text-sm font-mono text-white/50 rounded-full border border-white/10 hover:border-white/20 hover:text-white transition-all duration-300 inline-flex items-center gap-2"
+            className="shrink-0 group px-8 py-3 text-sm font-mono text-gray-700 rounded-full border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all duration-300 inline-flex items-center gap-2"
           >
             Learn More
             <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

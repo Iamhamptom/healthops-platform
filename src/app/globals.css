@@ -43,20 +43,20 @@
   --dark-border: rgba(110, 231, 183, 0.08);
 }
 
-/* ─── Scrollbar: ultra-thin, green thumb ─── */
+/* ─── Scrollbar: ultra-thin, emerald thumb ─── */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(110, 231, 183, 0.3) transparent;
+  scrollbar-color: rgba(5, 150, 105, 0.4) transparent;
 }
 
 *::-webkit-scrollbar { width: 3px; }
 *::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: rgba(110, 231, 183, 0.3); border-radius: 100px; }
-*::-webkit-scrollbar-thumb:hover { background: rgba(110, 231, 183, 0.5); }
+*::-webkit-scrollbar-thumb { background: rgba(5, 150, 105, 0.4); border-radius: 100px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(5, 150, 105, 0.6); }
 
-/* ─── Selection: green tint ─── */
+/* ─── Selection: emerald tint ─── */
 ::selection {
-  background-color: rgba(110, 231, 183, 0.15);
+  background-color: rgba(5, 150, 105, 0.15);
   color: #FFFFFF;
 }
 
@@ -241,6 +241,16 @@ body {
 }
 .animate-glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
 
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(16, 185, 129, 0.05); }
+  50% { box-shadow: 0 8px 40px rgba(16, 185, 129, 0.12), 0 0 60px rgba(16, 185, 129, 0.06); }
+}
+
+@keyframes breathingGlow {
+  0%, 100% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+  50% { box-shadow: 0 0 50px rgba(16, 185, 129, 0.35), 0 0 80px rgba(16, 185, 129, 0.15); }
+}
+
 /* Scroll progress line */
 @keyframes line-grow {
   from { transform: scaleY(0); }
@@ -384,4 +394,29 @@ input:focus, textarea:focus, select:focus {
 select option {
   background: var(--bg-primary);
   color: var(--text-primary);
+}
+
+/* ─── Light-section utilities (dual-theme: white middle sections) ─── */
+.glossy-card-light {
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 1rem;
+  transition: all 0.4s ease;
+}
+
+.glossy-card-light:hover {
+  box-shadow: 0 20px 40px rgba(5, 150, 105, 0.06);
+  border-color: rgba(5, 150, 105, 0.1);
+  transform: translateY(-2px);
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #059669, #10B981, #047857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-emerald-glow {
+  box-shadow: 0 0 60px rgba(5, 150, 105, 0.08);
 }

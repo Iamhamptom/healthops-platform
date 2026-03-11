@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-block mb-5">
               <span className="text-base font-light text-white tracking-tight">
-                Visio<span className="text-[#6EE7B7]/60">.</span>Health
+                Visio<span className="text-emerald-400">.</span>Health
               </span>
             </Link>
             <p className="text-xs text-white/30 leading-relaxed font-light">

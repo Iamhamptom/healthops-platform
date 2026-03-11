@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,6 +35,18 @@ export default function Hero() {
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  // Mouse-following glow
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 30 });
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 30 });
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width);
+    mouseY.set((e.clientY - rect.top) / rect.height);
+  }, [mouseX, mouseY]);
+
   // Word swap state
   const [wordIndex, setWordIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -56,6 +68,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={containerRef}
+      onMouseMove={handleMouseMove}
       className="relative min-h-[100svh] w-full overflow-hidden flex items-center justify-center bg-[#030710]"
     >
       {/* Hero background image — very low opacity */}
@@ -68,6 +81,67 @@ export default function Hero() {
           priority
         />
       </div>
+
+      {/* Floating gradient orbs — lava lamp effect */}
+      <motion.div
+        className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-emerald-500/[0.04] rounded-full blur-[200px] pointer-events-none"
+        animate={{
+          x: [0, 50, -30, 20, 0],
+          y: [0, -40, 20, -20, 0],
+          scale: [1, 1.2, 0.9, 1.1, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-emerald-400/[0.03] rounded-full blur-[180px] pointer-events-none"
+        animate={{
+          x: [0, -40, 30, -10, 0],
+          y: [0, 30, -20, 40, 0],
+          scale: [1, 0.9, 1.15, 0.95, 1],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-[350px] h-[350px] bg-cyan-500/[0.025] rounded-full blur-[160px] pointer-events-none"
+        animate={{
+          x: [0, 60, -20, 40, 0],
+          y: [0, -30, 50, -10, 0],
+          scale: [1, 1.1, 0.85, 1.05, 1],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Mouse-following radial glow */}
+      <motion.div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: useTransform(
+            [smoothX, smoothY],
+            ([x, y]: number[]) =>
+              `radial-gradient(600px circle at ${(x as number) * 100}% ${(y as number) * 100}%, rgba(110,231,183,0.06), transparent 60%)`
+          ),
+        }}
+      />
+
+      {/* Subtle animated grid overlay */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none opacity-[0.015]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Shimmer sweep */}
+      <motion.div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: "linear-gradient(105deg, transparent 40%, rgba(110,231,183,0.03) 45%, rgba(110,231,183,0.05) 50%, rgba(110,231,183,0.03) 55%, transparent 60%)",
+          backgroundSize: "200% 100%",
+        }}
+        animate={{ backgroundPosition: ["200% 0%", "-200% 0%"] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
+      />
 
       {/* Radial gradient glow */}
       <div
@@ -100,7 +174,17 @@ export default function Hero() {
           variants={fadeUp}
           className="text-5xl md:text-7xl font-light tracking-[-0.04em] text-white mb-8"
         >
-          Your practice,
+          {"Your practice,".split(" ").map((word, i) => (
+            <motion.span
+              key={i}
+              className="inline-block mr-[0.3em]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {word}
+            </motion.span>
+          ))}
           <br />
           <span className="relative inline-block">
             on{" "}

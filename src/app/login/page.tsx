@@ -36,36 +36,61 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#030710] relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#6EE7B7] rounded-full blur-[350px] opacity-[0.03] pointer-events-none" />
+    <div className="min-h-screen flex">
+      {/* Left panel — dark emerald gradient */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-900 to-emerald-700 relative overflow-hidden items-center justify-center p-12">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50" />
+        <div className="relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-3xl font-light text-white tracking-tight">
+              Visio<span className="text-emerald-300">.</span>Health
+            </span>
+            <p className="mt-4 text-emerald-100/70 text-sm font-light max-w-xs mx-auto leading-relaxed">
+              AI-powered healthcare operations platform. Manage your practice with intelligence.
+            </p>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
+              <span className="text-emerald-200/50 text-xs font-mono uppercase tracking-widest">System Online</span>
+            </div>
+          </motion.div>
+        </div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="relative w-full max-w-md z-10"
-      >
-        <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-10">
-          <div className="text-center mb-10">
-            <Link href="/" className="inline-block mb-8">
-              <span className="text-base font-light text-white tracking-tight">
-                Visio<span className="text-[#6EE7B7]">.</span>Health
+      {/* Right panel — white form */}
+      <div className="flex-1 flex items-center justify-center p-6 sm:p-12 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md"
+        >
+          {/* Mobile logo */}
+          <div className="text-center mb-10 lg:hidden">
+            <Link href="/" className="inline-block mb-4">
+              <span className="text-base font-light text-gray-900 tracking-tight">
+                Visio<span className="text-emerald-600">.</span>Health
               </span>
             </Link>
-            <h1 className="text-2xl font-light text-white tracking-tight mb-2">Welcome back</h1>
-            <p className="text-sm text-white/30 font-light">Sign in to your practice dashboard</p>
+          </div>
+
+          <div className="mb-10">
+            <h1 className="text-2xl font-semibold text-gray-900 tracking-tight mb-2">Welcome back</h1>
+            <p className="text-sm text-gray-500 font-light">Sign in to your practice dashboard</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
-              <div className="p-3 rounded-lg bg-red-500/[0.06] border border-red-500/20 text-red-400 text-xs font-mono">
+              <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-600 text-xs font-mono">
                 {error}
               </div>
             )}
 
             <div>
-              <label className="block text-xs text-white/30 font-mono uppercase tracking-[0.15em] mb-2">
+              <label className="block text-xs text-gray-500 font-medium uppercase tracking-[0.1em] mb-2">
                 Email
               </label>
               <input
@@ -73,13 +98,13 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-transparent border border-white/[0.08] rounded-lg px-4 py-3 text-white text-sm font-mono placeholder:text-white/20 focus:border-white/20 focus:outline-none transition-colors duration-300"
+                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm placeholder:text-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/10 transition-all duration-300"
                 placeholder="you@practice.co.za"
               />
             </div>
 
             <div>
-              <label className="block text-xs text-white/30 font-mono uppercase tracking-[0.15em] mb-2">
+              <label className="block text-xs text-gray-500 font-medium uppercase tracking-[0.1em] mb-2">
                 Password
               </label>
               <input
@@ -87,7 +112,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full bg-transparent border border-white/[0.08] rounded-lg px-4 py-3 text-white text-sm font-mono placeholder:text-white/20 focus:border-white/20 focus:outline-none transition-colors duration-300"
+                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm placeholder:text-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/10 transition-all duration-300"
                 placeholder="Enter password"
               />
             </div>
@@ -96,7 +121,7 @@ export default function LoginPage() {
               type="submit"
               disabled={loading}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-3 mt-2 border border-white/15 text-white font-mono text-sm rounded-full hover:border-white/25 hover:shadow-[0_0_40px_rgba(110,231,183,0.08)] transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-3 mt-2 bg-emerald-600 text-white font-medium text-sm rounded-full hover:bg-emerald-700 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
             >
               {loading && (
                 <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -107,19 +132,19 @@ export default function LoginPage() {
               Sign In
             </motion.button>
 
-            <p className="text-center text-xs text-white/30 pt-2">
+            <p className="text-center text-xs text-gray-400 pt-2">
               Don&apos;t have an account?{" "}
-              <Link href="/register" className="text-white/50 hover:text-white transition-colors duration-300">
+              <Link href="/register" className="text-emerald-600 hover:text-emerald-700 transition-colors duration-300">
                 Get started
               </Link>
             </p>
           </form>
-        </div>
 
-        <p className="text-center text-[11px] text-white/20 mt-6 font-mono">
-          Demo: demo@smiledental.co.za / demo1234
-        </p>
-      </motion.div>
+          <p className="text-center text-[11px] text-gray-400 mt-8 font-mono">
+            Demo: demo@smiledental.co.za / demo1234
+          </p>
+        </motion.div>
+      </div>
     </div>
   );
 }

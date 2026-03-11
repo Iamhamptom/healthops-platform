@@ -166,13 +166,13 @@ const features = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      delay: i * 0.08,
+      duration: 0.6,
+      delay: i * 0.1,
       ease: [0.16, 1, 0.3, 1] as const,
     },
   }),
@@ -182,31 +182,28 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative w-full bg-[#030710] py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden"
+      className="relative w-full bg-white py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
-      {/* Subtle green glow background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#6EE7B7] rounded-full blur-[300px] opacity-[0.03] pointer-events-none" />
-
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 md:mb-20 text-center"
         >
-          <span className="inline-block uppercase tracking-[0.3em] text-xs text-white/25 font-mono mb-6">
+          <span className="inline-block uppercase tracking-[0.3em] text-xs text-emerald-600 font-mono mb-6">
             Platform Features
           </span>
-          <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-white">
+          <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900">
             Everything your practice{" "}
-            <span style={{ textShadow: "0 0 40px rgba(110,231,183,0.3)" }}>needs.</span>
+            <span className="text-emerald-700">needs.</span>
           </h2>
         </motion.div>
 
-        {/* Gradient divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-16 md:mb-20" />
+        {/* Green gradient divider */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-200 to-transparent mb-16 md:mb-20" />
 
         {/* Feature cards — 3 columns on large, wrapping naturally for 8 items */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
@@ -217,14 +214,16 @@ export default function Features() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
-              className="group bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 hover:border-white/[0.12] transition-all duration-300"
+              viewport={{ once: true, amount: 0.2 }}
+              className="group bg-gradient-to-br from-white to-gray-50/50 border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:shadow-emerald-500/5 hover:bg-gradient-to-br hover:from-emerald-50/30 hover:to-white hover:-translate-y-0.5 transition-all duration-300"
             >
-              <div className="text-white/30 mb-4">{feature.icon}</div>
-              <h3 className="text-white font-medium text-base mb-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4">
+                {feature.icon}
+              </div>
+              <h3 className="text-gray-900 font-medium text-base mb-3">
                 {feature.title}
               </h3>
-              <p className="text-white/40 text-sm leading-relaxed font-light">
+              <p className="text-gray-500 text-sm leading-relaxed font-light">
                 {feature.description}
               </p>
             </motion.div>
