@@ -119,26 +119,30 @@ const timeline = [
   },
 ];
 
-const vrlProducts = [
+const researchCapabilities = [
   {
-    name: "VisioHealth",
-    description: "AI Healthcare OS",
-    status: "Live" as const,
+    title: "Real-Time Data Collection",
+    description: "Our AI agents continuously gather and analyze healthcare market data across South Africa — practice availability, patient demand patterns, and service gaps.",
   },
   {
-    name: "VisioCorp",
-    description: "Chairman Operating System",
-    status: "Live" as const,
+    title: "Multi-Agent Intelligence",
+    description: "Powered by the world's most advanced AI models — Claude, GPT-4, and Gemini working in concert. Each agent specializes in a domain: clinical research, market analysis, and operational optimization.",
   },
   {
-    name: "Hampton Music Group",
-    description: "AI-powered music management",
-    status: "Live" as const,
+    title: "Healthcare Market Research",
+    description: "We study how patients interact with healthcare systems across Africa. Our findings drive every feature we build — from WhatsApp triage to smart recall.",
   },
   {
-    name: "Ciza\u2019s Palace",
-    description: "Artist platform & e-commerce",
-    status: "Building" as const,
+    title: "Predictive Analytics",
+    description: "Machine learning models trained on South African healthcare patterns predict patient no-shows, optimal scheduling, and revenue opportunities.",
+  },
+  {
+    title: "Autonomous Operations",
+    description: "Our research agents run 24/7 — monitoring healthcare trends, analyzing patient behavior, and feeding insights directly into the VisioHealth platform.",
+  },
+  {
+    title: "African-First Research",
+    description: "Every model, every insight, every feature is built for the African context first. We understand the unique challenges of healthcare delivery on this continent.",
   },
 ];
 
@@ -494,7 +498,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 8. Visio Research Labs (dark) ── */}
+      {/* ── 8. Visio Research Labs — Research Focus (dark) ── */}
       <section
         className="py-24 md:py-32"
         style={{ backgroundColor: "#052E16" }}
@@ -504,52 +508,87 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center mb-8"
           >
             <span className="uppercase tracking-[0.3em] text-xs text-green-400 font-mono block mb-4">
-              Parent Company
+              Our Research Lab
             </span>
             <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-white mb-5">
-              Built by Visio Research Labs
+              Powered by Visio Research Labs
             </h2>
-            <p className="text-[15px] text-white/40 max-w-2xl mx-auto leading-relaxed">
-              Visio Research Labs (VRL) is a South African AI research and
-              product company building the operating systems of tomorrow. From
-              healthcare to music, we&apos;re creating AI-powered platforms that
-              transform industries across Africa.
+            <p className="text-[15px] text-white/40 max-w-3xl mx-auto leading-relaxed">
+              Visio Research Labs (VRL) is a South African AI research company
+              dedicated to building world-class systems that better Africa. Our
+              lab is powered by the most advanced AI agents in the world —
+              collecting real-time data, analyzing healthcare patterns, and
+              turning research into products that save lives.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-            {vrlProducts.map((product, i) => (
+          {/* Research philosophy */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center mb-16"
+          >
+            <p className="text-[14px] text-white/30 leading-relaxed">
+              We don&apos;t guess — we research. Every feature in VisioHealth is
+              backed by real data from real healthcare environments across South
+              Africa. Our autonomous agents monitor patient behavior, practice
+              operations, and market dynamics around the clock, feeding insights
+              directly into the platform. The result: technology that actually
+              solves the problems African healthcare faces today.
+            </p>
+          </motion.div>
+
+          {/* Research capabilities grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+            {researchCapabilities.map((cap, i) => (
               <motion.div
-                key={product.name}
+                key={cap.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.06] hover:border-green-500/20 transition-all duration-300"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold text-white text-[15px]">
-                    {product.name}
-                  </h3>
-                  <span
-                    className={`text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                      product.status === "Live"
-                        ? "bg-green-500/15 text-green-400"
-                        : "bg-amber-500/15 text-amber-400"
-                    }`}
-                  >
-                    {product.status}
-                  </span>
+                <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                 </div>
+                <h3 className="font-semibold text-white text-[15px] mb-2">
+                  {cap.title}
+                </h3>
                 <p className="text-[13px] text-white/30 leading-relaxed">
-                  {product.description}
+                  {cap.description}
                 </p>
               </motion.div>
             ))}
           </div>
+
+          {/* Lab stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          >
+            {[
+              { value: "15+", label: "AI Agents Active" },
+              { value: "24/7", label: "Real-Time Monitoring" },
+              { value: "5", label: "AI Models in Use" },
+              { value: "100%", label: "African-First Research" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl md:text-4xl font-extralight text-green-400 mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-[11px] text-white/25 font-mono uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
