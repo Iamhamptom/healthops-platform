@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Building2, Search, Users, Calendar, DollarSign, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Building2, Search, Users, Calendar, DollarSign, ExternalLink,
+  X, Check, AlertTriangle, Pause, Play, Settings,
+} from "lucide-react";
 
 interface Practice {
   id: string;
@@ -14,6 +17,7 @@ interface Practice {
   subdomain: string;
   plan: string;
   planStatus: string;
+  bookingEnabled: boolean;
   createdAt: string;
   _stats?: { patients: number; bookingsThisMonth: number; revenue: number; mrr: number };
   _count?: { patients: number; bookings: number; users: number };
@@ -36,6 +40,9 @@ export default function AdminPracticesPage() {
   const [practices, setPractices] = useState<Practice[]>([]);
   const [search, setSearch] = useState("");
   const [filterPlan, setFilterPlan] = useState("all");
+  const [filterStatus, setFilterStatus] = useState("all");
+  const [managingId, setManagingId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     fetch("/api/admin/practices").then(r => r.json()).then(d => setPractices(d.practices || []));
@@ -44,16 +51,43 @@ export default function AdminPracticesPage() {
   const filtered = practices.filter(p => {
     const matchesSearch = !search || p.name.toLowerCase().includes(search.toLowerCase()) || p.type.toLowerCase().includes(search.toLowerCase());
     const matchesPlan = filterPlan === "all" || p.plan === filterPlan;
-    return matchesSearch && matchesPlan;
+    const matchesStatus = filterStatus === "all" || p.planStatus === filterStatus;
+    return matchesSearch && matchesPlan && matchesStatus;
   });
+
+  async function updatePractice(id: string, updates: Record<string, unknown>) {
+    setSaving(true);
+    try {
+      const res = await fetch("/api/admin/practices", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, ...updates }),
+      });
+      if (res.ok) {
+        setPractices(prev => prev.map(p => p.id === id ? { ...p, ...updates } as Practice : p));
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  const activePractices = practices.filter(p => p.planStatus === "active").length;
+  const trialPractices = practices.filter(p => p.planStatus === "trial").length;
+  const pastDuePractices = practices.filter(p => p.planStatus === "past_due").length;
 
   return (
     <div className="p-6 space-y-5">
+      {/* Header with summary stats */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Building2 className="w-5 h-5 text-[#ef4444]" />
-          <h2 className="text-lg font-semibold">All Practices</h2>
+          <Building2 className="w-5 h-5 text-[#10b981]" />
+          <h2 className="text-lg font-semibold text-[var(--ivory)]">All Practices</h2>
           <span className="text-[13px] text-[var(--text-tertiary)]">{practices.length} total</span>
+        </div>
+        <div className="flex items-center gap-4 text-[12px]">
+          <span className="text-[#10b981]">{activePractices} active</span>
+          <span className="text-[#E8C84A]">{trialPractices} trial</span>
+          {pastDuePractices > 0 && <span className="text-[#ef4444]">{pastDuePractices} past due</span>}
         </div>
       </div>
 
@@ -66,7 +100,7 @@ export default function AdminPracticesPage() {
             placeholder="Search practices..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-[13px] text-[var(--ivory)] focus:outline-none focus:border-[#ef4444]/30"
+            className="w-full pl-9 pr-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-[13px] text-[var(--ivory)] focus:outline-none focus:border-[#10b981]/30"
           />
         </div>
         <select
@@ -79,6 +113,17 @@ export default function AdminPracticesPage() {
           <option value="professional">Professional</option>
           <option value="enterprise">Enterprise</option>
         </select>
+        <select
+          value={filterStatus}
+          onChange={e => setFilterStatus(e.target.value)}
+          className="px-3 py-2 bg-[var(--charcoal)]/20 border border-[var(--border)] rounded-lg text-[13px] text-[var(--ivory)] focus:outline-none"
+        >
+          <option value="all">All Statuses</option>
+          <option value="active">Active</option>
+          <option value="trial">Trial</option>
+          <option value="past_due">Past Due</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
       </div>
 
       {/* Practice cards */}
@@ -87,6 +132,7 @@ export default function AdminPracticesPage() {
           const stats = p._stats || { patients: p._count?.patients ?? 0, bookingsThisMonth: p._count?.bookings ?? 0, revenue: 0, mrr: 0 };
           const pb = planBadge[p.plan] || planBadge.starter;
           const sb = statusBadge[p.planStatus] || statusBadge.active;
+          const isManaging = managingId === p.id;
 
           return (
             <motion.div
@@ -142,19 +188,109 @@ export default function AdminPracticesPage() {
                 </div>
               </div>
 
+              {/* Management Actions */}
+              <AnimatePresence>
+                {isManaging && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="mt-4 pt-4 border-t border-[var(--border)] space-y-3"
+                  >
+                    {/* Plan change */}
+                    <div className="flex items-center gap-3">
+                      <span className="text-[11px] text-[var(--text-tertiary)] w-20">Plan:</span>
+                      <div className="flex gap-2">
+                        {["starter", "professional", "enterprise"].map(plan => (
+                          <button
+                            key={plan}
+                            onClick={() => updatePractice(p.id, { plan })}
+                            disabled={saving}
+                            className={`px-3 py-1 rounded-lg text-[11px] font-medium transition-colors capitalize ${
+                              p.plan === plan
+                                ? "bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30"
+                                : "text-[var(--text-tertiary)] hover:text-[var(--ivory)] border border-[var(--border)]"
+                            }`}
+                          >
+                            {plan}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Status change */}
+                    <div className="flex items-center gap-3">
+                      <span className="text-[11px] text-[var(--text-tertiary)] w-20">Status:</span>
+                      <div className="flex gap-2">
+                        {p.planStatus !== "active" && (
+                          <button
+                            onClick={() => updatePractice(p.id, { planStatus: "active" })}
+                            disabled={saving}
+                            className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-medium text-[#10b981] border border-[#10b981]/30 hover:bg-[#10b981]/10 transition-colors"
+                          >
+                            <Play className="w-3 h-3" /> Activate
+                          </button>
+                        )}
+                        {p.planStatus === "active" && (
+                          <button
+                            onClick={() => updatePractice(p.id, { planStatus: "cancelled" })}
+                            disabled={saving}
+                            className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-medium text-[#ef4444] border border-[#ef4444]/30 hover:bg-[#ef4444]/10 transition-colors"
+                          >
+                            <Pause className="w-3 h-3" /> Suspend
+                          </button>
+                        )}
+                        {p.planStatus === "past_due" && (
+                          <span className="flex items-center gap-1 text-[11px] text-[#E8C84A]">
+                            <AlertTriangle className="w-3 h-3" /> Payment overdue
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Booking toggle */}
+                    <div className="flex items-center gap-3">
+                      <span className="text-[11px] text-[var(--text-tertiary)] w-20">Bookings:</span>
+                      <button
+                        onClick={() => updatePractice(p.id, { bookingEnabled: !p.bookingEnabled })}
+                        disabled={saving}
+                        className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-medium transition-colors ${
+                          p.bookingEnabled !== false
+                            ? "text-[#10b981] border border-[#10b981]/30"
+                            : "text-[var(--text-tertiary)] border border-[var(--border)]"
+                        }`}
+                      >
+                        {p.bookingEnabled !== false ? <Check className="w-3 h-3" /> : <X className="w-3 h-3" />}
+                        {p.bookingEnabled !== false ? "Enabled" : "Disabled"}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <div className="flex items-center justify-between mt-4 pt-3 border-t border-[var(--border)]">
                 <div className="text-[10px] text-[var(--text-tertiary)]">
                   Joined {new Date(p.createdAt).toLocaleDateString("en-ZA", { month: "short", day: "numeric", year: "numeric" })}
                   {p.subdomain && <> · <span className="text-[var(--text-secondary)]">{p.subdomain}.healthops.co.za</span></>}
                 </div>
-                <button className="text-[11px] text-[#ef4444] hover:underline flex items-center gap-1">
-                  <ExternalLink className="w-3 h-3" /> Manage
+                <button
+                  onClick={() => setManagingId(isManaging ? null : p.id)}
+                  className="text-[11px] text-[#10b981] hover:underline flex items-center gap-1"
+                >
+                  <Settings className="w-3 h-3" /> {isManaging ? "Close" : "Manage"}
                 </button>
               </div>
             </motion.div>
           );
         })}
       </div>
+
+      {filtered.length === 0 && (
+        <div className="text-center py-20 text-[var(--text-tertiary)]">
+          <Building2 className="w-8 h-8 mx-auto mb-3 opacity-50" />
+          <p className="text-sm">No practices match your filters</p>
+        </div>
+      )}
     </div>
   );
 }
