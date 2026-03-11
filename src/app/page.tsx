@@ -14,6 +14,9 @@ import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 import Mission from "@/components/Mission";
 import Intro from "@/components/Intro";
+import PeopleFirst from "@/components/PeopleFirst";
+import Integrations from "@/components/Integrations";
+import GetInTouch from "@/components/GetInTouch";
 
 export default function Home() {
   const [entered, setEntered] = useState(false);
@@ -37,10 +40,13 @@ export default function Home() {
             <Hero />
             <Mission />
             <Features />
+            <PeopleFirst />
+            <Integrations />
             <Verticals />
             <HowItWorks />
             <Testimonials />
             <Pricing />
+            <GetInTouch />
             <CTA />
             <Footer />
             <ChatbotWidget />
