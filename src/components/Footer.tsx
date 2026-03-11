@@ -15,13 +15,13 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Blog", href: "#" },
-    { label: "Contact", href: "/about" },
+    { label: "Coming Soon", href: "/coming-soon" },
+    { label: "Contact", href: "#get-in-touch" },
   ],
   Legal: [
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
-    { label: "POPIA", href: "#" },
+    { label: "Privacy", href: "/about#privacy" },
+    { label: "Terms", href: "/about#terms" },
+    { label: "POPIA", href: "/about#popia" },
   ],
 };
 
@@ -65,7 +65,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[11px] text-white/20 font-mono">
-            &copy; {new Date().getFullYear()} VisioHealth Ops by Visio Research Labs
+            &copy; 2026 VisioHealth Ops by Visio Research Labs
           </p>
           <p className="text-[11px] text-white/20 font-mono">
             Powered by Visio Research Labs

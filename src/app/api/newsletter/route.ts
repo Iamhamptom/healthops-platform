@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   try {
@@ -14,18 +11,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (process.env.DEMO_MODE === "true") {
-      return NextResponse.json({ success: true, demo: true });
-    }
-
-    await prisma.auditLog.create({
-      data: {
-        action: "NEWSLETTER_SIGNUP",
-        entity: "newsletter",
-        entityId: email,
-        details: JSON.stringify({ email, source: "coming-soon" }),
-      },
-    });
+    console.log("[NEWSLETTER_SIGNUP]", JSON.stringify({ email, ts: new Date().toISOString() }));
 
     return NextResponse.json({ success: true });
   } catch (err) {
