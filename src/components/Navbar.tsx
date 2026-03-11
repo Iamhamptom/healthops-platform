@@ -5,9 +5,10 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { href: "/how-it-works", label: "How It Works" },
+  { href: "/about", label: "About" },
   { href: "/#features", label: "Features" },
   { href: "/#pricing", label: "Pricing" },
+  { href: "/coming-soon", label: "Coming Soon" },
 ];
 
 export default function Navbar() {
