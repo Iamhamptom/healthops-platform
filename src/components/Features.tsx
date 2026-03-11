@@ -93,11 +93,11 @@ export default function Features() {
       className="relative w-full bg-[#FAFAF8] py-28 md:py-36 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       {/* Subtle green glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#34D399] rounded-full blur-[300px] opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#6EE7B7] rounded-full blur-[300px] opacity-[0.04] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         <motion.div style={{ opacity: opacityTitle }} className="mb-16 md:mb-20 text-center">
-          <span className="inline-block text-[13px] text-[#34D399] mb-4 font-mono tracking-wider uppercase">Platform Features</span>
+          <span className="inline-block text-[13px] text-[#6EE7B7] mb-4 font-mono tracking-wider uppercase">Platform Features</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] text-[#1A1A1A] font-bold mb-4">
             Everything your
             <br />
@@ -113,12 +113,12 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group glow-card p-6 rounded-2xl bg-white border border-[#F0F0EC] hover:border-[#34D399]/20 transition-all duration-400"
+              className="group glow-card p-6 rounded-2xl bg-white border border-[#F0F0EC] hover:border-[#6EE7B7]/20 transition-all duration-400"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#34D399]/8 flex items-center justify-center mb-4 text-[#059669] group-hover:bg-[#34D399]/15 group-hover:text-[#34D399] transition-all duration-300">
+              <div className="w-10 h-10 rounded-xl bg-[#6EE7B7]/8 flex items-center justify-center mb-4 text-[#10B981] group-hover:bg-[#6EE7B7]/15 group-hover:text-[#6EE7B7] transition-all duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-[15px] font-semibold text-[#1A1A1A] mb-2 group-hover:text-[#059669] transition-colors duration-300">
+              <h3 className="text-[15px] font-semibold text-[#1A1A1A] mb-2 group-hover:text-[#10B981] transition-colors duration-300">
                 {feature.title}
               </h3>
               <p className="text-[13px] text-[#9B9B9B] leading-relaxed">

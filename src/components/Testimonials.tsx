@@ -35,13 +35,13 @@ export default function Testimonials() {
   return (
     <section ref={containerRef} className="relative w-full bg-[#030F07] py-28 md:py-36 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* Green glow top */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-[#34D399] rounded-full blur-[250px] opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-[500px] h-[300px] bg-[#6EE7B7] rounded-full blur-[250px] opacity-[0.04] pointer-events-none" />
       {/* Cyan glow bottom-right */}
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-[#2DD4BF] rounded-full blur-[200px] opacity-[0.03] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-[#5EEAD4] rounded-full blur-[200px] opacity-[0.03] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         <motion.div style={{ opacity: opacityTitle }} className="mb-16 md:mb-20 text-center">
-          <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Results</span>
+          <span className="text-[13px] text-[#6EE7B7] mb-4 block font-mono tracking-wider uppercase">Results</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] text-white font-bold">
             What our
             <br />
@@ -57,10 +57,10 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative bg-[#071A0E] rounded-2xl border border-[#34D399]/[0.06] p-8 hover:border-[#34D399]/15 transition-all duration-400"
+              className="group relative bg-[#071A0E] rounded-2xl border border-[#6EE7B7]/[0.06] p-8 hover:border-[#6EE7B7]/15 transition-all duration-400"
             >
               {/* Subtle glow on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-[#34D399]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className="absolute inset-0 rounded-2xl bg-[#6EE7B7]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
               {/* Stat highlight */}
               <div className="relative z-10 mb-6 pb-6 border-b border-white/[0.06]">
@@ -77,8 +77,8 @@ export default function Testimonials() {
 
               {/* Attribution */}
               <div className="relative z-10 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#34D399]/10 flex items-center justify-center">
-                  <span className="text-[13px] font-semibold text-[#34D399]">
+                <div className="w-10 h-10 rounded-full bg-[#6EE7B7]/10 flex items-center justify-center">
+                  <span className="text-[13px] font-semibold text-[#6EE7B7]">
                     {t.name.split(" ").map(w => w[0]).join("")}
                   </span>
                 </div>

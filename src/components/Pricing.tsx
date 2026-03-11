@@ -46,7 +46,7 @@ export default function Pricing() {
     <section id="pricing" ref={containerRef} className="relative w-full bg-[#FAFAF8] py-28 md:py-36 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div style={{ opacity: opacityTitle }} className="mb-16 md:mb-20 text-center">
-          <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Pricing</span>
+          <span className="text-[13px] text-[#6EE7B7] mb-4 block font-mono tracking-wider uppercase">Pricing</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] text-[#1A1A1A] font-bold mb-4">
             Simple, transparent
             <br />
@@ -67,12 +67,12 @@ export default function Pricing() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className={`relative glow-card bg-white rounded-2xl border p-8 transition-all duration-400 ${
                 plan.popular
-                  ? "border-[#34D399]/20 shadow-glow"
-                  : "border-[#F0F0EC] hover:border-[#34D399]/10"
+                  ? "border-[#6EE7B7]/20 shadow-glow"
+                  : "border-[#F0F0EC] hover:border-[#6EE7B7]/10"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-6 px-3 py-1 bg-[#34D399] text-[#030F07] text-[11px] font-semibold rounded-full shadow-[0_0_15px_rgba(52,211,153,0.3)]">
+                <div className="absolute -top-3 left-6 px-3 py-1 bg-[#6EE7B7] text-[#030F07] text-[11px] font-semibold rounded-full shadow-[0_0_15px_rgba(110,231,183,0.3)]">
                   Most Popular
                 </div>
               )}
@@ -90,7 +90,7 @@ export default function Pricing() {
               <div className="space-y-3 mb-8">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-2.5">
-                    <svg className="w-4 h-4 mt-0.5 shrink-0 text-[#34D399]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <svg className="w-4 h-4 mt-0.5 shrink-0 text-[#6EE7B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-[13px] text-[#6B6B6B]">{feature}</span>
@@ -102,7 +102,7 @@ export default function Pricing() {
                 href="/register"
                 className={`block text-center py-3.5 text-[14px] font-semibold rounded-full transition-all duration-300 ${
                   plan.popular
-                    ? "bg-[#34D399] text-[#030F07] hover:bg-[#6EE7B7] shadow-[0_0_20px_rgba(52,211,153,0.15)]"
+                    ? "bg-[#6EE7B7] text-[#030F07] hover:bg-[#A7F3D0] shadow-[0_0_20px_rgba(110,231,183,0.15)]"
                     : "bg-[#030F07] text-white hover:bg-[#071A0E]"
                 }`}
               >
@@ -128,7 +128,7 @@ export default function Pricing() {
           </div>
           <Link
             href="/register"
-            className="shrink-0 group px-6 py-3 text-[14px] font-medium text-[#1A1A1A] rounded-full border border-[#E8E8E4] hover:border-[#34D399]/30 hover:bg-[#34D399]/5 transition-all duration-300 inline-flex items-center gap-2"
+            className="shrink-0 group px-6 py-3 text-[14px] font-medium text-[#1A1A1A] rounded-full border border-[#E8E8E4] hover:border-[#6EE7B7]/30 hover:bg-[#6EE7B7]/5 transition-all duration-300 inline-flex items-center gap-2"
           >
             Learn More
             <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -39,7 +39,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-[#030F07] relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#34D399] rounded-full blur-[300px] opacity-[0.05] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#6EE7B7] rounded-full blur-[300px] opacity-[0.05] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -57,7 +57,7 @@ export default function RegisterPage() {
           <p className="text-[14px] text-white/40">Get started in under 2 minutes</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-[#071A0E] rounded-2xl border border-[#34D399]/[0.06] p-8 space-y-5">
+        <form onSubmit={handleSubmit} className="bg-[#071A0E] rounded-2xl border border-[#6EE7B7]/[0.06] p-8 space-y-5">
           {error && (
             <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-[13px]">
               {error}
@@ -102,7 +102,7 @@ export default function RegisterPage() {
             type="submit"
             disabled={loading}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 bg-[#34D399] text-[#030F07] font-semibold text-[14px] rounded-full hover:bg-[#6EE7B7] transition-all duration-300 disabled:opacity-50 shadow-[0_0_20px_rgba(52,211,153,0.2)] flex items-center justify-center gap-2"
+            className="w-full py-3.5 bg-[#6EE7B7] text-[#030F07] font-semibold text-[14px] rounded-full hover:bg-[#A7F3D0] transition-all duration-300 disabled:opacity-50 shadow-[0_0_20px_rgba(110,231,183,0.2)] flex items-center justify-center gap-2"
           >
             {loading && (
               <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ export default function RegisterPage() {
 
           <p className="text-center text-[13px] text-white/30">
             Already have an account?{" "}
-            <Link href="/login" className="text-[#34D399] font-medium hover:underline">
+            <Link href="/login" className="text-[#6EE7B7] font-medium hover:underline">
               Sign in
             </Link>
           </p>

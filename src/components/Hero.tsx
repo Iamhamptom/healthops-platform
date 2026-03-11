@@ -43,11 +43,11 @@ export default function Hero() {
       {/* Gradient mesh background */}
       <div className="absolute inset-0 z-0">
         {/* Large green glow — top center */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[900px] h-[600px] bg-[#34D399] rounded-full blur-[300px] opacity-[0.07]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[900px] h-[600px] bg-[#6EE7B7] rounded-full blur-[300px] opacity-[0.07]" />
         {/* Cyan accent glow — bottom right */}
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#2DD4BF] rounded-full blur-[250px] opacity-[0.05]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#5EEAD4] rounded-full blur-[250px] opacity-[0.05]" />
         {/* Dark green glow — left */}
-        <div className="absolute top-1/2 left-0 w-[400px] h-[600px] bg-[#059669] rounded-full blur-[200px] opacity-[0.04]" />
+        <div className="absolute top-1/2 left-0 w-[400px] h-[600px] bg-[#10B981] rounded-full blur-[200px] opacity-[0.04]" />
       </div>
 
       {/* Hero background image — glossy green at low opacity */}
@@ -69,7 +69,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-0 opacity-[0.03]"
         style={{
-          backgroundImage: "linear-gradient(rgba(52,211,153,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.3) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(110,231,183,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.3) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -85,8 +85,8 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#34D399]/20 bg-[#34D399]/5 backdrop-blur-sm text-[13px] text-[#34D399] font-mono">
-            <span className="w-2 h-2 rounded-full bg-[#34D399] animate-soft-pulse" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#6EE7B7]/20 bg-[#6EE7B7]/5 backdrop-blur-sm text-[13px] text-[#6EE7B7] font-mono">
+            <span className="w-2 h-2 rounded-full bg-[#6EE7B7] animate-soft-pulse" />
             AI-powered patient operations
           </span>
         </motion.div>
@@ -135,7 +135,7 @@ export default function Hero() {
         >
           <Link
             href="/register"
-            className="group relative px-8 py-3.5 bg-[#34D399] text-[#030F07] text-[15px] font-semibold rounded-full hover:bg-[#6EE7B7] transition-all duration-300 shadow-[0_0_30px_rgba(52,211,153,0.3)] hover:shadow-[0_0_50px_rgba(52,211,153,0.4)] inline-flex items-center gap-2"
+            className="group relative px-8 py-3.5 bg-[#6EE7B7] text-[#030F07] text-[15px] font-semibold rounded-full hover:bg-[#A7F3D0] transition-all duration-300 shadow-[0_0_30px_rgba(110,231,183,0.3)] hover:shadow-[0_0_50px_rgba(110,231,183,0.4)] inline-flex items-center gap-2"
           >
             Start building
             <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -144,7 +144,7 @@ export default function Hero() {
           </Link>
           <Link
             href="/about"
-            className="group px-8 py-3.5 text-[15px] text-white/60 rounded-full border border-white/10 hover:border-[#34D399]/30 hover:text-white hover:bg-white/[0.03] transition-all duration-300 inline-flex items-center gap-2"
+            className="group px-8 py-3.5 text-[15px] text-white/60 rounded-full border border-white/10 hover:border-[#6EE7B7]/30 hover:text-white hover:bg-white/[0.03] transition-all duration-300 inline-flex items-center gap-2"
           >
             Book a demo
             <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -161,7 +161,7 @@ export default function Hero() {
           className="mt-16 flex flex-wrap items-center justify-center gap-6 text-[13px] text-white/30 font-mono"
         >
           <span className="flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-[#34D399]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-4 h-4 text-[#6EE7B7]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
             POPIA Compliant

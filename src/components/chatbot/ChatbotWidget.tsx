@@ -72,7 +72,7 @@ export default function ChatbotWidget() {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-[#34D399] shadow-[0_0_20px_rgba(52,211,153,0.3)] flex items-center justify-center hover:bg-[#6EE7B7] hover:shadow-[0_0_30px_rgba(52,211,153,0.4)] transition-all duration-300 z-50"
+            className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-[#6EE7B7] shadow-[0_0_20px_rgba(110,231,183,0.3)] flex items-center justify-center hover:bg-[#A7F3D0] hover:shadow-[0_0_30px_rgba(110,231,183,0.4)] transition-all duration-300 z-50"
           >
             <svg className="w-6 h-6 text-[#030F07]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
@@ -89,18 +89,18 @@ export default function ChatbotWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-6 right-6 w-[380px] h-[520px] rounded-2xl bg-[#030F07] border border-[#34D399]/[0.06] shadow-2xl shadow-black/20 flex flex-col overflow-hidden z-50"
+            className="fixed bottom-6 right-6 w-[380px] h-[520px] rounded-2xl bg-[#030F07] border border-[#6EE7B7]/[0.06] shadow-2xl shadow-black/20 flex flex-col overflow-hidden z-50"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/[0.04]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#34D399]/10 flex items-center justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
+                <div className="w-8 h-8 rounded-full bg-[#6EE7B7]/10 flex items-center justify-center">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#6EE7B7]" />
                 </div>
                 <div>
                   <div className="text-[13px] font-semibold text-white">VisioHealth Assistant</div>
-                  <div className="text-[11px] text-[#34D399] flex items-center gap-1 font-mono">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse" />
+                  <div className="text-[11px] text-[#6EE7B7] flex items-center gap-1 font-mono">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#6EE7B7] animate-pulse" />
                     Online
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export default function ChatbotWidget() {
                 >
                   <div className={`max-w-[80%] px-3.5 py-2.5 text-[13px] leading-relaxed ${
                     msg.role === "user"
-                      ? "bg-[#34D399] text-[#030F07] rounded-2xl rounded-br-md"
+                      ? "bg-[#6EE7B7] text-[#030F07] rounded-2xl rounded-br-md"
                       : "bg-[#071A0E] text-white/70 rounded-2xl rounded-bl-md border border-white/[0.04]"
                   }`}>
                     {msg.content}
@@ -145,9 +145,9 @@ export default function ChatbotWidget() {
               {loading && (
                 <div className="flex justify-start">
                   <div className="px-3.5 py-3 rounded-2xl rounded-bl-md bg-[#071A0E] border border-white/[0.04] flex gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#34D399]/40 animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#34D399]/40 animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#34D399]/40 animate-bounce" style={{ animationDelay: "300ms" }} />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#6EE7B7]/40 animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#6EE7B7]/40 animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#6EE7B7]/40 animate-bounce" style={{ animationDelay: "300ms" }} />
                   </div>
                 </div>
               )}
@@ -161,12 +161,12 @@ export default function ChatbotWidget() {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="Ask me anything..."
-                className="flex-1 px-3.5 py-2.5 bg-[#071A0E] border border-white/[0.04] rounded-xl text-[13px] text-white placeholder:text-white/20 focus:outline-none focus:border-[#34D399]/20 focus:ring-2 focus:ring-[#34D399]/5 transition-all"
+                className="flex-1 px-3.5 py-2.5 bg-[#071A0E] border border-white/[0.04] rounded-xl text-[13px] text-white placeholder:text-white/20 focus:outline-none focus:border-[#6EE7B7]/20 focus:ring-2 focus:ring-[#6EE7B7]/5 transition-all"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="p-2.5 bg-[#34D399] rounded-xl hover:bg-[#6EE7B7] disabled:opacity-30 transition-all"
+                className="p-2.5 bg-[#6EE7B7] rounded-xl hover:bg-[#A7F3D0] disabled:opacity-30 transition-all"
               >
                 <svg className="w-4 h-4 text-[#030F07]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />

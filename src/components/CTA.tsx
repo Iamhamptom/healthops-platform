@@ -15,8 +15,8 @@ export default function CTA() {
           className="relative bg-[#030F07] rounded-3xl p-10 md:p-16 text-center overflow-hidden"
         >
           {/* Green gradient orbs */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[500px] h-[500px] bg-[#34D399] rounded-full blur-[250px] opacity-[0.12] pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#2DD4BF] rounded-full blur-[200px] opacity-[0.06] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[500px] h-[500px] bg-[#6EE7B7] rounded-full blur-[250px] opacity-[0.12] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#5EEAD4] rounded-full blur-[200px] opacity-[0.06] pointer-events-none" />
 
           {/* CTA orbs background image */}
           <img src="/images/cta-orbs.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.15] mix-blend-screen" />
@@ -25,7 +25,7 @@ export default function CTA() {
           <div
             className="absolute inset-0 opacity-[0.03]"
             style={{
-              backgroundImage: "linear-gradient(rgba(52,211,153,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.4) 1px, transparent 1px)",
+              backgroundImage: "linear-gradient(rgba(110,231,183,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.4) 1px, transparent 1px)",
               backgroundSize: "50px 50px",
             }}
           />
@@ -42,7 +42,7 @@ export default function CTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/register"
-                className="group px-8 py-3.5 bg-[#34D399] text-[#030F07] text-[15px] font-semibold rounded-full hover:bg-[#6EE7B7] transition-all duration-300 shadow-[0_0_30px_rgba(52,211,153,0.3)] hover:shadow-[0_0_50px_rgba(52,211,153,0.4)] inline-flex items-center gap-2"
+                className="group px-8 py-3.5 bg-[#6EE7B7] text-[#030F07] text-[15px] font-semibold rounded-full hover:bg-[#A7F3D0] transition-all duration-300 shadow-[0_0_30px_rgba(110,231,183,0.3)] hover:shadow-[0_0_50px_rgba(110,231,183,0.4)] inline-flex items-center gap-2"
               >
                 Start 14-Day Free Trial
                 <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -51,7 +51,7 @@ export default function CTA() {
               </Link>
               <Link
                 href="/about"
-                className="px-8 py-3.5 text-[15px] text-white/50 rounded-full border border-white/10 hover:border-[#34D399]/30 hover:text-white/70 transition-all duration-300"
+                className="px-8 py-3.5 text-[15px] text-white/50 rounded-full border border-white/10 hover:border-[#6EE7B7]/30 hover:text-white/70 transition-all duration-300"
               >
                 Book a Demo
               </Link>

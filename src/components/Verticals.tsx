@@ -8,25 +8,25 @@ const verticals = [
     id: "dentist", title: "Dentists", subtitle: "Private Practice Suite",
     features: ["WhatsApp AI receptionist with dental FAQ", "6-month recall automation", "Invisalign & whitening follow-ups", "Deposit enforcement for implants/cosmetic", "Post-treatment review requests", "Waitlist fill for cancellations"],
     stat: "35%", statLabel: "fewer no-shows on average",
-    gradient: "from-[#34D399] to-[#10B981]",
+    gradient: "from-[#6EE7B7] to-[#34D399]",
   },
   {
     id: "radiology", title: "Radiology", subtitle: "Imaging Ops Suite",
     features: ["Referral intake router (email/WhatsApp/web)", "Structured job card creation", "Automated prep instructions (contrast/fasting)", "Missing info requests to referring docs", "Report delivery confirmation", "Urgent findings escalation workflow"],
     stat: "60%", statLabel: "faster referral processing",
-    gradient: "from-[#10B981] to-[#059669]",
+    gradient: "from-[#34D399] to-[#10B981]",
   },
   {
     id: "wellness", title: "Spas & Wellness", subtitle: "Wellness Edition",
     features: ["Treatment rebooking reminders", "Package expiry nudges", "Membership renewal automation", "Seasonal promo campaign blasts", "WhatsApp booking + gift vouchers", "Client retention scoring"],
     stat: "28%", statLabel: "increase in rebookings",
-    gradient: "from-[#2DD4BF] to-[#34D399]",
+    gradient: "from-[#5EEAD4] to-[#6EE7B7]",
   },
   {
     id: "hospital", title: "Hospitals", subtitle: "Enterprise Suite",
     features: ["Multi-department triage bots", "Patient queue & flow updates", "Complaint routing & resolution", "Staff SOP assistant", "Bulk patient communications", "Executive KPI dashboards"],
     stat: "40%", statLabel: "reduction in call volume",
-    gradient: "from-[#059669] to-[#047857]",
+    gradient: "from-[#10B981] to-[#059669]",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function Verticals() {
     <section ref={containerRef} className="relative w-full bg-[#FAFAF8] py-28 md:py-36 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div style={{ opacity: opacityTitle }} className="mb-12 md:mb-16 text-center">
-          <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Verticals</span>
+          <span className="text-[13px] text-[#6EE7B7] mb-4 block font-mono tracking-wider uppercase">Verticals</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] text-[#1A1A1A] font-bold">
             Built for
             <br />
@@ -57,8 +57,8 @@ export default function Verticals() {
               onClick={() => setActive(v.id)}
               className={`px-5 py-2.5 text-[13px] font-medium rounded-full transition-all duration-300 ${
                 active === v.id
-                  ? "bg-[#030F07] text-[#34D399] shadow-[0_0_20px_rgba(52,211,153,0.1)]"
-                  : "bg-white text-[#6B6B6B] border border-[#E8E8E4] hover:border-[#34D399]/20 hover:text-[#059669]"
+                  ? "bg-[#030F07] text-[#6EE7B7] shadow-[0_0_20px_rgba(110,231,183,0.1)]"
+                  : "bg-white text-[#6B6B6B] border border-[#E8E8E4] hover:border-[#6EE7B7]/20 hover:text-[#10B981]"
               }`}
             >
               {v.title}
@@ -92,8 +92,8 @@ export default function Verticals() {
                     transition={{ delay: i * 0.05 }}
                     className="flex items-start gap-3"
                   >
-                    <div className="w-5 h-5 rounded-full bg-[#34D399]/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <svg className="w-3 h-3 text-[#34D399]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <div className="w-5 h-5 rounded-full bg-[#6EE7B7]/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-[#6EE7B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -113,7 +113,7 @@ export default function Verticals() {
                 <div
                   className="absolute inset-0 opacity-[0.04]"
                   style={{
-                    backgroundImage: "linear-gradient(rgba(52,211,153,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.4) 1px, transparent 1px)",
+                    backgroundImage: "linear-gradient(rgba(110,231,183,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.4) 1px, transparent 1px)",
                     backgroundSize: "40px 40px",
                   }}
                 />
@@ -135,7 +135,7 @@ export default function Verticals() {
                     </div>
                   </div>
                   <div className="flex">
-                    <div className="max-w-[75%] px-4 py-2.5 bg-[#34D399]/10 text-[#1A1A1A] text-[13px] rounded-2xl rounded-bl-md">
+                    <div className="max-w-[75%] px-4 py-2.5 bg-[#6EE7B7]/10 text-[#1A1A1A] text-[13px] rounded-2xl rounded-bl-md">
                       Welcome! I&apos;d be happy to help. What type of appointment?
                     </div>
                   </div>
@@ -145,7 +145,7 @@ export default function Verticals() {
                     </div>
                   </div>
                   <div className="flex">
-                    <div className="max-w-[75%] px-4 py-2.5 bg-[#34D399]/10 text-[#1A1A1A] text-[13px] rounded-2xl rounded-bl-md">
+                    <div className="max-w-[75%] px-4 py-2.5 bg-[#6EE7B7]/10 text-[#1A1A1A] text-[13px] rounded-2xl rounded-bl-md">
                       I have Tue at 10am or Thu at 2pm. Which works?
                     </div>
                   </div>
