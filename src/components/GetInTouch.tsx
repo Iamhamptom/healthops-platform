@@ -74,9 +74,31 @@ const stagger = {
 
 export default function GetInTouch() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      practice: (form.elements.namedItem("practice") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+    } catch {
+      // Still show success — we have the email fallback
+    }
+
+    setSubmitting(false);
     setSubmitted(true);
   }
 
@@ -157,31 +179,36 @@ export default function GetInTouch() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your name"
                   required
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder:text-white/30 focus:border-green-400/40 focus:outline-none transition-colors"
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email address"
                   required
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder:text-white/30 focus:border-green-400/40 focus:outline-none transition-colors"
                 />
                 <input
                   type="text"
+                  name="practice"
                   placeholder="Practice name"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder:text-white/30 focus:border-green-400/40 focus:outline-none transition-colors"
                 />
                 <textarea
+                  name="message"
                   placeholder="Tell us about your practice..."
                   rows={4}
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder:text-white/30 focus:border-green-400/40 focus:outline-none transition-colors resize-none"
                 />
                 <button
                   type="submit"
-                  className="bg-green-600 text-white rounded-full px-8 py-3 font-mono text-sm hover:bg-green-500 transition-colors"
+                  disabled={submitting}
+                  className="bg-green-600 text-white rounded-full px-8 py-3 font-mono text-sm hover:bg-green-500 disabled:opacity-50 transition-colors"
                 >
-                  Send message
+                  {submitting ? "Sending..." : "Send message"}
                 </button>
               </form>
             )}

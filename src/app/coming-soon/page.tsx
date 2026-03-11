@@ -100,10 +100,24 @@ const cardVariants = {
 export default function ComingSoonPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleNotify(e: React.FormEvent) {
+  async function handleNotify(e: React.FormEvent) {
     e.preventDefault();
     if (!email.trim()) return;
+    setSubmitting(true);
+
+    try {
+      await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+    } catch {
+      // Still show success
+    }
+
+    setSubmitting(false);
     setSubmitted(true);
     setEmail("");
   }
@@ -264,9 +278,10 @@ export default function ComingSoonPage() {
                 />
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3 rounded-full bg-green-600 text-white text-sm font-mono tracking-wide hover:bg-green-500 transition-colors duration-300"
+                  disabled={submitting}
+                  className="w-full sm:w-auto px-8 py-3 rounded-full bg-green-600 text-white text-sm font-mono tracking-wide hover:bg-green-500 disabled:opacity-50 transition-colors duration-300"
                 >
-                  Notify Me
+                  {submitting ? "..." : "Notify Me"}
                 </button>
               </form>
             )}

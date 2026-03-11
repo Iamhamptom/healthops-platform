@@ -8,7 +8,10 @@ interface IntroProps {
 }
 
 /* Floating particle — reduced count, subtler */
-function Particle({ delay, x, y, size }: { delay: number; x: number; y: number; size: number }) {
+function Particle({ delay, x, y, size, opacity, driftX, driftX2, duration }: {
+  delay: number; x: number; y: number; size: number;
+  opacity: number; driftX: number; driftX2: number; duration: number;
+}) {
   return (
     <motion.div
       className="absolute rounded-full"
@@ -17,17 +20,17 @@ function Particle({ delay, x, y, size }: { delay: number; x: number; y: number; 
         height: size,
         left: `${x}%`,
         top: `${y}%`,
-        background: `radial-gradient(circle, rgba(74,222,128,${0.15 + Math.random() * 0.25}) 0%, transparent 70%)`,
+        background: `radial-gradient(circle, rgba(74,222,128,${opacity}) 0%, transparent 70%)`,
       }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{
         opacity: [0, 0.6, 0.3, 0.6, 0],
         scale: [0, 1, 0.8, 1.1, 0],
         y: [0, -30, -15, -40, -60],
-        x: [0, Math.random() * 20 - 10, Math.random() * 10 - 5],
+        x: [0, driftX, driftX2],
       }}
       transition={{
-        duration: 6 + Math.random() * 4,
+        duration,
         delay,
         repeat: Infinity,
         ease: "easeInOut",
@@ -58,6 +61,12 @@ function GlowRing({ radius, delay, duration }: { radius: number; delay: number; 
   );
 }
 
+// Seeded random for SSR/client consistency
+function seeded(seed: number) {
+  const x = Math.sin(seed * 9301 + 49297) * 49297;
+  return x - Math.floor(x);
+}
+
 export default function Intro({ onEnter }: IntroProps) {
   const [ready, setReady] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -65,7 +74,6 @@ export default function Intro({ onEnter }: IntroProps) {
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), 300);
-    // Auto-enter after 3s — don't make visitors wait
     const autoEnter = setTimeout(() => onEnter(), 3000);
     return () => {
       clearTimeout(t);
@@ -81,13 +89,17 @@ export default function Intro({ onEnter }: IntroProps) {
     });
   }, []);
 
-  // 15 particles (reduced from 30)
+  // 15 particles — deterministic so server/client match
   const particles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
-    delay: i * 0.5 + Math.random() * 2,
-    x: Math.random() * 100,
-    y: 30 + Math.random() * 60,
-    size: 3 + Math.random() * 8,
+    delay: i * 0.5 + seeded(i) * 2,
+    x: seeded(i + 100) * 100,
+    y: 30 + seeded(i + 200) * 60,
+    size: 3 + seeded(i + 300) * 8,
+    opacity: 0.15 + seeded(i + 400) * 0.25,
+    driftX: seeded(i + 500) * 20 - 10,
+    driftX2: seeded(i + 600) * 10 - 5,
+    duration: 6 + seeded(i + 700) * 4,
   }));
 
   return (
@@ -130,7 +142,7 @@ export default function Intro({ onEnter }: IntroProps) {
 
       {/* Floating particles */}
       {particles.map((p) => (
-        <Particle key={p.id} delay={p.delay} x={p.x} y={p.y} size={p.size} />
+        <Particle key={p.id} delay={p.delay} x={p.x} y={p.y} size={p.size} opacity={p.opacity} driftX={p.driftX} driftX2={p.driftX2} duration={p.duration} />
       ))}
 
       {/* Concentric glow rings — subtle */}
