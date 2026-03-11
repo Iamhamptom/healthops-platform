@@ -6,30 +6,37 @@ import Image from "next/image";
 const steps = [
   {
     number: "01",
-    title: "Patient Reaches Out",
+    title: "We Find Your Patients",
     description:
-      "Via WhatsApp, website, or any channel — VisioHealth captures every enquiry instantly.",
+      "Our Signal Lead Gen system identifies people in your area who need healthcare services. AI analyzes demographics, search patterns, and health signals.",
     image: "/images/step-whatsapp.png",
   },
   {
     number: "02",
-    title: "AI Handles the Conversation",
+    title: "AI Reaches Out",
     description:
-      "Answers FAQs, collects details, qualifies urgency, and routes complex queries to your team.",
+      "Automated, personalized outreach via WhatsApp, SMS, and calls. Each message is crafted by AI to convert prospects into bookings.",
     image: "/images/step-ai-chat.png",
   },
   {
     number: "03",
-    title: "Booking Confirmed & Paid",
+    title: "Patients Book Instantly",
     description:
-      "Slot reserved, deposit collected, prep instructions sent, reminders scheduled automatically.",
+      "Our smart booking engine lets patients choose a time, confirm, and get added to your calendar — all without your team lifting a finger.",
     image: "/images/step-booking.png",
   },
   {
     number: "04",
-    title: "Retain & Grow",
+    title: "Nobody Misses Appointments",
     description:
-      "Post-visit reviews, recall reminders, and reactivation campaigns keep patients coming back.",
+      "Automated reminders, confirmations, and callback sequences ensure patients show up. No-shows drop dramatically.",
+    image: "/images/step-followup.png",
+  },
+  {
+    number: "05",
+    title: "Ongoing Engagement",
+    description:
+      "After the visit, our AI sends follow-ups, recall reminders, newsletters, and health tips. Patients come back, and they refer friends.",
     image: "/images/step-followup.png",
   },
 ];
@@ -80,11 +87,11 @@ export default function HowItWorks() {
             How It Works
           </span>
           <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-gray-900 max-w-lg mb-6">
-            From enquiry to loyalty.
+            From stranger to loyal patient.
           </h2>
           <p className="text-gray-500 text-sm font-light leading-relaxed max-w-md">
-            Four steps that transform how your practice handles patients — from
-            first message to long-term retention.
+            Five steps that transform how your practice grows — from finding new
+            patients to keeping them for life.
           </p>
         </motion.div>
 

@@ -21,7 +21,7 @@ const values = [
   {
     title: "AI That Actually Works",
     description:
-      "Our WhatsApp AI handles real conversations, not scripted decision trees. Patients can't tell the difference.",
+      "Our autonomous agents handle real operations — lead gen, outreach, booking, reminders — not scripted decision trees.",
   },
   {
     title: "Relationships First",
@@ -32,34 +32,34 @@ const values = [
 
 const aiCapabilities = [
   {
-    title: "AI Triage Agent",
+    title: "Signal Lead Gen Agent",
     description:
-      "Instantly assesses patient urgency — EMERGENCY, URGENT, SEMI-URGENT, or ROUTINE.",
+      "Scans the market to identify high-intent prospects who need healthcare services in your area.",
   },
   {
-    title: "Voice AI",
+    title: "Outreach Automation Agent",
     description:
-      "Natural voice responses powered by ElevenLabs. Your practice sounds professional 24/7.",
+      "Multi-channel outreach via WhatsApp, SMS, and automated calls — personalized messages at scale.",
   },
   {
-    title: "WhatsApp Front Desk",
+    title: "Booking & Calendar Agent",
     description:
-      "AI handles patient messages like a human receptionist — booking, pricing, reminders, triage.",
+      "Manages your entire calendar — instant booking, conflict prevention, and slot optimization.",
   },
   {
-    title: "Intake Agent",
+    title: "Reminder & Callback Agent",
     description:
-      "Pre-appointment data collection via conversational AI. Symptoms, medications, allergies.",
+      "Automated reminders, confirmations, and callback sequences that reduce no-shows by up to 60%.",
   },
   {
-    title: "Follow-up Agent",
+    title: "Newsletter Agent",
     description:
-      "Post-procedure check-ins at 24hr and 72hr. Recall reminders. Birthday wellness messages.",
+      "Sends automated newsletters, health tips, seasonal campaigns, and recall reminders to keep patients engaged.",
   },
   {
-    title: "Smart Scheduling",
+    title: "Intake & Triage Agent",
     description:
-      "Visual calendar with slot availability, conflict prevention, and AI-recommended times.",
+      "Pre-appointment data collection, urgency assessment, and 24/7 patient inquiry handling.",
   },
 ];
 
@@ -195,8 +195,9 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="text-base text-white/50 max-w-2xl mx-auto leading-relaxed"
           >
-            VisioHealth combines AI agents, voice tech, and clinical
-            intelligence to transform how healthcare practices operate.
+            VisioHealth is an autonomous AI system that finds patients, fills
+            calendars, and runs practice operations — from lead generation to
+            follow-up care.
           </motion.p>
 
           <motion.div
@@ -273,9 +274,10 @@ export default function AboutPage() {
               </h2>
               <p className="text-[15px] text-gray-500 leading-relaxed mb-6">
                 Founded in South Africa, VisioHealth was born from a simple
-                observation: healthcare practices spend more time on admin than
-                on patients. We built an AI-powered operating system that handles
-                the ops — so practitioners can focus on care.
+                observation: healthcare practices struggle to find new patients
+                and waste hours on admin. We built an autonomous AI system that
+                handles lead generation, outreach automation, and booking
+                management — so practitioners can focus on care.
               </p>
               <p className="text-[15px] text-gray-500 leading-relaxed">
                 Studies show most people find it hard to walk through that door —
@@ -319,8 +321,8 @@ export default function AboutPage() {
               AI Agent Suite
             </h2>
             <p className="text-[15px] text-gray-500 max-w-xl mx-auto leading-relaxed">
-              Five specialized AI agents work around the clock — triaging
-              emergencies, booking appointments, and collecting intake data.
+              Six autonomous AI agents work around the clock — finding patients,
+              automating outreach, managing bookings, and running your operations.
             </p>
           </motion.div>
 

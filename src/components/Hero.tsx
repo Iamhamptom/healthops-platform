@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from "fram
 import Image from "next/image";
 import Link from "next/link";
 
-const swapWords = ["autopilot", "AI power", "efficiency", "growth"];
+const swapWords = ["lead generation", "patient acquisition", "booking automation", "practice growth"];
 
 const stagger = {
   hidden: {},
@@ -168,7 +168,7 @@ export default function Hero() {
         {/* Top label */}
         <motion.div variants={fadeUp} className="mb-8">
           <span className="uppercase tracking-[0.3em] text-xs text-white/25 font-mono">
-            AI-powered patient operations
+            Autonomous AI practice operations
           </span>
         </motion.div>
 
@@ -213,8 +213,9 @@ export default function Hero() {
           variants={fadeUp}
           className="text-lg text-white/40 font-light max-w-2xl mx-auto mt-8 leading-relaxed"
         >
-          WhatsApp AI front desk that handles bookings, reminders, and patient
-          communication — so your team can focus on care.
+          VisioHealth is a fully autonomous AI system that finds new patients,
+          fills your calendar, and manages your entire practice — from first
+          contact to follow-up.
         </motion.p>
 
         {/* CTA buttons */}
@@ -226,7 +227,7 @@ export default function Hero() {
             href="/register"
             className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/15 text-white text-sm font-mono hover:border-white/25 hover:shadow-[0_0_40px_rgba(74,222,128,0.08)] transition-all duration-300"
           >
-            Start building
+            Start Growing
             <svg
               className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
               fill="none"
@@ -245,7 +246,7 @@ export default function Hero() {
             href="/about"
             className="group inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/10 text-white/60 text-sm font-mono hover:border-white/20 hover:text-white transition-all duration-300"
           >
-            Book a demo
+            See How It Works
             <svg
               className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
               fill="none"
@@ -319,3 +320,4 @@ export default function Hero() {
     </section>
   );
 }
+

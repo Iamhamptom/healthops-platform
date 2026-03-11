@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const ctaWords = ["Ready", "to", "put", "your", "practice", "on"];
+const ctaWords = ["Ready", "to", "grow", "your", "practice", "on"];
 
 export default function CTA() {
   return (

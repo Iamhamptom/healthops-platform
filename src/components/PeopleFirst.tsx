@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 const values = [
   {
     number: "01",
-    title: "We bring revenue",
+    title: "We find your patients",
     description:
-      "Our AI fills your calendar with the right patients. Targeted outreach, smart scheduling, and automated follow-ups mean fewer empty slots and more revenue for your practice.",
+      "Our Signal Lead Gen system identifies people in your area who need healthcare but haven\u2019t booked. We bring them to your door through targeted, automated outreach across WhatsApp, SMS, and calls.",
   },
   {
     number: "02",
-    title: "We bring clients",
+    title: "We fill your calendar",
     description:
-      "From WhatsApp marketing to Google visibility, we drive real patients to your door. No cold leads \u2014 qualified, ready-to-book patients who need your services.",
+      "From first contact to confirmed booking, our AI handles the entire journey. Smart scheduling, automated reminders, and no-show prevention mean your calendar stays full and your revenue grows.",
   },
   {
     number: "03",
-    title: "We manage the traffic",
+    title: "We run your practice ops",
     description:
-      "AI handles the flood \u2014 triaging inquiries, booking appointments, sending reminders, and following up. Your receptionist can breathe. Your phone stops ringing off the hook.",
+      "Newsletters, follow-ups, recall campaigns, patient communications \u2014 all automated. Your team focuses on care while our agents handle everything else.",
   },
 ];
 
