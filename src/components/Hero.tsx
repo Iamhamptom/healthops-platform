@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { blurPlaceholders } from "@/lib/blur-placeholders";
 
 const swapWords = ["lead generation", "patient acquisition", "booking automation", "practice growth"];
 
@@ -78,6 +79,8 @@ export default function Hero() {
           alt=""
           fill
           className="object-cover object-center opacity-[0.06]"
+          placeholder="blur"
+          blurDataURL={blurPlaceholders["hero-bg"]}
           priority
         />
       </div>

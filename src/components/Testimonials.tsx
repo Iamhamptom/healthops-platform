@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { blurPlaceholders } from "@/lib/blur-placeholders";
 
 const testimonials = [
   {
@@ -132,6 +133,8 @@ export default function Testimonials() {
                   alt={t.name}
                   fill
                   className="object-cover"
+                  placeholder="blur"
+                  blurDataURL={blurPlaceholders[t.image.replace("/images/", "").replace(".png", "")]}
                 />
               </div>
 

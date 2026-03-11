@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { blurPlaceholders } from "@/lib/blur-placeholders";
 
 const steps = [
   {
@@ -138,6 +139,8 @@ export default function HowItWorks() {
                       alt={step.title}
                       fill
                       className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                      placeholder="blur"
+                      blurDataURL={blurPlaceholders[step.image.replace("/images/", "").replace(".png", "")]}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
                   </div>

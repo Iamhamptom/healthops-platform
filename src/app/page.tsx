@@ -17,6 +17,7 @@ import Intro from "@/components/Intro";
 import PeopleFirst from "@/components/PeopleFirst";
 import Integrations from "@/components/Integrations";
 import GetInTouch from "@/components/GetInTouch";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export default function Home() {
   const [entered, setEntered] = useState(false);
@@ -50,6 +51,7 @@ export default function Home() {
             <CTA />
             <Footer />
             <ChatbotWidget />
+            <WhatsAppFloat />
           </motion.div>
         )}
       </AnimatePresence>

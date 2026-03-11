@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { blurPlaceholders } from "@/lib/blur-placeholders";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
@@ -233,6 +234,8 @@ export default function AboutPage() {
               alt="Our diverse healthcare team"
               fill
               className="object-cover"
+              placeholder="blur"
+              blurDataURL={blurPlaceholders["about-team"]}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
             <div className="absolute bottom-6 left-8">
@@ -299,6 +302,8 @@ export default function AboutPage() {
                 alt="Modern African healthcare clinic"
                 fill
                 className="object-cover rounded-2xl"
+                placeholder="blur"
+                blurDataURL={blurPlaceholders["about-clinic"]}
               />
             </motion.div>
           </div>
@@ -388,6 +393,8 @@ export default function AboutPage() {
               alt="Modern African dental clinic"
               fill
               className="object-cover"
+              placeholder="blur"
+              blurDataURL={blurPlaceholders["about-clinic"]}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#052E16]/40 via-transparent to-[#052E16]/40" />
           </motion.div>
