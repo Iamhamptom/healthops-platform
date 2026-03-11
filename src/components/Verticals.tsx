@@ -1,159 +1,185 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const verticals = [
   {
-    id: "dentist", title: "Dentists", subtitle: "Private Practice Suite",
-    features: ["WhatsApp AI receptionist with dental FAQ", "6-month recall automation", "Invisalign & whitening follow-ups", "Deposit enforcement for implants/cosmetic", "Post-treatment review requests", "Waitlist fill for cancellations"],
-    stat: "35%", statLabel: "fewer no-shows on average",
-    gradient: "from-[#6EE7B7] to-[#34D399]",
+    id: "dentist",
+    title: "Dentists",
+    subtitle: "Private Practice Suite",
+    icon: (
+      <svg className="w-6 h-6 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+      </svg>
+    ),
+    features: [
+      "WhatsApp AI receptionist with dental FAQ",
+      "6-month recall automation",
+      "Invisalign & whitening follow-ups",
+      "Deposit enforcement for implants/cosmetic",
+      "Post-treatment review requests",
+      "Waitlist fill for cancellations",
+    ],
+    stat: "35%",
+    statLabel: "fewer no-shows on average",
   },
   {
-    id: "radiology", title: "Radiology", subtitle: "Imaging Ops Suite",
-    features: ["Referral intake router (email/WhatsApp/web)", "Structured job card creation", "Automated prep instructions (contrast/fasting)", "Missing info requests to referring docs", "Report delivery confirmation", "Urgent findings escalation workflow"],
-    stat: "60%", statLabel: "faster referral processing",
-    gradient: "from-[#34D399] to-[#10B981]",
+    id: "radiology",
+    title: "Radiology",
+    subtitle: "Imaging Ops Suite",
+    icon: (
+      <svg className="w-6 h-6 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+      </svg>
+    ),
+    features: [
+      "Referral intake router (email/WhatsApp/web)",
+      "Structured job card creation",
+      "Automated prep instructions (contrast/fasting)",
+      "Missing info requests to referring docs",
+      "Report delivery confirmation",
+      "Urgent findings escalation workflow",
+    ],
+    stat: "60%",
+    statLabel: "faster referral processing",
   },
   {
-    id: "wellness", title: "Spas & Wellness", subtitle: "Wellness Edition",
-    features: ["Treatment rebooking reminders", "Package expiry nudges", "Membership renewal automation", "Seasonal promo campaign blasts", "WhatsApp booking + gift vouchers", "Client retention scoring"],
-    stat: "28%", statLabel: "increase in rebookings",
-    gradient: "from-[#5EEAD4] to-[#6EE7B7]",
+    id: "wellness",
+    title: "Spas & Wellness",
+    subtitle: "Wellness Edition",
+    icon: (
+      <svg className="w-6 h-6 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+      </svg>
+    ),
+    features: [
+      "Treatment rebooking reminders",
+      "Package expiry nudges",
+      "Membership renewal automation",
+      "Seasonal promo campaign blasts",
+      "WhatsApp booking + gift vouchers",
+      "Client retention scoring",
+    ],
+    stat: "28%",
+    statLabel: "increase in rebookings",
   },
   {
-    id: "hospital", title: "Hospitals", subtitle: "Enterprise Suite",
-    features: ["Multi-department triage bots", "Patient queue & flow updates", "Complaint routing & resolution", "Staff SOP assistant", "Bulk patient communications", "Executive KPI dashboards"],
-    stat: "40%", statLabel: "reduction in call volume",
-    gradient: "from-[#10B981] to-[#059669]",
+    id: "hospital",
+    title: "Hospitals",
+    subtitle: "Enterprise Suite",
+    icon: (
+      <svg className="w-6 h-6 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+      </svg>
+    ),
+    features: [
+      "Multi-department triage bots",
+      "Patient queue & flow updates",
+      "Complaint routing & resolution",
+      "Staff SOP assistant",
+      "Bulk patient communications",
+      "Executive KPI dashboards",
+    ],
+    stat: "40%",
+    statLabel: "reduction in call volume",
   },
 ];
 
-export default function Verticals() {
-  const [active, setActive] = useState("dentist");
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
-  const opacityTitle = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
-  const current = verticals.find((v) => v.id === active)!;
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+  },
+};
+
+export default function Verticals() {
   return (
-    <section ref={containerRef} className="relative w-full bg-[#FAFAF8] py-28 md:py-36 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section className="relative w-full bg-[#030710] py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#6EE7B7] rounded-full blur-[400px] opacity-[0.03] pointer-events-none" />
+
       <div className="max-w-6xl mx-auto">
-        <motion.div style={{ opacity: opacityTitle }} className="mb-12 md:mb-16 text-center">
-          <span className="text-[13px] text-[#6EE7B7] mb-4 block font-mono tracking-wider uppercase">Verticals</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] text-[#1A1A1A] font-bold">
-            Built for
-            <br />
-            <span className="text-gradient-green">healthcare.</span>
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 md:mb-24"
+        >
+          <span className="text-xs tracking-[0.3em] uppercase text-white/25 font-mono mb-5 block">
+            Verticals
+          </span>
+          <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-white max-w-xl">
+            Built for every corner of healthcare.
           </h2>
         </motion.div>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {verticals.map((v) => (
-            <button
-              key={v.id}
-              onClick={() => setActive(v.id)}
-              className={`px-5 py-2.5 text-[13px] font-medium rounded-full transition-all duration-300 ${
-                active === v.id
-                  ? "bg-[#030F07] text-[#6EE7B7] shadow-[0_0_20px_rgba(110,231,183,0.1)]"
-                  : "bg-white text-[#6B6B6B] border border-[#E8E8E4] hover:border-[#6EE7B7]/20 hover:text-[#10B981]"
-              }`}
-            >
-              {v.title}
-            </button>
-          ))}
-        </div>
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-16" />
 
-        {/* Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-5"
-          >
-            {/* Feature list */}
-            <div className="bg-white rounded-2xl border border-[#F0F0EC] p-8 md:p-10">
-              <div className="mb-6">
-                <h3 className="text-xl font-semibold text-[#1A1A1A] mb-1">{current.title}</h3>
-                <p className="text-[13px] text-[#9B9B9B] font-mono">{current.subtitle}</p>
+        {/* Vertical cards grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+        >
+          {verticals.map((v) => (
+            <motion.div
+              key={v.id}
+              variants={cardVariants}
+              className="group relative bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 hover:border-white/[0.12] hover:-translate-y-0.5 transition-all duration-500"
+            >
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-lg bg-white/[0.04] flex items-center justify-center mb-6">
+                {v.icon}
               </div>
 
-              <div className="space-y-4">
-                {current.features.map((feature, i) => (
-                  <motion.div
-                    key={feature}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="w-5 h-5 rounded-full bg-[#6EE7B7]/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <svg className="w-3 h-3 text-[#6EE7B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="text-[14px] text-[#6B6B6B] leading-relaxed">{feature}</span>
-                  </motion.div>
+              {/* Title + subtitle */}
+              <h3 className="text-white font-medium text-lg mb-1">{v.title}</h3>
+              <p className="text-white/30 text-xs font-mono tracking-wide mb-6">
+                {v.subtitle}
+              </p>
+
+              {/* Features */}
+              <div className="space-y-3 mb-8">
+                {v.features.map((feature) => (
+                  <div key={feature} className="flex items-start gap-3">
+                    <div className="w-1 h-1 rounded-full bg-white/20 mt-2 shrink-0" />
+                    <span className="text-white/40 text-sm font-light leading-relaxed">
+                      {feature}
+                    </span>
+                  </div>
                 ))}
               </div>
-            </div>
 
-            {/* Stat + Chat preview */}
-            <div className="flex flex-col gap-5">
-              {/* Stat card — dark with glow */}
-              <div className="relative bg-[#030F07] rounded-2xl p-8 md:p-10 overflow-hidden">
-                {/* Glow orb */}
-                <div className={`absolute -top-20 -right-20 w-[200px] h-[200px] bg-gradient-to-br ${current.gradient} rounded-full blur-[100px] opacity-20`} />
-                {/* Grid pattern */}
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage: "linear-gradient(rgba(110,231,183,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.4) 1px, transparent 1px)",
-                    backgroundSize: "40px 40px",
-                  }}
-                />
-                <div className="relative z-[3]">
-                  <div className="text-6xl md:text-7xl font-bold text-glow-strong text-gradient-green tracking-tight mb-2">
-                    {current.stat}
-                  </div>
-                  <p className="text-[15px] text-white/40">{current.statLabel}</p>
+              {/* Stat */}
+              <div className="pt-6 border-t border-white/[0.06]">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-white/15 text-6xl font-extralight tracking-tight">
+                    {v.stat}
+                  </span>
+                  <span className="text-white/30 text-xs font-mono">
+                    {v.statLabel}
+                  </span>
                 </div>
               </div>
-
-              {/* Chat preview */}
-              <div className="bg-white rounded-2xl border border-[#F0F0EC] p-6 md:p-8 flex-1">
-                <span className="text-[12px] text-[#9B9B9B] mb-4 block font-mono">Live conversation preview</span>
-                <div className="space-y-3">
-                  <div className="flex justify-end">
-                    <div className="max-w-[75%] px-4 py-2.5 bg-[#030F07] text-white text-[13px] rounded-2xl rounded-br-md">
-                      Hi, I&apos;d like to book an appointment
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="max-w-[75%] px-4 py-2.5 bg-[#6EE7B7]/10 text-[#1A1A1A] text-[13px] rounded-2xl rounded-bl-md">
-                      Welcome! I&apos;d be happy to help. What type of appointment?
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="max-w-[75%] px-4 py-2.5 bg-[#030F07] text-white text-[13px] rounded-2xl rounded-br-md">
-                      Teeth cleaning please
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="max-w-[75%] px-4 py-2.5 bg-[#6EE7B7]/10 text-[#1A1A1A] text-[13px] rounded-2xl rounded-bl-md">
-                      I have Tue at 10am or Thu at 2pm. Which works?
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

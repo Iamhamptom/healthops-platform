@@ -22,7 +22,9 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   return (
@@ -33,42 +35,43 @@ export default function Navbar() {
         transition={{ type: "spring", stiffness: 120, damping: 20 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "py-3 bg-[#030F07]/80 backdrop-blur-xl border-b border-white/[0.04] shadow-[0_1px_3px_rgba(0,0,0,0.2)]"
+            ? "py-3 bg-[#030710]/80 backdrop-blur-xl border-b border-white/[0.04]"
             : "py-5 bg-transparent"
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          {/* Left nav links */}
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-400" />
+            <span className="font-mono text-lg font-light tracking-tight text-white">
+              VisioHealth
+            </span>
+          </Link>
+
+          {/* Center nav links */}
           <div className="hidden md:flex items-center gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-[13px] text-white/50 hover:text-white transition-colors duration-300 rounded-full hover:bg-white/[0.04]"
+                className="px-4 py-2 text-[13px] text-white/40 hover:text-white font-mono tracking-wide transition-colors duration-300"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Center logo */}
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <span className="font-display text-[18px] font-semibold tracking-tight text-white">
-              VisioHealth
-            </span>
-          </Link>
-
           {/* Right auth */}
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/login"
-              className="px-4 py-2 text-[13px] text-white/50 hover:text-white transition-colors duration-300 rounded-full border border-white/10 hover:border-white/20"
+              className="px-4 py-2 text-[13px] text-white/40 hover:text-white font-mono tracking-wide transition-colors duration-300"
             >
               Log In
             </Link>
             <Link
               href="/register"
-              className="px-5 py-2 text-[13px] font-semibold bg-[#6EE7B7] text-[#030F07] rounded-full hover:bg-[#A7F3D0] transition-all duration-300 shadow-[0_0_15px_rgba(110,231,183,0.2)]"
+              className="px-5 py-2 text-[13px] font-mono rounded-full border border-white/10 text-white/60 hover:border-white/20 hover:text-white transition-all duration-300"
             >
               Get Started
             </Link>
@@ -78,18 +81,21 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+            aria-label="Toggle menu"
           >
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block w-5 h-[1.5px] bg-white origin-center"
+              className="block w-5 h-[1.5px] bg-white/60 origin-center"
             />
             <motion.span
               animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block w-5 h-[1.5px] bg-white"
+              className="block w-5 h-[1.5px] bg-white/60"
             />
             <motion.span
-              animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block w-5 h-[1.5px] bg-white origin-center"
+              animate={
+                menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
+              }
+              className="block w-5 h-[1.5px] bg-white/60 origin-center"
             />
           </button>
         </div>
@@ -103,9 +109,9 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#030F07]/98 backdrop-blur-2xl flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-[#030710]/98 backdrop-blur-2xl flex flex-col items-center justify-center"
           >
-            <div className="text-center">
+            <div className="flex flex-col items-center gap-8">
               {links.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -113,35 +119,37 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ delay: i * 0.06, duration: 0.3 }}
-                  className="mb-8"
                 >
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="text-3xl font-bold text-white hover:text-[#6EE7B7] transition-colors duration-300"
+                    className="text-2xl font-mono font-light text-white/40 hover:text-white transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
 
+              {/* Divider */}
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.3 }}
-                className="mt-12 flex flex-col items-center gap-4"
+                transition={{ delay: 0.25, duration: 0.3 }}
+                className="flex flex-col items-center gap-4"
               >
                 <Link
                   href="/login"
                   onClick={() => setMenuOpen(false)}
-                  className="text-[15px] text-white/50 hover:text-white transition-colors"
+                  className="text-[15px] font-mono text-white/40 hover:text-white transition-colors"
                 >
                   Log In
                 </Link>
                 <Link
                   href="/register"
                   onClick={() => setMenuOpen(false)}
-                  className="px-8 py-3 bg-[#6EE7B7] text-[#030F07] rounded-full font-semibold text-[15px] hover:bg-[#A7F3D0] transition-all duration-300 shadow-[0_0_20px_rgba(110,231,183,0.3)]"
+                  className="px-8 py-3 rounded-full border border-white/10 text-white/60 font-mono text-[15px] hover:border-white/20 hover:text-white transition-all duration-300"
                 >
                   Get Started
                 </Link>

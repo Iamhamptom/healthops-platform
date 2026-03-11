@@ -12,13 +12,14 @@ import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
+import Mission from "@/components/Mission";
 import Intro from "@/components/Intro";
 
 export default function Home() {
   const [entered, setEntered] = useState(false);
 
   return (
-    <main className="bg-[#030F07] text-white min-h-screen selection:bg-[#34D399]/20 selection:text-white">
+    <main className="bg-[#030710] text-white min-h-screen selection:bg-[#6EE7B7]/15 selection:text-white">
       {/* Welcome portal — click to enter */}
       <AnimatePresence mode="wait">
         {!entered && <Intro onEnter={() => setEntered(true)} />}
@@ -34,6 +35,7 @@ export default function Home() {
           >
             <Navbar />
             <Hero />
+            <Mission />
             <Features />
             <Verticals />
             <HowItWorks />

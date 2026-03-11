@@ -27,29 +27,31 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.04] py-16 bg-[#030F07]">
+    <footer className="bg-[#030710] border-t border-white/[0.04] py-16">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-display text-[16px] font-semibold text-white">
-                VisioHealth
+            <Link href="/" className="inline-block mb-5">
+              <span className="text-base font-light text-white tracking-tight">
+                Visio<span className="text-[#6EE7B7]/60">.</span>Health
               </span>
             </Link>
-            <p className="text-[13px] text-white/30 leading-relaxed">
+            <p className="text-xs text-white/30 leading-relaxed font-light">
               AI-powered patient operations for healthcare practices in South Africa.
             </p>
           </div>
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-[12px] font-semibold text-white/30 mb-4 uppercase tracking-wider font-mono">{category}</h4>
-              <div className="space-y-2.5">
+              <h4 className="text-xs text-white/50 uppercase tracking-[0.2em] mb-4 font-mono">
+                {category}
+              </h4>
+              <div className="space-y-3">
                 {links.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block text-[13px] text-white/40 hover:text-[#6EE7B7] transition-colors duration-300"
+                    className="block text-xs text-white/30 font-mono hover:text-white/60 transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -62,10 +64,10 @@ export default function Footer() {
         <div className="h-px w-full bg-white/[0.04] mb-8" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[12px] text-white/20 font-mono">
+          <p className="text-[11px] text-white/20 font-mono">
             &copy; {new Date().getFullYear()} VisioHealth Ops by Visio Research Labs
           </p>
-          <p className="text-[12px] text-white/20 font-mono">
+          <p className="text-[11px] text-white/20 font-mono">
             Powered by Visio Research Labs
           </p>
         </div>

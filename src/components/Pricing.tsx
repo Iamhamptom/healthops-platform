@@ -43,21 +43,21 @@ export default function Pricing() {
   const opacityTitle = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
 
   return (
-    <section id="pricing" ref={containerRef} className="relative w-full bg-[#FAFAF8] py-28 md:py-36 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section id="pricing" ref={containerRef} className="relative w-full bg-[#030710] py-32 md:py-40 px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <motion.div style={{ opacity: opacityTitle }} className="mb-16 md:mb-20 text-center">
-          <span className="text-[13px] text-[#6EE7B7] mb-4 block font-mono tracking-wider uppercase">Pricing</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.03em] text-[#1A1A1A] font-bold mb-4">
-            Simple, transparent
-            <br />
-            <span className="text-gradient-green">pricing.</span>
+        <motion.div style={{ opacity: opacityTitle }} className="mb-20 md:mb-24 text-center">
+          <span className="text-xs text-white/25 font-mono uppercase tracking-[0.3em] mb-6 block">
+            Pricing
+          </span>
+          <h2 className="text-4xl md:text-5xl font-light tracking-[-0.03em] text-white mb-5">
+            Simple, transparent pricing
           </h2>
-          <p className="text-[15px] text-[#9B9B9B]">
+          <p className="text-white/40 text-sm font-light max-w-md mx-auto">
             14-day free trial on all plans. No credit card required.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -65,45 +65,47 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`relative glow-card bg-white rounded-2xl border p-8 transition-all duration-400 ${
+              className={`relative rounded-2xl p-8 transition-all duration-400 ${
                 plan.popular
-                  ? "border-[#6EE7B7]/20 shadow-glow"
-                  : "border-[#F0F0EC] hover:border-[#6EE7B7]/10"
+                  ? "bg-white/[0.02] border border-white/[0.12] shadow-[0_0_60px_rgba(110,231,183,0.04)]"
+                  : "bg-white/[0.02] border border-white/[0.06]"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-6 px-3 py-1 bg-[#6EE7B7] text-[#030F07] text-[11px] font-semibold rounded-full shadow-[0_0_15px_rgba(110,231,183,0.3)]">
-                  Most Popular
+                <div className="absolute -top-3 left-8">
+                  <span className="px-3 py-1 text-[10px] uppercase tracking-widest font-mono text-white/60 border border-white/[0.12] rounded-full bg-white/[0.04]">
+                    Recommended
+                  </span>
                 </div>
               )}
 
               <div className="mb-8">
-                <h3 className="text-[16px] font-semibold text-[#1A1A1A] mb-1">{plan.name}</h3>
-                <p className="text-[13px] text-[#9B9B9B] mb-4">{plan.description}</p>
+                <h3 className="text-sm font-mono text-white/50 mb-1 tracking-wide">{plan.name}</h3>
+                <p className="text-xs text-white/30 mb-6 font-light">{plan.description}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-[#1A1A1A] tracking-tight">{plan.price}</span>
-                  <span className="text-[14px] text-[#9B9B9B]">{plan.period}</span>
+                  <span className="text-5xl font-extralight text-white tracking-tight">{plan.price}</span>
+                  <span className="text-sm text-white/30 font-mono">{plan.period}</span>
                 </div>
-                <p className="text-[12px] text-[#9B9B9B] mt-1 font-mono">Setup from {plan.setup}</p>
+                <p className="text-[11px] text-white/20 mt-2 font-mono">Setup from {plan.setup}</p>
               </div>
 
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3 mb-10">
                 {plan.features.map((feature) => (
                   <div key={feature} className="flex items-start gap-2.5">
-                    <svg className="w-4 h-4 mt-0.5 shrink-0 text-[#6EE7B7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-[13px] text-[#6B6B6B]">{feature}</span>
+                    <div className="flex items-center gap-1.5 mt-1.5 shrink-0">
+                      <div className="w-1 h-1 rounded-full bg-[#6EE7B7]/40" />
+                    </div>
+                    <span className="text-sm text-white/40">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <Link
                 href="/register"
-                className={`block text-center py-3.5 text-[14px] font-semibold rounded-full transition-all duration-300 ${
+                className={`block text-center py-3 text-sm font-mono rounded-full transition-all duration-300 ${
                   plan.popular
-                    ? "bg-[#6EE7B7] text-[#030F07] hover:bg-[#A7F3D0] shadow-[0_0_20px_rgba(110,231,183,0.15)]"
-                    : "bg-[#030F07] text-white hover:bg-[#071A0E]"
+                    ? "border border-white/15 text-white hover:border-white/25 hover:shadow-[0_0_40px_rgba(110,231,183,0.08)]"
+                    : "border border-white/10 text-white/60 hover:border-white/20 hover:text-white/80"
                 }`}
               >
                 {plan.cta}
@@ -118,17 +120,17 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-8 max-w-5xl mx-auto bg-white rounded-2xl border border-[#F0F0EC] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-8 max-w-5xl mx-auto bg-white/[0.02] rounded-2xl border border-white/[0.06] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div>
-            <h3 className="text-[16px] font-semibold text-[#1A1A1A] mb-1">Radiology Ops Add-on</h3>
-            <p className="text-[14px] text-[#9B9B9B]">
+            <h3 className="text-sm font-mono text-white/60 mb-1">Radiology Ops Add-on</h3>
+            <p className="text-sm text-white/30 font-light">
               Referral intake, prep automation, report delivery — from R10,000/month
             </p>
           </div>
           <Link
             href="/register"
-            className="shrink-0 group px-6 py-3 text-[14px] font-medium text-[#1A1A1A] rounded-full border border-[#E8E8E4] hover:border-[#6EE7B7]/30 hover:bg-[#6EE7B7]/5 transition-all duration-300 inline-flex items-center gap-2"
+            className="shrink-0 group px-8 py-3 text-sm font-mono text-white/50 rounded-full border border-white/10 hover:border-white/20 hover:text-white transition-all duration-300 inline-flex items-center gap-2"
           >
             Learn More
             <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
