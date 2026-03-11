@@ -5,89 +5,68 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
-import {
-  Target, Users, Lightbulb, Heart, Tv, Handshake,
-  Bot, Shield, Mic, Calendar, MessageSquare, Brain,
-  Stethoscope, Activity, FileText, Smartphone,
-} from "lucide-react";
 
 const values = [
   {
-    icon: Target,
     title: "Built for SA Healthcare",
     description: "We understand the South African private healthcare market — from Gauteng practices to rural clinics.",
   },
   {
-    icon: Users,
     title: "Practice-First Design",
     description: "Every feature solves a real ops problem. No bloat, no gimmicks — just what moves your bottom line.",
   },
   {
-    icon: Lightbulb,
     title: "AI That Actually Works",
     description: "Our WhatsApp AI handles real conversations, not scripted decision trees. Patients can't tell the difference.",
   },
   {
-    icon: Heart,
     title: "Relationships First",
-    description: "We don't just sell software. We embed in your practice, learn your workflows, and optimize continuously.",
+    description: "We embed in your practice, learn your workflows, and optimize continuously.",
   },
 ];
 
 const aiCapabilities = [
   {
-    icon: Bot,
     title: "AI Triage Agent",
-    description: "Instantly assesses patient urgency — EMERGENCY, URGENT, SEMI-URGENT, or ROUTINE. Never miss a critical case.",
-    color: "#ef4444",
+    description: "Instantly assesses patient urgency — EMERGENCY, URGENT, SEMI-URGENT, or ROUTINE.",
   },
   {
-    icon: Mic,
-    title: "ElevenLabs Voice AI",
-    description: "Natural voice responses for patients. Your practice sounds professional 24/7, powered by ElevenLabs multilingual voices.",
-    color: "#8B5CF6",
+    title: "Voice AI",
+    description: "Natural voice responses powered by ElevenLabs. Your practice sounds professional 24/7.",
   },
   {
-    icon: MessageSquare,
     title: "WhatsApp Front Desk",
-    description: "AI handles patient messages like a human receptionist — booking, pricing, reminders, and triage. Always on.",
-    color: "#2DD4BF",
+    description: "AI handles patient messages like a human receptionist — booking, pricing, reminders, triage.",
   },
   {
-    icon: Brain,
     title: "Intake Agent",
-    description: "Pre-appointment data collection via conversational AI. Symptoms, medications, allergies — all gathered before the patient arrives.",
-    color: "#D4AF37",
+    description: "Pre-appointment data collection via conversational AI. Symptoms, medications, allergies.",
   },
   {
-    icon: Heart,
     title: "Follow-up Agent",
-    description: "Automated post-procedure check-ins at 24hr and 72hr. Recall reminders. Birthday wellness messages. Never lose a patient.",
-    color: "#10b981",
+    description: "Post-procedure check-ins at 24hr and 72hr. Recall reminders. Birthday wellness messages.",
   },
   {
-    icon: Calendar,
     title: "Smart Scheduling",
-    description: "Visual calendar with slot availability, conflict prevention, and AI-recommended booking times based on service type.",
-    color: "#0ea5e9",
+    description: "Visual calendar with slot availability, conflict prevention, and AI-recommended times.",
   },
 ];
 
 const clinicalFeatures = [
-  { icon: Stethoscope, title: "Patient Records", description: "Full medical history — consultations, procedures, lab results, imaging, referrals." },
-  { icon: Activity, title: "Vitals Tracking", description: "Blood pressure, heart rate, SpO2, glucose, pain scale — all charted over time." },
-  { icon: Shield, title: "Allergy Alerts", description: "Critical allergy banners on every patient view. Severity tracking. Life-saving visibility." },
-  { icon: FileText, title: "Medical Records", description: "Structured records with diagnosis, treatment, and provider. Audit-ready documentation." },
-  { icon: Smartphone, title: "Medication Management", description: "Active/stopped medications, dosages, frequencies. Full prescriber history." },
-  { icon: Users, title: "Multi-Role Access", description: "Admin, doctor, receptionist, nurse — each role sees what they need." },
+  { title: "Patient Records", description: "Full medical history — consultations, procedures, lab results, imaging, referrals." },
+  { title: "Vitals Tracking", description: "Blood pressure, heart rate, SpO2, glucose, pain scale — all charted over time." },
+  { title: "Allergy Alerts", description: "Critical allergy banners on every patient view. Severity tracking." },
+  { title: "Medical Records", description: "Structured records with diagnosis, treatment, and provider." },
+  { title: "Medication Management", description: "Active/stopped medications, dosages, frequencies. Full prescriber history." },
+  { title: "Multi-Role Access", description: "Admin, doctor, receptionist, nurse — each role sees what they need." },
 ];
 
 const timeline = [
-  { year: "Research", title: "Deep market research across Gauteng healthcare verticals — dentists, radiology, spas, hospitals." },
-  { year: "Build", title: "Core platform development: WhatsApp AI, booking automation, patient records, and ops dashboard." },
-  { year: "AI Agents", title: "Deployed triage, intake, follow-up, and scheduling agents powered by Claude. ElevenLabs voice integration." },
-  { year: "Launch", title: "First 50 practices onboarded with the Full Suite — AI front desk, clinical records, voice assistant." },
-  { year: "Scale", title: "Multi-location support, hospital enterprise features, radiology ops, and payment processing." },
+  { phase: "Research", title: "Deep market research across Gauteng healthcare verticals." },
+  { phase: "Build", title: "Core platform: WhatsApp AI, booking automation, patient records." },
+  { phase: "AI Agents", title: "Deployed triage, intake, follow-up agents. ElevenLabs voice integration." },
+  { phase: "Launch", title: "First 50 practices onboarded with the Full Suite." },
+  { phase: "Scale", title: "Multi-location support, hospital features, radiology ops." },
 ];
 
 export default function AboutPage() {
@@ -99,19 +78,17 @@ export default function AboutPage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <>
+    <div className="bg-[#030F07]">
       <Navbar />
 
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 relative">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-[var(--gold)] rounded-full blur-[250px] opacity-[0.04]" />
-        </div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#34D399] rounded-full blur-[300px] opacity-[0.04] pointer-events-none" />
         <motion.div style={{ opacity: heroOpacity }} className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] text-[var(--gold)] font-semibold mb-4 uppercase tracking-[0.3em]"
+            className="text-[13px] text-[#34D399] mb-4 font-mono tracking-wider uppercase"
           >
             About VisioHealth Ops
           </motion.p>
@@ -119,33 +96,30 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight text-[var(--ivory)]"
+            className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-[-0.03em] text-white"
           >
             The AI-Powered
             <br />
-            <span className="text-gradient text-shadow-gold">Healthcare OS</span>{" "}
-            for Africa
+            <span className="text-gradient-green text-glow">Healthcare OS</span> for Africa
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed"
+            className="text-[16px] text-white/40 max-w-2xl mx-auto leading-relaxed"
           >
             VisioHealth Ops combines AI agents, voice technology, and clinical intelligence
-            to transform how healthcare practices operate. Built by Visio Research Labs,
-            powered by Claude AI and ElevenLabs.
+            to transform how healthcare practices operate. Built by Visio Research Labs.
           </motion.p>
 
-          {/* Tech logos */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="flex items-center justify-center gap-8 mt-10"
+            className="flex items-center justify-center gap-6 mt-10"
           >
             {["Claude AI", "ElevenLabs", "Next.js", "WhatsApp"].map(tech => (
-              <span key={tech} className="text-[11px] text-[var(--text-tertiary)] font-medium uppercase tracking-wider">
+              <span key={tech} className="text-[12px] text-white/20 font-mono">
                 {tech}
               </span>
             ))}
@@ -154,25 +128,21 @@ export default function AboutPage() {
       </section>
 
       {/* AI Capabilities */}
-      <section className="py-20">
+      <section className="py-20 bg-[#FAFAF8]">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-3xl md:text-5xl font-bold text-center mb-4 tracking-tight text-[var(--ivory)]"
+            className="text-center mb-12"
           >
-            AI Agent Suite
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-[var(--text-secondary)] mb-12 max-w-xl mx-auto"
-          >
-            Five specialized AI agents work around the clock — triaging emergencies, booking appointments,
-            following up post-procedure, and collecting intake data before patients even arrive.
-          </motion.p>
+            <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Capabilities</span>
+            <h2 className="text-3xl md:text-5xl tracking-[-0.03em] text-[#1A1A1A] font-bold mb-3">AI Agent Suite</h2>
+            <p className="text-[15px] text-[#6B6B6B] max-w-xl mx-auto">
+              Five specialized AI agents work around the clock — triaging emergencies, booking appointments,
+              and collecting intake data.
+            </p>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {aiCapabilities.map((cap, i) => (
@@ -181,17 +151,14 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-xl glass-panel hover:border-[var(--gold)]/20 transition-all duration-500 group"
+                transition={{ delay: i * 0.06 }}
+                className="group glow-card p-6 rounded-2xl bg-white border border-[#F0F0EC] hover:border-[#34D399]/20 transition-all duration-300"
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ backgroundColor: `${cap.color}15` }}
-                >
-                  <cap.icon className="w-5 h-5" style={{ color: cap.color }} />
+                <div className="w-9 h-9 rounded-xl bg-[#34D399]/8 flex items-center justify-center mb-4 group-hover:bg-[#34D399]/15 transition-colors">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]/50 group-hover:bg-[#34D399] transition-colors" />
                 </div>
-                <h3 className="font-semibold text-[var(--ivory)] mb-2">{cap.title}</h3>
-                <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed">{cap.description}</p>
+                <h3 className="font-semibold text-[#1A1A1A] mb-2 text-[15px] group-hover:text-[#059669] transition-colors">{cap.title}</h3>
+                <p className="text-[13px] text-[#9B9B9B] leading-relaxed">{cap.description}</p>
               </motion.div>
             ))}
           </div>
@@ -199,26 +166,21 @@ export default function AboutPage() {
       </section>
 
       {/* Clinical Features */}
-      <section className="py-20">
-        <div className="divider-shine mb-20" />
+      <section className="py-20 bg-[#030F07]">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-3xl md:text-5xl font-bold text-center mb-4 tracking-tight text-[var(--ivory)]"
+            className="text-center mb-12"
           >
-            Clinical Intelligence
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center text-[var(--text-secondary)] mb-12 max-w-xl mx-auto"
-          >
-            Complete patient management with medical records, vitals tracking, allergy alerts,
-            and medication management — designed for real clinical workflows.
-          </motion.p>
+            <span className="text-[13px] text-[#34D399] mb-4 block font-mono tracking-wider uppercase">Clinical</span>
+            <h2 className="text-3xl md:text-5xl tracking-[-0.03em] text-white font-bold mb-3">Clinical Intelligence</h2>
+            <p className="text-[15px] text-white/40 max-w-xl mx-auto">
+              Complete patient management with medical records, vitals tracking, allergy alerts,
+              and medication management.
+            </p>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {clinicalFeatures.map((feat, i) => (
@@ -227,61 +189,57 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="p-5 rounded-xl glass-panel"
+                transition={{ delay: i * 0.06 }}
+                className="p-5 rounded-2xl bg-[#071A0E] border border-[#34D399]/[0.06] hover:border-[#34D399]/15 transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-2">
-                  <feat.icon className="w-5 h-5 text-[var(--gold)]" />
-                  <h3 className="font-semibold text-[var(--ivory)] text-sm">{feat.title}</h3>
-                </div>
-                <p className="text-[12px] text-[var(--text-secondary)] leading-relaxed">{feat.description}</p>
+                <h3 className="font-semibold text-white text-[14px] mb-1">{feat.title}</h3>
+                <p className="text-[13px] text-white/30 leading-relaxed">{feat.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Afrika World Connection */}
-      <section className="py-20">
+      {/* Stats + Afrika World */}
+      <section className="py-20 bg-[#FAFAF8]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-8 rounded-xl glass-panel roman-border"
+              className="p-8 rounded-2xl bg-white border border-[#F0F0EC]"
             >
-              <Tv className="w-8 h-8 text-[var(--gold)] mb-4" />
-              <h3 className="font-serif text-xl font-bold text-[var(--ivory)] mb-3">Afrika World Media Access</h3>
-              <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed mb-4">
-                Our unique relationship strategy: we feature healthcare leaders on the Afrika World x Visio Research Labs show,
-                build genuine relationships, and then offer a 15-minute practice audit. It&apos;s prestige + value, not cold outreach.
+              <h3 className="text-xl font-bold text-[#1A1A1A] mb-3">Afrika World Media Access</h3>
+              <p className="text-[14px] text-[#6B6B6B] leading-relaxed mb-4">
+                We feature healthcare leaders on the Afrika World x Visio Research Labs show,
+                build genuine relationships, then offer practice audits. Prestige + value, not cold outreach.
               </p>
-              <div className="flex items-center gap-2 text-[13px] text-[var(--gold)] font-medium">
-                <Handshake className="w-4 h-4" />
+              <span className="inline-flex items-center gap-2 text-[13px] text-[#34D399] font-mono font-medium">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
                 Relationship-first sales
-              </div>
+              </span>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-8 rounded-xl glass-panel"
+              className="p-8 rounded-2xl bg-white border border-[#F0F0EC]"
             >
-              <div className="text-5xl font-serif font-bold text-gradient text-shadow-gold mb-2">200+</div>
-              <p className="text-lg text-[var(--text-secondary)] mb-6">practices across Gauteng</p>
+              <div className="text-5xl font-bold text-gradient-green mb-2">200+</div>
+              <p className="text-[16px] text-[#6B6B6B] mb-6">practices across Gauteng</p>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: "Dentists", value: "80+" },
                   { label: "Radiology", value: "35+" },
-                  { label: "Wellness/Spas", value: "60+" },
+                  { label: "Wellness", value: "60+" },
                   { label: "Hospitals", value: "25+" },
                 ].map((s) => (
-                  <div key={s.label} className="p-3 rounded-lg glass-panel">
-                    <div className="text-xl font-bold text-[var(--ivory)]">{s.value}</div>
-                    <div className="text-[12px] text-[var(--text-secondary)]">{s.label}</div>
+                  <div key={s.label} className="p-3 rounded-xl bg-[#FAFAF8] border border-[#F0F0EC]">
+                    <div className="text-lg font-bold text-[#1A1A1A]">{s.value}</div>
+                    <div className="text-[12px] text-[#9B9B9B] font-mono">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -291,17 +249,16 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20">
-        <div className="divider-shine mb-20" />
+      <section className="py-20 bg-[#030F07]">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-3xl md:text-5xl font-bold text-center mb-12 tracking-tight text-[var(--ivory)]"
+            className="text-center mb-12"
           >
-            What Drives Us
-          </motion.h2>
+            <h2 className="text-3xl md:text-5xl tracking-[-0.03em] text-white font-bold">What Drives Us</h2>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map((value, i) => (
@@ -310,14 +267,14 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-6 rounded-xl glass-panel hover:border-[var(--gold)]/20 transition-all duration-500"
+                transition={{ delay: i * 0.08 }}
+                className="p-6 rounded-2xl bg-[#071A0E] border border-[#34D399]/[0.06] hover:border-[#34D399]/15 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-[var(--gold)]/10">
-                  <value.icon className="w-5 h-5 text-[var(--gold)]" />
+                <div className="w-9 h-9 rounded-xl bg-[#34D399]/10 flex items-center justify-center mb-4">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
                 </div>
-                <h3 className="font-semibold text-[var(--ivory)] mb-2">{value.title}</h3>
-                <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed">{value.description}</p>
+                <h3 className="font-semibold text-white mb-2 text-[15px]">{value.title}</h3>
+                <p className="text-[13px] text-white/30 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -325,36 +282,33 @@ export default function AboutPage() {
       </section>
 
       {/* Journey Timeline */}
-      <section className="py-20">
+      <section className="py-20 bg-[#FAFAF8]">
         <div className="max-w-3xl mx-auto px-6">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-3xl md:text-5xl font-bold text-center mb-12 tracking-tight text-[var(--ivory)]"
+            className="text-center mb-12"
           >
-            Our Journey
-          </motion.h2>
+            <h2 className="text-3xl md:text-5xl tracking-[-0.03em] text-[#1A1A1A] font-bold">Our Journey</h2>
+          </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-0">
             {timeline.map((item, i) => (
               <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: -20 }}
+                key={item.phase}
+                initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex gap-6"
+                transition={{ delay: i * 0.08 }}
+                className="flex gap-6 py-5 border-b border-[#F0F0EC] last:border-0"
               >
                 <div className="shrink-0 w-20 text-right">
-                  <span className="text-[13px] font-serif font-bold text-[var(--gold)]">{item.year}</span>
+                  <span className="text-[13px] font-semibold text-[#34D399] font-mono">{item.phase}</span>
                 </div>
-                <div className="relative pb-6">
-                  <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-[var(--gold)]" />
-                  {i < timeline.length - 1 && (
-                    <div className="absolute left-[3px] top-4 w-px h-full bg-[var(--gold)]/20" />
-                  )}
-                  <p className="text-[14px] text-[var(--text-secondary)] pl-6">{item.title}</p>
+                <div className="relative">
+                  <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-[#34D399]/30" />
+                  <p className="text-[14px] text-[#6B6B6B] pl-6">{item.title}</p>
                 </div>
               </motion.div>
             ))}
@@ -364,6 +318,6 @@ export default function AboutPage() {
 
       <Footer />
       <ChatbotWidget />
-    </>
+    </div>
   );
 }

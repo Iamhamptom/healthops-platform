@@ -5,13 +5,13 @@ import Footer from "@/components/Footer";
 
 export default function PricingPage() {
   return (
-    <>
+    <div className="bg-[#030F07]">
       <Navbar />
       <div className="pt-24">
         <Pricing />
       </div>
       <CTA />
       <Footer />
-    </>
+    </div>
   );
 }

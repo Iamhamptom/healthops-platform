@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Intro from "@/components/Intro";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -15,33 +13,24 @@ import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 
 export default function Home() {
-  const [hasEntered, setHasEntered] = useState(false);
-
   return (
-    <main className="bg-[#050505] text-[#FDFCF0] min-h-screen selection:bg-[#D4AF37] selection:text-[#050505]">
-      <AnimatePresence mode="wait">
-        {!hasEntered ? (
-          <Intro key="intro" onEnter={() => setHasEntered(true)} />
-        ) : (
-          <motion.div
-            key="site"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5 }}
-          >
-            <Navbar />
-            <Hero />
-            <Features />
-            <Verticals />
-            <HowItWorks />
-            <Testimonials />
-            <Pricing />
-            <CTA />
-            <Footer />
-            <ChatbotWidget />
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <main className="bg-[#030F07] text-white min-h-screen selection:bg-[#34D399]/20 selection:text-white">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Navbar />
+        <Hero />
+        <Features />
+        <Verticals />
+        <HowItWorks />
+        <Testimonials />
+        <Pricing />
+        <CTA />
+        <Footer />
+        <ChatbotWidget />
+      </motion.div>
     </main>
   );
 }

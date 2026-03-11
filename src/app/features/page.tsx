@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 export default function FeaturesPage() {
   return (
-    <>
+    <div className="bg-[#030F07]">
       <Navbar />
       <div className="pt-24">
         <Features />
@@ -16,6 +16,6 @@ export default function FeaturesPage() {
       </div>
       <CTA />
       <Footer />
-    </>
+    </div>
   );
 }

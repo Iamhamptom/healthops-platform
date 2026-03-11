@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { HeartPulse, Loader2 } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -38,38 +37,29 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute bottom-1/3 right-1/3 w-[400px] h-[400px] bg-[var(--gold)] rounded-full blur-[250px] opacity-[0.03]" />
-      </div>
-
-      {/* Roman corners */}
-      <div className="absolute top-8 left-8 w-12 h-12 border-t border-l border-[var(--gold)]/20 hidden md:block" />
-      <div className="absolute top-8 right-8 w-12 h-12 border-t border-r border-[var(--gold)]/20 hidden md:block" />
-      <div className="absolute bottom-8 left-8 w-12 h-12 border-b border-l border-[var(--gold)]/20 hidden md:block" />
-      <div className="absolute bottom-8 right-8 w-12 h-12 border-b border-r border-[var(--gold)]/20 hidden md:block" />
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#030F07] relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#34D399] rounded-full blur-[300px] opacity-[0.05] pointer-events-none" />
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative w-full max-w-sm"
+        transition={{ duration: 0.5 }}
+        className="relative w-full max-w-sm z-10"
       >
         <div className="text-center mb-10">
-          <Link href="/" className="inline-flex items-center gap-2.5 mb-8">
-            <HeartPulse className="w-7 h-7 text-[var(--gold)]" />
-            <span className="font-serif text-lg font-semibold tracking-wide text-[var(--ivory)]">
-              VISIOHEALTH
+          <Link href="/" className="inline-block mb-8">
+            <span className="font-display text-xl font-semibold text-white">
+              VisioHealth
             </span>
           </Link>
-          <h1 className="font-serif text-2xl font-bold text-[var(--ivory)] mb-2">Create Your Account</h1>
-          <p className="text-[13px] text-[var(--text-secondary)]">Get started in under 2 minutes</p>
+          <h1 className="text-2xl font-bold text-white mb-2">Create your account</h1>
+          <p className="text-[14px] text-white/40">Get started in under 2 minutes</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glass-panel-strong rounded-xl p-8 space-y-6 roman-border">
+        <form onSubmit={handleSubmit} className="bg-[#071A0E] rounded-2xl border border-[#34D399]/[0.06] p-8 space-y-5">
           {error && (
-            <div className="p-3 rounded-lg bg-[var(--crimson)]/10 border border-[var(--crimson)]/20 text-[var(--crimson)] text-[13px]">
+            <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-[13px]">
               {error}
             </div>
           )}
@@ -80,8 +70,8 @@ export default function RegisterPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="input-underline"
-              placeholder="Your Name"
+              className="input-glass"
+              placeholder="Your name"
             />
           </div>
 
@@ -91,8 +81,8 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="input-underline"
-              placeholder="Email Address"
+              className="input-glass"
+              placeholder="Email address"
             />
           </div>
 
@@ -103,7 +93,7 @@ export default function RegisterPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
-              className="input-underline"
+              className="input-glass"
               placeholder="Password (min 6 characters)"
             />
           </div>
@@ -111,17 +101,21 @@ export default function RegisterPage() {
           <motion.button
             type="submit"
             disabled={loading}
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
-            className="w-full py-3.5 bg-[var(--gold)] text-[var(--obsidian)] font-serif font-semibold text-[13px] uppercase tracking-[0.15em] transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2"
+            whileTap={{ scale: 0.98 }}
+            className="w-full py-3.5 bg-[#34D399] text-[#030F07] font-semibold text-[14px] rounded-full hover:bg-[#6EE7B7] transition-all duration-300 disabled:opacity-50 shadow-[0_0_20px_rgba(52,211,153,0.2)] flex items-center justify-center gap-2"
           >
-            {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+            {loading && (
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            )}
             Create Account
           </motion.button>
 
-          <p className="text-center text-[13px] text-[var(--text-secondary)]">
+          <p className="text-center text-[13px] text-white/30">
             Already have an account?{" "}
-            <Link href="/login" className="text-[var(--gold)] font-medium hover:underline">
+            <Link href="/login" className="text-[#34D399] font-medium hover:underline">
               Sign in
             </Link>
           </p>
