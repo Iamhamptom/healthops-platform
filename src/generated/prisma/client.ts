@@ -57,6 +57,26 @@ export type Practice = Prisma.PracticeModel
  */
 export type Patient = Prisma.PatientModel
 /**
+ * Model Allergy
+ * 
+ */
+export type Allergy = Prisma.AllergyModel
+/**
+ * Model Medication
+ * 
+ */
+export type Medication = Prisma.MedicationModel
+/**
+ * Model MedicalRecord
+ * 
+ */
+export type MedicalRecord = Prisma.MedicalRecordModel
+/**
+ * Model Vitals
+ * 
+ */
+export type Vitals = Prisma.VitalsModel
+/**
  * Model Conversation
  * 
  */
@@ -81,3 +101,38 @@ export type Review = Prisma.ReviewModel
  * 
  */
 export type RecallItem = Prisma.RecallItemModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model Invoice
+ * 
+ */
+export type Invoice = Prisma.InvoiceModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
+ * Model CheckIn
+ * 
+ */
+export type CheckIn = Prisma.CheckInModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model ConsentRecord
+ * 
+ */
+export type ConsentRecord = Prisma.ConsentRecordModel
+/**
+ * Model DailyTask
+ * 
+ */
+export type DailyTask = Prisma.DailyTaskModel

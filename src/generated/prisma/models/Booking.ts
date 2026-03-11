@@ -20,17 +20,40 @@ export type BookingModel = runtime.Types.Result.DefaultSelection<Prisma.$Booking
 
 export type AggregateBooking = {
   _count: BookingCountAggregateOutputType | null
+  _avg: BookingAvgAggregateOutputType | null
+  _sum: BookingSumAggregateOutputType | null
   _min: BookingMinAggregateOutputType | null
   _max: BookingMaxAggregateOutputType | null
+}
+
+export type BookingAvgAggregateOutputType = {
+  depositAmount: number | null
+}
+
+export type BookingSumAggregateOutputType = {
+  depositAmount: number | null
 }
 
 export type BookingMinAggregateOutputType = {
   id: string | null
   patientName: string | null
+  patientPhone: string | null
+  patientEmail: string | null
   service: string | null
   scheduledAt: Date | null
   status: string | null
   notes: string | null
+  source: string | null
+  confirmedAt: Date | null
+  confirmedBy: string | null
+  rejectedAt: Date | null
+  rejectionReason: string | null
+  depositAmount: number | null
+  depositPaid: boolean | null
+  paymentRef: string | null
+  reminderSentAt: Date | null
+  followupSentAt: Date | null
+  checkinSentAt: Date | null
   practiceId: string | null
   createdAt: Date | null
 }
@@ -38,10 +61,23 @@ export type BookingMinAggregateOutputType = {
 export type BookingMaxAggregateOutputType = {
   id: string | null
   patientName: string | null
+  patientPhone: string | null
+  patientEmail: string | null
   service: string | null
   scheduledAt: Date | null
   status: string | null
   notes: string | null
+  source: string | null
+  confirmedAt: Date | null
+  confirmedBy: string | null
+  rejectedAt: Date | null
+  rejectionReason: string | null
+  depositAmount: number | null
+  depositPaid: boolean | null
+  paymentRef: string | null
+  reminderSentAt: Date | null
+  followupSentAt: Date | null
+  checkinSentAt: Date | null
   practiceId: string | null
   createdAt: Date | null
 }
@@ -49,23 +85,57 @@ export type BookingMaxAggregateOutputType = {
 export type BookingCountAggregateOutputType = {
   id: number
   patientName: number
+  patientPhone: number
+  patientEmail: number
   service: number
   scheduledAt: number
   status: number
   notes: number
+  source: number
+  confirmedAt: number
+  confirmedBy: number
+  rejectedAt: number
+  rejectionReason: number
+  depositAmount: number
+  depositPaid: number
+  paymentRef: number
+  reminderSentAt: number
+  followupSentAt: number
+  checkinSentAt: number
   practiceId: number
   createdAt: number
   _all: number
 }
 
 
+export type BookingAvgAggregateInputType = {
+  depositAmount?: true
+}
+
+export type BookingSumAggregateInputType = {
+  depositAmount?: true
+}
+
 export type BookingMinAggregateInputType = {
   id?: true
   patientName?: true
+  patientPhone?: true
+  patientEmail?: true
   service?: true
   scheduledAt?: true
   status?: true
   notes?: true
+  source?: true
+  confirmedAt?: true
+  confirmedBy?: true
+  rejectedAt?: true
+  rejectionReason?: true
+  depositAmount?: true
+  depositPaid?: true
+  paymentRef?: true
+  reminderSentAt?: true
+  followupSentAt?: true
+  checkinSentAt?: true
   practiceId?: true
   createdAt?: true
 }
@@ -73,10 +143,23 @@ export type BookingMinAggregateInputType = {
 export type BookingMaxAggregateInputType = {
   id?: true
   patientName?: true
+  patientPhone?: true
+  patientEmail?: true
   service?: true
   scheduledAt?: true
   status?: true
   notes?: true
+  source?: true
+  confirmedAt?: true
+  confirmedBy?: true
+  rejectedAt?: true
+  rejectionReason?: true
+  depositAmount?: true
+  depositPaid?: true
+  paymentRef?: true
+  reminderSentAt?: true
+  followupSentAt?: true
+  checkinSentAt?: true
   practiceId?: true
   createdAt?: true
 }
@@ -84,10 +167,23 @@ export type BookingMaxAggregateInputType = {
 export type BookingCountAggregateInputType = {
   id?: true
   patientName?: true
+  patientPhone?: true
+  patientEmail?: true
   service?: true
   scheduledAt?: true
   status?: true
   notes?: true
+  source?: true
+  confirmedAt?: true
+  confirmedBy?: true
+  rejectedAt?: true
+  rejectionReason?: true
+  depositAmount?: true
+  depositPaid?: true
+  paymentRef?: true
+  reminderSentAt?: true
+  followupSentAt?: true
+  checkinSentAt?: true
   practiceId?: true
   createdAt?: true
   _all?: true
@@ -131,6 +227,18 @@ export type BookingAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: BookingAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: BookingSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: BookingMinAggregateInputType
@@ -161,6 +269,8 @@ export type BookingGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: BookingCountAggregateInputType | true
+  _avg?: BookingAvgAggregateInputType
+  _sum?: BookingSumAggregateInputType
   _min?: BookingMinAggregateInputType
   _max?: BookingMaxAggregateInputType
 }
@@ -168,13 +278,28 @@ export type BookingGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type BookingGroupByOutputType = {
   id: string
   patientName: string
+  patientPhone: string
+  patientEmail: string
   service: string
   scheduledAt: Date
   status: string
   notes: string
+  source: string
+  confirmedAt: Date | null
+  confirmedBy: string
+  rejectedAt: Date | null
+  rejectionReason: string
+  depositAmount: number
+  depositPaid: boolean
+  paymentRef: string
+  reminderSentAt: Date | null
+  followupSentAt: Date | null
+  checkinSentAt: Date | null
   practiceId: string
   createdAt: Date
   _count: BookingCountAggregateOutputType | null
+  _avg: BookingAvgAggregateOutputType | null
+  _sum: BookingSumAggregateOutputType | null
   _min: BookingMinAggregateOutputType | null
   _max: BookingMaxAggregateOutputType | null
 }
@@ -200,10 +325,23 @@ export type BookingWhereInput = {
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   id?: Prisma.StringFilter<"Booking"> | string
   patientName?: Prisma.StringFilter<"Booking"> | string
+  patientPhone?: Prisma.StringFilter<"Booking"> | string
+  patientEmail?: Prisma.StringFilter<"Booking"> | string
   service?: Prisma.StringFilter<"Booking"> | string
   scheduledAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   status?: Prisma.StringFilter<"Booking"> | string
   notes?: Prisma.StringFilter<"Booking"> | string
+  source?: Prisma.StringFilter<"Booking"> | string
+  confirmedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  confirmedBy?: Prisma.StringFilter<"Booking"> | string
+  rejectedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  rejectionReason?: Prisma.StringFilter<"Booking"> | string
+  depositAmount?: Prisma.FloatFilter<"Booking"> | number
+  depositPaid?: Prisma.BoolFilter<"Booking"> | boolean
+  paymentRef?: Prisma.StringFilter<"Booking"> | string
+  reminderSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  followupSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  checkinSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   practiceId?: Prisma.StringFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   practice?: Prisma.XOR<Prisma.PracticeScalarRelationFilter, Prisma.PracticeWhereInput>
@@ -212,10 +350,23 @@ export type BookingWhereInput = {
 export type BookingOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   patientName?: Prisma.SortOrder
+  patientPhone?: Prisma.SortOrder
+  patientEmail?: Prisma.SortOrder
   service?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  confirmedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmedBy?: Prisma.SortOrder
+  rejectedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  depositPaid?: Prisma.SortOrder
+  paymentRef?: Prisma.SortOrder
+  reminderSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  followupSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  checkinSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   practiceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   practice?: Prisma.PracticeOrderByWithRelationInput
@@ -227,10 +378,23 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.BookingWhereInput[]
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   patientName?: Prisma.StringFilter<"Booking"> | string
+  patientPhone?: Prisma.StringFilter<"Booking"> | string
+  patientEmail?: Prisma.StringFilter<"Booking"> | string
   service?: Prisma.StringFilter<"Booking"> | string
   scheduledAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   status?: Prisma.StringFilter<"Booking"> | string
   notes?: Prisma.StringFilter<"Booking"> | string
+  source?: Prisma.StringFilter<"Booking"> | string
+  confirmedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  confirmedBy?: Prisma.StringFilter<"Booking"> | string
+  rejectedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  rejectionReason?: Prisma.StringFilter<"Booking"> | string
+  depositAmount?: Prisma.FloatFilter<"Booking"> | number
+  depositPaid?: Prisma.BoolFilter<"Booking"> | boolean
+  paymentRef?: Prisma.StringFilter<"Booking"> | string
+  reminderSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  followupSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  checkinSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   practiceId?: Prisma.StringFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   practice?: Prisma.XOR<Prisma.PracticeScalarRelationFilter, Prisma.PracticeWhereInput>
@@ -239,15 +403,30 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
 export type BookingOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   patientName?: Prisma.SortOrder
+  patientPhone?: Prisma.SortOrder
+  patientEmail?: Prisma.SortOrder
   service?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  confirmedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmedBy?: Prisma.SortOrder
+  rejectedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  depositPaid?: Prisma.SortOrder
+  paymentRef?: Prisma.SortOrder
+  reminderSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  followupSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  checkinSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   practiceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.BookingCountOrderByAggregateInput
+  _avg?: Prisma.BookingAvgOrderByAggregateInput
   _max?: Prisma.BookingMaxOrderByAggregateInput
   _min?: Prisma.BookingMinOrderByAggregateInput
+  _sum?: Prisma.BookingSumOrderByAggregateInput
 }
 
 export type BookingScalarWhereWithAggregatesInput = {
@@ -256,10 +435,23 @@ export type BookingScalarWhereWithAggregatesInput = {
   NOT?: Prisma.BookingScalarWhereWithAggregatesInput | Prisma.BookingScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   patientName?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  patientPhone?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  patientEmail?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   service?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   scheduledAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   status?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   notes?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  source?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  confirmedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  confirmedBy?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  rejectedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  rejectionReason?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  depositAmount?: Prisma.FloatWithAggregatesFilter<"Booking"> | number
+  depositPaid?: Prisma.BoolWithAggregatesFilter<"Booking"> | boolean
+  paymentRef?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  reminderSentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  followupSentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  checkinSentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   practiceId?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
 }
@@ -267,10 +459,23 @@ export type BookingScalarWhereWithAggregatesInput = {
 export type BookingCreateInput = {
   id?: string
   patientName: string
+  patientPhone?: string
+  patientEmail?: string
   service: string
   scheduledAt: Date | string
   status?: string
   notes?: string
+  source?: string
+  confirmedAt?: Date | string | null
+  confirmedBy?: string
+  rejectedAt?: Date | string | null
+  rejectionReason?: string
+  depositAmount?: number
+  depositPaid?: boolean
+  paymentRef?: string
+  reminderSentAt?: Date | string | null
+  followupSentAt?: Date | string | null
+  checkinSentAt?: Date | string | null
   createdAt?: Date | string
   practice: Prisma.PracticeCreateNestedOneWithoutBookingsInput
 }
@@ -278,10 +483,23 @@ export type BookingCreateInput = {
 export type BookingUncheckedCreateInput = {
   id?: string
   patientName: string
+  patientPhone?: string
+  patientEmail?: string
   service: string
   scheduledAt: Date | string
   status?: string
   notes?: string
+  source?: string
+  confirmedAt?: Date | string | null
+  confirmedBy?: string
+  rejectedAt?: Date | string | null
+  rejectionReason?: string
+  depositAmount?: number
+  depositPaid?: boolean
+  paymentRef?: string
+  reminderSentAt?: Date | string | null
+  followupSentAt?: Date | string | null
+  checkinSentAt?: Date | string | null
   practiceId: string
   createdAt?: Date | string
 }
@@ -289,10 +507,23 @@ export type BookingUncheckedCreateInput = {
 export type BookingUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   practice?: Prisma.PracticeUpdateOneRequiredWithoutBookingsNestedInput
 }
@@ -300,10 +531,23 @@ export type BookingUpdateInput = {
 export type BookingUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -311,10 +555,23 @@ export type BookingUncheckedUpdateInput = {
 export type BookingCreateManyInput = {
   id?: string
   patientName: string
+  patientPhone?: string
+  patientEmail?: string
   service: string
   scheduledAt: Date | string
   status?: string
   notes?: string
+  source?: string
+  confirmedAt?: Date | string | null
+  confirmedBy?: string
+  rejectedAt?: Date | string | null
+  rejectionReason?: string
+  depositAmount?: number
+  depositPaid?: boolean
+  paymentRef?: string
+  reminderSentAt?: Date | string | null
+  followupSentAt?: Date | string | null
+  checkinSentAt?: Date | string | null
   practiceId: string
   createdAt?: Date | string
 }
@@ -322,20 +579,46 @@ export type BookingCreateManyInput = {
 export type BookingUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BookingUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -353,21 +636,51 @@ export type BookingOrderByRelationAggregateInput = {
 export type BookingCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   patientName?: Prisma.SortOrder
+  patientPhone?: Prisma.SortOrder
+  patientEmail?: Prisma.SortOrder
   service?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  confirmedAt?: Prisma.SortOrder
+  confirmedBy?: Prisma.SortOrder
+  rejectedAt?: Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  depositPaid?: Prisma.SortOrder
+  paymentRef?: Prisma.SortOrder
+  reminderSentAt?: Prisma.SortOrder
+  followupSentAt?: Prisma.SortOrder
+  checkinSentAt?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type BookingAvgOrderByAggregateInput = {
+  depositAmount?: Prisma.SortOrder
 }
 
 export type BookingMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   patientName?: Prisma.SortOrder
+  patientPhone?: Prisma.SortOrder
+  patientEmail?: Prisma.SortOrder
   service?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  confirmedAt?: Prisma.SortOrder
+  confirmedBy?: Prisma.SortOrder
+  rejectedAt?: Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  depositPaid?: Prisma.SortOrder
+  paymentRef?: Prisma.SortOrder
+  reminderSentAt?: Prisma.SortOrder
+  followupSentAt?: Prisma.SortOrder
+  checkinSentAt?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -375,12 +688,29 @@ export type BookingMaxOrderByAggregateInput = {
 export type BookingMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   patientName?: Prisma.SortOrder
+  patientPhone?: Prisma.SortOrder
+  patientEmail?: Prisma.SortOrder
   service?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  confirmedAt?: Prisma.SortOrder
+  confirmedBy?: Prisma.SortOrder
+  rejectedAt?: Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
+  depositAmount?: Prisma.SortOrder
+  depositPaid?: Prisma.SortOrder
+  paymentRef?: Prisma.SortOrder
+  reminderSentAt?: Prisma.SortOrder
+  followupSentAt?: Prisma.SortOrder
+  checkinSentAt?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type BookingSumOrderByAggregateInput = {
+  depositAmount?: Prisma.SortOrder
 }
 
 export type BookingCreateNestedManyWithoutPracticeInput = {
@@ -428,20 +758,46 @@ export type BookingUncheckedUpdateManyWithoutPracticeNestedInput = {
 export type BookingCreateWithoutPracticeInput = {
   id?: string
   patientName: string
+  patientPhone?: string
+  patientEmail?: string
   service: string
   scheduledAt: Date | string
   status?: string
   notes?: string
+  source?: string
+  confirmedAt?: Date | string | null
+  confirmedBy?: string
+  rejectedAt?: Date | string | null
+  rejectionReason?: string
+  depositAmount?: number
+  depositPaid?: boolean
+  paymentRef?: string
+  reminderSentAt?: Date | string | null
+  followupSentAt?: Date | string | null
+  checkinSentAt?: Date | string | null
   createdAt?: Date | string
 }
 
 export type BookingUncheckedCreateWithoutPracticeInput = {
   id?: string
   patientName: string
+  patientPhone?: string
+  patientEmail?: string
   service: string
   scheduledAt: Date | string
   status?: string
   notes?: string
+  source?: string
+  confirmedAt?: Date | string | null
+  confirmedBy?: string
+  rejectedAt?: Date | string | null
+  rejectionReason?: string
+  depositAmount?: number
+  depositPaid?: boolean
+  paymentRef?: string
+  reminderSentAt?: Date | string | null
+  followupSentAt?: Date | string | null
+  checkinSentAt?: Date | string | null
   createdAt?: Date | string
 }
 
@@ -476,10 +832,23 @@ export type BookingScalarWhereInput = {
   NOT?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
   id?: Prisma.StringFilter<"Booking"> | string
   patientName?: Prisma.StringFilter<"Booking"> | string
+  patientPhone?: Prisma.StringFilter<"Booking"> | string
+  patientEmail?: Prisma.StringFilter<"Booking"> | string
   service?: Prisma.StringFilter<"Booking"> | string
   scheduledAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   status?: Prisma.StringFilter<"Booking"> | string
   notes?: Prisma.StringFilter<"Booking"> | string
+  source?: Prisma.StringFilter<"Booking"> | string
+  confirmedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  confirmedBy?: Prisma.StringFilter<"Booking"> | string
+  rejectedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  rejectionReason?: Prisma.StringFilter<"Booking"> | string
+  depositAmount?: Prisma.FloatFilter<"Booking"> | number
+  depositPaid?: Prisma.BoolFilter<"Booking"> | boolean
+  paymentRef?: Prisma.StringFilter<"Booking"> | string
+  reminderSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  followupSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  checkinSentAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   practiceId?: Prisma.StringFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
 }
@@ -487,40 +856,92 @@ export type BookingScalarWhereInput = {
 export type BookingCreateManyPracticeInput = {
   id?: string
   patientName: string
+  patientPhone?: string
+  patientEmail?: string
   service: string
   scheduledAt: Date | string
   status?: string
   notes?: string
+  source?: string
+  confirmedAt?: Date | string | null
+  confirmedBy?: string
+  rejectedAt?: Date | string | null
+  rejectionReason?: string
+  depositAmount?: number
+  depositPaid?: boolean
+  paymentRef?: string
+  reminderSentAt?: Date | string | null
+  followupSentAt?: Date | string | null
+  checkinSentAt?: Date | string | null
   createdAt?: Date | string
 }
 
 export type BookingUpdateWithoutPracticeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BookingUncheckedUpdateWithoutPracticeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BookingUncheckedUpdateManyWithoutPracticeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientName?: Prisma.StringFieldUpdateOperationsInput | string
+  patientPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  patientEmail?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.StringFieldUpdateOperationsInput | string
+  confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.StringFieldUpdateOperationsInput | string
+  depositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  depositPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  paymentRef?: Prisma.StringFieldUpdateOperationsInput | string
+  reminderSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followupSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  checkinSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -529,10 +950,23 @@ export type BookingUncheckedUpdateManyWithoutPracticeInput = {
 export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   patientName?: boolean
+  patientPhone?: boolean
+  patientEmail?: boolean
   service?: boolean
   scheduledAt?: boolean
   status?: boolean
   notes?: boolean
+  source?: boolean
+  confirmedAt?: boolean
+  confirmedBy?: boolean
+  rejectedAt?: boolean
+  rejectionReason?: boolean
+  depositAmount?: boolean
+  depositPaid?: boolean
+  paymentRef?: boolean
+  reminderSentAt?: boolean
+  followupSentAt?: boolean
+  checkinSentAt?: boolean
   practiceId?: boolean
   createdAt?: boolean
   practice?: boolean | Prisma.PracticeDefaultArgs<ExtArgs>
@@ -541,10 +975,23 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   patientName?: boolean
+  patientPhone?: boolean
+  patientEmail?: boolean
   service?: boolean
   scheduledAt?: boolean
   status?: boolean
   notes?: boolean
+  source?: boolean
+  confirmedAt?: boolean
+  confirmedBy?: boolean
+  rejectedAt?: boolean
+  rejectionReason?: boolean
+  depositAmount?: boolean
+  depositPaid?: boolean
+  paymentRef?: boolean
+  reminderSentAt?: boolean
+  followupSentAt?: boolean
+  checkinSentAt?: boolean
   practiceId?: boolean
   createdAt?: boolean
   practice?: boolean | Prisma.PracticeDefaultArgs<ExtArgs>
@@ -553,10 +1000,23 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   patientName?: boolean
+  patientPhone?: boolean
+  patientEmail?: boolean
   service?: boolean
   scheduledAt?: boolean
   status?: boolean
   notes?: boolean
+  source?: boolean
+  confirmedAt?: boolean
+  confirmedBy?: boolean
+  rejectedAt?: boolean
+  rejectionReason?: boolean
+  depositAmount?: boolean
+  depositPaid?: boolean
+  paymentRef?: boolean
+  reminderSentAt?: boolean
+  followupSentAt?: boolean
+  checkinSentAt?: boolean
   practiceId?: boolean
   createdAt?: boolean
   practice?: boolean | Prisma.PracticeDefaultArgs<ExtArgs>
@@ -565,15 +1025,28 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type BookingSelectScalar = {
   id?: boolean
   patientName?: boolean
+  patientPhone?: boolean
+  patientEmail?: boolean
   service?: boolean
   scheduledAt?: boolean
   status?: boolean
   notes?: boolean
+  source?: boolean
+  confirmedAt?: boolean
+  confirmedBy?: boolean
+  rejectedAt?: boolean
+  rejectionReason?: boolean
+  depositAmount?: boolean
+  depositPaid?: boolean
+  paymentRef?: boolean
+  reminderSentAt?: boolean
+  followupSentAt?: boolean
+  checkinSentAt?: boolean
   practiceId?: boolean
   createdAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "patientName" | "service" | "scheduledAt" | "status" | "notes" | "practiceId" | "createdAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "patientName" | "patientPhone" | "patientEmail" | "service" | "scheduledAt" | "status" | "notes" | "source" | "confirmedAt" | "confirmedBy" | "rejectedAt" | "rejectionReason" | "depositAmount" | "depositPaid" | "paymentRef" | "reminderSentAt" | "followupSentAt" | "checkinSentAt" | "practiceId" | "createdAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   practice?: boolean | Prisma.PracticeDefaultArgs<ExtArgs>
 }
@@ -592,10 +1065,23 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     patientName: string
+    patientPhone: string
+    patientEmail: string
     service: string
     scheduledAt: Date
     status: string
     notes: string
+    source: string
+    confirmedAt: Date | null
+    confirmedBy: string
+    rejectedAt: Date | null
+    rejectionReason: string
+    depositAmount: number
+    depositPaid: boolean
+    paymentRef: string
+    reminderSentAt: Date | null
+    followupSentAt: Date | null
+    checkinSentAt: Date | null
     practiceId: string
     createdAt: Date
   }, ExtArgs["result"]["booking"]>
@@ -1024,10 +1510,23 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
 export interface BookingFieldRefs {
   readonly id: Prisma.FieldRef<"Booking", 'String'>
   readonly patientName: Prisma.FieldRef<"Booking", 'String'>
+  readonly patientPhone: Prisma.FieldRef<"Booking", 'String'>
+  readonly patientEmail: Prisma.FieldRef<"Booking", 'String'>
   readonly service: Prisma.FieldRef<"Booking", 'String'>
   readonly scheduledAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly status: Prisma.FieldRef<"Booking", 'String'>
   readonly notes: Prisma.FieldRef<"Booking", 'String'>
+  readonly source: Prisma.FieldRef<"Booking", 'String'>
+  readonly confirmedAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly confirmedBy: Prisma.FieldRef<"Booking", 'String'>
+  readonly rejectedAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly rejectionReason: Prisma.FieldRef<"Booking", 'String'>
+  readonly depositAmount: Prisma.FieldRef<"Booking", 'Float'>
+  readonly depositPaid: Prisma.FieldRef<"Booking", 'Boolean'>
+  readonly paymentRef: Prisma.FieldRef<"Booking", 'String'>
+  readonly reminderSentAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly followupSentAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly checkinSentAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly practiceId: Prisma.FieldRef<"Booking", 'String'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
 }

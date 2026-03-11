@@ -28,6 +28,7 @@ export type ConversationMinAggregateOutputType = {
   id: string | null
   patientId: string | null
   practiceId: string | null
+  channel: string | null
   status: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -37,6 +38,7 @@ export type ConversationMaxAggregateOutputType = {
   id: string | null
   patientId: string | null
   practiceId: string | null
+  channel: string | null
   status: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -46,6 +48,7 @@ export type ConversationCountAggregateOutputType = {
   id: number
   patientId: number
   practiceId: number
+  channel: number
   status: number
   createdAt: number
   updatedAt: number
@@ -57,6 +60,7 @@ export type ConversationMinAggregateInputType = {
   id?: true
   patientId?: true
   practiceId?: true
+  channel?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -66,6 +70,7 @@ export type ConversationMaxAggregateInputType = {
   id?: true
   patientId?: true
   practiceId?: true
+  channel?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -75,6 +80,7 @@ export type ConversationCountAggregateInputType = {
   id?: true
   patientId?: true
   practiceId?: true
+  channel?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -157,6 +163,7 @@ export type ConversationGroupByOutputType = {
   id: string
   patientId: string
   practiceId: string
+  channel: string
   status: string
   createdAt: Date
   updatedAt: Date
@@ -187,6 +194,7 @@ export type ConversationWhereInput = {
   id?: Prisma.StringFilter<"Conversation"> | string
   patientId?: Prisma.StringFilter<"Conversation"> | string
   practiceId?: Prisma.StringFilter<"Conversation"> | string
+  channel?: Prisma.StringFilter<"Conversation"> | string
   status?: Prisma.StringFilter<"Conversation"> | string
   createdAt?: Prisma.DateTimeFilter<"Conversation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Conversation"> | Date | string
@@ -199,6 +207,7 @@ export type ConversationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   patientId?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
+  channel?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -214,6 +223,7 @@ export type ConversationWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ConversationWhereInput | Prisma.ConversationWhereInput[]
   patientId?: Prisma.StringFilter<"Conversation"> | string
   practiceId?: Prisma.StringFilter<"Conversation"> | string
+  channel?: Prisma.StringFilter<"Conversation"> | string
   status?: Prisma.StringFilter<"Conversation"> | string
   createdAt?: Prisma.DateTimeFilter<"Conversation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Conversation"> | Date | string
@@ -226,6 +236,7 @@ export type ConversationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   patientId?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
+  channel?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -241,6 +252,7 @@ export type ConversationScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Conversation"> | string
   patientId?: Prisma.StringWithAggregatesFilter<"Conversation"> | string
   practiceId?: Prisma.StringWithAggregatesFilter<"Conversation"> | string
+  channel?: Prisma.StringWithAggregatesFilter<"Conversation"> | string
   status?: Prisma.StringWithAggregatesFilter<"Conversation"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Conversation"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Conversation"> | Date | string
@@ -248,6 +260,7 @@ export type ConversationScalarWhereWithAggregatesInput = {
 
 export type ConversationCreateInput = {
   id?: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -260,6 +273,7 @@ export type ConversationUncheckedCreateInput = {
   id?: string
   patientId: string
   practiceId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -268,6 +282,7 @@ export type ConversationUncheckedCreateInput = {
 
 export type ConversationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -280,6 +295,7 @@ export type ConversationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientId?: Prisma.StringFieldUpdateOperationsInput | string
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -290,6 +306,7 @@ export type ConversationCreateManyInput = {
   id?: string
   patientId: string
   practiceId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -297,6 +314,7 @@ export type ConversationCreateManyInput = {
 
 export type ConversationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -306,6 +324,7 @@ export type ConversationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientId?: Prisma.StringFieldUpdateOperationsInput | string
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -325,6 +344,7 @@ export type ConversationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   patientId?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
+  channel?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -334,6 +354,7 @@ export type ConversationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   patientId?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
+  channel?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -343,6 +364,7 @@ export type ConversationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   patientId?: Prisma.SortOrder
   practiceId?: Prisma.SortOrder
+  channel?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -453,6 +475,7 @@ export type ConversationUpdateOneRequiredWithoutMessagesNestedInput = {
 
 export type ConversationCreateWithoutPracticeInput = {
   id?: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -463,6 +486,7 @@ export type ConversationCreateWithoutPracticeInput = {
 export type ConversationUncheckedCreateWithoutPracticeInput = {
   id?: string
   patientId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -501,6 +525,7 @@ export type ConversationScalarWhereInput = {
   id?: Prisma.StringFilter<"Conversation"> | string
   patientId?: Prisma.StringFilter<"Conversation"> | string
   practiceId?: Prisma.StringFilter<"Conversation"> | string
+  channel?: Prisma.StringFilter<"Conversation"> | string
   status?: Prisma.StringFilter<"Conversation"> | string
   createdAt?: Prisma.DateTimeFilter<"Conversation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Conversation"> | Date | string
@@ -508,6 +533,7 @@ export type ConversationScalarWhereInput = {
 
 export type ConversationCreateWithoutPatientInput = {
   id?: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -518,6 +544,7 @@ export type ConversationCreateWithoutPatientInput = {
 export type ConversationUncheckedCreateWithoutPatientInput = {
   id?: string
   practiceId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -551,6 +578,7 @@ export type ConversationUpdateManyWithWhereWithoutPatientInput = {
 
 export type ConversationCreateWithoutMessagesInput = {
   id?: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -562,6 +590,7 @@ export type ConversationUncheckedCreateWithoutMessagesInput = {
   id?: string
   patientId: string
   practiceId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -585,6 +614,7 @@ export type ConversationUpdateToOneWithWhereWithoutMessagesInput = {
 
 export type ConversationUpdateWithoutMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -596,6 +626,7 @@ export type ConversationUncheckedUpdateWithoutMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientId?: Prisma.StringFieldUpdateOperationsInput | string
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -604,6 +635,7 @@ export type ConversationUncheckedUpdateWithoutMessagesInput = {
 export type ConversationCreateManyPracticeInput = {
   id?: string
   patientId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -611,6 +643,7 @@ export type ConversationCreateManyPracticeInput = {
 
 export type ConversationUpdateWithoutPracticeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -621,6 +654,7 @@ export type ConversationUpdateWithoutPracticeInput = {
 export type ConversationUncheckedUpdateWithoutPracticeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -630,6 +664,7 @@ export type ConversationUncheckedUpdateWithoutPracticeInput = {
 export type ConversationUncheckedUpdateManyWithoutPracticeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patientId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -638,6 +673,7 @@ export type ConversationUncheckedUpdateManyWithoutPracticeInput = {
 export type ConversationCreateManyPatientInput = {
   id?: string
   practiceId: string
+  channel?: string
   status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -645,6 +681,7 @@ export type ConversationCreateManyPatientInput = {
 
 export type ConversationUpdateWithoutPatientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -655,6 +692,7 @@ export type ConversationUpdateWithoutPatientInput = {
 export type ConversationUncheckedUpdateWithoutPatientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -664,6 +702,7 @@ export type ConversationUncheckedUpdateWithoutPatientInput = {
 export type ConversationUncheckedUpdateManyWithoutPatientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   practiceId?: Prisma.StringFieldUpdateOperationsInput | string
+  channel?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -704,6 +743,7 @@ export type ConversationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   patientId?: boolean
   practiceId?: boolean
+  channel?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -717,6 +757,7 @@ export type ConversationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   patientId?: boolean
   practiceId?: boolean
+  channel?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -728,6 +769,7 @@ export type ConversationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   patientId?: boolean
   practiceId?: boolean
+  channel?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -739,12 +781,13 @@ export type ConversationSelectScalar = {
   id?: boolean
   patientId?: boolean
   practiceId?: boolean
+  channel?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ConversationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "patientId" | "practiceId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["conversation"]>
+export type ConversationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "patientId" | "practiceId" | "channel" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["conversation"]>
 export type ConversationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
   practice?: boolean | Prisma.PracticeDefaultArgs<ExtArgs>
@@ -771,6 +814,7 @@ export type $ConversationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     patientId: string
     practiceId: string
+    channel: string
     status: string
     createdAt: Date
     updatedAt: Date
@@ -1203,6 +1247,7 @@ export interface ConversationFieldRefs {
   readonly id: Prisma.FieldRef<"Conversation", 'String'>
   readonly patientId: Prisma.FieldRef<"Conversation", 'String'>
   readonly practiceId: Prisma.FieldRef<"Conversation", 'String'>
+  readonly channel: Prisma.FieldRef<"Conversation", 'String'>
   readonly status: Prisma.FieldRef<"Conversation", 'String'>
   readonly createdAt: Prisma.FieldRef<"Conversation", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Conversation", 'DateTime'>

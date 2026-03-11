@@ -20,8 +20,18 @@ export type PracticeModel = runtime.Types.Result.DefaultSelection<Prisma.$Practi
 
 export type AggregatePractice = {
   _count: PracticeCountAggregateOutputType | null
+  _avg: PracticeAvgAggregateOutputType | null
+  _sum: PracticeSumAggregateOutputType | null
   _min: PracticeMinAggregateOutputType | null
   _max: PracticeMaxAggregateOutputType | null
+}
+
+export type PracticeAvgAggregateOutputType = {
+  bookingDepositAmount: number | null
+}
+
+export type PracticeSumAggregateOutputType = {
+  bookingDepositAmount: number | null
 }
 
 export type PracticeMinAggregateOutputType = {
@@ -32,6 +42,25 @@ export type PracticeMinAggregateOutputType = {
   phone: string | null
   hours: string | null
   aiPersonality: string | null
+  logoUrl: string | null
+  primaryColor: string | null
+  secondaryColor: string | null
+  subdomain: string | null
+  tagline: string | null
+  plan: string | null
+  planStatus: string | null
+  trialEndsAt: Date | null
+  paystackSubId: string | null
+  paystackCustId: string | null
+  bookingEnabled: boolean | null
+  bookingRequiresApproval: boolean | null
+  bookingDepositEnabled: boolean | null
+  bookingDepositAmount: number | null
+  bookingServices: string | null
+  bookingWelcomeMsg: string | null
+  bookingConfirmMsg: string | null
+  googlePlaceId: string | null
+  integrations: string | null
   createdAt: Date | null
 }
 
@@ -43,6 +72,25 @@ export type PracticeMaxAggregateOutputType = {
   phone: string | null
   hours: string | null
   aiPersonality: string | null
+  logoUrl: string | null
+  primaryColor: string | null
+  secondaryColor: string | null
+  subdomain: string | null
+  tagline: string | null
+  plan: string | null
+  planStatus: string | null
+  trialEndsAt: Date | null
+  paystackSubId: string | null
+  paystackCustId: string | null
+  bookingEnabled: boolean | null
+  bookingRequiresApproval: boolean | null
+  bookingDepositEnabled: boolean | null
+  bookingDepositAmount: number | null
+  bookingServices: string | null
+  bookingWelcomeMsg: string | null
+  bookingConfirmMsg: string | null
+  googlePlaceId: string | null
+  integrations: string | null
   createdAt: Date | null
 }
 
@@ -54,10 +102,37 @@ export type PracticeCountAggregateOutputType = {
   phone: number
   hours: number
   aiPersonality: number
+  logoUrl: number
+  primaryColor: number
+  secondaryColor: number
+  subdomain: number
+  tagline: number
+  plan: number
+  planStatus: number
+  trialEndsAt: number
+  paystackSubId: number
+  paystackCustId: number
+  bookingEnabled: number
+  bookingRequiresApproval: number
+  bookingDepositEnabled: number
+  bookingDepositAmount: number
+  bookingServices: number
+  bookingWelcomeMsg: number
+  bookingConfirmMsg: number
+  googlePlaceId: number
+  integrations: number
   createdAt: number
   _all: number
 }
 
+
+export type PracticeAvgAggregateInputType = {
+  bookingDepositAmount?: true
+}
+
+export type PracticeSumAggregateInputType = {
+  bookingDepositAmount?: true
+}
 
 export type PracticeMinAggregateInputType = {
   id?: true
@@ -67,6 +142,25 @@ export type PracticeMinAggregateInputType = {
   phone?: true
   hours?: true
   aiPersonality?: true
+  logoUrl?: true
+  primaryColor?: true
+  secondaryColor?: true
+  subdomain?: true
+  tagline?: true
+  plan?: true
+  planStatus?: true
+  trialEndsAt?: true
+  paystackSubId?: true
+  paystackCustId?: true
+  bookingEnabled?: true
+  bookingRequiresApproval?: true
+  bookingDepositEnabled?: true
+  bookingDepositAmount?: true
+  bookingServices?: true
+  bookingWelcomeMsg?: true
+  bookingConfirmMsg?: true
+  googlePlaceId?: true
+  integrations?: true
   createdAt?: true
 }
 
@@ -78,6 +172,25 @@ export type PracticeMaxAggregateInputType = {
   phone?: true
   hours?: true
   aiPersonality?: true
+  logoUrl?: true
+  primaryColor?: true
+  secondaryColor?: true
+  subdomain?: true
+  tagline?: true
+  plan?: true
+  planStatus?: true
+  trialEndsAt?: true
+  paystackSubId?: true
+  paystackCustId?: true
+  bookingEnabled?: true
+  bookingRequiresApproval?: true
+  bookingDepositEnabled?: true
+  bookingDepositAmount?: true
+  bookingServices?: true
+  bookingWelcomeMsg?: true
+  bookingConfirmMsg?: true
+  googlePlaceId?: true
+  integrations?: true
   createdAt?: true
 }
 
@@ -89,6 +202,25 @@ export type PracticeCountAggregateInputType = {
   phone?: true
   hours?: true
   aiPersonality?: true
+  logoUrl?: true
+  primaryColor?: true
+  secondaryColor?: true
+  subdomain?: true
+  tagline?: true
+  plan?: true
+  planStatus?: true
+  trialEndsAt?: true
+  paystackSubId?: true
+  paystackCustId?: true
+  bookingEnabled?: true
+  bookingRequiresApproval?: true
+  bookingDepositEnabled?: true
+  bookingDepositAmount?: true
+  bookingServices?: true
+  bookingWelcomeMsg?: true
+  bookingConfirmMsg?: true
+  googlePlaceId?: true
+  integrations?: true
   createdAt?: true
   _all?: true
 }
@@ -131,6 +263,18 @@ export type PracticeAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: PracticeAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: PracticeSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: PracticeMinAggregateInputType
@@ -161,6 +305,8 @@ export type PracticeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: PracticeCountAggregateInputType | true
+  _avg?: PracticeAvgAggregateInputType
+  _sum?: PracticeSumAggregateInputType
   _min?: PracticeMinAggregateInputType
   _max?: PracticeMaxAggregateInputType
 }
@@ -173,8 +319,29 @@ export type PracticeGroupByOutputType = {
   phone: string
   hours: string
   aiPersonality: string
+  logoUrl: string
+  primaryColor: string
+  secondaryColor: string
+  subdomain: string
+  tagline: string
+  plan: string
+  planStatus: string
+  trialEndsAt: Date | null
+  paystackSubId: string
+  paystackCustId: string
+  bookingEnabled: boolean
+  bookingRequiresApproval: boolean
+  bookingDepositEnabled: boolean
+  bookingDepositAmount: number
+  bookingServices: string
+  bookingWelcomeMsg: string
+  bookingConfirmMsg: string
+  googlePlaceId: string
+  integrations: string
   createdAt: Date
   _count: PracticeCountAggregateOutputType | null
+  _avg: PracticeAvgAggregateOutputType | null
+  _sum: PracticeSumAggregateOutputType | null
   _min: PracticeMinAggregateOutputType | null
   _max: PracticeMaxAggregateOutputType | null
 }
@@ -205,6 +372,25 @@ export type PracticeWhereInput = {
   phone?: Prisma.StringFilter<"Practice"> | string
   hours?: Prisma.StringFilter<"Practice"> | string
   aiPersonality?: Prisma.StringFilter<"Practice"> | string
+  logoUrl?: Prisma.StringFilter<"Practice"> | string
+  primaryColor?: Prisma.StringFilter<"Practice"> | string
+  secondaryColor?: Prisma.StringFilter<"Practice"> | string
+  subdomain?: Prisma.StringFilter<"Practice"> | string
+  tagline?: Prisma.StringFilter<"Practice"> | string
+  plan?: Prisma.StringFilter<"Practice"> | string
+  planStatus?: Prisma.StringFilter<"Practice"> | string
+  trialEndsAt?: Prisma.DateTimeNullableFilter<"Practice"> | Date | string | null
+  paystackSubId?: Prisma.StringFilter<"Practice"> | string
+  paystackCustId?: Prisma.StringFilter<"Practice"> | string
+  bookingEnabled?: Prisma.BoolFilter<"Practice"> | boolean
+  bookingRequiresApproval?: Prisma.BoolFilter<"Practice"> | boolean
+  bookingDepositEnabled?: Prisma.BoolFilter<"Practice"> | boolean
+  bookingDepositAmount?: Prisma.FloatFilter<"Practice"> | number
+  bookingServices?: Prisma.StringFilter<"Practice"> | string
+  bookingWelcomeMsg?: Prisma.StringFilter<"Practice"> | string
+  bookingConfirmMsg?: Prisma.StringFilter<"Practice"> | string
+  googlePlaceId?: Prisma.StringFilter<"Practice"> | string
+  integrations?: Prisma.StringFilter<"Practice"> | string
   createdAt?: Prisma.DateTimeFilter<"Practice"> | Date | string
   users?: Prisma.UserListRelationFilter
   patients?: Prisma.PatientListRelationFilter
@@ -212,6 +398,13 @@ export type PracticeWhereInput = {
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   recallItems?: Prisma.RecallItemListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  invoices?: Prisma.InvoiceListRelationFilter
+  payments?: Prisma.PaymentListRelationFilter
+  checkIns?: Prisma.CheckInListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  consents?: Prisma.ConsentRecordListRelationFilter
+  dailyTasks?: Prisma.DailyTaskListRelationFilter
 }
 
 export type PracticeOrderByWithRelationInput = {
@@ -222,6 +415,25 @@ export type PracticeOrderByWithRelationInput = {
   phone?: Prisma.SortOrder
   hours?: Prisma.SortOrder
   aiPersonality?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
+  secondaryColor?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
+  tagline?: Prisma.SortOrder
+  plan?: Prisma.SortOrder
+  planStatus?: Prisma.SortOrder
+  trialEndsAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  paystackSubId?: Prisma.SortOrder
+  paystackCustId?: Prisma.SortOrder
+  bookingEnabled?: Prisma.SortOrder
+  bookingRequiresApproval?: Prisma.SortOrder
+  bookingDepositEnabled?: Prisma.SortOrder
+  bookingDepositAmount?: Prisma.SortOrder
+  bookingServices?: Prisma.SortOrder
+  bookingWelcomeMsg?: Prisma.SortOrder
+  bookingConfirmMsg?: Prisma.SortOrder
+  googlePlaceId?: Prisma.SortOrder
+  integrations?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   users?: Prisma.UserOrderByRelationAggregateInput
   patients?: Prisma.PatientOrderByRelationAggregateInput
@@ -229,6 +441,13 @@ export type PracticeOrderByWithRelationInput = {
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   recallItems?: Prisma.RecallItemOrderByRelationAggregateInput
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  invoices?: Prisma.InvoiceOrderByRelationAggregateInput
+  payments?: Prisma.PaymentOrderByRelationAggregateInput
+  checkIns?: Prisma.CheckInOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  consents?: Prisma.ConsentRecordOrderByRelationAggregateInput
+  dailyTasks?: Prisma.DailyTaskOrderByRelationAggregateInput
 }
 
 export type PracticeWhereUniqueInput = Prisma.AtLeast<{
@@ -242,6 +461,25 @@ export type PracticeWhereUniqueInput = Prisma.AtLeast<{
   phone?: Prisma.StringFilter<"Practice"> | string
   hours?: Prisma.StringFilter<"Practice"> | string
   aiPersonality?: Prisma.StringFilter<"Practice"> | string
+  logoUrl?: Prisma.StringFilter<"Practice"> | string
+  primaryColor?: Prisma.StringFilter<"Practice"> | string
+  secondaryColor?: Prisma.StringFilter<"Practice"> | string
+  subdomain?: Prisma.StringFilter<"Practice"> | string
+  tagline?: Prisma.StringFilter<"Practice"> | string
+  plan?: Prisma.StringFilter<"Practice"> | string
+  planStatus?: Prisma.StringFilter<"Practice"> | string
+  trialEndsAt?: Prisma.DateTimeNullableFilter<"Practice"> | Date | string | null
+  paystackSubId?: Prisma.StringFilter<"Practice"> | string
+  paystackCustId?: Prisma.StringFilter<"Practice"> | string
+  bookingEnabled?: Prisma.BoolFilter<"Practice"> | boolean
+  bookingRequiresApproval?: Prisma.BoolFilter<"Practice"> | boolean
+  bookingDepositEnabled?: Prisma.BoolFilter<"Practice"> | boolean
+  bookingDepositAmount?: Prisma.FloatFilter<"Practice"> | number
+  bookingServices?: Prisma.StringFilter<"Practice"> | string
+  bookingWelcomeMsg?: Prisma.StringFilter<"Practice"> | string
+  bookingConfirmMsg?: Prisma.StringFilter<"Practice"> | string
+  googlePlaceId?: Prisma.StringFilter<"Practice"> | string
+  integrations?: Prisma.StringFilter<"Practice"> | string
   createdAt?: Prisma.DateTimeFilter<"Practice"> | Date | string
   users?: Prisma.UserListRelationFilter
   patients?: Prisma.PatientListRelationFilter
@@ -249,6 +487,13 @@ export type PracticeWhereUniqueInput = Prisma.AtLeast<{
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   recallItems?: Prisma.RecallItemListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  invoices?: Prisma.InvoiceListRelationFilter
+  payments?: Prisma.PaymentListRelationFilter
+  checkIns?: Prisma.CheckInListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  consents?: Prisma.ConsentRecordListRelationFilter
+  dailyTasks?: Prisma.DailyTaskListRelationFilter
 }, "id">
 
 export type PracticeOrderByWithAggregationInput = {
@@ -259,10 +504,31 @@ export type PracticeOrderByWithAggregationInput = {
   phone?: Prisma.SortOrder
   hours?: Prisma.SortOrder
   aiPersonality?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
+  secondaryColor?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
+  tagline?: Prisma.SortOrder
+  plan?: Prisma.SortOrder
+  planStatus?: Prisma.SortOrder
+  trialEndsAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  paystackSubId?: Prisma.SortOrder
+  paystackCustId?: Prisma.SortOrder
+  bookingEnabled?: Prisma.SortOrder
+  bookingRequiresApproval?: Prisma.SortOrder
+  bookingDepositEnabled?: Prisma.SortOrder
+  bookingDepositAmount?: Prisma.SortOrder
+  bookingServices?: Prisma.SortOrder
+  bookingWelcomeMsg?: Prisma.SortOrder
+  bookingConfirmMsg?: Prisma.SortOrder
+  googlePlaceId?: Prisma.SortOrder
+  integrations?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.PracticeCountOrderByAggregateInput
+  _avg?: Prisma.PracticeAvgOrderByAggregateInput
   _max?: Prisma.PracticeMaxOrderByAggregateInput
   _min?: Prisma.PracticeMinOrderByAggregateInput
+  _sum?: Prisma.PracticeSumOrderByAggregateInput
 }
 
 export type PracticeScalarWhereWithAggregatesInput = {
@@ -276,6 +542,25 @@ export type PracticeScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringWithAggregatesFilter<"Practice"> | string
   hours?: Prisma.StringWithAggregatesFilter<"Practice"> | string
   aiPersonality?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  logoUrl?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  primaryColor?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  secondaryColor?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  subdomain?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  tagline?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  plan?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  planStatus?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  trialEndsAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Practice"> | Date | string | null
+  paystackSubId?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  paystackCustId?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  bookingEnabled?: Prisma.BoolWithAggregatesFilter<"Practice"> | boolean
+  bookingRequiresApproval?: Prisma.BoolWithAggregatesFilter<"Practice"> | boolean
+  bookingDepositEnabled?: Prisma.BoolWithAggregatesFilter<"Practice"> | boolean
+  bookingDepositAmount?: Prisma.FloatWithAggregatesFilter<"Practice"> | number
+  bookingServices?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  bookingWelcomeMsg?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  bookingConfirmMsg?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  googlePlaceId?: Prisma.StringWithAggregatesFilter<"Practice"> | string
+  integrations?: Prisma.StringWithAggregatesFilter<"Practice"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Practice"> | Date | string
 }
 
@@ -287,6 +572,25 @@ export type PracticeCreateInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
@@ -294,6 +598,13 @@ export type PracticeCreateInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateInput = {
@@ -304,6 +615,25 @@ export type PracticeUncheckedCreateInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
@@ -311,6 +641,13 @@ export type PracticeUncheckedCreateInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUpdateInput = {
@@ -321,6 +658,25 @@ export type PracticeUpdateInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
@@ -328,6 +684,13 @@ export type PracticeUpdateInput = {
   bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateInput = {
@@ -338,6 +701,25 @@ export type PracticeUncheckedUpdateInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
@@ -345,6 +727,13 @@ export type PracticeUncheckedUpdateInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateManyInput = {
@@ -355,6 +744,25 @@ export type PracticeCreateManyInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
 }
 
@@ -366,6 +774,25 @@ export type PracticeUpdateManyMutationInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -377,6 +804,25 @@ export type PracticeUncheckedUpdateManyInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -393,7 +839,30 @@ export type PracticeCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   hours?: Prisma.SortOrder
   aiPersonality?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
+  secondaryColor?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
+  tagline?: Prisma.SortOrder
+  plan?: Prisma.SortOrder
+  planStatus?: Prisma.SortOrder
+  trialEndsAt?: Prisma.SortOrder
+  paystackSubId?: Prisma.SortOrder
+  paystackCustId?: Prisma.SortOrder
+  bookingEnabled?: Prisma.SortOrder
+  bookingRequiresApproval?: Prisma.SortOrder
+  bookingDepositEnabled?: Prisma.SortOrder
+  bookingDepositAmount?: Prisma.SortOrder
+  bookingServices?: Prisma.SortOrder
+  bookingWelcomeMsg?: Prisma.SortOrder
+  bookingConfirmMsg?: Prisma.SortOrder
+  googlePlaceId?: Prisma.SortOrder
+  integrations?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type PracticeAvgOrderByAggregateInput = {
+  bookingDepositAmount?: Prisma.SortOrder
 }
 
 export type PracticeMaxOrderByAggregateInput = {
@@ -404,6 +873,25 @@ export type PracticeMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   hours?: Prisma.SortOrder
   aiPersonality?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
+  secondaryColor?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
+  tagline?: Prisma.SortOrder
+  plan?: Prisma.SortOrder
+  planStatus?: Prisma.SortOrder
+  trialEndsAt?: Prisma.SortOrder
+  paystackSubId?: Prisma.SortOrder
+  paystackCustId?: Prisma.SortOrder
+  bookingEnabled?: Prisma.SortOrder
+  bookingRequiresApproval?: Prisma.SortOrder
+  bookingDepositEnabled?: Prisma.SortOrder
+  bookingDepositAmount?: Prisma.SortOrder
+  bookingServices?: Prisma.SortOrder
+  bookingWelcomeMsg?: Prisma.SortOrder
+  bookingConfirmMsg?: Prisma.SortOrder
+  googlePlaceId?: Prisma.SortOrder
+  integrations?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -415,7 +903,30 @@ export type PracticeMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   hours?: Prisma.SortOrder
   aiPersonality?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
+  secondaryColor?: Prisma.SortOrder
+  subdomain?: Prisma.SortOrder
+  tagline?: Prisma.SortOrder
+  plan?: Prisma.SortOrder
+  planStatus?: Prisma.SortOrder
+  trialEndsAt?: Prisma.SortOrder
+  paystackSubId?: Prisma.SortOrder
+  paystackCustId?: Prisma.SortOrder
+  bookingEnabled?: Prisma.SortOrder
+  bookingRequiresApproval?: Prisma.SortOrder
+  bookingDepositEnabled?: Prisma.SortOrder
+  bookingDepositAmount?: Prisma.SortOrder
+  bookingServices?: Prisma.SortOrder
+  bookingWelcomeMsg?: Prisma.SortOrder
+  bookingConfirmMsg?: Prisma.SortOrder
+  googlePlaceId?: Prisma.SortOrder
+  integrations?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type PracticeSumOrderByAggregateInput = {
+  bookingDepositAmount?: Prisma.SortOrder
 }
 
 export type PracticeScalarRelationFilter = {
@@ -437,6 +948,22 @@ export type PracticeUpdateOneWithoutUsersNestedInput = {
   delete?: Prisma.PracticeWhereInput | boolean
   connect?: Prisma.PracticeWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutUsersInput, Prisma.PracticeUpdateWithoutUsersInput>, Prisma.PracticeUncheckedUpdateWithoutUsersInput>
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type PracticeCreateNestedOneWithoutPatientsInput = {
@@ -509,6 +1036,104 @@ export type PracticeUpdateOneRequiredWithoutRecallItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutRecallItemsInput, Prisma.PracticeUpdateWithoutRecallItemsInput>, Prisma.PracticeUncheckedUpdateWithoutRecallItemsInput>
 }
 
+export type PracticeCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutAuditLogsInput, Prisma.PracticeUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutAuditLogsInput, Prisma.PracticeUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.PracticeUpsertWithoutAuditLogsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.PracticeUpdateWithoutAuditLogsInput>, Prisma.PracticeUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type PracticeCreateNestedOneWithoutInvoicesInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutInvoicesInput, Prisma.PracticeUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutInvoicesInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutInvoicesNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutInvoicesInput, Prisma.PracticeUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutInvoicesInput
+  upsert?: Prisma.PracticeUpsertWithoutInvoicesInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutInvoicesInput, Prisma.PracticeUpdateWithoutInvoicesInput>, Prisma.PracticeUncheckedUpdateWithoutInvoicesInput>
+}
+
+export type PracticeCreateNestedOneWithoutPaymentsInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutPaymentsInput, Prisma.PracticeUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutPaymentsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutPaymentsNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutPaymentsInput, Prisma.PracticeUncheckedCreateWithoutPaymentsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutPaymentsInput
+  upsert?: Prisma.PracticeUpsertWithoutPaymentsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutPaymentsInput, Prisma.PracticeUpdateWithoutPaymentsInput>, Prisma.PracticeUncheckedUpdateWithoutPaymentsInput>
+}
+
+export type PracticeCreateNestedOneWithoutCheckInsInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutCheckInsInput, Prisma.PracticeUncheckedCreateWithoutCheckInsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutCheckInsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutCheckInsNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutCheckInsInput, Prisma.PracticeUncheckedCreateWithoutCheckInsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutCheckInsInput
+  upsert?: Prisma.PracticeUpsertWithoutCheckInsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutCheckInsInput, Prisma.PracticeUpdateWithoutCheckInsInput>, Prisma.PracticeUncheckedUpdateWithoutCheckInsInput>
+}
+
+export type PracticeCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutNotificationsInput, Prisma.PracticeUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutNotificationsInput, Prisma.PracticeUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.PracticeUpsertWithoutNotificationsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutNotificationsInput, Prisma.PracticeUpdateWithoutNotificationsInput>, Prisma.PracticeUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type PracticeCreateNestedOneWithoutConsentsInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutConsentsInput, Prisma.PracticeUncheckedCreateWithoutConsentsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutConsentsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutConsentsNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutConsentsInput, Prisma.PracticeUncheckedCreateWithoutConsentsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutConsentsInput
+  upsert?: Prisma.PracticeUpsertWithoutConsentsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutConsentsInput, Prisma.PracticeUpdateWithoutConsentsInput>, Prisma.PracticeUncheckedUpdateWithoutConsentsInput>
+}
+
+export type PracticeCreateNestedOneWithoutDailyTasksInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutDailyTasksInput, Prisma.PracticeUncheckedCreateWithoutDailyTasksInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutDailyTasksInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutDailyTasksNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutDailyTasksInput, Prisma.PracticeUncheckedCreateWithoutDailyTasksInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutDailyTasksInput
+  upsert?: Prisma.PracticeUpsertWithoutDailyTasksInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutDailyTasksInput, Prisma.PracticeUpdateWithoutDailyTasksInput>, Prisma.PracticeUncheckedUpdateWithoutDailyTasksInput>
+}
+
 export type PracticeCreateWithoutUsersInput = {
   id?: string
   name: string
@@ -517,12 +1142,38 @@ export type PracticeCreateWithoutUsersInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutUsersInput = {
@@ -533,12 +1184,38 @@ export type PracticeUncheckedCreateWithoutUsersInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutUsersInput = {
@@ -565,12 +1242,38 @@ export type PracticeUpdateWithoutUsersInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutUsersInput = {
@@ -581,12 +1284,38 @@ export type PracticeUncheckedUpdateWithoutUsersInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutPatientsInput = {
@@ -597,12 +1326,38 @@ export type PracticeCreateWithoutPatientsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutPatientsInput = {
@@ -613,12 +1368,38 @@ export type PracticeUncheckedCreateWithoutPatientsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutPatientsInput = {
@@ -645,12 +1426,38 @@ export type PracticeUpdateWithoutPatientsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutPatientsInput = {
@@ -661,12 +1468,38 @@ export type PracticeUncheckedUpdateWithoutPatientsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutConversationsInput = {
@@ -677,12 +1510,38 @@ export type PracticeCreateWithoutConversationsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutConversationsInput = {
@@ -693,12 +1552,38 @@ export type PracticeUncheckedCreateWithoutConversationsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutConversationsInput = {
@@ -725,12 +1610,38 @@ export type PracticeUpdateWithoutConversationsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutConversationsInput = {
@@ -741,12 +1652,38 @@ export type PracticeUncheckedUpdateWithoutConversationsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutBookingsInput = {
@@ -757,12 +1694,38 @@ export type PracticeCreateWithoutBookingsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutBookingsInput = {
@@ -773,12 +1736,38 @@ export type PracticeUncheckedCreateWithoutBookingsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutBookingsInput = {
@@ -805,12 +1794,38 @@ export type PracticeUpdateWithoutBookingsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutBookingsInput = {
@@ -821,12 +1836,38 @@ export type PracticeUncheckedUpdateWithoutBookingsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutReviewsInput = {
@@ -837,12 +1878,38 @@ export type PracticeCreateWithoutReviewsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutReviewsInput = {
@@ -853,12 +1920,38 @@ export type PracticeUncheckedCreateWithoutReviewsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
   recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutReviewsInput = {
@@ -885,12 +1978,38 @@ export type PracticeUpdateWithoutReviewsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutReviewsInput = {
@@ -901,12 +2020,38 @@ export type PracticeUncheckedUpdateWithoutReviewsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
   recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutRecallItemsInput = {
@@ -917,12 +2062,38 @@ export type PracticeCreateWithoutRecallItemsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutRecallItemsInput = {
@@ -933,12 +2104,38 @@ export type PracticeUncheckedCreateWithoutRecallItemsInput = {
   phone?: string
   hours?: string
   aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
   createdAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
   patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
   conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutRecallItemsInput = {
@@ -965,12 +2162,38 @@ export type PracticeUpdateWithoutRecallItemsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutRecallItemsInput = {
@@ -981,12 +2204,1326 @@ export type PracticeUncheckedUpdateWithoutRecallItemsInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   hours?: Prisma.StringFieldUpdateOperationsInput | string
   aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
   patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
   conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutAuditLogsInput, Prisma.PracticeUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type PracticeUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutAuditLogsInput, Prisma.PracticeUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutAuditLogsInput, Prisma.PracticeUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutAuditLogsInput, Prisma.PracticeUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type PracticeUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutInvoicesInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutInvoicesInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutInvoicesInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutInvoicesInput, Prisma.PracticeUncheckedCreateWithoutInvoicesInput>
+}
+
+export type PracticeUpsertWithoutInvoicesInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutInvoicesInput, Prisma.PracticeUncheckedUpdateWithoutInvoicesInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutInvoicesInput, Prisma.PracticeUncheckedCreateWithoutInvoicesInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutInvoicesInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutInvoicesInput, Prisma.PracticeUncheckedUpdateWithoutInvoicesInput>
+}
+
+export type PracticeUpdateWithoutInvoicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutInvoicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutPaymentsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutPaymentsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutPaymentsInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutPaymentsInput, Prisma.PracticeUncheckedCreateWithoutPaymentsInput>
+}
+
+export type PracticeUpsertWithoutPaymentsInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutPaymentsInput, Prisma.PracticeUncheckedUpdateWithoutPaymentsInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutPaymentsInput, Prisma.PracticeUncheckedCreateWithoutPaymentsInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutPaymentsInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutPaymentsInput, Prisma.PracticeUncheckedUpdateWithoutPaymentsInput>
+}
+
+export type PracticeUpdateWithoutPaymentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutPaymentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutCheckInsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutCheckInsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutCheckInsInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutCheckInsInput, Prisma.PracticeUncheckedCreateWithoutCheckInsInput>
+}
+
+export type PracticeUpsertWithoutCheckInsInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutCheckInsInput, Prisma.PracticeUncheckedUpdateWithoutCheckInsInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutCheckInsInput, Prisma.PracticeUncheckedCreateWithoutCheckInsInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutCheckInsInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutCheckInsInput, Prisma.PracticeUncheckedUpdateWithoutCheckInsInput>
+}
+
+export type PracticeUpdateWithoutCheckInsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutCheckInsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutNotificationsInput, Prisma.PracticeUncheckedCreateWithoutNotificationsInput>
+}
+
+export type PracticeUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutNotificationsInput, Prisma.PracticeUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutNotificationsInput, Prisma.PracticeUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutNotificationsInput, Prisma.PracticeUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type PracticeUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutConsentsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutConsentsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutConsentsInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutConsentsInput, Prisma.PracticeUncheckedCreateWithoutConsentsInput>
+}
+
+export type PracticeUpsertWithoutConsentsInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutConsentsInput, Prisma.PracticeUncheckedUpdateWithoutConsentsInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutConsentsInput, Prisma.PracticeUncheckedCreateWithoutConsentsInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutConsentsInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutConsentsInput, Prisma.PracticeUncheckedUpdateWithoutConsentsInput>
+}
+
+export type PracticeUpdateWithoutConsentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutConsentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutDailyTasksInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutDailyTasksInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutDailyTasksInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutDailyTasksInput, Prisma.PracticeUncheckedCreateWithoutDailyTasksInput>
+}
+
+export type PracticeUpsertWithoutDailyTasksInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutDailyTasksInput, Prisma.PracticeUncheckedUpdateWithoutDailyTasksInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutDailyTasksInput, Prisma.PracticeUncheckedCreateWithoutDailyTasksInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutDailyTasksInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutDailyTasksInput, Prisma.PracticeUncheckedUpdateWithoutDailyTasksInput>
+}
+
+export type PracticeUpdateWithoutDailyTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutDailyTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 
@@ -1001,6 +3538,13 @@ export type PracticeCountOutputType = {
   bookings: number
   reviews: number
   recallItems: number
+  auditLogs: number
+  invoices: number
+  payments: number
+  checkIns: number
+  notifications: number
+  consents: number
+  dailyTasks: number
 }
 
 export type PracticeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1010,6 +3554,13 @@ export type PracticeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   bookings?: boolean | PracticeCountOutputTypeCountBookingsArgs
   reviews?: boolean | PracticeCountOutputTypeCountReviewsArgs
   recallItems?: boolean | PracticeCountOutputTypeCountRecallItemsArgs
+  auditLogs?: boolean | PracticeCountOutputTypeCountAuditLogsArgs
+  invoices?: boolean | PracticeCountOutputTypeCountInvoicesArgs
+  payments?: boolean | PracticeCountOutputTypeCountPaymentsArgs
+  checkIns?: boolean | PracticeCountOutputTypeCountCheckInsArgs
+  notifications?: boolean | PracticeCountOutputTypeCountNotificationsArgs
+  consents?: boolean | PracticeCountOutputTypeCountConsentsArgs
+  dailyTasks?: boolean | PracticeCountOutputTypeCountDailyTasksArgs
 }
 
 /**
@@ -1064,6 +3615,55 @@ export type PracticeCountOutputTypeCountRecallItemsArgs<ExtArgs extends runtime.
   where?: Prisma.RecallItemWhereInput
 }
 
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InvoiceWhereInput
+}
+
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountPaymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PaymentWhereInput
+}
+
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountCheckInsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CheckInWhereInput
+}
+
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountConsentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConsentRecordWhereInput
+}
+
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountDailyTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DailyTaskWhereInput
+}
+
 
 export type PracticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1073,6 +3673,25 @@ export type PracticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   phone?: boolean
   hours?: boolean
   aiPersonality?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
+  secondaryColor?: boolean
+  subdomain?: boolean
+  tagline?: boolean
+  plan?: boolean
+  planStatus?: boolean
+  trialEndsAt?: boolean
+  paystackSubId?: boolean
+  paystackCustId?: boolean
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: boolean
+  bookingServices?: boolean
+  bookingWelcomeMsg?: boolean
+  bookingConfirmMsg?: boolean
+  googlePlaceId?: boolean
+  integrations?: boolean
   createdAt?: boolean
   users?: boolean | Prisma.Practice$usersArgs<ExtArgs>
   patients?: boolean | Prisma.Practice$patientsArgs<ExtArgs>
@@ -1080,6 +3699,13 @@ export type PracticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   bookings?: boolean | Prisma.Practice$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Practice$reviewsArgs<ExtArgs>
   recallItems?: boolean | Prisma.Practice$recallItemsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Practice$auditLogsArgs<ExtArgs>
+  invoices?: boolean | Prisma.Practice$invoicesArgs<ExtArgs>
+  payments?: boolean | Prisma.Practice$paymentsArgs<ExtArgs>
+  checkIns?: boolean | Prisma.Practice$checkInsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Practice$notificationsArgs<ExtArgs>
+  consents?: boolean | Prisma.Practice$consentsArgs<ExtArgs>
+  dailyTasks?: boolean | Prisma.Practice$dailyTasksArgs<ExtArgs>
   _count?: boolean | Prisma.PracticeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["practice"]>
 
@@ -1091,6 +3717,25 @@ export type PracticeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   phone?: boolean
   hours?: boolean
   aiPersonality?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
+  secondaryColor?: boolean
+  subdomain?: boolean
+  tagline?: boolean
+  plan?: boolean
+  planStatus?: boolean
+  trialEndsAt?: boolean
+  paystackSubId?: boolean
+  paystackCustId?: boolean
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: boolean
+  bookingServices?: boolean
+  bookingWelcomeMsg?: boolean
+  bookingConfirmMsg?: boolean
+  googlePlaceId?: boolean
+  integrations?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["practice"]>
 
@@ -1102,6 +3747,25 @@ export type PracticeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   phone?: boolean
   hours?: boolean
   aiPersonality?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
+  secondaryColor?: boolean
+  subdomain?: boolean
+  tagline?: boolean
+  plan?: boolean
+  planStatus?: boolean
+  trialEndsAt?: boolean
+  paystackSubId?: boolean
+  paystackCustId?: boolean
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: boolean
+  bookingServices?: boolean
+  bookingWelcomeMsg?: boolean
+  bookingConfirmMsg?: boolean
+  googlePlaceId?: boolean
+  integrations?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["practice"]>
 
@@ -1113,10 +3777,29 @@ export type PracticeSelectScalar = {
   phone?: boolean
   hours?: boolean
   aiPersonality?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
+  secondaryColor?: boolean
+  subdomain?: boolean
+  tagline?: boolean
+  plan?: boolean
+  planStatus?: boolean
+  trialEndsAt?: boolean
+  paystackSubId?: boolean
+  paystackCustId?: boolean
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: boolean
+  bookingServices?: boolean
+  bookingWelcomeMsg?: boolean
+  bookingConfirmMsg?: boolean
+  googlePlaceId?: boolean
+  integrations?: boolean
   createdAt?: boolean
 }
 
-export type PracticeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "address" | "phone" | "hours" | "aiPersonality" | "createdAt", ExtArgs["result"]["practice"]>
+export type PracticeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "address" | "phone" | "hours" | "aiPersonality" | "logoUrl" | "primaryColor" | "secondaryColor" | "subdomain" | "tagline" | "plan" | "planStatus" | "trialEndsAt" | "paystackSubId" | "paystackCustId" | "bookingEnabled" | "bookingRequiresApproval" | "bookingDepositEnabled" | "bookingDepositAmount" | "bookingServices" | "bookingWelcomeMsg" | "bookingConfirmMsg" | "googlePlaceId" | "integrations" | "createdAt", ExtArgs["result"]["practice"]>
 export type PracticeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | Prisma.Practice$usersArgs<ExtArgs>
   patients?: boolean | Prisma.Practice$patientsArgs<ExtArgs>
@@ -1124,6 +3807,13 @@ export type PracticeInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   bookings?: boolean | Prisma.Practice$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Practice$reviewsArgs<ExtArgs>
   recallItems?: boolean | Prisma.Practice$recallItemsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Practice$auditLogsArgs<ExtArgs>
+  invoices?: boolean | Prisma.Practice$invoicesArgs<ExtArgs>
+  payments?: boolean | Prisma.Practice$paymentsArgs<ExtArgs>
+  checkIns?: boolean | Prisma.Practice$checkInsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Practice$notificationsArgs<ExtArgs>
+  consents?: boolean | Prisma.Practice$consentsArgs<ExtArgs>
+  dailyTasks?: boolean | Prisma.Practice$dailyTasksArgs<ExtArgs>
   _count?: boolean | Prisma.PracticeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PracticeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1138,6 +3828,13 @@ export type $PracticePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     recallItems: Prisma.$RecallItemPayload<ExtArgs>[]
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    invoices: Prisma.$InvoicePayload<ExtArgs>[]
+    payments: Prisma.$PaymentPayload<ExtArgs>[]
+    checkIns: Prisma.$CheckInPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    consents: Prisma.$ConsentRecordPayload<ExtArgs>[]
+    dailyTasks: Prisma.$DailyTaskPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1147,6 +3844,25 @@ export type $PracticePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     phone: string
     hours: string
     aiPersonality: string
+    logoUrl: string
+    primaryColor: string
+    secondaryColor: string
+    subdomain: string
+    tagline: string
+    plan: string
+    planStatus: string
+    trialEndsAt: Date | null
+    paystackSubId: string
+    paystackCustId: string
+    bookingEnabled: boolean
+    bookingRequiresApproval: boolean
+    bookingDepositEnabled: boolean
+    bookingDepositAmount: number
+    bookingServices: string
+    bookingWelcomeMsg: string
+    bookingConfirmMsg: string
+    googlePlaceId: string
+    integrations: string
     createdAt: Date
   }, ExtArgs["result"]["practice"]>
   composites: {}
@@ -1548,6 +4264,13 @@ export interface Prisma__PracticeClient<T, Null = never, ExtArgs extends runtime
   bookings<T extends Prisma.Practice$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.Practice$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   recallItems<T extends Prisma.Practice$recallItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$recallItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecallItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditLogs<T extends Prisma.Practice$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  invoices<T extends Prisma.Practice$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  payments<T extends Prisma.Practice$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  checkIns<T extends Prisma.Practice$checkInsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$checkInsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CheckInPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.Practice$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  consents<T extends Prisma.Practice$consentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$consentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConsentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dailyTasks<T extends Prisma.Practice$dailyTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$dailyTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1584,6 +4307,25 @@ export interface PracticeFieldRefs {
   readonly phone: Prisma.FieldRef<"Practice", 'String'>
   readonly hours: Prisma.FieldRef<"Practice", 'String'>
   readonly aiPersonality: Prisma.FieldRef<"Practice", 'String'>
+  readonly logoUrl: Prisma.FieldRef<"Practice", 'String'>
+  readonly primaryColor: Prisma.FieldRef<"Practice", 'String'>
+  readonly secondaryColor: Prisma.FieldRef<"Practice", 'String'>
+  readonly subdomain: Prisma.FieldRef<"Practice", 'String'>
+  readonly tagline: Prisma.FieldRef<"Practice", 'String'>
+  readonly plan: Prisma.FieldRef<"Practice", 'String'>
+  readonly planStatus: Prisma.FieldRef<"Practice", 'String'>
+  readonly trialEndsAt: Prisma.FieldRef<"Practice", 'DateTime'>
+  readonly paystackSubId: Prisma.FieldRef<"Practice", 'String'>
+  readonly paystackCustId: Prisma.FieldRef<"Practice", 'String'>
+  readonly bookingEnabled: Prisma.FieldRef<"Practice", 'Boolean'>
+  readonly bookingRequiresApproval: Prisma.FieldRef<"Practice", 'Boolean'>
+  readonly bookingDepositEnabled: Prisma.FieldRef<"Practice", 'Boolean'>
+  readonly bookingDepositAmount: Prisma.FieldRef<"Practice", 'Float'>
+  readonly bookingServices: Prisma.FieldRef<"Practice", 'String'>
+  readonly bookingWelcomeMsg: Prisma.FieldRef<"Practice", 'String'>
+  readonly bookingConfirmMsg: Prisma.FieldRef<"Practice", 'String'>
+  readonly googlePlaceId: Prisma.FieldRef<"Practice", 'String'>
+  readonly integrations: Prisma.FieldRef<"Practice", 'String'>
   readonly createdAt: Prisma.FieldRef<"Practice", 'DateTime'>
 }
     
@@ -2112,6 +4854,174 @@ export type Practice$recallItemsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.RecallItemScalarFieldEnum | Prisma.RecallItemScalarFieldEnum[]
+}
+
+/**
+ * Practice.auditLogs
+ */
+export type Practice$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Practice.invoices
+ */
+export type Practice$invoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Invoice
+   */
+  select?: Prisma.InvoiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Invoice
+   */
+  omit?: Prisma.InvoiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InvoiceInclude<ExtArgs> | null
+  where?: Prisma.InvoiceWhereInput
+  orderBy?: Prisma.InvoiceOrderByWithRelationInput | Prisma.InvoiceOrderByWithRelationInput[]
+  cursor?: Prisma.InvoiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InvoiceScalarFieldEnum | Prisma.InvoiceScalarFieldEnum[]
+}
+
+/**
+ * Practice.payments
+ */
+export type Practice$paymentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Payment
+   */
+  select?: Prisma.PaymentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Payment
+   */
+  omit?: Prisma.PaymentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentInclude<ExtArgs> | null
+  where?: Prisma.PaymentWhereInput
+  orderBy?: Prisma.PaymentOrderByWithRelationInput | Prisma.PaymentOrderByWithRelationInput[]
+  cursor?: Prisma.PaymentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PaymentScalarFieldEnum | Prisma.PaymentScalarFieldEnum[]
+}
+
+/**
+ * Practice.checkIns
+ */
+export type Practice$checkInsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CheckIn
+   */
+  select?: Prisma.CheckInSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CheckIn
+   */
+  omit?: Prisma.CheckInOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CheckInInclude<ExtArgs> | null
+  where?: Prisma.CheckInWhereInput
+  orderBy?: Prisma.CheckInOrderByWithRelationInput | Prisma.CheckInOrderByWithRelationInput[]
+  cursor?: Prisma.CheckInWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CheckInScalarFieldEnum | Prisma.CheckInScalarFieldEnum[]
+}
+
+/**
+ * Practice.notifications
+ */
+export type Practice$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * Practice.consents
+ */
+export type Practice$consentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ConsentRecord
+   */
+  select?: Prisma.ConsentRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ConsentRecord
+   */
+  omit?: Prisma.ConsentRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConsentRecordInclude<ExtArgs> | null
+  where?: Prisma.ConsentRecordWhereInput
+  orderBy?: Prisma.ConsentRecordOrderByWithRelationInput | Prisma.ConsentRecordOrderByWithRelationInput[]
+  cursor?: Prisma.ConsentRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ConsentRecordScalarFieldEnum | Prisma.ConsentRecordScalarFieldEnum[]
+}
+
+/**
+ * Practice.dailyTasks
+ */
+export type Practice$dailyTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DailyTask
+   */
+  select?: Prisma.DailyTaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DailyTask
+   */
+  omit?: Prisma.DailyTaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DailyTaskInclude<ExtArgs> | null
+  where?: Prisma.DailyTaskWhereInput
+  orderBy?: Prisma.DailyTaskOrderByWithRelationInput | Prisma.DailyTaskOrderByWithRelationInput[]
+  cursor?: Prisma.DailyTaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DailyTaskScalarFieldEnum | Prisma.DailyTaskScalarFieldEnum[]
 }
 
 /**

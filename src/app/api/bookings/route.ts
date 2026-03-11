@@ -1,22 +1,23 @@
 import { NextResponse } from "next/server";
 import { isDemoMode } from "@/lib/is-demo";
 import { demoStore } from "@/lib/demo-data";
+import { guardRoute, isErrorResponse } from "@/lib/api-helpers";
+import { sanitize } from "@/lib/validate";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const guard = await guardRoute(request, "bookings");
+  if (isErrorResponse(guard)) return guard;
+
   if (isDemoMode) return NextResponse.json({ bookings: demoStore.getBookings() });
 
   const { prisma } = await import("@/lib/prisma");
-  const { getSession } = await import("@/lib/auth");
-  const session = await getSession();
-  if (!session) return NextResponse.json({ bookings: [] });
-  const user = await prisma.user.findUnique({ where: { id: session.userId } });
-  if (!user?.practiceId) return NextResponse.json({ bookings: [] });
-
-  const bookings = await prisma.booking.findMany({ where: { practiceId: user.practiceId }, orderBy: { scheduledAt: "asc" } });
+  const bookings = await prisma.booking.findMany({ where: { practiceId: guard.practiceId }, orderBy: { scheduledAt: "asc" } });
   return NextResponse.json({ bookings });
 }
 
 export async function POST(request: Request) {
+  const guard = await guardRoute(request, "bookings");
+  if (isErrorResponse(guard)) return guard;
   const body = await request.json();
 
   if (isDemoMode) {
@@ -25,14 +26,17 @@ export async function POST(request: Request) {
   }
 
   const { prisma } = await import("@/lib/prisma");
-  const { getSession } = await import("@/lib/auth");
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const user = await prisma.user.findUnique({ where: { id: session.userId } });
-  if (!user?.practiceId) return NextResponse.json({ error: "No practice" }, { status: 400 });
-
   const booking = await prisma.booking.create({
-    data: { patientName: body.patientName, service: body.service, scheduledAt: new Date(body.scheduledAt), notes: body.notes || "", practiceId: user.practiceId },
+    data: {
+      patientName: sanitize(body.patientName),
+      patientPhone: sanitize(body.patientPhone || ""),
+      patientEmail: sanitize(body.patientEmail || ""),
+      service: sanitize(body.service),
+      scheduledAt: new Date(body.scheduledAt),
+      notes: sanitize(body.notes || ""),
+      source: body.source || "dashboard",
+      practiceId: guard.practiceId,
+    },
   });
   return NextResponse.json({ booking });
 }

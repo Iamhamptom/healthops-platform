@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { verifyToken, SESSION_COOKIE } from "@/lib/auth";
 
-const isDemoMode = process.env.DEMO_MODE === "true" || process.env.VERCEL === "1";
+const isDemoMode = process.env.DEMO_MODE === "true";
 
 export async function middleware(request: NextRequest) {
   // In demo mode, allow all access to dashboard
@@ -13,8 +13,9 @@ export async function middleware(request: NextRequest) {
 
   const isAuthPage = pathname === "/login" || pathname === "/register";
   const isDashboard = pathname.startsWith("/dashboard");
+  const isAdmin = pathname.startsWith("/admin");
 
-  if (isDashboard) {
+  if (isDashboard || isAdmin) {
     if (!token) return NextResponse.redirect(new URL("/login", request.url));
     const session = await verifyToken(token);
     if (!session) {
@@ -33,5 +34,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login", "/register"],
+  matcher: ["/dashboard/:path*", "/admin/:path*", "/login", "/register"],
 };

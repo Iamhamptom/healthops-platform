@@ -12,6 +12,7 @@ import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
@@ -37,6 +38,7 @@ export default function Home() {
             <Pricing />
             <CTA />
             <Footer />
+            <ChatbotWidget />
           </motion.div>
         )}
       </AnimatePresence>

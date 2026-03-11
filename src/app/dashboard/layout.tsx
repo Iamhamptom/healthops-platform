@@ -1,5 +1,6 @@
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import CommandAssistant from "@/components/dashboard/CommandAssistant";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,6 +10,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <DashboardHeader />
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
+      <CommandAssistant />
     </div>
   );
 }

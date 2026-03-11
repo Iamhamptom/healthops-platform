@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Star, Plus, Loader2, Trash2 } from "lucide-react";
+import { Star, Plus, Loader2, Trash2, RefreshCw } from "lucide-react";
 import Modal from "@/components/dashboard/Modal";
 import EmptyState from "@/components/dashboard/EmptyState";
 
@@ -20,6 +20,20 @@ export default function ReviewsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ rating: 5, comment: "", source: "google", authorName: "" });
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState("");
+
+  async function syncGoogleReviews() {
+    setSyncing(true);
+    setSyncMsg("");
+    try {
+      const res = await fetch("/api/google/reviews", { method: "POST" });
+      const data = await res.json();
+      if (data.error) { setSyncMsg(data.error); }
+      else { setSyncMsg(`Synced ${data.synced} new review${data.synced !== 1 ? "s" : ""} from Google`); await fetchReviews(); }
+    } catch { setSyncMsg("Failed to sync"); }
+    setSyncing(false);
+  }
 
   async function fetchReviews() {
     const res = await fetch("/api/reviews");
@@ -59,13 +73,28 @@ export default function ReviewsPage() {
           <Star className="w-5 h-5 text-yellow-400" />
           <h2 className="text-lg font-semibold">Reviews</h2>
         </div>
-        <button
-          onClick={() => setModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-[var(--gold)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
-        >
-          <Plus className="w-4 h-4" /> Add Review
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={syncGoogleReviews}
+            disabled={syncing}
+            className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-[var(--border)] hover:bg-white/10 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+          >
+            <RefreshCw className={`w-4 h-4 ${syncing ? "animate-spin" : ""}`} /> Sync Google
+          </button>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-[var(--gold)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <Plus className="w-4 h-4" /> Add Review
+          </button>
+        </div>
       </div>
+
+      {syncMsg && (
+        <div className="px-4 py-2 rounded-lg bg-[var(--teal)]/10 text-[var(--teal)] text-sm">
+          {syncMsg}
+        </div>
+      )}
 
       {/* Average rating card */}
       <div className="p-6 rounded-xl glass-panel flex items-center gap-6">

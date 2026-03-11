@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,21 +14,53 @@ import {
   Settings,
   ChevronDown,
   LogOut,
+  Users,
+  BarChart3,
+  Calendar,
+  Bot,
+  UserCheck,
+  ClipboardList,
+  Receipt,
+  Rocket,
+  Phone,
+  Bell,
+  Globe,
 } from "lucide-react";
 
-const navItems = [
-  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/dashboard/conversations", icon: MessageSquare, label: "Conversations" },
-  { href: "/dashboard/bookings", icon: CalendarCheck, label: "Bookings" },
-  { href: "/dashboard/reviews", icon: Star, label: "Reviews" },
-  { href: "/dashboard/recall", icon: RotateCcw, label: "Recall" },
-  { href: "/dashboard/settings", icon: Settings, label: "Settings" },
+// All possible nav items
+const allNavItems = [
+  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard", roles: ["admin", "doctor", "receptionist", "nurse"] },
+  { href: "/dashboard/onboarding", icon: Rocket, label: "Get Started", roles: ["admin"] },
+  { href: "/dashboard/daily", icon: ClipboardList, label: "Daily Tasks", roles: ["admin", "receptionist", "nurse"] },
+  { href: "/dashboard/checkin", icon: UserCheck, label: "Check-In", roles: ["admin", "receptionist", "nurse"] },
+  { href: "/dashboard/patients", icon: Users, label: "Patients", roles: ["admin", "doctor", "nurse"] },
+  { href: "/dashboard/calendar", icon: Calendar, label: "Schedule", roles: ["admin", "doctor", "receptionist"] },
+  { href: "/dashboard/approvals", icon: Bell, label: "Approvals", roles: ["admin", "doctor", "receptionist"] },
+  { href: "/dashboard/billing", icon: Receipt, label: "Billing", roles: ["admin", "receptionist"] },
+  { href: "/dashboard/conversations", icon: MessageSquare, label: "Conversations", roles: ["admin", "receptionist"] },
+  { href: "/dashboard/bookings", icon: CalendarCheck, label: "Bookings", roles: ["admin", "receptionist"] },
+  { href: "/dashboard/agents", icon: Bot, label: "AI Agents", roles: ["admin", "doctor"] },
+  { href: "/dashboard/reviews", icon: Star, label: "Reviews", roles: ["admin"] },
+  { href: "/dashboard/recall", icon: RotateCcw, label: "Recall", roles: ["admin", "receptionist"] },
+  { href: "/dashboard/analytics", icon: BarChart3, label: "Analytics", roles: ["admin", "doctor"] },
+  { href: "/dashboard/intel", icon: Globe, label: "Visio Intel", roles: ["admin"] },
+  { href: "/dashboard/settings", icon: Settings, label: "Settings", roles: ["admin"] },
 ];
 
 export default function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
+  const [userRole, setUserRole] = useState("admin");
+
+  useEffect(() => {
+    fetch("/api/auth/me").then(r => r.json()).then(data => {
+      if (data.user?.role) setUserRole(data.user.role);
+    }).catch(() => {});
+  }, []);
+
+  // Filter nav items by user role
+  const navItems = allNavItems.filter(item => item.roles.includes(userRole));
 
   async function handleSignOut() {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -57,7 +89,14 @@ export default function DashboardSidebar() {
         </AnimatePresence>
       </div>
 
-      <nav className="flex-1 py-3 space-y-0.5 px-2">
+      {/* Role badge */}
+      {!collapsed && (
+        <div className="px-4 py-2 border-b border-[var(--border)]">
+          <span className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider">{userRole}</span>
+        </div>
+      )}
+
+      <nav className="flex-1 py-3 space-y-0.5 px-2 overflow-y-auto">
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
           return (
@@ -87,6 +126,16 @@ export default function DashboardSidebar() {
           );
         })}
       </nav>
+
+      {/* Emergency line indicator */}
+      {!collapsed && (
+        <div className="px-4 py-2 border-t border-[var(--border)]">
+          <div className="flex items-center gap-2 text-[11px] text-[var(--text-tertiary)]">
+            <Phone className="w-3.5 h-3.5 text-[var(--crimson)]" />
+            <span>Emergency line active</span>
+          </div>
+        </div>
+      )}
 
       <button
         onClick={handleSignOut}

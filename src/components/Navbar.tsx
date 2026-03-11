@@ -7,9 +7,9 @@ import { HeartPulse } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home", numeral: "I" },
-  { href: "/#features", label: "Features", numeral: "II" },
-  { href: "/#pricing", label: "Pricing", numeral: "III" },
-  { href: "/about", label: "About", numeral: "IV" },
+  { href: "/how-it-works", label: "How It Works", numeral: "II" },
+  { href: "/#features", label: "Features", numeral: "III" },
+  { href: "/#pricing", label: "Pricing", numeral: "IV" },
 ];
 
 export default function Navbar() {

@@ -1,7 +1,11 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-const secret = new TextEncoder().encode(process.env.JWT_SECRET || "dev-secret");
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET || JWT_SECRET.length < 32) {
+  console.error("FATAL: JWT_SECRET must be set and at least 32 characters. Auth will fail.");
+}
+const secret = new TextEncoder().encode(JWT_SECRET || "MISSING-JWT-SECRET-SET-ENV-VAR");
 const COOKIE_NAME = "healthops-session";
 
 export async function createSession(userId: string) {
