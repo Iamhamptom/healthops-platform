@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isDemoMode } from "@/lib/is-demo";
 import { rateLimitByIp } from "@/lib/rate-limit";
+import { sendSignupAlerts } from "@/lib/signup-alerts";
 
 export async function POST(request: Request) {
   // Rate limit registration — 5 per minute per IP
@@ -29,6 +30,9 @@ export async function POST(request: Request) {
     const passwordHash = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({ data: { name, email, passwordHash } });
     await createSession(user.id);
+
+    // Notify Dr. Hampton — fire and forget (won't block response)
+    sendSignupAlerts({ name: user.name, email: user.email, userId: user.id });
 
     return NextResponse.json({ user: { id: user.id, name: user.name, email: user.email } });
   } catch {
