@@ -1,7 +1,7 @@
 // Signup alert system — notifies Dr. Hampton when someone registers
 // Channels: ntfy.sh (push), Resend (email), Visio Gateway (agent comms)
 
-const OWNER_EMAIL = "hamptonmusicgroup@gmail.com";
+const OWNER_EMAIL = process.env.ALERT_EMAIL || "davidhampton@hamptongroupafrica.com";
 const NTFY_TOPIC = process.env.NTFY_TOPIC || "healthops-hga-signups-x7k9";
 
 interface SignupInfo {
