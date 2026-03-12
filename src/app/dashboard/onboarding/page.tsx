@@ -89,11 +89,11 @@ export default function OnboardingPage() {
     return (
       <div className="p-6 max-w-2xl mx-auto mt-20 text-center space-y-6">
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring" }}>
-          <Sparkles className="w-16 h-16 mx-auto text-[var(--gold)]" />
+          <Sparkles className="w-16 h-16 mx-auto text-emerald-600" />
         </motion.div>
-        <h1 className="text-2xl font-bold text-[var(--ivory)]">You&apos;re All Set!</h1>
-        <p className="text-[var(--text-secondary)]">Your practice is fully configured and ready to go.</p>
-        <Link href="/dashboard" className="inline-block px-8 py-3 bg-[var(--gold)] rounded-lg text-sm font-semibold hover:opacity-90">
+        <h1 className="text-2xl font-bold text-gray-900">You&apos;re All Set!</h1>
+        <p className="text-gray-500">Your practice is fully configured and ready to go.</p>
+        <Link href="/dashboard" className="inline-block px-8 py-3 bg-emerald-600 text-white rounded-lg text-sm font-semibold hover:bg-emerald-700 transition-colors">
           Go to Dashboard
         </Link>
       </div>
@@ -104,24 +104,24 @@ export default function OnboardingPage() {
     <div className="p-6 max-w-3xl mx-auto space-y-8">
       {/* Header */}
       <div className="text-center space-y-3">
-        <motion.h1 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-2xl font-bold text-[var(--ivory)]">
+        <motion.h1 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-2xl font-bold text-gray-900">
           Welcome to VisioHealth Ops
         </motion.h1>
-        <p className="text-[var(--text-secondary)] text-sm">Let&apos;s get your practice set up. Follow these steps and you&apos;ll be running in minutes.</p>
+        <p className="text-gray-500 text-sm">Let&apos;s get your practice set up. Follow these steps and you&apos;ll be running in minutes.</p>
       </div>
 
       {/* Progress bar */}
       <div className="space-y-2">
         <div className="flex justify-between text-[12px]">
-          <span className="text-[var(--text-tertiary)]">{completedCount} of {totalSteps} completed</span>
-          <span className="text-[var(--gold)] font-medium">{progress}%</span>
+          <span className="text-gray-400">{completedCount} of {totalSteps} completed</span>
+          <span className="text-emerald-600 font-medium">{progress}%</span>
         </div>
-        <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+        <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.8 }}
-            className="h-full rounded-full bg-gradient-to-r from-[var(--gold)] to-[var(--teal)]"
+            className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"
           />
         </div>
       </div>
@@ -138,32 +138,32 @@ export default function OnboardingPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.08 }}
-              className={`rounded-xl glass-panel p-5 transition-all ${
-                isNext ? "ring-1 ring-[var(--gold)]/30 shadow-[0_0_20px_rgba(212,175,55,0.05)]" : ""
+              className={`rounded-xl border p-5 transition-all ${
+                isNext ? "border-emerald-200 bg-emerald-50/50 shadow-sm" : "border-gray-200 bg-white"
               } ${isDone ? "opacity-60" : ""}`}
             >
               <div className="flex items-start gap-4">
                 {/* Step indicator */}
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                  isDone ? "bg-[var(--teal)]/10" : isNext ? "bg-[var(--gold)]/10" : "bg-white/5"
+                  isDone ? "bg-emerald-50" : isNext ? "bg-emerald-100" : "bg-gray-50"
                 }`}>
                   {isDone ? (
-                    <Check className="w-5 h-5 text-[var(--teal)]" />
+                    <Check className="w-5 h-5 text-emerald-600" />
                   ) : (
-                    <step.icon className={`w-5 h-5 ${isNext ? "text-[var(--gold)]" : "text-[var(--text-tertiary)]"}`} />
+                    <step.icon className={`w-5 h-5 ${isNext ? "text-emerald-600" : "text-gray-400"}`} />
                   )}
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className={`text-[14px] font-semibold ${isDone ? "text-[var(--text-secondary)] line-through" : "text-[var(--ivory)]"}`}>
+                    <h3 className={`text-[14px] font-semibold ${isDone ? "text-gray-400 line-through" : "text-gray-900"}`}>
                       {step.title}
                     </h3>
-                    {isDone && <span className="text-[10px] text-[var(--teal)] font-medium">Done</span>}
-                    {isNext && <span className="text-[10px] text-[var(--gold)] font-medium animate-pulse">Next</span>}
+                    {isDone && <span className="text-[10px] text-emerald-600 font-medium">Done</span>}
+                    {isNext && <span className="text-[10px] text-emerald-600 font-medium animate-pulse">Next</span>}
                   </div>
-                  <p className="text-[12px] text-[var(--text-tertiary)] leading-relaxed">{step.description}</p>
+                  <p className="text-[12px] text-gray-500 leading-relaxed">{step.description}</p>
                 </div>
 
                 {/* Action button */}
@@ -172,8 +172,8 @@ export default function OnboardingPage() {
                     href={step.action}
                     className={`shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-lg text-[12px] font-medium transition-all ${
                       isNext
-                        ? "bg-[var(--gold)] text-[#050505] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]"
-                        : "border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--ivory)]"
+                        ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                        : "border border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300"
                     }`}
                   >
                     {step.actionLabel}
@@ -188,7 +188,7 @@ export default function OnboardingPage() {
 
       {/* Skip */}
       <div className="text-center">
-        <Link href="/dashboard" className="text-[12px] text-[var(--text-tertiary)] hover:text-[var(--ivory)] transition-colors">
+        <Link href="/dashboard" className="text-[12px] text-gray-400 hover:text-gray-900 transition-colors">
           Skip for now — I&apos;ll set up later
         </Link>
       </div>
