@@ -6,7 +6,61 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
+import dynamic from "next/dynamic";
 import MarketDonutChart from "@/components/ecosystem/MarketDonutChart";
+
+const JessPresenter = dynamic(() => import("@/components/voice-agent/JessPresenter"), { ssr: false });
+
+const jessSections = [
+  {
+    id: "eco-hero",
+    label: "The Vision",
+    color: "#10b981",
+    narration: "Welcome to the VisioHealth Ecosystem! I'm really glad you're here, because what you're about to see is something truly special. This isn't just a healthcare app — this is the entire operating system for healthcare in Africa. We're talking about a two hundred and fifty-nine billion dollar market that's growing eight percent every year, and right now, most of it still runs on paper, phone calls, and fax machines. There are over seventy-three thousand private practitioners in South Africa alone, and WhatsApp has ninety-eight percent penetration in the country. We built on what people already use. That's the foundation of everything you're about to see.",
+  },
+  {
+    id: "eco-market",
+    label: "Market Opportunity",
+    color: "#3b82f6",
+    narration: "Let me share the numbers with you, because they tell an incredible story. Africa's healthcare market is two hundred and fifty-nine billion dollars and growing rapidly. South Africa has the most sophisticated private healthcare system on the continent, with over seventy-three thousand practitioners. But here's the shocking part — eighty-four percent of South Africans rely on overcrowded public facilities, while only sixteen percent have private medical aid. That gap is massive, and it represents an enormous opportunity to bring modern, AI-powered tools to the practices that serve millions of people. The market is there. The need is urgent. And nobody else is building what we're building.",
+  },
+  {
+    id: "eco-problem",
+    label: "The Problem",
+    color: "#ef4444",
+    narration: "Now let me paint you a picture of what healthcare looks like on the ground in South Africa today. Most private practices still manage their patients with paper files and phone calls. Booking is done manually. Reminders are inconsistent or don't happen at all. Claims get rejected because of incorrect ICD-10 codes. Practices lose fifteen to twenty-five percent of their revenue to no-shows alone. And with twenty-seven percent of South African-trained doctors emigrating, the ones who stay need to do more with less. Load shedding means desktop software crashes and data is lost. POPIA compliance requires audit logs and consent tracking that paper can never provide. This is the reality — and this is exactly what we're solving.",
+  },
+  {
+    id: "eco-products",
+    label: "Product Ecosystem",
+    color: "#10b981",
+    narration: "This is my favourite part! VisioHealth isn't one product — it's six products that work together as a complete ecosystem. First, VisioHealth Ops — the core platform that runs your entire practice with AI-powered WhatsApp bookings, medical records, billing, and POPIA compliance. Then Placeo Health — a patient marketplace where people find practices near them, compare reviews, and book via WhatsApp. Visio Health Integrator is our enterprise middleware that connects to every existing healthcare system — GoodX, Healthbridge, hospital HL7 systems. Visio Waiting Room reimagines check-in with WhatsApp — patients wait in their car, fill forms on their phone, and get called when the doctor is ready. VisioMed AI is the doctor's co-pilot — auto ICD-10 coding, drug interaction checks, diagnostic pattern flagging. And Payer Connect coordinates the entire relationship between providers and funders. Six products, one patient journey, one ecosystem. That's the power of what we've built.",
+  },
+  {
+    id: "eco-competitive",
+    label: "Competition",
+    color: "#8b5cf6",
+    narration: "Let me be honest about the competitive landscape, because this is where our advantage becomes really clear. GoodX is desktop software — no AI, no WhatsApp, clunky interface, and they charge three to eight thousand Rand a month for it. Healthbridge focuses on claims processing but has very limited practice management and no patient engagement. Elixir Health is basic cloud practice management with no AI whatsoever. None of them — not a single one — does AI plus WhatsApp plus full practice management plus POPIA compliance together. We're the only full-stack solution in the market. And here's the thing — when you compare us to global players, Zocdoc was valued at over two billion dollars doing marketplace only in the US. MuleSoft sold for six and a half billion doing enterprise middleware. We're building both of those and more, specifically for the world's fastest-growing healthcare market. That's our position.",
+  },
+  {
+    id: "eco-expansion",
+    label: "Global Expansion",
+    color: "#a855f7",
+    narration: "Our expansion strategy is deliberate and ambitious. Phase one is South Africa — we prove the model in the most sophisticated private healthcare market in Africa. Seventy-three thousand practitioners, strong digital infrastructure, WhatsApp-native population. Phase two takes us across Sub-Saharan Africa — Nigeria with two hundred million people and only forty thousand doctors, Kenya, Ghana, Egypt. The same problems exist there, but the infrastructure is even worse, which makes our WhatsApp-first approach even more relevant. Phase three is the global play — India, Southeast Asia, Latin America. Massive private healthcare markets with similar fragmentation. And phase four is becoming the global standard for healthcare operations. The playbook scales because the problems are universal. We're not just building for South Africa. We're building the operating system for healthcare on the entire African continent, and beyond.",
+  },
+  {
+    id: "eco-thesis",
+    label: "Investment Thesis",
+    color: "#10b981",
+    narration: "Here's why this is a multi-billion dollar opportunity, and I want you to really feel the scale of what we're describing. A single practice could pay thirty thousand to over a hundred thousand Rand per month with the full product stack. One hundred practices gives you three to ten million Rand in monthly recurring revenue. One thousand practices across Africa — thirty to a hundred million Rand MRR. At ten thousand practices, this is a billion-plus Rand MRR business. That's over twelve billion Rand in annual recurring revenue. The ecosystem creates compounding network effects and massive switching costs. Every new practice makes the marketplace more valuable. Every new connection makes the integrator stickier. Every new consultation makes the AI smarter. This isn't a point solution that gets disrupted. This is infrastructure that becomes more valuable over time. Africa-first, then global. That's the thesis.",
+  },
+  {
+    id: "eco-cta",
+    label: "Join Us",
+    color: "#10b981",
+    narration: "So there you have it — the complete VisioHealth ecosystem. Six products, one vision, one unstoppable platform. Whether you're a healthcare provider looking to transform your practice, an investor looking for the next generational opportunity in African tech, or a partner who wants to build the future of healthcare with us — we'd absolutely love to connect. This is just the beginning, and the best is truly yet to come. Thank you so much for taking the time to explore what we're building. It means the world to us.",
+  },
+];
 import ProblemBarChart from "@/components/ecosystem/ProblemBarChart";
 import CompetitiveRadar from "@/components/ecosystem/CompetitiveRadar";
 import RevenueGrowthChart from "@/components/ecosystem/RevenueGrowthChart";
@@ -227,7 +281,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           HERO — The Vision
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-40 pb-32 md:pt-48 md:pb-40 overflow-hidden">
+      <section data-jess="eco-hero" className="relative pt-40 pb-32 md:pt-48 md:pb-40 overflow-hidden">
         {/* Glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-emerald-500/[0.04] rounded-full blur-[200px]" />
@@ -287,7 +341,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           MARKET OPPORTUNITY — The Numbers
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="eco-market" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -363,7 +417,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           THE PROBLEM — Why This Exists
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="eco-problem" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           {/* Crisis vs Impact Infographic */}
           <motion.div
@@ -455,7 +509,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           PRODUCTS — The Ecosystem
       ═══════════════════════════════════════════════════════════ */}
-      <section id="products" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section id="products" data-jess="eco-products" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[200px]" />
         </div>
@@ -712,7 +766,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           COMPETITIVE LANDSCAPE
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="eco-competitive" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -832,7 +886,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           GLOBAL EXPANSION — The Roadmap
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="eco-expansion" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/3 w-[800px] h-[500px] bg-purple-500/[0.03] rounded-full blur-[200px]" />
         </div>
@@ -942,7 +996,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           THE THESIS — Why Now
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="eco-thesis" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1027,7 +1081,7 @@ export default function EcosystemPage() {
       {/* ═══════════════════════════════════════════════════════════
           CTA — Join the Movement
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-32 md:py-40 border-t border-white/[0.04] overflow-hidden">
+      <section data-jess="eco-cta" className="relative py-32 md:py-40 border-t border-white/[0.04] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-[200px]" />
         </div>
@@ -1108,6 +1162,7 @@ export default function EcosystemPage() {
         </div>
       </section>
 
+      <JessPresenter sections={jessSections} />
       <Footer />
       <ChatbotWidget />
     </main>
