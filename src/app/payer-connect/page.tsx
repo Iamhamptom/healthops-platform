@@ -15,7 +15,70 @@ import ComplianceShield from "@/components/payer-connect/ComplianceShield";
 import ImpactMetrics from "@/components/payer-connect/ImpactMetrics";
 import GoToMarketTimeline from "@/components/payer-connect/GoToMarketTimeline";
 
-const JessGuide = dynamic(() => import("@/components/voice-agent/JessGuide"), { ssr: false });
+const JessPresenter = dynamic(() => import("@/components/voice-agent/JessPresenter"), { ssr: false });
+
+const jessSections = [
+  {
+    id: "hero",
+    label: "Overview",
+    color: "#3b82f6",
+    narration: "Welcome to Payer Connect — the live coordination layer between healthcare providers and funders. This is where hospitals, clinics, insurers, and medical aids finally speak the same language, in real time.",
+  },
+  {
+    id: "flow",
+    label: "How It Works",
+    color: "#3b82f6",
+    narration: "Everything flows through one intelligent hub. Eligibility checks, authorisations, claims, referrals — all live. No more phone calls, no more faxes, no more waiting.",
+  },
+  {
+    id: "problems",
+    label: "The Problem",
+    color: "#ef4444",
+    narration: "Right now, providers spend hours checking if a patient is covered. Authorisations take days. Claims get rejected because of missing codes. Patients are left confused. This is the chaos we're fixing.",
+  },
+  {
+    id: "journey",
+    label: "Patient Journey",
+    color: "#3b82f6",
+    narration: "Eight steps from patient entry to claim resolution — all on one platform. The patient arrives, we verify cover instantly, route them to the best facility, get approval, and validate the claim. Seamless.",
+  },
+  {
+    id: "modules",
+    label: "10 Modules",
+    color: "#10b981",
+    narration: "Ten product modules cover every layer: eligibility engine, pre-auth, smart routing, referrals, claims readiness, shared case timeline, patient portal, provider portal, payer portal, and an AI copilot. This is the full stack.",
+  },
+  {
+    id: "users",
+    label: "Who It Connects",
+    color: "#10b981",
+    narration: "On the provider side: hospitals, clinics, specialists, pharmacies, labs, ambulance teams. On the payer side: medical aids, insurers, HMOs, scheme administrators. Everyone in one system.",
+  },
+  {
+    id: "gtm",
+    label: "Go-to-Market",
+    color: "#a855f7",
+    narration: "Five phases. We start with eligibility verification — the easiest wedge, fast ROI. Then pre-auth and portals. Then smart routing. Then AI. Then we become infrastructure for all of Africa.",
+  },
+  {
+    id: "revenue",
+    label: "Revenue Model",
+    color: "#10b981",
+    narration: "Eight revenue streams from one product: provider SaaS, payer enterprise fees, integration fees, transaction fees, AI premium, analytics, white-label licensing, and implementation services.",
+  },
+  {
+    id: "compliance",
+    label: "Compliance",
+    color: "#f59e0b",
+    narration: "Built for regulated healthcare from day one. Role-based access, encryption, audit logs, consent management, MFA, breach handling — compliance isn't a feature, it's the foundation.",
+  },
+  {
+    id: "thesis",
+    label: "Investment Thesis",
+    color: "#3b82f6",
+    narration: "This product sits in the middle of the real money flow of healthcare. Faster approvals, fewer rejected claims, lower admin overhead, better patient outcomes. Once connected, switching costs are massive. This is health financing infrastructure.",
+  },
+];
 
 /* ─── Animation helpers ─── */
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
@@ -276,10 +339,13 @@ export default function PayerConnectPage() {
     <main className="min-h-screen bg-[#052E16] text-white">
       <Navbar />
 
+      {/* Jess Presenter — sticky floating companion */}
+      <JessPresenter sections={jessSections} />
+
       {/* ═══════════════════════════════════════════════════════════
           HERO
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative pt-40 pb-32 md:pt-48 md:pb-40 overflow-hidden">
+      <section data-jess="hero" className="relative pt-40 pb-32 md:pt-48 md:pb-40 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-blue-500/[0.04] rounded-full blur-[200px]" />
           <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[180px]" />
@@ -310,22 +376,22 @@ export default function PayerConnectPage() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[-0.04em] leading-[0.95] mb-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-[-0.04em] leading-[0.9] mb-8">
               Payer
               <br />
-              <span className="text-blue-400">Connect</span>
+              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400 bg-clip-text text-transparent">Connect</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/40 font-light leading-relaxed max-w-3xl mb-6">
+            <p className="text-xl md:text-2xl text-white/50 font-light leading-relaxed max-w-3xl mb-4">
               The live coordination layer between healthcare delivery
               and healthcare funding.
             </p>
-            <p className="text-base text-white/25 font-light leading-relaxed max-w-2xl mb-12">
+            <p className="text-lg text-white/25 font-light leading-relaxed max-w-2xl mb-12">
               A secure, real-time platform connecting hospitals, clinics, specialists,
               medical aids, insurers, HMOs, and patients into one operating layer.
               Verify cover. Approve care. Route patients. Reduce claim friction. All live.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-6">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="#modules"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 text-white text-sm font-mono hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-500/20"
@@ -342,11 +408,6 @@ export default function PayerConnectPage() {
                 Full Ecosystem
               </Link>
             </div>
-
-            <JessGuide
-              context="Ask about Payer Connect — what it is, who it's for, why it matters"
-              color="#3b82f6"
-            />
           </motion.div>
         </div>
       </section>
@@ -354,7 +415,7 @@ export default function PayerConnectPage() {
       {/* ═══════════════════════════════════════════════════════════
           LIVE FLOW DIAGRAM
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28 border-t border-white/[0.04]">
+      <section data-jess="flow" className="relative py-20 md:py-28 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -366,7 +427,7 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-blue-400/60 uppercase mb-4">
               How It Works
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
               One coordination layer. <span className="text-blue-400">Live.</span>
             </h2>
             <p className="text-base text-white/30 font-light max-w-2xl mx-auto">
@@ -406,7 +467,7 @@ export default function PayerConnectPage() {
               { text: "Connect payer & provider live", color: "text-purple-400" },
             ].map((item) => (
               <motion.div key={item.text} variants={fadeUp} className="text-center">
-                <p className={`text-lg md:text-xl font-light ${item.color}`}>{item.text}</p>
+                <p className={`text-xl md:text-2xl font-extralight ${item.color}`}>{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -416,7 +477,7 @@ export default function PayerConnectPage() {
       {/* ═══════════════════════════════════════════════════════════
           THE PROBLEM
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="problems" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -428,8 +489,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-red-400/60 uppercase mb-4">
               The Problem
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
-              The space between payer and provider is chaos
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
+              The space between payer and provider is <span className="text-red-400">chaos</span>
             </h2>
             <p className="text-base text-white/30 font-light max-w-2xl mx-auto">
               Every day, millions of healthcare interactions are slowed by manual processes,
@@ -460,17 +521,14 @@ export default function PayerConnectPage() {
             ))}
           </motion.div>
 
-          <JessGuide
-            context="Ask about the problems — eligibility delays, broken auth, claims rejection"
-            color="#ef4444"
-          />
+
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
           THE JOURNEY — End to End
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="journey" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-500/[0.03] rounded-full blur-[200px]" />
         </div>
@@ -486,8 +544,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-blue-400/60 uppercase mb-4">
               End-to-End Journey
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
-              From patient entry to claim resolution
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
+              From patient entry to <span className="text-blue-400">claim resolution</span>
             </h2>
             <p className="text-base text-white/30 font-light max-w-xl mx-auto">
               Eight steps. One platform. Complete payer-provider coordination.
@@ -496,17 +554,13 @@ export default function PayerConnectPage() {
 
           <JourneyTimeline steps={journeySteps} />
 
-          <JessGuide
-            context="Ask about the patient journey — from entry to claim resolution"
-            color="#3b82f6"
-          />
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
           MODULES — The Product
       ═══════════════════════════════════════════════════════════ */}
-      <section id="modules" className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section id="modules" data-jess="modules" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -518,8 +572,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-emerald-400/60 uppercase mb-4">
               10 Product Modules
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
-              Every layer of the coordination stack
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
+              Every layer of the <span className="text-emerald-400">coordination stack</span>
             </h2>
             <p className="text-base text-white/30 font-light max-w-2xl mx-auto">
               From eligibility verification to AI-powered decision support —
@@ -582,17 +636,13 @@ export default function PayerConnectPage() {
             ))}
           </motion.div>
 
-          <JessGuide
-            context="Ask about any module — eligibility, auth, routing, transfers, claims, AI copilot"
-            color="#10b981"
-          />
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
           WHO IT'S FOR — Users
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="users" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -604,8 +654,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-emerald-400/60 uppercase mb-4">
               Who It Connects
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em]">
-              Every party in healthcare financing
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em]">
+              Every party in <span className="text-emerald-400">healthcare financing</span>
             </h2>
           </motion.div>
 
@@ -664,7 +714,7 @@ export default function PayerConnectPage() {
       {/* ═══════════════════════════════════════════════════════════
           GO-TO-MARKET
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="gtm" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute bottom-0 left-1/3 w-[800px] h-[500px] bg-purple-500/[0.03] rounded-full blur-[200px]" />
         </div>
@@ -680,8 +730,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-purple-400/60 uppercase mb-4">
               Go-to-Market
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
-              Five phases to infrastructure
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
+              Five phases to <span className="text-purple-400">infrastructure</span>
             </h2>
             <p className="text-base text-white/30 font-light max-w-xl mx-auto">
               Start with the easiest wedge. End as the coordination layer for African healthcare.
@@ -690,17 +740,13 @@ export default function PayerConnectPage() {
 
           <GoToMarketTimeline phases={goToMarket} />
 
-          <JessGuide
-            context="Ask about go-to-market — phases, timing, expansion strategy"
-            color="#a855f7"
-          />
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
           REVENUE MODEL
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="revenue" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -712,8 +758,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-emerald-400/60 uppercase mb-4">
               Revenue Model
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
-              Eight revenue streams. One product.
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
+              Eight revenue streams. <span className="text-emerald-400">One product.</span>
             </h2>
           </motion.div>
 
@@ -724,7 +770,7 @@ export default function PayerConnectPage() {
       {/* ═══════════════════════════════════════════════════════════
           COMPLIANCE
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="compliance" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -736,8 +782,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-amber-400/60 uppercase mb-4">
               Compliance by Design
             </span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-[-0.03em] mb-4">
-              Built for regulated healthcare
+            <h2 className="text-4xl md:text-5xl font-extralight tracking-[-0.03em] mb-4">
+              Built for <span className="text-amber-400">regulated healthcare</span>
             </h2>
             <p className="text-base text-white/30 font-light">
               Not a feature set. Part of the product foundation.
@@ -747,17 +793,13 @@ export default function PayerConnectPage() {
 
           <ComplianceShield features={complianceFeatures} />
 
-          <JessGuide
-            context="Ask about revenue — 8 streams, pricing, unit economics"
-            color="#10b981"
-          />
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
           WHY IT'S BIG
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 border-t border-white/[0.04]">
+      <section data-jess="thesis" className="relative py-24 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -769,8 +811,8 @@ export default function PayerConnectPage() {
             <span className="inline-block text-[11px] font-mono tracking-[0.4em] text-blue-400/60 uppercase mb-4">
               The Investment Thesis
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-[-0.03em] mb-4">
-              This product sits in the middle of the money
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] mb-4">
+              This product sits in the middle of the <span className="text-blue-400">money</span>
             </h2>
           </motion.div>
 
@@ -795,10 +837,6 @@ export default function PayerConnectPage() {
             <ImpactMetrics />
           </motion.div>
 
-          <JessGuide
-            context="Ask about the investment thesis — why this is a multi-billion dollar opportunity"
-            color="#3b82f6"
-          />
         </div>
       </section>
 
@@ -817,10 +855,10 @@ export default function PayerConnectPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl font-extralight tracking-[-0.03em] leading-tight mb-6">
+            <h2 className="text-5xl md:text-7xl font-extralight tracking-[-0.04em] leading-[0.95] mb-6">
               The coordination layer
               <br />
-              <span className="text-blue-400">healthcare has been missing</span>
+              <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400 bg-clip-text text-transparent">healthcare has been missing</span>
             </h2>
             <p className="text-base text-white/30 font-light leading-relaxed mb-12 max-w-xl mx-auto">
               Payer Connect is where healthcare delivery meets healthcare funding.

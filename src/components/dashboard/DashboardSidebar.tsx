@@ -25,6 +25,7 @@ import {
   Phone,
   Bell,
   Globe,
+  Upload,
 } from "lucide-react";
 
 // All possible nav items
@@ -43,6 +44,7 @@ const allNavItems = [
   { href: "/dashboard/reviews", icon: Star, label: "Reviews", roles: ["admin"] },
   { href: "/dashboard/recall", icon: RotateCcw, label: "Recall", roles: ["admin", "receptionist"] },
   { href: "/dashboard/analytics", icon: BarChart3, label: "Analytics", roles: ["admin", "doctor"] },
+  { href: "/dashboard/import", icon: Upload, label: "Import Data", roles: ["admin", "receptionist"] },
   { href: "/dashboard/intel", icon: Globe, label: "Visio Intel", roles: ["admin"] },
   { href: "/dashboard/settings", icon: Settings, label: "Settings", roles: ["admin"] },
 ];

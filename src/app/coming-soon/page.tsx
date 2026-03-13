@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 
-type Status = "Beta" | "In Development" | "Planned" | "Research";
+type Status = "Beta" | "In Development" | "Planned" | "Research" | "Concept";
 
 interface RoadmapItem {
   title: string;
@@ -20,6 +20,7 @@ const statusStyles: Record<Status, string> = {
   "In Development": "bg-blue-50 text-blue-700 border border-blue-200",
   Planned: "bg-amber-50 text-amber-700 border border-amber-200",
   Research: "bg-purple-50 text-purple-700 border border-purple-200",
+  Concept: "bg-cyan-50 text-cyan-700 border border-cyan-200",
 };
 
 const roadmapItems: RoadmapItem[] = [
@@ -78,6 +79,50 @@ const roadmapItems: RoadmapItem[] = [
     description:
       "AI chatbot and voice support in Zulu, Xhosa, Sotho, Afrikaans, Swahili, and Yoruba. Making healthcare truly accessible.",
     timeline: "2027",
+  },
+];
+
+interface NextLevelProduct {
+  title: string;
+  tagline: string;
+  description: string;
+  investorAngle: string;
+  timeline: string;
+  color: string;
+}
+
+const nextLevelProducts: NextLevelProduct[] = [
+  {
+    title: "Placeo Health",
+    tagline: "Find. Compare. Book.",
+    description: "A location-based healthcare marketplace. Patients discover practices near them, compare ratings and services, and book instantly via WhatsApp. Every VisioHealth practice becomes a listing automatically.",
+    investorAngle: "Captures the demand side of the market. Revenue from booking fees, featured listings, and patient acquisition leads. The more practices on VisioHealth, the more valuable Placeo becomes — classic network effect.",
+    timeline: "2026–2027",
+    color: "#10b981",
+  },
+  {
+    title: "Visio Health Integrator",
+    tagline: "Connect anything. Break nothing.",
+    description: "Enterprise middleware that bridges VisioHealth to existing healthcare systems — GoodX, Healthbridge, hospital HL7/FHIR, lab systems, radiology PACS, and pharmacy dispensing. The universal healthcare API for Africa.",
+    investorAngle: "This is the moat. Once connected, switching costs are massive. Per-connection licensing + enterprise SaaS. Think MuleSoft for African healthcare — the plumbing layer every hospital needs.",
+    timeline: "2027",
+    color: "#8b5cf6",
+  },
+  {
+    title: "Visio Waiting Room",
+    tagline: "The waiting room, reimagined.",
+    description: "Digital-first waiting experience. Patients check in from their car via WhatsApp, see live queue position, complete intake forms on their phone, and get called when ready. Zero crowding. Zero paper clipboards.",
+    investorAngle: "Standalone at R2,500/month — an easy first sale that upsells to the full platform. Viral loop: patients experience it and ask their OTHER doctors why they don't have it.",
+    timeline: "2026",
+    color: "#06b6d4",
+  },
+  {
+    title: "VisioMed AI",
+    tagline: "The doctor's AI co-pilot.",
+    description: "Clinical decision support: auto-suggests ICD-10 codes from consultation notes, checks drug interactions, flags diagnostic patterns, and generates referral letters. Trained on South African clinical guidelines.",
+    investorAngle: "Premium addon (R5K–R15K/month). Reduces medical errors, speeds consultations by 30%, improves claim accuracy. Data flywheel: every consultation makes the AI smarter. This is where the real margin lives.",
+    timeline: "2027",
+    color: "#f59e0b",
   },
 ];
 
@@ -217,6 +262,84 @@ export default function ComingSoonPage() {
                     />
                   </svg>
                   {item.timeline}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Next-Level Products ── */}
+      <section className="py-24 md:py-32 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+          >
+            <span className="inline-block text-[11px] font-mono tracking-[0.3em] text-emerald-600 uppercase mb-4">
+              Next-Level
+            </span>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 tracking-tight mb-3">
+              The ecosystem is expanding
+            </h2>
+            <p className="text-sm text-gray-500 font-light max-w-xl">
+              Four new products joining the VisioHealth platform — each capturing a different layer of the healthcare value chain.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {nextLevelProducts.map((product) => (
+              <motion.div
+                key={product.title}
+                variants={cardVariants}
+                className="relative bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg font-bold"
+                    style={{ backgroundColor: product.color }}
+                  >
+                    {product.title[0]}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-900">{product.title}</h3>
+                    <p className="text-[12px] font-mono text-gray-400">{product.tagline}</p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-500 font-light leading-relaxed mb-5">
+                  {product.description}
+                </p>
+
+                <div className="rounded-xl bg-gray-50 border border-gray-100 p-4 mb-5">
+                  <div className="flex items-center gap-1.5 mb-1.5">
+                    <svg className="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                    </svg>
+                    <span className="text-[11px] font-mono tracking-wide text-emerald-600 uppercase">Investor Angle</span>
+                  </div>
+                  <p className="text-[13px] text-gray-500 leading-relaxed">{product.investorAngle}</p>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    </svg>
+                    {product.timeline}
+                  </span>
+                  <span className={`text-[11px] font-mono tracking-wide px-3 py-1 rounded-full ${statusStyles["Concept"]}`}>
+                    Concept
+                  </span>
                 </div>
               </motion.div>
             ))}

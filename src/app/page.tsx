@@ -18,6 +18,8 @@ import PeopleFirst from "@/components/PeopleFirst";
 import Integrations from "@/components/Integrations";
 import GetInTouch from "@/components/GetInTouch";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import VoiceAgentSection from "@/components/voice-agent/VoiceAgentSection";
+import NextLevel from "@/components/NextLevel";
 
 export default function Home() {
   const [entered, setEntered] = useState(false);
@@ -45,6 +47,8 @@ export default function Home() {
             <Integrations />
             <Verticals />
             <HowItWorks />
+            <VoiceAgentSection />
+            <NextLevel />
             <Testimonials />
             <Pricing />
             <GetInTouch />

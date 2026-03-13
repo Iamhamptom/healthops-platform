@@ -15,6 +15,8 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "/about" },
+    { label: "Ecosystem", href: "/ecosystem" },
+    { label: "Payer Connect", href: "/payer-connect" },
     { label: "Coming Soon", href: "/coming-soon" },
     { label: "Contact", href: "#get-in-touch" },
   ],

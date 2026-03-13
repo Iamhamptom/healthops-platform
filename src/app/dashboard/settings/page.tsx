@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Settings, Loader2, Save, Palette, Shield, Bell, CreditCard, Check, Zap, Crown, Building2, ExternalLink, Mail, FileText, Link2, Unlink } from "lucide-react";
+import { Settings, Loader2, Save, Palette, Shield, Bell, CreditCard, Check, Zap, Crown, Building2, ExternalLink, Mail, FileText, Link2, Unlink, Calendar, MessageSquare, Smartphone, Upload, CreditCard as CardIcon, Stethoscope, Monitor, ArrowRight } from "lucide-react";
 
 interface PracticeForm {
   name: string;
@@ -44,6 +44,93 @@ const PLANS = [
     features: ["Everything in Pro", "Multi-location support", "Advanced recall & campaigns", "Intake & consent forms", "KPI dashboard", "Dedicated account manager", "API access"],
   },
 ];
+
+/* ─── Integration Hub Components ─── */
+
+function IntegrationSection({ title, desc, children }: { title: string; desc: string; children: React.ReactNode }) {
+  return (
+    <div className="space-y-3">
+      <div>
+        <h3 className="text-sm font-semibold text-gray-900">{title}</h3>
+        <p className="text-xs text-gray-500 mt-0.5">{desc}</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function IntegrationCard({
+  icon: Icon, color, name, desc, status, actionLabel, actionHref, onConnect, connecting, features,
+}: {
+  icon: React.ElementType; color: string; name: string; desc: string;
+  status: "ready" | "connected" | "coming";
+  actionLabel?: string; actionHref?: string;
+  onConnect?: () => Promise<void>; connecting?: boolean;
+  features?: string[];
+}) {
+  const statusBadge = {
+    ready: { label: "Ready", bg: "bg-emerald-50", text: "text-emerald-700", dot: "bg-emerald-500" },
+    connected: { label: "Connected", bg: "bg-blue-50", text: "text-blue-700", dot: "bg-blue-500" },
+    coming: { label: "Coming Soon", bg: "bg-gray-100", text: "text-gray-500", dot: "bg-gray-400" },
+  }[status];
+
+  return (
+    <div className="rounded-xl border border-gray-200 bg-white p-4 flex flex-col gap-3 hover:border-gray-300 transition-colors">
+      <div className="flex items-start justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${color}12` }}>
+            <Icon className="w-4.5 h-4.5" style={{ color }} />
+          </div>
+          <div>
+            <div className="text-[13px] font-semibold text-gray-900">{name}</div>
+            <div className="text-[11px] text-gray-500 leading-tight mt-0.5">{desc}</div>
+          </div>
+        </div>
+        <span className={`flex items-center gap-1.5 text-[10px] font-medium px-2 py-0.5 rounded-full ${statusBadge.bg} ${statusBadge.text} whitespace-nowrap`}>
+          <span className={`w-1.5 h-1.5 rounded-full ${statusBadge.dot}`} />
+          {statusBadge.label}
+        </span>
+      </div>
+
+      {features && features.length > 0 && (
+        <ul className="space-y-1">
+          {features.map(f => (
+            <li key={f} className="flex items-start gap-1.5 text-[11px] text-gray-500">
+              <Check className="w-3 h-3 mt-0.5 shrink-0 text-emerald-500" />
+              {f}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div className="mt-auto pt-1">
+        {status === "coming" ? (
+          <div className="text-[11px] text-gray-400 italic">Available in a future update</div>
+        ) : status === "connected" ? (
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] text-blue-600 font-medium">Active</span>
+            <button className="text-[11px] text-gray-400 hover:text-red-500 transition-colors ml-auto">Disconnect</button>
+          </div>
+        ) : actionHref ? (
+          <a href={actionHref} className="inline-flex items-center gap-1.5 text-[12px] font-medium text-emerald-600 hover:text-emerald-700 transition-colors">
+            {actionLabel || "Open"} <ArrowRight className="w-3 h-3" />
+          </a>
+        ) : onConnect ? (
+          <button
+            onClick={onConnect}
+            disabled={connecting}
+            className="inline-flex items-center gap-1.5 text-[12px] font-medium text-emerald-600 hover:text-emerald-700 disabled:opacity-50 transition-colors"
+          >
+            {connecting ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
+            {connecting ? "Connecting..." : "Connect"}
+          </button>
+        ) : null}
+      </div>
+    </div>
+  );
+}
 
 export default function SettingsPage() {
   const [form, setForm] = useState<PracticeForm>({
@@ -563,175 +650,181 @@ export default function SettingsPage() {
 
       {/* Integrations tab */}
       {tab === "integrations" && (
-        <div className="space-y-5">
+        <div className="space-y-6">
           {(saved === "gmail" || saved === "accounting") && (
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-[#10b981]/10 border border-[#10b981]/20">
-              <p className="text-[13px] text-[#10b981] font-medium">
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+              <p className="text-[13px] text-emerald-700 font-medium">
                 {saved === "gmail" ? "Gmail connected successfully!" : `${accountingProvider} connected successfully!`}
               </p>
             </motion.div>
           )}
 
-          {/* Gmail */}
-          <div className="rounded-xl glass-panel p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-red-400" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-[var(--ivory)]">Gmail</h3>
-                  <p className="text-[11px] text-[var(--text-tertiary)]">Sync patient emails into your dashboard</p>
-                </div>
-              </div>
-              {gmailConnected ? (
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-medium text-[#10b981] bg-[#10b981]/10 px-3 py-1 rounded-full">Connected</span>
-                  <button
-                    onClick={async () => {
-                      setDisconnecting("gmail");
-                      // In real mode, call disconnect endpoint
-                      setTimeout(() => { setGmailConnected(false); setDisconnecting(null); }, 1000);
-                    }}
-                    disabled={disconnecting === "gmail"}
-                    className="text-[11px] text-[var(--text-tertiary)] hover:text-red-400 flex items-center gap-1"
-                  >
-                    {disconnecting === "gmail" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Unlink className="w-3 h-3" />}
-                    Disconnect
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={async () => {
-                    setConnectingGmail(true);
-                    try {
-                      const res = await fetch("/api/gmail/connect");
-                      const data = await res.json();
-                      if (data.url && !data.url.includes("demo")) {
-                        window.location.href = data.url;
-                      } else {
-                        setGmailConnected(true);
-                        setSaved("gmail");
-                        setTimeout(() => setSaved(""), 3000);
-                      }
-                    } catch { /* ignore */ }
-                    setConnectingGmail(false);
-                  }}
-                  disabled={connectingGmail}
-                  className="flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-lg text-[12px] font-medium text-red-400 hover:bg-red-500/20 disabled:opacity-50"
-                >
-                  {connectingGmail ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Mail className="w-3.5 h-3.5" />}
-                  Connect Gmail
-                </button>
-              )}
-            </div>
-            <div className="text-[11px] text-[var(--text-tertiary)] space-y-1">
-              <p>• Read incoming patient emails and match to patient records</p>
-              <p>• Send emails directly from the dashboard via your Gmail account</p>
-              <p>• Track email conversations alongside WhatsApp messages</p>
-            </div>
-          </div>
+          {/* ─── Data Migration ─── */}
+          <IntegrationSection title="Data Migration" desc="Bring your existing data into VisioHealth">
+            <IntegrationCard
+              icon={Upload} color="#059669" name="Import Patients" desc="CSV/Excel import from GoodX, Healthbridge, Elixir, or any system"
+              status="ready"
+              actionLabel="Open Import Wizard" actionHref="/dashboard/import"
+              features={["Auto-maps columns from your export", "SA ID auto-parses DOB + gender", "Deduplicates by phone number", "Supports GoodX & Healthbridge formats"]}
+            />
+            <IntegrationCard
+              icon={FileText} color="#8b5cf6" name="Export Data" desc="Download patients, invoices, payments as CSV or Excel"
+              status="ready"
+              actionLabel="Export Invoices" actionHref="/api/invoices/export?format=csv"
+              features={["Patient list export", "Invoice & payment history", "Booking reports", "Medical aid claim summaries"]}
+            />
+          </IntegrationSection>
 
-          {/* Accounting Software */}
-          <div className="rounded-xl glass-panel p-6 space-y-4">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-lg bg-[var(--gold)]/10 flex items-center justify-center">
-                <FileText className="w-5 h-5 text-[var(--gold)]" />
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-[var(--ivory)]">Accounting Software</h3>
-                <p className="text-[11px] text-[var(--text-tertiary)]">Sync invoices and payments to your accounting system</p>
-              </div>
-            </div>
+          {/* ─── Microsoft 365 ─── */}
+          <IntegrationSection title="Microsoft 365" desc="Connect your practice's Microsoft tools">
+            <IntegrationCard
+              icon={Calendar} color="#0078d4" name="Outlook Calendar" desc="Two-way sync between VisioHealth bookings and Outlook"
+              status="coming"
+              features={["Appointments appear in Outlook automatically", "Practitioners see schedule on their phone", "Supports shared calendars", "Microsoft Graph API"]}
+            />
+            <IntegrationCard
+              icon={Mail} color="#0078d4" name="Outlook Email" desc="Send appointment confirmations from your practice email"
+              status="coming"
+              features={["Emails come from your@practice.co.za", "Patient invoices & statements via Outlook", "Email tracking & read receipts"]}
+            />
+            <IntegrationCard
+              icon={Monitor} color="#7b83eb" name="Microsoft Teams" desc="Practice notifications and team communication"
+              status="coming"
+              features={["New booking notifications in Teams", "Daily summary messages", "Emergency alerts to the team"]}
+            />
+          </IntegrationSection>
 
-            {accountingProvider ? (
-              <div className="flex items-center justify-between p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-medium text-[#10b981] bg-[#10b981]/10 px-3 py-1 rounded-full">Connected</span>
-                  <span className="text-[13px] font-medium text-[var(--ivory)] capitalize">{accountingProvider}</span>
-                </div>
-                <button
-                  onClick={() => {
-                    setDisconnecting("accounting");
-                    setTimeout(() => { setAccountingProvider(null); setDisconnecting(null); }, 1000);
-                  }}
-                  disabled={disconnecting === "accounting"}
-                  className="text-[11px] text-[var(--text-tertiary)] hover:text-red-400 flex items-center gap-1"
-                >
-                  {disconnecting === "accounting" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Unlink className="w-3 h-3" />}
-                  Disconnect
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-3 gap-3">
-                {[
-                  { key: "sage", name: "Sage", desc: "Sage Business Cloud", color: "#00DC82" },
-                  { key: "quickbooks", name: "QuickBooks", desc: "Intuit QuickBooks Online", color: "#2CA01C" },
-                  { key: "xero", name: "Xero", desc: "Xero Accounting", color: "#13B5EA" },
-                ].map(provider => (
-                  <button
-                    key={provider.key}
-                    onClick={async () => {
-                      setConnectingAccounting(provider.key);
-                      try {
-                        const res = await fetch(`/api/accounting/connect?provider=${provider.key}`);
-                        const data = await res.json();
-                        if (data.url && !data.url.includes("demo")) {
-                          window.location.href = data.url;
-                        } else {
-                          setAccountingProvider(provider.key);
-                          setSaved("accounting");
-                          setTimeout(() => setSaved(""), 3000);
-                        }
-                      } catch { /* ignore */ }
-                      setConnectingAccounting(null);
-                    }}
-                    disabled={!!connectingAccounting}
-                    className="p-4 rounded-lg bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all text-left"
-                  >
-                    <div className="text-[13px] font-semibold mb-1" style={{ color: provider.color }}>{provider.name}</div>
-                    <div className="text-[10px] text-[var(--text-tertiary)]">{provider.desc}</div>
-                    <div className="mt-3">
-                      {connectingAccounting === provider.key ? (
-                        <Loader2 className="w-3.5 h-3.5 animate-spin text-[var(--text-tertiary)]" />
-                      ) : (
-                        <span className="text-[10px] text-[var(--gold)]">Connect →</span>
-                      )}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
+          {/* ─── Email & Communication ─── */}
+          <IntegrationSection title="Email & Communication" desc="Connect your messaging channels">
+            <IntegrationCard
+              icon={Mail} color="#ea4335" name="Gmail" desc="Sync patient emails into your dashboard"
+              status={gmailConnected ? "connected" : "ready"}
+              onConnect={async () => {
+                setConnectingGmail(true);
+                try {
+                  const res = await fetch("/api/gmail/connect");
+                  const data = await res.json();
+                  if (data.url && !data.url.includes("demo")) {
+                    window.location.href = data.url;
+                  } else {
+                    setGmailConnected(true);
+                    setSaved("gmail");
+                    setTimeout(() => setSaved(""), 3000);
+                  }
+                } catch { /* ignore */ }
+                setConnectingGmail(false);
+              }}
+              connecting={connectingGmail}
+              features={["Read incoming patient emails", "Send emails from the dashboard", "Track conversations alongside WhatsApp"]}
+            />
+            <IntegrationCard
+              icon={MessageSquare} color="#25d366" name="WhatsApp Business" desc="AI-powered patient messaging via WhatsApp"
+              status="ready"
+              actionLabel="Configure" actionHref="/dashboard/settings?tab=notifications"
+              features={["Automated appointment reminders", "AI triage & intake via chat", "Interactive confirm/cancel buttons", "98% open rate in South Africa"]}
+            />
+            <IntegrationCard
+              icon={Smartphone} color="#ff6b00" name="SMS (Twilio)" desc="SMS fallback for patients without WhatsApp"
+              status="ready"
+              actionLabel="Configure" actionHref="/dashboard/settings?tab=notifications"
+              features={["Appointment reminders via SMS", "Fallback when WhatsApp unavailable", "Bulk SMS for recall campaigns"]}
+            />
+          </IntegrationSection>
 
-            <div className="text-[11px] text-[var(--text-tertiary)] space-y-1">
-              <p>• Invoices and payments sync automatically to your accounting software</p>
-              <p>• ICD-10 codes and medical aid claims included in sync</p>
-              <p>• One-way sync — VisioHealth is the source of truth for clinical billing</p>
-            </div>
-          </div>
+          {/* ─── Payment Gateways ─── */}
+          <IntegrationSection title="Payment Gateways" desc="Accept payments from patients">
+            <IntegrationCard
+              icon={CreditCard} color="#00b0ff" name="Yoco" desc="SA's leading card terminal — accept tap, chip, and online payments"
+              status="coming"
+              features={["Generate pay-by-link from invoices", "Send payment link via WhatsApp", "Auto-reconcile when paid", "2.7% per transaction, no monthly fees"]}
+            />
+            <IntegrationCard
+              icon={CreditCard} color="#1a1a2e" name="Ozow" desc="Instant EFT — patients pay directly from their bank app"
+              status="coming"
+              features={["Instant confirmation (no 1-3 day wait)", "Ideal for larger payments (R1,000+)", "All SA banks supported", "Lower fees than card payments"]}
+            />
+            <IntegrationCard
+              icon={Smartphone} color="#00a3e0" name="SnapScan" desc="QR code payments at reception"
+              status="coming"
+              features={["QR code at your reception desk", "Patient scans and pays instantly", "Popular with younger patients"]}
+            />
+            <IntegrationCard
+              icon={CreditCard} color="#00c3f7" name="Paystack" desc="Online card payments and subscriptions"
+              status="coming"
+              features={["Accept Visa, Mastercard, Verve", "Recurring billing for subscription patients", "Used by 100,000+ SA businesses"]}
+            />
+          </IntegrationSection>
 
-          {/* Invoice Export */}
-          <div className="rounded-xl glass-panel p-6 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                <FileText className="w-5 h-5 text-purple-400" />
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-[var(--ivory)]">Invoice Export</h3>
-                <p className="text-[11px] text-[var(--text-tertiary)]">Download invoices as PDF or export in bulk</p>
-              </div>
-            </div>
-            <div className="flex gap-3">
-              <a
-                href="/api/invoices/export?format=csv"
-                className="flex items-center gap-2 px-4 py-2 border border-[var(--border)] rounded-lg text-[12px] font-medium text-[var(--ivory)] hover:border-[var(--gold)]/30 hover:text-[var(--gold)] transition-colors"
-              >
-                <FileText className="w-3.5 h-3.5" />
-                Export All (CSV)
-              </a>
-              <span className="text-[11px] text-[var(--text-tertiary)] self-center">Individual PDFs available on the Billing page</span>
-            </div>
-          </div>
+          {/* ─── Medical Aid & Billing ─── */}
+          <IntegrationSection title="Medical Aid & Billing" desc="Claims, codes, and tariffs">
+            <IntegrationCard
+              icon={Stethoscope} color="#059669" name="ICD-10 Code Lookup" desc="Searchable procedure and diagnosis code database"
+              status="ready"
+              actionLabel="Built into Billing" actionHref="/dashboard/billing"
+              features={["90+ dental CDT procedure codes", "Common GP consultation codes", "ICD-10 diagnosis codes", "Autocomplete in invoice builder"]}
+            />
+            <IntegrationCard
+              icon={Shield} color="#7c3aed" name="MediSwitch" desc="Electronic medical aid claim submission"
+              status="coming"
+              features={["Submit claims electronically to 80+ medical aids", "Real-time eligibility & benefit checks", "Claim status tracking (submitted/approved/paid)", "Remittance advice auto-matching"]}
+            />
+            <IntegrationCard
+              icon={FileText} color="#059669" name="Claim File Export" desc="Generate EDI claim files for manual submission"
+              status="coming"
+              features={["Standard SA healthcare EDI format", "Upload to MediSwitch or Healthbridge", "Interim solution while full integration builds"]}
+            />
+          </IntegrationSection>
+
+          {/* ─── Accounting ─── */}
+          <IntegrationSection title="Accounting Software" desc="Auto-sync invoices and payments">
+            {[
+              { key: "sage", name: "Sage", desc: "Sage Business Cloud Accounting", color: "#00DC82" },
+              { key: "quickbooks", name: "QuickBooks", desc: "Intuit QuickBooks Online", color: "#2CA01C" },
+              { key: "xero", name: "Xero", desc: "Xero Cloud Accounting", color: "#13B5EA" },
+            ].map(provider => (
+              <IntegrationCard
+                key={provider.key}
+                icon={FileText} color={provider.color} name={provider.name} desc={provider.desc}
+                status={accountingProvider === provider.key ? "connected" : "ready"}
+                onConnect={async () => {
+                  setConnectingAccounting(provider.key);
+                  try {
+                    const res = await fetch(`/api/accounting/connect?provider=${provider.key}`);
+                    const data = await res.json();
+                    if (data.url && !data.url.includes("demo")) {
+                      window.location.href = data.url;
+                    } else {
+                      setAccountingProvider(provider.key);
+                      setSaved("accounting");
+                      setTimeout(() => setSaved(""), 3000);
+                    }
+                  } catch { /* ignore */ }
+                  setConnectingAccounting(null);
+                }}
+                connecting={connectingAccounting === provider.key}
+                features={["Invoices sync automatically", "Payments reconciled in real-time", "ICD-10 codes included in sync"]}
+              />
+            ))}
+          </IntegrationSection>
+
+          {/* ─── Documents ─── */}
+          <IntegrationSection title="Document Generation" desc="One-click professional documents">
+            <IntegrationCard
+              icon={FileText} color="#f59e0b" name="Sick Notes & Medical Certificates" desc="Branded sick notes with practice letterhead"
+              status="coming"
+              features={["One-click from patient record", "Practice branding & HPCSA number", "PDF download or email to patient", "SA-compliant format"]}
+            />
+            <IntegrationCard
+              icon={FileText} color="#06b6d4" name="Referral Letters" desc="Professional referral letters to specialists"
+              status="coming"
+              features={["Auto-populated from patient record", "Include diagnosis & treatment history", "PDF with practice letterhead"]}
+            />
+            <IntegrationCard
+              icon={FileText} color="#8b5cf6" name="Digital Intake Forms" desc="Patients complete forms before their appointment"
+              status="coming"
+              features={["Send link via WhatsApp 24h before", "Medical history, allergies, medications", "Data flows directly into patient record", "POPIA consent included"]}
+            />
+          </IntegrationSection>
         </div>
       )}
 
