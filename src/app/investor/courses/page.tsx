@@ -98,8 +98,15 @@ export default function InvestorCoursesPage() {
   const [rsvpEmail, setRsvpEmail] = useState("");
   const [rsvpSent, setRsvpSent] = useState<Set<string>>(new Set());
 
-  function handleRsvp(courseId: string) {
+  async function handleRsvp(courseId: string) {
     if (!rsvpName.trim() || !rsvpEmail.trim()) return;
+    try {
+      await fetch("/api/investor/course-rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ courseId, name: rsvpName, email: rsvpEmail }),
+      });
+    } catch { /* optimistic update */ }
     setRsvpSent((prev) => new Set(prev).add(courseId));
     setRsvpCourse(null);
     setRsvpName("");

@@ -214,10 +214,9 @@ export default function InvestorResearchPage() {
                         </div>
                       </div>
                       {paper.status === "Complete" && (
-                        <button className="text-xs text-[#8B5CF6] hover:text-[#7C3AED] font-medium flex items-center gap-1 shrink-0">
-                          <ExternalLink className="w-3 h-3" />
-                          View
-                        </button>
+                        <span className="text-[10px] px-2 py-1 rounded bg-emerald-50 text-emerald-600 font-medium shrink-0">
+                          Available
+                        </span>
                       )}
                     </div>
                   </div>

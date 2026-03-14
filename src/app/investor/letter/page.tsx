@@ -13,6 +13,16 @@ export default function FounderLetterPage() {
         <p className="text-xs text-gray-400">14 March 2026 — David Mubikay Hampton, Founder of Visio Research Labs</p>
       </div>
 
+      {/* Story Image */}
+      <div className="rounded-xl overflow-hidden bg-gray-900 h-48 mb-8">
+        <img
+          src="/images/investor/founder-story.png"
+          alt="Hospital corridor"
+          className="w-full h-full object-cover opacity-60"
+          onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
+        />
+      </div>
+
       {/* The Story */}
       <div className="prose prose-gray max-w-none">
         <div className="bg-gray-50 border-l-4 border-[#8B5CF6] p-6 rounded-r-xl mb-8">

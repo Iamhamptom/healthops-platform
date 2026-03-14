@@ -17,6 +17,7 @@ const products = [
     status: "Market Ready",
     statusColor: "bg-emerald-500",
     color: "#10b981",
+    image: "/images/investor/product-visiohealth-os.png",
     description: "Complete operating system for medical practices. Patient management, AI triage, billing with ICD-10, POPIA compliance, WhatsApp/SMS notifications, booking engine, daily workflow automation.",
     problem: "SA doctors run practices on paper, WhatsApp groups, and fragmented Excel sheets. No single system handles patients + billing + compliance + communication.",
     solution: "One platform that replaces 5-7 separate tools. AI agents handle triage, intake, follow-ups, and scheduling. Built-in POPIA consent tracking, ICD-10 billing, medical aid claim management.",
@@ -49,6 +50,7 @@ const products = [
     status: "Concept",
     statusColor: "bg-purple-500",
     color: "#8B5CF6",
+    image: "/images/investor/product-placeo-health.png",
     description: "Intelligent patient placement system connecting patients to the right practice based on location, specialty, availability, and medical aid coverage.",
     problem: "Patients Google \"doctor near me\" and get outdated results. Doctors lose referrals because there's no structured referral network between practices, specialists, and hospitals.",
     solution: "A smart directory and referral engine. Patients find verified, HPCSA-registered practitioners filtered by specialty, location, medical aid acceptance, and real-time availability. Doctors refer within the network with full patient handoff.",
@@ -78,6 +80,7 @@ const products = [
     status: "Concept",
     statusColor: "bg-purple-500",
     color: "#6366F1",
+    image: "/images/investor/product-integrator.png",
     description: "Integration hub that connects medical practices to external healthcare systems — labs (PathCare, Lancet), pharmacies (Dis-Chem, Clicks), hospitals, and medical aid schemes.",
     problem: "Results come via fax. Prescriptions are handwritten. Medical aid claims are manually submitted. Every touchpoint between a practice and the broader health system is a manual, error-prone process.",
     solution: "API-first integration layer. Lab results flow directly into patient records. eScripts go to pharmacies digitally. Medical aid pre-authorisations and claims are automated. Hospital admissions sync in real-time.",
@@ -107,6 +110,7 @@ const products = [
     status: "Concept",
     statusColor: "bg-purple-500",
     color: "#0ea5e9",
+    image: "/images/investor/product-waiting-room.png",
     description: "Transform the waiting room experience. Patients check in digitally, see their queue position in real-time, complete intake forms on their phone, and get notified when it's their turn.",
     problem: "SA waiting rooms are overcrowded, patients wait 2+ hours with no updates, paper intake forms are filled out every visit, and practices can't manage queue flow efficiently.",
     solution: "QR code check-in → digital intake forms (pre-filled from VisioHealth OS records) → real-time queue display → SMS/WhatsApp notification when doctor is ready. Waiting time analytics for practice optimization.",
@@ -137,6 +141,7 @@ const products = [
     status: "Idea",
     statusColor: "bg-amber-500",
     color: "#f59e0b",
+    image: "/images/investor/product-payer-connect.png",
     description: "Direct bridge between medical practices and medical aid schemes. Real-time eligibility checks, automated claims submission, payment tracking, and gap cover management.",
     problem: "Doctors submit claims manually (paper/fax). 30% of claims are rejected due to coding errors. Practices wait 30-90 days for payment. Patients don't know their co-pay until after treatment.",
     solution: "Real-time medical aid eligibility check before appointment. Auto-generate compliant ICD-10 + tariff code claims. Submit electronically. Track payment status. Calculate patient co-pay instantly.",
@@ -168,6 +173,7 @@ const products = [
     status: "Concept",
     statusColor: "bg-purple-500",
     color: "#ec4899",
+    image: "/images/investor/product-visiomed-ai.png",
     description: "AI-powered clinical decision support for doctors. Symptom analysis, differential diagnosis suggestions, drug interaction checks, treatment protocol recommendations — all evidence-based and SA-guideline compliant.",
     problem: "Doctors see 30-50 patients/day. Diagnostic errors account for ~10% of adverse events. Drug interactions are hard to track manually. SA treatment guidelines change frequently and aren't easily accessible at point of care.",
     solution: "AI assistant that sits alongside the doctor during consultations. Suggests differential diagnoses based on symptoms + patient history. Flags drug interactions. References SA treatment guidelines (Essential Drugs List, STGs). Never replaces clinical judgment — augments it.",
@@ -208,6 +214,13 @@ export default function InvestorEcosystem() {
     <div className="p-6 max-w-7xl mx-auto space-y-8">
       {/* Hero */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8 text-white">
+        {/* Background image if available */}
+        <img
+          src="/images/investor/hero-ecosystem.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-lighten"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+        />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM4QjVDRjYiIGZpbGwtb3BhY2l0eT0iMC4wNCI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-60" />
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-2">
@@ -328,6 +341,17 @@ export default function InvestorEcosystem() {
                     className="overflow-hidden"
                   >
                     <div className="px-5 pb-5 border-t border-gray-100 pt-4">
+                      {/* Product Image */}
+                      {product.image && (
+                        <div className="mb-4 rounded-lg overflow-hidden bg-gray-900 h-40">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover opacity-80"
+                            onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
+                          />
+                        </div>
+                      )}
                       {/* Tabs */}
                       <div className="flex gap-1 mb-4 bg-gray-100 rounded-lg p-0.5">
                         {["overview", "features", "compliance", "market"].map((tab) => (

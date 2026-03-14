@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   HeartPulse, LayoutDashboard, Map, ShieldCheck, StickyNote,
   FileText, ChevronDown, LogOut, Heart, GraduationCap, Search,
+  Rocket,
 } from "lucide-react";
 
 const navItems = [
@@ -14,6 +15,7 @@ const navItems = [
   { href: "/investor/sitemap", icon: Map, label: "Product Map" },
   { href: "/investor/compliance", icon: ShieldCheck, label: "Compliance" },
   { href: "/investor/letter", icon: Heart, label: "Founder Letter" },
+  { href: "/investor/onboarding", icon: Rocket, label: "Onboarding" },
   { href: "/investor/notes", icon: StickyNote, label: "Notes" },
   { href: "/investor/policies", icon: FileText, label: "Policies & T&Cs" },
   { href: "/investor/courses", icon: GraduationCap, label: "AI Courses" },
