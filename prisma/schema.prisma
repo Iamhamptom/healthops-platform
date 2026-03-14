@@ -377,6 +377,18 @@ model ConsentRecord {
   @@index([practiceId])
 }
 
+// === Investor Portal ===
+
+model InvestorNote {
+  id         String   @id @default(cuid())
+  userId     String   // investor user ID
+  section    String   @default("general") // general | ecosystem | compliance | product:<slug>
+  content    String
+  pinned     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
 // === Admin Daily Tasks ===
 
 model DailyTask {

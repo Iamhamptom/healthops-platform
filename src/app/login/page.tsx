@@ -28,7 +28,14 @@ export default function LoginPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
 
-      router.push("/dashboard");
+      // Route based on role
+      if (data.user?.role === "investor") {
+        router.push("/investor");
+      } else if (data.user?.role === "platform_admin") {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {

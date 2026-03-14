@@ -63,6 +63,36 @@ export async function guardPlatformAdmin(
   return { user: { id: user.id, role: user.role, name: user.name } };
 }
 
+/** Guard for investor portal routes. */
+export async function guardInvestor(
+  request: Request,
+  route: string,
+  opts?: { limit?: number }
+) {
+  const rl = rateLimitByIp(request, route, { limit: opts?.limit ?? 30 });
+  if (!rl.allowed) {
+    return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+  }
+
+  if (isDemoMode) {
+    return { user: { id: "demo-investor", role: "investor", name: "Dr. Mogau Lamola" } };
+  }
+
+  const { getSession } = await import("@/lib/auth");
+  const { prisma } = await import("@/lib/prisma");
+  const session = await getSession();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const user = await prisma.user.findUnique({ where: { id: session.userId } });
+  if (!user || (user.role !== "investor" && user.role !== "platform_admin")) {
+    return NextResponse.json({ error: "Investor access required" }, { status: 403 });
+  }
+
+  return { user: { id: user.id, role: user.role, name: user.name } };
+}
+
 /** Check if guardRoute returned an error response */
 export function isErrorResponse(result: unknown): result is NextResponse {
   return result instanceof NextResponse;

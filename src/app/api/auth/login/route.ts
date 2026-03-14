@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     await createSession(user.id);
-    return NextResponse.json({ user: { id: user.id, name: user.name, email: user.email } });
+    return NextResponse.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch {
     return NextResponse.json({ error: "Login failed" }, { status: 500 });
   }

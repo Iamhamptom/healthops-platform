@@ -69,6 +69,7 @@ export const ModelName = {
   CheckIn: 'CheckIn',
   Notification: 'Notification',
   ConsentRecord: 'ConsentRecord',
+  InvestorNote: 'InvestorNote',
   DailyTask: 'DailyTask'
 } as const
 
@@ -409,6 +410,19 @@ export const ConsentRecordScalarFieldEnum = {
 } as const
 
 export type ConsentRecordScalarFieldEnum = (typeof ConsentRecordScalarFieldEnum)[keyof typeof ConsentRecordScalarFieldEnum]
+
+
+export const InvestorNoteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  section: 'section',
+  content: 'content',
+  pinned: 'pinned',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InvestorNoteScalarFieldEnum = (typeof InvestorNoteScalarFieldEnum)[keyof typeof InvestorNoteScalarFieldEnum]
 
 
 export const DailyTaskScalarFieldEnum = {

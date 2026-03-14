@@ -402,6 +402,7 @@ export const ModelName = {
   CheckIn: 'CheckIn',
   Notification: 'Notification',
   ConsentRecord: 'ConsentRecord',
+  InvestorNote: 'InvestorNote',
   DailyTask: 'DailyTask'
 } as const
 
@@ -418,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "practice" | "patient" | "allergy" | "medication" | "medicalRecord" | "vitals" | "conversation" | "message" | "booking" | "review" | "recallItem" | "auditLog" | "invoice" | "payment" | "checkIn" | "notification" | "consentRecord" | "dailyTask"
+    modelProps: "user" | "practice" | "patient" | "allergy" | "medication" | "medicalRecord" | "vitals" | "conversation" | "message" | "booking" | "review" | "recallItem" | "auditLog" | "invoice" | "payment" | "checkIn" | "notification" | "consentRecord" | "investorNote" | "dailyTask"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1754,6 +1755,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    InvestorNote: {
+      payload: Prisma.$InvestorNotePayload<ExtArgs>
+      fields: Prisma.InvestorNoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InvestorNoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InvestorNoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>
+        }
+        findFirst: {
+          args: Prisma.InvestorNoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InvestorNoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>
+        }
+        findMany: {
+          args: Prisma.InvestorNoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>[]
+        }
+        create: {
+          args: Prisma.InvestorNoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>
+        }
+        createMany: {
+          args: Prisma.InvestorNoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InvestorNoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>[]
+        }
+        delete: {
+          args: Prisma.InvestorNoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>
+        }
+        update: {
+          args: Prisma.InvestorNoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>
+        }
+        deleteMany: {
+          args: Prisma.InvestorNoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InvestorNoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InvestorNoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>[]
+        }
+        upsert: {
+          args: Prisma.InvestorNoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InvestorNotePayload>
+        }
+        aggregate: {
+          args: Prisma.InvestorNoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInvestorNote>
+        }
+        groupBy: {
+          args: Prisma.InvestorNoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InvestorNoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InvestorNoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InvestorNoteCountAggregateOutputType> | number
+        }
+      }
+    }
     DailyTask: {
       payload: Prisma.$DailyTaskPayload<ExtArgs>
       fields: Prisma.DailyTaskFieldRefs
@@ -2190,6 +2265,19 @@ export const ConsentRecordScalarFieldEnum = {
 export type ConsentRecordScalarFieldEnum = (typeof ConsentRecordScalarFieldEnum)[keyof typeof ConsentRecordScalarFieldEnum]
 
 
+export const InvestorNoteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  section: 'section',
+  content: 'content',
+  pinned: 'pinned',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InvestorNoteScalarFieldEnum = (typeof InvestorNoteScalarFieldEnum)[keyof typeof InvestorNoteScalarFieldEnum]
+
+
 export const DailyTaskScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -2376,6 +2464,7 @@ export type GlobalOmitConfig = {
   checkIn?: Prisma.CheckInOmit
   notification?: Prisma.NotificationOmit
   consentRecord?: Prisma.ConsentRecordOmit
+  investorNote?: Prisma.InvestorNoteOmit
   dailyTask?: Prisma.DailyTaskOmit
 }
 

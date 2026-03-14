@@ -132,6 +132,11 @@ export type Notification = Prisma.NotificationModel
  */
 export type ConsentRecord = Prisma.ConsentRecordModel
 /**
+ * Model InvestorNote
+ * 
+ */
+export type InvestorNote = Prisma.InvestorNoteModel
+/**
  * Model DailyTask
  * 
  */
