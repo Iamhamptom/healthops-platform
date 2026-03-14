@@ -1,4 +1,11 @@
 import InvestorSidebar from "@/components/investor/InvestorSidebar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Investor Portal — VisioHealth Ecosystem",
+  description: "VisioHealth OS investor portal. 6 healthcare products, one ecosystem. AI-powered practice management for South African medical practices.",
+  robots: "noindex, nofollow",
+};
 
 export default function InvestorLayout({ children }: { children: React.ReactNode }) {
   return (

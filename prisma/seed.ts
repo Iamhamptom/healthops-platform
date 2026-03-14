@@ -347,12 +347,53 @@ async function main() {
     ],
   });
 
+  // ─── Credit Ledger (Professional plan — R3,000 monthly) ───
+  const creditNow = new Date();
+  const creditDay = 86400000;
+
+  // Opening balance
+  await prisma.creditLedger.create({
+    data: {
+      practiceId: practice.id,
+      type: "top_up",
+      amount: 3000,
+      balance: 3000,
+      description: "Professional plan — March 2026 monthly allowance",
+      createdAt: new Date(creditNow.getTime() - 14 * creditDay),
+    },
+  });
+
+  // Sample usage entries
+  const creditUsage = [
+    { type: "ai_agent", amount: -2.0, balance: 2998, description: "AI triage — Maria Santos toothache assessment", reference: "conv-001", daysAgo: 12 },
+    { type: "whatsapp", amount: -0.75, balance: 2997.25, description: "WhatsApp reminder — Thabo Mokoena appointment", reference: "notif-001", daysAgo: 10 },
+    { type: "sms", amount: -0.5, balance: 2996.75, description: "SMS recall — Lerato Dlamini 6-month check-up", reference: "recall-001", daysAgo: 8 },
+    { type: "ai_agent", amount: -2.0, balance: 2994.75, description: "AI follow-up — Sipho Ndlovu post-extraction care", reference: "conv-002", daysAgo: 5 },
+    { type: "email", amount: -0.1, balance: 2994.65, description: "Email invoice — Naledi Khumalo INV-2026-004", reference: "inv-004", daysAgo: 3 },
+    { type: "api_call", amount: -0.25, balance: 2994.4, description: "External API call — booking sync", reference: "api-001", daysAgo: 1 },
+  ];
+
+  for (const entry of creditUsage) {
+    await prisma.creditLedger.create({
+      data: {
+        practiceId: practice.id,
+        type: entry.type,
+        amount: entry.amount,
+        balance: entry.balance,
+        description: entry.description,
+        reference: entry.reference,
+        createdAt: new Date(creditNow.getTime() - entry.daysAgo * creditDay),
+      },
+    });
+  }
+
   console.log("Seed complete!");
   console.log("─────────────────────────────────────");
   console.log("Demo login:  demo@smiledental.co.za / demo1234");
   console.log("Receptionist: reception@smiledental.co.za / demo1234");
   console.log("Practice:    Smile Dental — Sandton");
   console.log("Patients:    8 | Bookings: 8 | Invoices: 3");
+  console.log("Credits:     R2,994.40 balance (Professional plan)");
   console.log("─────────────────────────────────────");
 }
 

@@ -403,6 +403,9 @@ export const ModelName = {
   Notification: 'Notification',
   ConsentRecord: 'ConsentRecord',
   InvestorNote: 'InvestorNote',
+  CreditLedger: 'CreditLedger',
+  ApiKey: 'ApiKey',
+  Referral: 'Referral',
   DailyTask: 'DailyTask'
 } as const
 
@@ -419,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "practice" | "patient" | "allergy" | "medication" | "medicalRecord" | "vitals" | "conversation" | "message" | "booking" | "review" | "recallItem" | "auditLog" | "invoice" | "payment" | "checkIn" | "notification" | "consentRecord" | "investorNote" | "dailyTask"
+    modelProps: "user" | "practice" | "patient" | "allergy" | "medication" | "medicalRecord" | "vitals" | "conversation" | "message" | "booking" | "review" | "recallItem" | "auditLog" | "invoice" | "payment" | "checkIn" | "notification" | "consentRecord" | "investorNote" | "creditLedger" | "apiKey" | "referral" | "dailyTask"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1829,6 +1832,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CreditLedger: {
+      payload: Prisma.$CreditLedgerPayload<ExtArgs>
+      fields: Prisma.CreditLedgerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CreditLedgerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CreditLedgerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>
+        }
+        findFirst: {
+          args: Prisma.CreditLedgerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CreditLedgerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>
+        }
+        findMany: {
+          args: Prisma.CreditLedgerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>[]
+        }
+        create: {
+          args: Prisma.CreditLedgerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>
+        }
+        createMany: {
+          args: Prisma.CreditLedgerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CreditLedgerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>[]
+        }
+        delete: {
+          args: Prisma.CreditLedgerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>
+        }
+        update: {
+          args: Prisma.CreditLedgerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>
+        }
+        deleteMany: {
+          args: Prisma.CreditLedgerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CreditLedgerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CreditLedgerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>[]
+        }
+        upsert: {
+          args: Prisma.CreditLedgerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditLedgerPayload>
+        }
+        aggregate: {
+          args: Prisma.CreditLedgerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditLedger>
+        }
+        groupBy: {
+          args: Prisma.CreditLedgerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditLedgerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CreditLedgerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditLedgerCountAggregateOutputType> | number
+        }
+      }
+    }
+    ApiKey: {
+      payload: Prisma.$ApiKeyPayload<ExtArgs>
+      fields: Prisma.ApiKeyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ApiKeyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ApiKeyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>
+        }
+        findFirst: {
+          args: Prisma.ApiKeyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ApiKeyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>
+        }
+        findMany: {
+          args: Prisma.ApiKeyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>[]
+        }
+        create: {
+          args: Prisma.ApiKeyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>
+        }
+        createMany: {
+          args: Prisma.ApiKeyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ApiKeyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>[]
+        }
+        delete: {
+          args: Prisma.ApiKeyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>
+        }
+        update: {
+          args: Prisma.ApiKeyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>
+        }
+        deleteMany: {
+          args: Prisma.ApiKeyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ApiKeyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ApiKeyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>[]
+        }
+        upsert: {
+          args: Prisma.ApiKeyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ApiKeyPayload>
+        }
+        aggregate: {
+          args: Prisma.ApiKeyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApiKey>
+        }
+        groupBy: {
+          args: Prisma.ApiKeyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApiKeyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ApiKeyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApiKeyCountAggregateOutputType> | number
+        }
+      }
+    }
+    Referral: {
+      payload: Prisma.$ReferralPayload<ExtArgs>
+      fields: Prisma.ReferralFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ReferralFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ReferralFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>
+        }
+        findFirst: {
+          args: Prisma.ReferralFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ReferralFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>
+        }
+        findMany: {
+          args: Prisma.ReferralFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>[]
+        }
+        create: {
+          args: Prisma.ReferralCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>
+        }
+        createMany: {
+          args: Prisma.ReferralCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ReferralCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>[]
+        }
+        delete: {
+          args: Prisma.ReferralDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>
+        }
+        update: {
+          args: Prisma.ReferralUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>
+        }
+        deleteMany: {
+          args: Prisma.ReferralDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ReferralUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ReferralUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>[]
+        }
+        upsert: {
+          args: Prisma.ReferralUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReferralPayload>
+        }
+        aggregate: {
+          args: Prisma.ReferralAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateReferral>
+        }
+        groupBy: {
+          args: Prisma.ReferralGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReferralGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ReferralCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReferralCountAggregateOutputType> | number
+        }
+      }
+    }
     DailyTask: {
       payload: Prisma.$DailyTaskPayload<ExtArgs>
       fields: Prisma.DailyTaskFieldRefs
@@ -2114,6 +2339,8 @@ export const BookingScalarFieldEnum = {
   status: 'status',
   notes: 'notes',
   source: 'source',
+  leadSource: 'leadSource',
+  referralId: 'referralId',
   confirmedAt: 'confirmedAt',
   confirmedBy: 'confirmedBy',
   rejectedAt: 'rejectedAt',
@@ -2276,6 +2503,62 @@ export const InvestorNoteScalarFieldEnum = {
 } as const
 
 export type InvestorNoteScalarFieldEnum = (typeof InvestorNoteScalarFieldEnum)[keyof typeof InvestorNoteScalarFieldEnum]
+
+
+export const CreditLedgerScalarFieldEnum = {
+  id: 'id',
+  practiceId: 'practiceId',
+  type: 'type',
+  amount: 'amount',
+  balance: 'balance',
+  description: 'description',
+  reference: 'reference',
+  createdAt: 'createdAt'
+} as const
+
+export type CreditLedgerScalarFieldEnum = (typeof CreditLedgerScalarFieldEnum)[keyof typeof CreditLedgerScalarFieldEnum]
+
+
+export const ApiKeyScalarFieldEnum = {
+  id: 'id',
+  practiceId: 'practiceId',
+  key: 'key',
+  keyPreview: 'keyPreview',
+  name: 'name',
+  active: 'active',
+  lastUsedAt: 'lastUsedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ApiKeyScalarFieldEnum = (typeof ApiKeyScalarFieldEnum)[keyof typeof ApiKeyScalarFieldEnum]
+
+
+export const ReferralScalarFieldEnum = {
+  id: 'id',
+  referringDoctor: 'referringDoctor',
+  referringPractice: 'referringPractice',
+  referringEmail: 'referringEmail',
+  referringPhone: 'referringPhone',
+  patientName: 'patientName',
+  patientPhone: 'patientPhone',
+  patientEmail: 'patientEmail',
+  dateOfBirth: 'dateOfBirth',
+  medicalAid: 'medicalAid',
+  medicalAidNo: 'medicalAidNo',
+  reason: 'reason',
+  urgency: 'urgency',
+  clinicalNotes: 'clinicalNotes',
+  icd10Code: 'icd10Code',
+  status: 'status',
+  appointmentDate: 'appointmentDate',
+  feedbackSent: 'feedbackSent',
+  feedbackNote: 'feedbackNote',
+  feedbackSentAt: 'feedbackSentAt',
+  practiceId: 'practiceId',
+  createdAt: 'createdAt'
+} as const
+
+export type ReferralScalarFieldEnum = (typeof ReferralScalarFieldEnum)[keyof typeof ReferralScalarFieldEnum]
 
 
 export const DailyTaskScalarFieldEnum = {
@@ -2465,6 +2748,9 @@ export type GlobalOmitConfig = {
   notification?: Prisma.NotificationOmit
   consentRecord?: Prisma.ConsentRecordOmit
   investorNote?: Prisma.InvestorNoteOmit
+  creditLedger?: Prisma.CreditLedgerOmit
+  apiKey?: Prisma.ApiKeyOmit
+  referral?: Prisma.ReferralOmit
   dailyTask?: Prisma.DailyTaskOmit
 }
 

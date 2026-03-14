@@ -64,6 +64,7 @@ model Practice {
   notifications  Notification[]
   consents       ConsentRecord[]
   dailyTasks     DailyTask[]
+  referrals      Referral[]
   createdAt      DateTime         @default(now())
 }
 
@@ -204,6 +205,8 @@ model Booking {
   status          String    @default("pending") // pending | confirmed | completed | cancelled | no_show
   notes           String    @default("")
   source          String    @default("dashboard") // dashboard | public | whatsapp | phone
+  leadSource      String    @default("") // google_ads | gp_referral | social_media | seo | medical_aid_dir | word_of_mouth | symptom_checker | corporate_wellness
+  referralId      String    @default("") // links to Referral if came from GP
   // Approval workflow
   confirmedAt     DateTime?
   confirmedBy     String    @default("") // user ID who approved
@@ -387,6 +390,75 @@ model InvestorNote {
   pinned     Boolean  @default(false)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+// === Credit Tracking (Platform → Practice) ===
+
+model CreditLedger {
+  id          String   @id @default(cuid())
+  practiceId  String
+  type        String   // ai_agent | whatsapp | sms | email | api_call
+  amount      Float    // negative = usage, positive = top-up/included
+  balance     Float    // running balance after this transaction
+  description String   @default("")
+  reference   String   @default("") // e.g. conversation ID, booking ID
+  createdAt   DateTime @default(now())
+
+  @@index([practiceId])
+}
+
+// === API Keys (External Access) ===
+
+model ApiKey {
+  id          String   @id @default(cuid())
+  practiceId  String
+  key         String   @unique // the actual API key (hashed for storage)
+  keyPreview  String   @default("") // first 8 chars for display
+  name        String   @default("Default")
+  active      Boolean  @default(true)
+  lastUsedAt  DateTime?
+  createdAt   DateTime @default(now())
+
+  @@index([practiceId])
+  @@index([key])
+}
+
+// === GP Referral Pipeline ===
+
+model Referral {
+  id                String   @id @default(cuid())
+  // Referring doctor (GP)
+  referringDoctor   String   // GP name
+  referringPractice String   @default("") // GP practice/clinic name
+  referringEmail    String   @default("")
+  referringPhone    String   @default("")
+  // Patient being referred
+  patientName       String
+  patientPhone      String   @default("")
+  patientEmail      String   @default("")
+  dateOfBirth       String   @default("")
+  medicalAid        String   @default("") // e.g. Discovery, GEMS, Bonitas
+  medicalAidNo      String   @default("")
+  // Clinical
+  reason            String   // e.g. "Chronic sinusitis - 6 months, failed medical management"
+  urgency           String   @default("routine") // routine | urgent | emergency
+  clinicalNotes     String   @default("") // GP's notes, current medications, imaging done
+  icd10Code         String   @default("") // e.g. J32.9 Chronic sinusitis
+  // Workflow
+  status            String   @default("pending") // pending | accepted | booked | completed | declined
+  appointmentDate   DateTime?
+  // Feedback loop (back to GP)
+  feedbackSent      Boolean  @default(false)
+  feedbackNote      String   @default("") // specialist's findings/plan sent back to GP
+  feedbackSentAt    DateTime?
+  // Practice
+  practiceId        String
+  practice          Practice @relation(fields: [practiceId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+
+  @@index([practiceId])
+  @@index([status])
+  @@index([referringDoctor])
 }
 
 // === Admin Daily Tasks ===

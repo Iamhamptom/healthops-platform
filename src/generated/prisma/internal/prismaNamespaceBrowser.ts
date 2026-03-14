@@ -70,6 +70,9 @@ export const ModelName = {
   Notification: 'Notification',
   ConsentRecord: 'ConsentRecord',
   InvestorNote: 'InvestorNote',
+  CreditLedger: 'CreditLedger',
+  ApiKey: 'ApiKey',
+  Referral: 'Referral',
   DailyTask: 'DailyTask'
 } as const
 
@@ -261,6 +264,8 @@ export const BookingScalarFieldEnum = {
   status: 'status',
   notes: 'notes',
   source: 'source',
+  leadSource: 'leadSource',
+  referralId: 'referralId',
   confirmedAt: 'confirmedAt',
   confirmedBy: 'confirmedBy',
   rejectedAt: 'rejectedAt',
@@ -423,6 +428,62 @@ export const InvestorNoteScalarFieldEnum = {
 } as const
 
 export type InvestorNoteScalarFieldEnum = (typeof InvestorNoteScalarFieldEnum)[keyof typeof InvestorNoteScalarFieldEnum]
+
+
+export const CreditLedgerScalarFieldEnum = {
+  id: 'id',
+  practiceId: 'practiceId',
+  type: 'type',
+  amount: 'amount',
+  balance: 'balance',
+  description: 'description',
+  reference: 'reference',
+  createdAt: 'createdAt'
+} as const
+
+export type CreditLedgerScalarFieldEnum = (typeof CreditLedgerScalarFieldEnum)[keyof typeof CreditLedgerScalarFieldEnum]
+
+
+export const ApiKeyScalarFieldEnum = {
+  id: 'id',
+  practiceId: 'practiceId',
+  key: 'key',
+  keyPreview: 'keyPreview',
+  name: 'name',
+  active: 'active',
+  lastUsedAt: 'lastUsedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ApiKeyScalarFieldEnum = (typeof ApiKeyScalarFieldEnum)[keyof typeof ApiKeyScalarFieldEnum]
+
+
+export const ReferralScalarFieldEnum = {
+  id: 'id',
+  referringDoctor: 'referringDoctor',
+  referringPractice: 'referringPractice',
+  referringEmail: 'referringEmail',
+  referringPhone: 'referringPhone',
+  patientName: 'patientName',
+  patientPhone: 'patientPhone',
+  patientEmail: 'patientEmail',
+  dateOfBirth: 'dateOfBirth',
+  medicalAid: 'medicalAid',
+  medicalAidNo: 'medicalAidNo',
+  reason: 'reason',
+  urgency: 'urgency',
+  clinicalNotes: 'clinicalNotes',
+  icd10Code: 'icd10Code',
+  status: 'status',
+  appointmentDate: 'appointmentDate',
+  feedbackSent: 'feedbackSent',
+  feedbackNote: 'feedbackNote',
+  feedbackSentAt: 'feedbackSentAt',
+  practiceId: 'practiceId',
+  createdAt: 'createdAt'
+} as const
+
+export type ReferralScalarFieldEnum = (typeof ReferralScalarFieldEnum)[keyof typeof ReferralScalarFieldEnum]
 
 
 export const DailyTaskScalarFieldEnum = {

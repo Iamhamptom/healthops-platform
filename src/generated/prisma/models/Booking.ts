@@ -44,6 +44,8 @@ export type BookingMinAggregateOutputType = {
   status: string | null
   notes: string | null
   source: string | null
+  leadSource: string | null
+  referralId: string | null
   confirmedAt: Date | null
   confirmedBy: string | null
   rejectedAt: Date | null
@@ -68,6 +70,8 @@ export type BookingMaxAggregateOutputType = {
   status: string | null
   notes: string | null
   source: string | null
+  leadSource: string | null
+  referralId: string | null
   confirmedAt: Date | null
   confirmedBy: string | null
   rejectedAt: Date | null
@@ -92,6 +96,8 @@ export type BookingCountAggregateOutputType = {
   status: number
   notes: number
   source: number
+  leadSource: number
+  referralId: number
   confirmedAt: number
   confirmedBy: number
   rejectedAt: number
@@ -126,6 +132,8 @@ export type BookingMinAggregateInputType = {
   status?: true
   notes?: true
   source?: true
+  leadSource?: true
+  referralId?: true
   confirmedAt?: true
   confirmedBy?: true
   rejectedAt?: true
@@ -150,6 +158,8 @@ export type BookingMaxAggregateInputType = {
   status?: true
   notes?: true
   source?: true
+  leadSource?: true
+  referralId?: true
   confirmedAt?: true
   confirmedBy?: true
   rejectedAt?: true
@@ -174,6 +184,8 @@ export type BookingCountAggregateInputType = {
   status?: true
   notes?: true
   source?: true
+  leadSource?: true
+  referralId?: true
   confirmedAt?: true
   confirmedBy?: true
   rejectedAt?: true
@@ -285,6 +297,8 @@ export type BookingGroupByOutputType = {
   status: string
   notes: string
   source: string
+  leadSource: string
+  referralId: string
   confirmedAt: Date | null
   confirmedBy: string
   rejectedAt: Date | null
@@ -332,6 +346,8 @@ export type BookingWhereInput = {
   status?: Prisma.StringFilter<"Booking"> | string
   notes?: Prisma.StringFilter<"Booking"> | string
   source?: Prisma.StringFilter<"Booking"> | string
+  leadSource?: Prisma.StringFilter<"Booking"> | string
+  referralId?: Prisma.StringFilter<"Booking"> | string
   confirmedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   confirmedBy?: Prisma.StringFilter<"Booking"> | string
   rejectedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -357,6 +373,8 @@ export type BookingOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  leadSource?: Prisma.SortOrder
+  referralId?: Prisma.SortOrder
   confirmedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   confirmedBy?: Prisma.SortOrder
   rejectedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -385,6 +403,8 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.StringFilter<"Booking"> | string
   notes?: Prisma.StringFilter<"Booking"> | string
   source?: Prisma.StringFilter<"Booking"> | string
+  leadSource?: Prisma.StringFilter<"Booking"> | string
+  referralId?: Prisma.StringFilter<"Booking"> | string
   confirmedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   confirmedBy?: Prisma.StringFilter<"Booking"> | string
   rejectedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -410,6 +430,8 @@ export type BookingOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  leadSource?: Prisma.SortOrder
+  referralId?: Prisma.SortOrder
   confirmedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   confirmedBy?: Prisma.SortOrder
   rejectedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -442,6 +464,8 @@ export type BookingScalarWhereWithAggregatesInput = {
   status?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   notes?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   source?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  leadSource?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  referralId?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   confirmedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   confirmedBy?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   rejectedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
@@ -466,6 +490,8 @@ export type BookingCreateInput = {
   status?: string
   notes?: string
   source?: string
+  leadSource?: string
+  referralId?: string
   confirmedAt?: Date | string | null
   confirmedBy?: string
   rejectedAt?: Date | string | null
@@ -490,6 +516,8 @@ export type BookingUncheckedCreateInput = {
   status?: string
   notes?: string
   source?: string
+  leadSource?: string
+  referralId?: string
   confirmedAt?: Date | string | null
   confirmedBy?: string
   rejectedAt?: Date | string | null
@@ -514,6 +542,8 @@ export type BookingUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -538,6 +568,8 @@ export type BookingUncheckedUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -562,6 +594,8 @@ export type BookingCreateManyInput = {
   status?: string
   notes?: string
   source?: string
+  leadSource?: string
+  referralId?: string
   confirmedAt?: Date | string | null
   confirmedBy?: string
   rejectedAt?: Date | string | null
@@ -586,6 +620,8 @@ export type BookingUpdateManyMutationInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -609,6 +645,8 @@ export type BookingUncheckedUpdateManyInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -643,6 +681,8 @@ export type BookingCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  leadSource?: Prisma.SortOrder
+  referralId?: Prisma.SortOrder
   confirmedAt?: Prisma.SortOrder
   confirmedBy?: Prisma.SortOrder
   rejectedAt?: Prisma.SortOrder
@@ -671,6 +711,8 @@ export type BookingMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  leadSource?: Prisma.SortOrder
+  referralId?: Prisma.SortOrder
   confirmedAt?: Prisma.SortOrder
   confirmedBy?: Prisma.SortOrder
   rejectedAt?: Prisma.SortOrder
@@ -695,6 +737,8 @@ export type BookingMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   notes?: Prisma.SortOrder
   source?: Prisma.SortOrder
+  leadSource?: Prisma.SortOrder
+  referralId?: Prisma.SortOrder
   confirmedAt?: Prisma.SortOrder
   confirmedBy?: Prisma.SortOrder
   rejectedAt?: Prisma.SortOrder
@@ -765,6 +809,8 @@ export type BookingCreateWithoutPracticeInput = {
   status?: string
   notes?: string
   source?: string
+  leadSource?: string
+  referralId?: string
   confirmedAt?: Date | string | null
   confirmedBy?: string
   rejectedAt?: Date | string | null
@@ -788,6 +834,8 @@ export type BookingUncheckedCreateWithoutPracticeInput = {
   status?: string
   notes?: string
   source?: string
+  leadSource?: string
+  referralId?: string
   confirmedAt?: Date | string | null
   confirmedBy?: string
   rejectedAt?: Date | string | null
@@ -839,6 +887,8 @@ export type BookingScalarWhereInput = {
   status?: Prisma.StringFilter<"Booking"> | string
   notes?: Prisma.StringFilter<"Booking"> | string
   source?: Prisma.StringFilter<"Booking"> | string
+  leadSource?: Prisma.StringFilter<"Booking"> | string
+  referralId?: Prisma.StringFilter<"Booking"> | string
   confirmedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   confirmedBy?: Prisma.StringFilter<"Booking"> | string
   rejectedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -863,6 +913,8 @@ export type BookingCreateManyPracticeInput = {
   status?: string
   notes?: string
   source?: string
+  leadSource?: string
+  referralId?: string
   confirmedAt?: Date | string | null
   confirmedBy?: string
   rejectedAt?: Date | string | null
@@ -886,6 +938,8 @@ export type BookingUpdateWithoutPracticeInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -909,6 +963,8 @@ export type BookingUncheckedUpdateWithoutPracticeInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -932,6 +988,8 @@ export type BookingUncheckedUpdateManyWithoutPracticeInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
+  leadSource?: Prisma.StringFieldUpdateOperationsInput | string
+  referralId?: Prisma.StringFieldUpdateOperationsInput | string
   confirmedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   confirmedBy?: Prisma.StringFieldUpdateOperationsInput | string
   rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -957,6 +1015,8 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   status?: boolean
   notes?: boolean
   source?: boolean
+  leadSource?: boolean
+  referralId?: boolean
   confirmedAt?: boolean
   confirmedBy?: boolean
   rejectedAt?: boolean
@@ -982,6 +1042,8 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   status?: boolean
   notes?: boolean
   source?: boolean
+  leadSource?: boolean
+  referralId?: boolean
   confirmedAt?: boolean
   confirmedBy?: boolean
   rejectedAt?: boolean
@@ -1007,6 +1069,8 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   status?: boolean
   notes?: boolean
   source?: boolean
+  leadSource?: boolean
+  referralId?: boolean
   confirmedAt?: boolean
   confirmedBy?: boolean
   rejectedAt?: boolean
@@ -1032,6 +1096,8 @@ export type BookingSelectScalar = {
   status?: boolean
   notes?: boolean
   source?: boolean
+  leadSource?: boolean
+  referralId?: boolean
   confirmedAt?: boolean
   confirmedBy?: boolean
   rejectedAt?: boolean
@@ -1046,7 +1112,7 @@ export type BookingSelectScalar = {
   createdAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "patientName" | "patientPhone" | "patientEmail" | "service" | "scheduledAt" | "status" | "notes" | "source" | "confirmedAt" | "confirmedBy" | "rejectedAt" | "rejectionReason" | "depositAmount" | "depositPaid" | "paymentRef" | "reminderSentAt" | "followupSentAt" | "checkinSentAt" | "practiceId" | "createdAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "patientName" | "patientPhone" | "patientEmail" | "service" | "scheduledAt" | "status" | "notes" | "source" | "leadSource" | "referralId" | "confirmedAt" | "confirmedBy" | "rejectedAt" | "rejectionReason" | "depositAmount" | "depositPaid" | "paymentRef" | "reminderSentAt" | "followupSentAt" | "checkinSentAt" | "practiceId" | "createdAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   practice?: boolean | Prisma.PracticeDefaultArgs<ExtArgs>
 }
@@ -1072,6 +1138,8 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     status: string
     notes: string
     source: string
+    leadSource: string
+    referralId: string
     confirmedAt: Date | null
     confirmedBy: string
     rejectedAt: Date | null
@@ -1517,6 +1585,8 @@ export interface BookingFieldRefs {
   readonly status: Prisma.FieldRef<"Booking", 'String'>
   readonly notes: Prisma.FieldRef<"Booking", 'String'>
   readonly source: Prisma.FieldRef<"Booking", 'String'>
+  readonly leadSource: Prisma.FieldRef<"Booking", 'String'>
+  readonly referralId: Prisma.FieldRef<"Booking", 'String'>
   readonly confirmedAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly confirmedBy: Prisma.FieldRef<"Booking", 'String'>
   readonly rejectedAt: Prisma.FieldRef<"Booking", 'DateTime'>

@@ -405,6 +405,7 @@ export type PracticeWhereInput = {
   notifications?: Prisma.NotificationListRelationFilter
   consents?: Prisma.ConsentRecordListRelationFilter
   dailyTasks?: Prisma.DailyTaskListRelationFilter
+  referrals?: Prisma.ReferralListRelationFilter
 }
 
 export type PracticeOrderByWithRelationInput = {
@@ -448,6 +449,7 @@ export type PracticeOrderByWithRelationInput = {
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   consents?: Prisma.ConsentRecordOrderByRelationAggregateInput
   dailyTasks?: Prisma.DailyTaskOrderByRelationAggregateInput
+  referrals?: Prisma.ReferralOrderByRelationAggregateInput
 }
 
 export type PracticeWhereUniqueInput = Prisma.AtLeast<{
@@ -494,6 +496,7 @@ export type PracticeWhereUniqueInput = Prisma.AtLeast<{
   notifications?: Prisma.NotificationListRelationFilter
   consents?: Prisma.ConsentRecordListRelationFilter
   dailyTasks?: Prisma.DailyTaskListRelationFilter
+  referrals?: Prisma.ReferralListRelationFilter
 }, "id">
 
 export type PracticeOrderByWithAggregationInput = {
@@ -605,6 +608,7 @@ export type PracticeCreateInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateInput = {
@@ -648,6 +652,7 @@ export type PracticeUncheckedCreateInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUpdateInput = {
@@ -691,6 +696,7 @@ export type PracticeUpdateInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateInput = {
@@ -734,6 +740,7 @@ export type PracticeUncheckedUpdateInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateManyInput = {
@@ -1120,6 +1127,20 @@ export type PracticeUpdateOneRequiredWithoutConsentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutConsentsInput, Prisma.PracticeUpdateWithoutConsentsInput>, Prisma.PracticeUncheckedUpdateWithoutConsentsInput>
 }
 
+export type PracticeCreateNestedOneWithoutReferralsInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutReferralsInput, Prisma.PracticeUncheckedCreateWithoutReferralsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutReferralsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+}
+
+export type PracticeUpdateOneRequiredWithoutReferralsNestedInput = {
+  create?: Prisma.XOR<Prisma.PracticeCreateWithoutReferralsInput, Prisma.PracticeUncheckedCreateWithoutReferralsInput>
+  connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutReferralsInput
+  upsert?: Prisma.PracticeUpsertWithoutReferralsInput
+  connect?: Prisma.PracticeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PracticeUpdateToOneWithWhereWithoutReferralsInput, Prisma.PracticeUpdateWithoutReferralsInput>, Prisma.PracticeUncheckedUpdateWithoutReferralsInput>
+}
+
 export type PracticeCreateNestedOneWithoutDailyTasksInput = {
   create?: Prisma.XOR<Prisma.PracticeCreateWithoutDailyTasksInput, Prisma.PracticeUncheckedCreateWithoutDailyTasksInput>
   connectOrCreate?: Prisma.PracticeCreateOrConnectWithoutDailyTasksInput
@@ -1174,6 +1195,7 @@ export type PracticeCreateWithoutUsersInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutUsersInput = {
@@ -1216,6 +1238,7 @@ export type PracticeUncheckedCreateWithoutUsersInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutUsersInput = {
@@ -1274,6 +1297,7 @@ export type PracticeUpdateWithoutUsersInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutUsersInput = {
@@ -1316,6 +1340,7 @@ export type PracticeUncheckedUpdateWithoutUsersInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutPatientsInput = {
@@ -1358,6 +1383,7 @@ export type PracticeCreateWithoutPatientsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutPatientsInput = {
@@ -1400,6 +1426,7 @@ export type PracticeUncheckedCreateWithoutPatientsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutPatientsInput = {
@@ -1458,6 +1485,7 @@ export type PracticeUpdateWithoutPatientsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutPatientsInput = {
@@ -1500,6 +1528,7 @@ export type PracticeUncheckedUpdateWithoutPatientsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutConversationsInput = {
@@ -1542,6 +1571,7 @@ export type PracticeCreateWithoutConversationsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutConversationsInput = {
@@ -1584,6 +1614,7 @@ export type PracticeUncheckedCreateWithoutConversationsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutConversationsInput = {
@@ -1642,6 +1673,7 @@ export type PracticeUpdateWithoutConversationsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutConversationsInput = {
@@ -1684,6 +1716,7 @@ export type PracticeUncheckedUpdateWithoutConversationsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutBookingsInput = {
@@ -1726,6 +1759,7 @@ export type PracticeCreateWithoutBookingsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutBookingsInput = {
@@ -1768,6 +1802,7 @@ export type PracticeUncheckedCreateWithoutBookingsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutBookingsInput = {
@@ -1826,6 +1861,7 @@ export type PracticeUpdateWithoutBookingsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutBookingsInput = {
@@ -1868,6 +1904,7 @@ export type PracticeUncheckedUpdateWithoutBookingsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutReviewsInput = {
@@ -1910,6 +1947,7 @@ export type PracticeCreateWithoutReviewsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutReviewsInput = {
@@ -1952,6 +1990,7 @@ export type PracticeUncheckedCreateWithoutReviewsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutReviewsInput = {
@@ -2010,6 +2049,7 @@ export type PracticeUpdateWithoutReviewsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutReviewsInput = {
@@ -2052,6 +2092,7 @@ export type PracticeUncheckedUpdateWithoutReviewsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutRecallItemsInput = {
@@ -2094,6 +2135,7 @@ export type PracticeCreateWithoutRecallItemsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutRecallItemsInput = {
@@ -2136,6 +2178,7 @@ export type PracticeUncheckedCreateWithoutRecallItemsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutRecallItemsInput = {
@@ -2194,6 +2237,7 @@ export type PracticeUpdateWithoutRecallItemsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutRecallItemsInput = {
@@ -2236,6 +2280,7 @@ export type PracticeUncheckedUpdateWithoutRecallItemsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutAuditLogsInput = {
@@ -2278,6 +2323,7 @@ export type PracticeCreateWithoutAuditLogsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutAuditLogsInput = {
@@ -2320,6 +2366,7 @@ export type PracticeUncheckedCreateWithoutAuditLogsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutAuditLogsInput = {
@@ -2378,6 +2425,7 @@ export type PracticeUpdateWithoutAuditLogsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutAuditLogsInput = {
@@ -2420,6 +2468,7 @@ export type PracticeUncheckedUpdateWithoutAuditLogsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutInvoicesInput = {
@@ -2462,6 +2511,7 @@ export type PracticeCreateWithoutInvoicesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutInvoicesInput = {
@@ -2504,6 +2554,7 @@ export type PracticeUncheckedCreateWithoutInvoicesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutInvoicesInput = {
@@ -2562,6 +2613,7 @@ export type PracticeUpdateWithoutInvoicesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutInvoicesInput = {
@@ -2604,6 +2656,7 @@ export type PracticeUncheckedUpdateWithoutInvoicesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutPaymentsInput = {
@@ -2646,6 +2699,7 @@ export type PracticeCreateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutPaymentsInput = {
@@ -2688,6 +2742,7 @@ export type PracticeUncheckedCreateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutPaymentsInput = {
@@ -2746,6 +2801,7 @@ export type PracticeUpdateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutPaymentsInput = {
@@ -2788,6 +2844,7 @@ export type PracticeUncheckedUpdateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutCheckInsInput = {
@@ -2830,6 +2887,7 @@ export type PracticeCreateWithoutCheckInsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutCheckInsInput = {
@@ -2872,6 +2930,7 @@ export type PracticeUncheckedCreateWithoutCheckInsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutCheckInsInput = {
@@ -2930,6 +2989,7 @@ export type PracticeUpdateWithoutCheckInsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutCheckInsInput = {
@@ -2972,6 +3032,7 @@ export type PracticeUncheckedUpdateWithoutCheckInsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutNotificationsInput = {
@@ -3014,6 +3075,7 @@ export type PracticeCreateWithoutNotificationsInput = {
   checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutNotificationsInput = {
@@ -3056,6 +3118,7 @@ export type PracticeUncheckedCreateWithoutNotificationsInput = {
   checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutNotificationsInput = {
@@ -3114,6 +3177,7 @@ export type PracticeUpdateWithoutNotificationsInput = {
   checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutNotificationsInput = {
@@ -3156,6 +3220,7 @@ export type PracticeUncheckedUpdateWithoutNotificationsInput = {
   checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeCreateWithoutConsentsInput = {
@@ -3198,6 +3263,7 @@ export type PracticeCreateWithoutConsentsInput = {
   checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutConsentsInput = {
@@ -3240,6 +3306,7 @@ export type PracticeUncheckedCreateWithoutConsentsInput = {
   checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutConsentsInput = {
@@ -3298,6 +3365,7 @@ export type PracticeUpdateWithoutConsentsInput = {
   checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutConsentsInput = {
@@ -3339,6 +3407,195 @@ export type PracticeUncheckedUpdateWithoutConsentsInput = {
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
   checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeCreateWithoutReferralsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeUncheckedCreateWithoutReferralsInput = {
+  id?: string
+  name: string
+  type?: string
+  address?: string
+  phone?: string
+  hours?: string
+  aiPersonality?: string
+  logoUrl?: string
+  primaryColor?: string
+  secondaryColor?: string
+  subdomain?: string
+  tagline?: string
+  plan?: string
+  planStatus?: string
+  trialEndsAt?: Date | string | null
+  paystackSubId?: string
+  paystackCustId?: string
+  bookingEnabled?: boolean
+  bookingRequiresApproval?: boolean
+  bookingDepositEnabled?: boolean
+  bookingDepositAmount?: number
+  bookingServices?: string
+  bookingWelcomeMsg?: string
+  bookingConfirmMsg?: string
+  googlePlaceId?: string
+  integrations?: string
+  createdAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutPracticeInput
+  patients?: Prisma.PatientUncheckedCreateNestedManyWithoutPracticeInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutPracticeInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPracticeInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutPracticeInput
+  recallItems?: Prisma.RecallItemUncheckedCreateNestedManyWithoutPracticeInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutPracticeInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutPracticeInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutPracticeInput
+  checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
+  consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  dailyTasks?: Prisma.DailyTaskUncheckedCreateNestedManyWithoutPracticeInput
+}
+
+export type PracticeCreateOrConnectWithoutReferralsInput = {
+  where: Prisma.PracticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutReferralsInput, Prisma.PracticeUncheckedCreateWithoutReferralsInput>
+}
+
+export type PracticeUpsertWithoutReferralsInput = {
+  update: Prisma.XOR<Prisma.PracticeUpdateWithoutReferralsInput, Prisma.PracticeUncheckedUpdateWithoutReferralsInput>
+  create: Prisma.XOR<Prisma.PracticeCreateWithoutReferralsInput, Prisma.PracticeUncheckedCreateWithoutReferralsInput>
+  where?: Prisma.PracticeWhereInput
+}
+
+export type PracticeUpdateToOneWithWhereWithoutReferralsInput = {
+  where?: Prisma.PracticeWhereInput
+  data: Prisma.XOR<Prisma.PracticeUpdateWithoutReferralsInput, Prisma.PracticeUncheckedUpdateWithoutReferralsInput>
+}
+
+export type PracticeUpdateWithoutReferralsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  dailyTasks?: Prisma.DailyTaskUpdateManyWithoutPracticeNestedInput
+}
+
+export type PracticeUncheckedUpdateWithoutReferralsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  hours?: Prisma.StringFieldUpdateOperationsInput | string
+  aiPersonality?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  primaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  secondaryColor?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.StringFieldUpdateOperationsInput | string
+  plan?: Prisma.StringFieldUpdateOperationsInput | string
+  planStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  trialEndsAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paystackSubId?: Prisma.StringFieldUpdateOperationsInput | string
+  paystackCustId?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingRequiresApproval?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  bookingDepositAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  bookingServices?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingWelcomeMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingConfirmMsg?: Prisma.StringFieldUpdateOperationsInput | string
+  googlePlaceId?: Prisma.StringFieldUpdateOperationsInput | string
+  integrations?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutPracticeNestedInput
+  patients?: Prisma.PatientUncheckedUpdateManyWithoutPracticeNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutPracticeNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPracticeNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutPracticeNestedInput
+  recallItems?: Prisma.RecallItemUncheckedUpdateManyWithoutPracticeNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutPracticeNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutPracticeNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutPracticeNestedInput
+  checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
+  consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
   dailyTasks?: Prisma.DailyTaskUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
@@ -3382,6 +3639,7 @@ export type PracticeCreateWithoutDailyTasksInput = {
   checkIns?: Prisma.CheckInCreateNestedManyWithoutPracticeInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeUncheckedCreateWithoutDailyTasksInput = {
@@ -3424,6 +3682,7 @@ export type PracticeUncheckedCreateWithoutDailyTasksInput = {
   checkIns?: Prisma.CheckInUncheckedCreateNestedManyWithoutPracticeInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutPracticeInput
   consents?: Prisma.ConsentRecordUncheckedCreateNestedManyWithoutPracticeInput
+  referrals?: Prisma.ReferralUncheckedCreateNestedManyWithoutPracticeInput
 }
 
 export type PracticeCreateOrConnectWithoutDailyTasksInput = {
@@ -3482,6 +3741,7 @@ export type PracticeUpdateWithoutDailyTasksInput = {
   checkIns?: Prisma.CheckInUpdateManyWithoutPracticeNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUpdateManyWithoutPracticeNestedInput
 }
 
 export type PracticeUncheckedUpdateWithoutDailyTasksInput = {
@@ -3524,6 +3784,7 @@ export type PracticeUncheckedUpdateWithoutDailyTasksInput = {
   checkIns?: Prisma.CheckInUncheckedUpdateManyWithoutPracticeNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutPracticeNestedInput
   consents?: Prisma.ConsentRecordUncheckedUpdateManyWithoutPracticeNestedInput
+  referrals?: Prisma.ReferralUncheckedUpdateManyWithoutPracticeNestedInput
 }
 
 
@@ -3545,6 +3806,7 @@ export type PracticeCountOutputType = {
   notifications: number
   consents: number
   dailyTasks: number
+  referrals: number
 }
 
 export type PracticeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3561,6 +3823,7 @@ export type PracticeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   notifications?: boolean | PracticeCountOutputTypeCountNotificationsArgs
   consents?: boolean | PracticeCountOutputTypeCountConsentsArgs
   dailyTasks?: boolean | PracticeCountOutputTypeCountDailyTasksArgs
+  referrals?: boolean | PracticeCountOutputTypeCountReferralsArgs
 }
 
 /**
@@ -3664,6 +3927,13 @@ export type PracticeCountOutputTypeCountDailyTasksArgs<ExtArgs extends runtime.T
   where?: Prisma.DailyTaskWhereInput
 }
 
+/**
+ * PracticeCountOutputType without action
+ */
+export type PracticeCountOutputTypeCountReferralsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReferralWhereInput
+}
+
 
 export type PracticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3706,6 +3976,7 @@ export type PracticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   notifications?: boolean | Prisma.Practice$notificationsArgs<ExtArgs>
   consents?: boolean | Prisma.Practice$consentsArgs<ExtArgs>
   dailyTasks?: boolean | Prisma.Practice$dailyTasksArgs<ExtArgs>
+  referrals?: boolean | Prisma.Practice$referralsArgs<ExtArgs>
   _count?: boolean | Prisma.PracticeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["practice"]>
 
@@ -3814,6 +4085,7 @@ export type PracticeInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   notifications?: boolean | Prisma.Practice$notificationsArgs<ExtArgs>
   consents?: boolean | Prisma.Practice$consentsArgs<ExtArgs>
   dailyTasks?: boolean | Prisma.Practice$dailyTasksArgs<ExtArgs>
+  referrals?: boolean | Prisma.Practice$referralsArgs<ExtArgs>
   _count?: boolean | Prisma.PracticeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PracticeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3835,6 +4107,7 @@ export type $PracticePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     consents: Prisma.$ConsentRecordPayload<ExtArgs>[]
     dailyTasks: Prisma.$DailyTaskPayload<ExtArgs>[]
+    referrals: Prisma.$ReferralPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4271,6 +4544,7 @@ export interface Prisma__PracticeClient<T, Null = never, ExtArgs extends runtime
   notifications<T extends Prisma.Practice$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   consents<T extends Prisma.Practice$consentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$consentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConsentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   dailyTasks<T extends Prisma.Practice$dailyTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$dailyTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyTaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  referrals<T extends Prisma.Practice$referralsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Practice$referralsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5022,6 +5296,30 @@ export type Practice$dailyTasksArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.DailyTaskScalarFieldEnum | Prisma.DailyTaskScalarFieldEnum[]
+}
+
+/**
+ * Practice.referrals
+ */
+export type Practice$referralsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Referral
+   */
+  select?: Prisma.ReferralSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Referral
+   */
+  omit?: Prisma.ReferralOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReferralInclude<ExtArgs> | null
+  where?: Prisma.ReferralWhereInput
+  orderBy?: Prisma.ReferralOrderByWithRelationInput | Prisma.ReferralOrderByWithRelationInput[]
+  cursor?: Prisma.ReferralWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReferralScalarFieldEnum | Prisma.ReferralScalarFieldEnum[]
 }
 
 /**

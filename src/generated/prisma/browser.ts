@@ -113,6 +113,21 @@ export type ConsentRecord = Prisma.ConsentRecordModel
  */
 export type InvestorNote = Prisma.InvestorNoteModel
 /**
+ * Model CreditLedger
+ * 
+ */
+export type CreditLedger = Prisma.CreditLedgerModel
+/**
+ * Model ApiKey
+ * 
+ */
+export type ApiKey = Prisma.ApiKeyModel
+/**
+ * Model Referral
+ * 
+ */
+export type Referral = Prisma.ReferralModel
+/**
  * Model DailyTask
  * 
  */
