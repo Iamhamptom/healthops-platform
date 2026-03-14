@@ -32,16 +32,16 @@ interface Subscription {
 
 const PLANS = [
   {
-    key: "starter", name: "Starter", icon: Zap, price: 7500, priceLabel: "R7,500",
-    features: ["WhatsApp AI front desk", "Booking capture & confirmations", "Reminders & rescheduling", "Basic analytics", "Email support"],
+    key: "starter", name: "Core", icon: Zap, price: 15000, priceLabel: "R15,000",
+    features: ["Patient management & records", "ICD-10 billing & invoicing", "Booking engine & reminders", "POPIA compliance & audit", "R1,000 AI credits/mo"],
   },
   {
-    key: "professional", name: "Pro", icon: Crown, price: 15000, priceLabel: "R15,000", popular: true,
-    features: ["Everything in Starter", "Waitlist auto-fill", "Deposits & pay-by-link", "Reviews engine", "Recall automation", "Priority support", "Custom branding"],
+    key: "professional", name: "Professional", icon: Crown, price: 35000, priceLabel: "R35,000", popular: true,
+    features: ["Everything in Core", "5 AI Agents", "Advanced analytics", "Medical aid claims", "White-label branding", "R3,000 AI credits/mo"],
   },
   {
-    key: "enterprise", name: "Premium", icon: Building2, price: 30000, priceLabel: "R30,000",
-    features: ["Everything in Pro", "Multi-location support", "Advanced recall & campaigns", "Intake & consent forms", "KPI dashboard", "Dedicated account manager", "API access"],
+    key: "enterprise", name: "Enterprise", icon: Building2, price: 55000, priceLabel: "R55,000",
+    features: ["Everything in Professional", "Multi-location", "Custom integrations & API", "Dedicated account manager", "Staff AI training", "R8,000 AI credits/mo"],
   },
 ];
 

@@ -40,7 +40,7 @@ const products = [
       "CPA — Transparent fee disclosure & informed financial consent",
     ],
     market: "~12,000 private medical practices in SA, R180B healthcare market",
-    revenue: "SaaS subscription: Starter R7,500/mo | Professional R15,000/mo | Enterprise R30,000/mo",
+    revenue: "SaaS subscription: Core R15,000/mo | Professional R35,000/mo | Enterprise R55,000/mo + AI credits",
   },
   {
     id: "placeo-health",

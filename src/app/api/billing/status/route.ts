@@ -7,9 +7,9 @@ const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET_KEY!;
 const PAYSTACK_BASE = "https://api.paystack.co";
 
 const PLAN_PRICES: Record<string, number> = {
-  starter: 799,
-  professional: 1799,
-  enterprise: 2499,
+  starter: 15000,      // Core plan
+  professional: 35000,
+  enterprise: 55000,
 };
 
 export async function GET(request: Request) {

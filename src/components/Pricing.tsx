@@ -6,32 +6,32 @@ import Link from "next/link";
 
 const plans = [
   {
-    name: "Starter",
-    price: "R7,500",
-    setup: "R10,000",
+    name: "Core",
+    price: "R15,000",
+    setup: "R15,000",
     period: "/month",
-    description: "Get your front desk automated fast.",
-    features: ["WhatsApp AI front desk", "Booking capture & confirmations", "Reminders & rescheduling", "Basic analytics", "Email support"],
-    cta: "Start Free Trial",
+    description: "Everything you need to run a modern practice.",
+    features: ["Patient management & records", "ICD-10 billing & invoicing", "Booking engine & public page", "WhatsApp/SMS/Email reminders", "Daily workflow automation", "POPIA compliance & audit logs", "R1,000 AI credits included/mo", "12-month minimum contract"],
+    cta: "Get Started",
     popular: false,
   },
   {
     name: "Professional",
-    price: "R15,000",
-    setup: "R20,000",
+    price: "R35,000",
+    setup: "R25,000",
     period: "/month",
-    description: "The full ops suite for growing practices.",
-    features: ["Everything in Starter", "Waitlist auto-fill", "Deposits & pay-by-link", "Reviews engine", "Recall automation", "Priority support", "Custom branding"],
-    cta: "Start Free Trial",
+    description: "Full AI suite for growing practices.",
+    features: ["Everything in Core", "5 AI Agents (triage, intake, follow-up, billing, scheduler)", "Advanced analytics & reporting", "Medical aid claim management", "Custom white-label branding", "Priority support", "R3,000 AI credits included/mo", "12-month minimum contract"],
+    cta: "Get Started",
     popular: true,
   },
   {
     name: "Enterprise",
-    price: "R30,000",
-    setup: "R45,000",
+    price: "R55,000",
+    setup: "R40,000",
     period: "/month",
-    description: "Multi-location practices & clinics.",
-    features: ["Everything in Professional", "Multi-location support", "Advanced campaigns", "Intake & consent forms", "KPI dashboard", "Dedicated account manager", "API access"],
+    description: "Full suite for multi-location practices.",
+    features: ["Everything in Professional", "Multi-location support", "Custom integrations & API access", "Dedicated account manager", "Staff AI training programme", "Advanced recall & campaigns", "R8,000 AI credits included/mo", "24-month minimum contract"],
     cta: "Contact Sales",
     popular: false,
   },
@@ -53,7 +53,7 @@ export default function Pricing() {
             Simple, transparent pricing
           </h2>
           <p className="text-gray-500 text-sm font-light max-w-md mx-auto">
-            14-day free trial on all plans. No credit card required.
+            12-24 month contracts. AI credits included with every plan — additional usage billed at cost.
           </p>
         </motion.div>
 

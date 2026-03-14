@@ -13,9 +13,9 @@ const PLAN_CODES: Record<string, string | undefined> = {
 };
 
 const PLAN_AMOUNTS: Record<string, number> = {
-  starter: 79900,
-  professional: 179900,
-  enterprise: 249900,
+  starter: 1500000,      // R15,000 in kobo (Core)
+  professional: 3500000, // R35,000 in kobo
+  enterprise: 5500000,   // R55,000 in kobo
 };
 
 async function paystackFetch(path: string, opts: RequestInit = {}) {

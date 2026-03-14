@@ -64,7 +64,7 @@ export async function POST(request: Request) {
           activePractices: practices.filter(p => p.planStatus === "active").length,
           trialPractices: practices.filter(p => p.planStatus === "trial").length,
           mrr: practices.reduce((sum, p) => {
-            const prices: Record<string, number> = { starter: 7500, professional: 15000, enterprise: 30000 };
+            const prices: Record<string, number> = { starter: 15000, professional: 35000, enterprise: 55000 };
             return sum + (p.planStatus === "active" ? (prices[p.plan] || 0) : 0);
           }, 0),
         },

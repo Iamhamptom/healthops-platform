@@ -13,15 +13,15 @@ export const PLAN_CODES: Record<string, string> = {
 };
 
 export const PLAN_PRICES: Record<string, number> = {
-  starter: 750000,       // R7,500 in kobo
-  professional: 1500000, // R15,000 in kobo
-  enterprise: 3000000,   // R30,000 in kobo
+  starter: 1500000,      // R15,000 in kobo (Core plan)
+  professional: 3500000, // R35,000 in kobo
+  enterprise: 5500000,   // R55,000 in kobo
 };
 
 export const PLAN_NAMES: Record<string, string> = {
-  starter: "Starter",
-  professional: "Pro",
-  enterprise: "Premium",
+  starter: "Core",
+  professional: "Professional",
+  enterprise: "Enterprise",
 };
 
 async function paystackFetch(path: string, opts?: RequestInit) {

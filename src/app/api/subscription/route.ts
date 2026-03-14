@@ -16,7 +16,7 @@ export async function GET(request: Request) {
         trialEndsAt: demoPractice.trialEndsAt,
         paystackSubId: demoPractice.paystackSubId || null,
         nextPaymentDate: null,
-        amount: { starter: 7500, professional: 15000, enterprise: 30000 }[demoPractice.plan] || 0,
+        amount: { starter: 15000, professional: 35000, enterprise: 55000 }[demoPractice.plan] || 0,
       },
     });
   }
@@ -40,7 +40,7 @@ export async function GET(request: Request) {
       trialEndsAt: practice.trialEndsAt,
       paystackSubId: practice.paystackSubId || null,
       nextPaymentDate: paystackSub?.next_payment_date || null,
-      amount: { starter: 7500, professional: 15000, enterprise: 30000 }[practice.plan] || 0,
+      amount: { starter: 15000, professional: 35000, enterprise: 55000 }[practice.plan] || 0,
     },
   });
 }

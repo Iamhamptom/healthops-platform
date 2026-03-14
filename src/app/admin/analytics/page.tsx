@@ -28,7 +28,7 @@ export default function AdminAnalyticsPage() {
   }, []);
 
   const planColors: Record<string, string> = { starter: "#E8C84A", professional: "#2DD4BF", enterprise: "#8B5CF6" };
-  const planPrices: Record<string, number> = { starter: 7500, professional: 15000, enterprise: 30000 };
+  const planPrices: Record<string, number> = { starter: 15000, professional: 35000, enterprise: 55000 };
 
   // Calculate revenue projections
   const projectedMRR = Object.entries(byPlan).reduce((sum, [plan, count]) => sum + (planPrices[plan] || 0) * count, 0);
